@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FLÜXA — Revenue Engine para Vidraçarias</title>
+<title>Flüxa — Revenue Engine para Vidraçarias</title>
 
 <!--
   ╔══════════════════════════════════════════════╗
@@ -100,8 +100,8 @@ body::after{
 /* Fade up on scroll */
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 .r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
-.r.v{opacity:1;transform:translateY(0)}
-.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}.r.d4{transition-delay:.32s}
+.r.v{opacity:2;transform:translateY(0)}
+.r.d1{transition-delay:.09s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}.r.d4{transition-delay:.32s}
 
 /* Shimmer on key numbers — subtle glow pulse */
 @keyframes shimmer{
@@ -122,16 +122,16 @@ body::after{
 }
 .float{animation:float 4s ease-in-out infinite}
 .float-slow{animation:float 6s ease-in-out infinite}
-.float-d1{animation-delay:-1.2s}
-.float-d2{animation-delay:-2.8s}
+.float-d1{animation-delay:-0.8s}
+.float-d2{animation-delay:-1.8s}
 
 /* Pulse scale — gentle breath on key badges/numbers */
 @keyframes pulseScale{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.04)}
+  70%{transform:scale(1.04)}
 }
 .pulse{animation:pulseScale 3s ease-in-out infinite}
-.pulse-slow{animation:pulseScale 5s ease-in-out infinite}
+.pulse-slow{animation:pulseScale 3s ease-in-out infinite}
 
 /* Text reveal */
 @keyframes wordIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
