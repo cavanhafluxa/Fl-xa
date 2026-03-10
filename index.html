@@ -1,614 +1,1302 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flüxa — Revenue Engineering para Vidraçarias</title>
-  <meta name="description" content="Automatize 90% do seu processo comercial com a IA que entende de vidro." />
-  <link rel="icon" type="image/png" href="icon.png">
-  <link rel="apple-touch-icon" href="icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLÜXA — Revenue Engine para Vidraçarias</title>
 
-  <style>
-    :root {
-      --blue: #38b6ff;
-      --blue-deep: #0077cc;
-      --blue-glow: rgba(56,182,255,.18);
-      --dark: #060912;
-      --dark-2: #0d1424;
-      --dark-3: #111827;
-      --surface: #141d2e;
-      --surface-2: #1a2540;
-      --line: rgba(255,255,255,.07);
-      --text: #e8edf5;
-      --muted: #7a8899;
-      --white: #ffffff;
-    }
+<!--
+  ╔══════════════════════════════════════════════╗
+  ║  FAVICON — configuração automática           ║
+  ║  Coloque no repositório GitHub um arquivo    ║
+  ║  chamado "favicon.png", "favicon.ico" ou     ║
+  ║  "favicon.svg" na pasta raiz do projeto.     ║
+  ║  O favicon será carregado automaticamente.   ║
+  ╚══════════════════════════════════════════════╝
+-->
+<link id="favicon" rel="icon" type="image/png" href="favicon.png">
+<link id="favicon-apple" rel="apple-touch-icon" href="favicon.png">
 
-    * { box-sizing: border-box; margin: 0; padding: 0 }
-    html { scroll-behavior: smooth }
-    body {
-      background: var(--dark);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+<script>
+// Auto-detect favicon — testa extensões em ordem até encontrar uma válida
+(function() {
+  const exts = ['png', 'ico', 'svg', 'jpg', 'webp'];
+  const favicon = document.getElementById('favicon');
+  const faviconApple = document.getElementById('favicon-apple');
+  let found = false;
 
-    /* ── LOGO ── */
-    .logo {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 21px;
-      letter-spacing: -.02em;
-      color: #fff;
-    }
-    .logo em { color: var(--blue); font-style: normal }
+  function tryNext(i) {
+    if (i >= exts.length || found) return;
+    const img = new Image();
+    const url = 'favicon.' + exts[i];
+    img.onload = function() {
+      if (!found) {
+        found = true;
+        const type = exts[i] === 'svg' ? 'image/svg+xml'
+                   : exts[i] === 'ico' ? 'image/x-icon'
+                   : 'image/' + exts[i];
+        favicon.type = type;
+        favicon.href = url;
+        faviconApple.href = url;
+      }
+    };
+    img.onerror = function() { tryNext(i + 1); };
+    img.src = url;
+  }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      transition: all .3s;
-    }
-    nav.scrolled {
-      background: rgba(6,9,18,.92);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--line);
-    }
+  tryNext(0);
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 
-    /* ── HERO MESH GRADIENT ── */
-    .hero-mesh {
-      position: absolute; inset: 0; overflow: hidden; pointer-events: none;
-    }
-    .mesh-blob {
-      position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35;
-    }
-    .blob-1 { width: 600px; height: 600px; background: radial-gradient(circle, #38b6ff, transparent); top: -200px; left: -100px; animation: blob-drift 12s ease-in-out infinite alternate }
-    .blob-2 { width: 500px; height: 500px; background: radial-gradient(circle, #0044aa, transparent); top: 100px; right: -100px; animation: blob-drift 15s ease-in-out infinite alternate-reverse }
-    .blob-3 { width: 400px; height: 400px; background: radial-gradient(circle, #001a55, transparent); bottom: 0; left: 40%; animation: blob-drift 10s ease-in-out infinite alternate }
+<style>
+/* ═══════════════════════════
+   TOKENS
+═══════════════════════════ */
+:root{
+  --bg:#060609;--bg-2:#0c0c10;--bg-3:#111116;
+  --surface:rgba(255,255,255,0.03);--surface-2:rgba(255,255,255,0.055);
+  --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.12);
+  --t1:#f0f2f5;--t2:#8b92a5;--t3:#484f63;
+  --accent:#5e6ad2;--accent-2:#4f5bbf;
+  --sky:#38bdf8;--green:#10b981;--green-g:rgba(16,185,129,.18);
+  --red:#ef4444;--amber:#f59e0b;
+  --font:'DM Sans',system-ui,sans-serif;
+  --r:10px;--r-lg:16px;
+}
 
-    @keyframes blob-drift {
-      from { transform: translate(0,0) scale(1) }
-      to   { transform: translate(30px, 20px) scale(1.08) }
-    }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100vw}
+body{
+  font-family:var(--font);background:var(--bg);color:var(--t1);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;
+  width:100%;max-width:100vw;
+}
 
-    /* ── GRID lines fundo ── */
-    .grid-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 30%, transparent 100%);
-    }
+/* ── Noise ── */
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9998;opacity:.5;
+}
 
-    /* ── BADGE pill ── */
-    .badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(56,182,255,.1);
-      border: 1px solid rgba(56,182,255,.25);
-      color: var(--blue);
-      font-size: 11.5px; font-weight: 600;
-      padding: 5px 14px; border-radius: 999px;
-      letter-spacing: .04em; text-transform: uppercase;
-    }
-    .badge-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--blue);
-      animation: pulse-dot 1.8s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-      0%,100% { opacity:1; transform:scale(1) }
-      50% { opacity:.4; transform:scale(1.5) }
-    }
+/* ── Gradient mesh ── */
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.mesh-blob{position:absolute;border-radius:50%;filter:blur(140px);opacity:.065;animation:drift 20s ease-in-out infinite alternate}
+.mb1{width:700px;height:700px;background:#3b4fd4;top:-200px;left:-200px;animation-delay:0s}
+.mb2{width:500px;height:500px;background:#0ea5e9;top:40%;right:-150px;opacity:.04;animation-delay:-7s}
+.mb3{width:400px;height:400px;background:#10b981;bottom:0;left:30%;opacity:.035;animation-delay:-14s}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,30px) scale(1.08)}}
 
-    /* ── BOTÕES ── */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue);
-      color: #fff; font-weight: 700; font-size: 15px;
-      padding: 14px 28px; border-radius: 10px;
-      transition: all .25s; border: none; cursor: pointer;
-      box-shadow: 0 0 0 0 rgba(56,182,255,.4);
-    }
-    .btn-primary:hover {
-      background: #55c5ff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(56,182,255,.4);
-    }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent;
-      color: var(--text); font-weight: 500; font-size: 15px;
-      padding: 14px 28px; border-radius: 10px;
-      border: 1px solid rgba(255,255,255,.12);
-      transition: all .25s; cursor: pointer;
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,.05);
-      border-color: rgba(255,255,255,.22);
-    }
+/* ── Layout ── */
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.wrap-narrow{max-width:760px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
 
-    /* ── CARDS ESCUROS ── */
-    .card-dark {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      transition: all .3s;
-    }
-    .card-dark:hover {
-      border-color: rgba(56,182,255,.25);
-      transform: translateY(-3px);
-      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(56,182,255,.1);
-    }
-    .card-featured {
-      background: linear-gradient(145deg, #0d1e3a, #0a1628);
-      border: 1px solid rgba(56,182,255,.3);
-      border-radius: 16px;
-      box-shadow: 0 0 40px rgba(56,182,255,.1), inset 0 1px 0 rgba(56,182,255,.15);
-      transition: all .3s;
-    }
-    .card-featured:hover {
-      box-shadow: 0 0 60px rgba(56,182,255,.2), inset 0 1px 0 rgba(56,182,255,.2);
-      transform: translateY(-4px);
-    }
+/* ═══════════════════════════
+   ANIMATIONS
+═══════════════════════════ */
+/* Fade up on scroll */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.r.v{opacity:1;transform:translateY(0)}
+.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}.r.d4{transition-delay:.32s}
 
-    /* ── PAIN CARDS ── */
-    .pain-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-left: 2px solid rgba(239,68,68,.5);
-      border-radius: 12px;
-      padding: 24px;
-      transition: all .3s;
-    }
-    .pain-card:hover {
-      border-left-color: #ef4444;
-      background: rgba(239,68,68,.04);
-    }
+/* Shimmer on key numbers — subtle glow pulse */
+@keyframes shimmer{
+  0%,100%{text-shadow:0 0 0 transparent}
+  50%{text-shadow:0 0 18px rgba(16,185,129,.35),0 0 40px rgba(16,185,129,.1)}
+}
+.shine{animation:shimmer 3.5s ease-in-out infinite}
+.shine-blue{animation:shimmerBlue 4s ease-in-out infinite}
+@keyframes shimmerBlue{
+  0%,100%{text-shadow:0 0 0 transparent}
+  50%{text-shadow:0 0 16px rgba(94,106,210,.45),0 0 36px rgba(94,106,210,.12)}
+}
 
-    /* ── STATS ── */
-    .stat-number {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 3rem;
-      line-height: 1;
-      color: var(--blue);
-    }
+/* Float — for section numbers / accent elements */
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+.float{animation:float 4s ease-in-out infinite}
+.float-slow{animation:float 6s ease-in-out infinite}
+.float-d1{animation-delay:-1.2s}
+.float-d2{animation-delay:-2.8s}
 
-    /* ── PIPELINE ── */
-    .pipe-step {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 8px; text-align: center; min-width: 72px;
-    }
-    .pipe-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-    }
-    .pipe-arrow { color: rgba(56,182,255,.4); font-size: 20px; margin-top: -6px }
+/* Pulse scale — gentle breath on key badges/numbers */
+@keyframes pulseScale{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.04)}
+}
+.pulse{animation:pulseScale 3s ease-in-out infinite}
+.pulse-slow{animation:pulseScale 5s ease-in-out infinite}
 
-    /* ── FORM ── */
-    .ff {
-      width: 100%;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 10px;
-      padding: 14px 16px;
-      color: var(--text);
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      outline: none;
-      transition: all .2s;
-      appearance: none;
-    }
-    .ff::placeholder { color: var(--muted) }
-    .ff:focus {
-      border-color: rgba(56,182,255,.5);
-      background: rgba(56,182,255,.04);
-      box-shadow: 0 0 0 3px rgba(56,182,255,.1);
-    }
-    select.ff option { background: var(--dark-2); color: var(--text) }
+/* Text reveal */
+@keyframes wordIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.hero-word{display:inline}
+.hero-h1{animation:fadeUp .5s .1s ease both}
 
-    /* ── LABEL CHIPS ── */
-    .chip {
-      display: inline-flex; align-items: center;
-      font-size: 11px; font-weight: 600;
-      padding: 3px 10px; border-radius: 4px;
-      letter-spacing: .05em; text-transform: uppercase;
-    }
-    .chip-blue { color: #60c8ff; background: rgba(56,182,255,.1); border: 1px solid rgba(56,182,255,.2) }
-    .chip-red  { color: #f87171; background: rgba(239,68,68,.1);  border: 1px solid rgba(239,68,68,.2) }
-    .chip-amb  { color: #fbbf24; background: rgba(251,191,36,.1);  border: 1px solid rgba(251,191,36,.2) }
-    .chip-vio  { color: #a78bfa; background: rgba(167,139,250,.1); border: 1px solid rgba(167,139,250,.2) }
-    .chip-grn  { color: #34d399; background: rgba(52,211,153,.1);  border: 1px solid rgba(52,211,153,.2) }
+/* Blink */
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
-    /* ── DIVIDER ── */
-    .div-line { height: 1px; background: var(--line) }
+/* Live dot pulse */
+@keyframes liveDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.65)}}
+.m-badge-dot{animation:liveDot 1.8s ease-in-out infinite !important}
 
-    /* ── REVEAL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease }
-    .reveal.visible { opacity: 1; transform: translateY(0) }
+/* ═══════════════════════════
+   NAV
+═══════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:56px;display:flex;align-items:center;
+  padding:0 24px;
+  background:rgba(6,6,9,0.8);
+  backdrop-filter:blur(24px) saturate(200%);
+  -webkit-backdrop-filter:blur(24px) saturate(200%);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-size:17px;font-weight:700;letter-spacing:-.04em;
+  color:var(--t1);text-decoration:none;
+  display:flex;align-items:center;gap:7px;flex-shrink:0;
+}
+.nav-logo-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:linear-gradient(135deg,var(--sky),var(--accent));flex-shrink:0;
+}
+.nav-center{
+  display:flex;gap:1px;margin:0 auto;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:9px;padding:3px;
+}
+.nav-center a{
+  font-size:13px;color:var(--t2);text-decoration:none;
+  padding:5px 14px;border-radius:7px;transition:all .18s;font-weight:400;
+  white-space:nowrap;
+}
+.nav-center a:hover{color:var(--t1);background:var(--surface-2)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-login{font-size:13px;color:var(--t2);text-decoration:none;padding:6px 14px;transition:color .18s}
+.nav-login:hover{color:var(--t1)}
+.nav-cta-sm{
+  font-size:13px;font-weight:500;padding:7px 16px;
+  border-radius:8px;background:var(--green);color:#fff;
+  text-decoration:none;transition:all .2s;font-family:var(--font);
+  box-shadow:0 0 20px rgba(16,185,129,.2);white-space:nowrap;border:none;cursor:pointer;
+}
+.nav-cta-sm:hover{background:#0ea574;box-shadow:0 0 28px rgba(16,185,129,.35);transform:translateY(-1px)}
+.mob-toggle{display:none;background:none;border:none;color:var(--t2);cursor:pointer;font-size:20px;padding:6px;line-height:1}
 
-    /* ── CHAT CARD ── */
-    .chat-bot { background: var(--surface-2); border-radius: 14px 14px 14px 3px; padding: 11px 15px; font-size: 13px; color: var(--text); max-width: 250px; border: 1px solid var(--line) }
-    .chat-usr { background: rgba(56,182,255,.15); border-radius: 14px 14px 3px 14px; padding: 11px 15px; font-size: 13px; color: #a8d8ff; max-width: 220px; margin-left: auto; border: 1px solid rgba(56,182,255,.2) }
+/* ═══════════════════════════
+   HERO
+═══════════════════════════ */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:100px 0 80px;text-align:center;position:relative;
+  overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 90% 65% at 50% 0%,black 30%,transparent 100%);
+}
+.hero::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-60%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse at center,rgba(94,106,210,.12) 0%,transparent 70%);
+  pointer-events:none;z-index:0;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 14px 5px 8px;
+  border:1px solid rgba(94,106,210,.25);background:rgba(94,106,210,.07);
+  border-radius:100px;font-size:12.5px;font-weight:500;color:#a5b0ff;
+  margin-bottom:36px;animation:fadeUp .55s ease both;position:relative;z-index:1;
+  max-width:calc(100vw - 40px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.eyebrow-pill{
+  background:rgba(94,106,210,.3);border-radius:100px;
+  padding:2px 9px;font-size:11px;font-weight:600;color:#c4caff;
+  letter-spacing:.03em;text-transform:uppercase;
+}
+.hero-h1{
+  font-size:clamp(32px,5.5vw,68px);font-weight:800;
+  line-height:1.08;letter-spacing:-.04em;color:var(--t1);
+  margin-bottom:24px;position:relative;z-index:1;
+  word-break:break-word;overflow-wrap:break-word;
+}
+.hero-h1 em, .hero-em{
+  font-style:normal;
+  background:linear-gradient(100deg,#7dd3fc 0%,#818cf8 45%,#c084fc 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  display:inline;
+}
+.hero-p{
+  font-size:clamp(15px,2vw,18.5px);color:var(--t2);font-weight:300;
+  max-width:540px;line-height:1.72;margin:0 auto 44px;
+  position:relative;z-index:1;animation:fadeUp .55s .22s ease both;
+}
+.hero-actions{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  position:relative;z-index:1;animation:fadeUp .55s .30s ease both;margin-bottom:72px;
+}
+.btn-hero{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:10px;background:var(--green);color:#fff;
+  font-size:15px;font-weight:600;font-family:var(--font);
+  text-decoration:none;border:none;cursor:pointer;transition:all .22s;
+  box-shadow:0 0 0 1px rgba(16,185,129,.35),0 0 32px rgba(16,185,129,.22),0 2px 8px rgba(0,0,0,.3);
+  position:relative;overflow:hidden;max-width:100%;box-sizing:border-box;
+}
+.btn-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,transparent 55%)}
+.btn-hero:hover{background:#0ea574;transform:translateY(-2px);box-shadow:0 0 0 1px rgba(16,185,129,.5),0 0 44px rgba(16,185,129,.32),0 8px 24px rgba(0,0,0,.35)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 24px;border-radius:10px;background:var(--surface);color:var(--t2);
+  font-size:15px;font-weight:500;font-family:var(--font);
+  text-decoration:none;border:1px solid var(--border-2);cursor:pointer;transition:all .22s;
+}
+.btn-ghost:hover{color:var(--t1);background:var(--surface-2);border-color:rgba(255,255,255,.18);transform:translateY(-1px)}
 
-    /* ── FLOAT CARD ── */
-    @keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-10px) } }
-    .float-card { animation: float 4s ease-in-out infinite }
+/* ═══════════════════════════
+   MOCKUP — HERO CRM PREVIEW
+═══════════════════════════ */
+.hero-mockup-wrap{
+  position:relative;z-index:1;width:100%;
+}
+.hero-mockup{
+  position:relative;z-index:1;width:100%;max-width:860px;margin:0 auto;
+  animation:fadeUp .7s .38s ease both;
+}
+.mockup-frame{
+  background:var(--bg-2);border:1px solid var(--border-2);border-radius:20px;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 40px 80px rgba(0,0,0,.6),0 0 120px rgba(94,106,210,.08);
+  position:relative;
+}
+.mockup-frame::before{
+  content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  width:280px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(125,183,252,.5),transparent);
+}
+.mockup-bar{
+  height:44px;display:flex;align-items:center;gap:8px;padding:0 18px;
+  border-bottom:1px solid var(--border);background:rgba(255,255,255,.015);
+}
+.m-dot{width:10px;height:10px;border-radius:50%}
+.md-r{background:#ff5f57}.md-y{background:#ffbd2e}.md-g{background:#27c840}
+.m-url{
+  margin:0 auto;font-size:11.5px;color:var(--t3);
+  background:var(--surface);border:1px solid var(--border);
+  padding:4px 16px;border-radius:6px;letter-spacing:.01em;
+}
 
-    /* ── SCROLL INDICATOR ── */
-    @keyframes bounce-slow { 0%,100% { transform:translateY(0) } 50% { transform:translateY(6px) } }
-    .scroll-ind { animation: bounce-slow 2s ease-in-out infinite }
+/* Body = sidebar + main, FIXED height so tabs never resize */
+.mockup-body{
+  display:grid;grid-template-columns:220px 1fr;
+  height:420px;/* fixed — never changes */
+  overflow:hidden;
+}
 
-    /* ── MOBILE ── */
-    #mobile-menu { display: none }
-    #mobile-menu.open { display: flex }
+/* ── Sidebar ── */
+.m-sidebar{
+  display:flex;flex-direction:column;padding:18px 12px 14px;
+  border-right:1px solid var(--border);background:rgba(255,255,255,.01);
+  gap:2px;height:100%;overflow:hidden;flex-shrink:0;
+}
+.m-user-block{
+  display:flex;align-items:center;gap:9px;padding:2px 6px 14px;
+  border-bottom:1px solid var(--border);margin-bottom:8px;
+}
+.m-user-ava{
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;
+  background:linear-gradient(135deg,#10b981,#059669);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:#fff;
+}
+.m-user-name{font-size:12.5px;font-weight:600;color:var(--t1);line-height:1.2}
+.m-user-handle{font-size:10.5px;color:var(--t3)}
+.m-nav-item{
+  display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:7px;
+  font-size:12px;color:var(--t3);cursor:pointer;transition:all .15s;
+  user-select:none;border:1px solid transparent;
+}
+.m-nav-item:hover{color:var(--t2);background:rgba(255,255,255,.03)}
+.m-nav-item.active{background:rgba(255,255,255,.06);color:var(--t1);border-color:var(--border)}
+.m-ico{width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:12px;opacity:.75;flex-shrink:0}
+.m-nav-item.active .m-ico{opacity:1}
+.m-sidebar-spacer{flex:1}
+.m-sidebar-divider{height:1px;background:var(--border);margin:6px 0}
 
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 5px }
-    ::-webkit-scrollbar-track { background: var(--dark) }
-    ::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 3px }
+/* ── Main area ── */
+.m-main{
+  display:flex;flex-direction:column;padding:18px 20px 14px;
+  min-width:0;height:100%;overflow:hidden;
+}
+.m-topbar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;gap:10px;flex-shrink:0}
+.m-page-title{font-size:15px;font-weight:700;color:var(--t1);letter-spacing:-.02em}
+.m-page-sub{font-size:11px;color:var(--t3);margin-top:2px}
+.m-topbar-right{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.m-badge{
+  font-size:10.5px;padding:3px 10px;border-radius:100px;
+  background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);
+  color:#6ee7b7;font-weight:500;display:flex;align-items:center;gap:5px;white-space:nowrap;
+}
+.m-badge-dot{width:5px;height:5px;border-radius:50%;background:#10b981;flex-shrink:0}
+.m-csv-btn{
+  font-size:10.5px;color:var(--t3);background:var(--surface);
+  border:1px solid var(--border);padding:3px 9px;border-radius:6px;cursor:default;white-space:nowrap;
+}
 
-    /* ── NOISE TEXTURE ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: .4;
-    }
+/* Tab views — FIXED, overflow-y:auto so inner content scrolls, parent stays same size */
+.m-view{display:none;overflow-y:auto;flex:1;min-height:0}
+.m-view.active{display:flex;flex-direction:column;gap:9px}
+/* Thin scrollbar inside tabs */
+.m-view::-webkit-scrollbar{width:3px}
+.m-view::-webkit-scrollbar-track{background:transparent}
+.m-view::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 
-    /* section bg alternadas */
-    .bg-section { background: var(--dark-2) }
-    .bg-main { background: var(--dark) }
+/* KPI grid */
+.m-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.m-kpi{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:12px 14px}
+.m-kpi-icon{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:8px}
+.ki-purple{background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.2)}
+.ki-green{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.2)}
+.ki-blue{background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2)}
+.ki-amber{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
+.m-kpi-val{font-size:20px;font-weight:800;letter-spacing:-.04em;color:var(--t1)}
+.m-kpi-val.green{color:var(--green)}.m-kpi-val.amber{color:var(--amber)}
+.m-kpi-label{font-size:11px;color:var(--t3);margin-top:2px}
 
-    #msg { margin-top: 12px; font-size: 14px; text-align: center; padding: 10px 14px; border-radius: 8px; display: none }
-    #msg.ok  { background: rgba(52,211,153,.08); border: 1px solid rgba(52,211,153,.2); color: #34d399 }
-    #msg.err { background: rgba(239,68,68,.08);  border: 1px solid rgba(239,68,68,.2);  color: #f87171 }
+/* Chart */
+.m-chart{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:12px 14px 8px}
+.m-chart-title{font-size:11.5px;font-weight:600;color:var(--t2)}
+.m-chart-sub{font-size:10px;color:var(--t3);margin-top:1px;margin-bottom:8px}
+.m-chart-months{display:flex;justify-content:space-between;margin-top:4px}
+.m-chart-months span{font-size:9px;color:var(--t3)}
 
-    @media (max-width: 768px) {
-      .hero-title { font-size: 2.4rem !important }
-      .ct-layout { grid-template-columns: 1fr !important }
-    }
-  </style>
+/* Pipeline kanban */
+.m-pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.m-pipe-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;padding:0 2px}
+.m-pipe-name{font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--t3)}
+.m-pipe-cnt{font-size:10px;color:var(--t3);background:var(--surface);border:1px solid var(--border);width:17px;height:17px;border-radius:4px;display:flex;align-items:center;justify-content:center}
+.m-pcard{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:8px 9px;margin-bottom:5px;cursor:default;transition:all .15s}
+.m-pcard:hover{border-color:var(--border-2);background:var(--surface-2)}
+.m-pc-name{font-size:10.5px;font-weight:500;color:var(--t2);margin-bottom:3px}
+.m-pc-val{font-size:11.5px;font-weight:700;color:var(--t1);letter-spacing:-.02em}
+.m-pc-tag{display:inline-block;font-size:9px;padding:1px 5px;border-radius:4px;margin-top:3px;font-weight:500}
+.tg-new{background:rgba(56,189,248,.1);color:#7dd3fc;border:1px solid rgba(56,189,248,.15)}
+.tg-prop{background:rgba(167,139,250,.1);color:#c4b5fd;border:1px solid rgba(167,139,250,.15)}
+.tg-neg{background:rgba(251,191,36,.1);color:#fcd34d;border:1px solid rgba(251,191,36,.15)}
+.tg-won{background:rgba(16,185,129,.1);color:#6ee7b7;border:1px solid rgba(16,185,129,.15)}
+
+/* Leads table */
+.m-table{width:100%;border-collapse:collapse}
+.m-th{font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--t3);padding:0 9px 7px;text-align:left;border-bottom:1px solid var(--border)}
+.m-td{font-size:11px;color:var(--t2);padding:7px 9px;border-bottom:1px solid rgba(255,255,255,.03)}
+.m-td:first-child{color:var(--t1);font-weight:500}
+.m-tr:hover .m-td{background:rgba(255,255,255,.02)}
+.m-td-tag{display:inline-block;font-size:9px;padding:1px 6px;border-radius:4px;font-weight:500}
+
+/* Calendar */
+.m-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.m-cal-day-hd{font-size:9px;color:var(--t3);text-align:center;padding:2px 0;font-weight:500}
+.m-cal-day{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;color:var(--t3);border-radius:5px;cursor:default;
+  border:1px solid transparent;position:relative;
+}
+.m-cal-day.cur{background:var(--surface);color:var(--t2);border-color:var(--border)}
+.m-cal-day.today{background:rgba(16,185,129,.15);color:#6ee7b7;border-color:rgba(16,185,129,.3);font-weight:700}
+.m-cal-day.has-event::after{content:'';width:3px;height:3px;background:var(--accent);border-radius:50%;position:absolute;bottom:2px;left:50%;transform:translateX(-50%)}
+.m-cal-events{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.m-cal-evt{font-size:10.5px;padding:5px 9px;border-radius:6px;background:rgba(94,106,210,.1);border:1px solid rgba(94,106,210,.18);color:#a5b0ff;display:flex;align-items:center;justify-content:space-between}
+.m-cal-evt-time{font-size:9.5px;color:var(--t3)}
+.m-cal-nav{display:flex;gap:4px}
+.m-cal-btn{font-size:10.5px;color:var(--t3);background:var(--surface);border:1px solid var(--border);padding:3px 7px;border-radius:5px;cursor:default}
+
+/* Eli strip */
+.eli-strip{
+  padding:10px 16px;background:rgba(16,185,129,.04);
+  border-top:1px solid rgba(16,185,129,.12);
+  display:flex;align-items:center;gap:10px;overflow:hidden;
+}
+.eli-ava{
+  width:24px;height:24px;border-radius:7px;flex-shrink:0;
+  background:linear-gradient(135deg,#059669,#10b981);
+  display:flex;align-items:center;justify-content:center;font-size:11px;
+}
+.eli-bubble{font-size:11px;color:var(--t2);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.eli-bubble strong{color:#6ee7b7}
+.eli-status{font-size:10px;color:#6ee7b7;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.15);padding:3px 8px;border-radius:100px;white-space:nowrap;font-weight:500;flex-shrink:0}
+
+/* ── Mobile mockup tab bar (shown only on mobile) ── */
+.m-tab-bar{
+  display:none;
+  overflow-x:auto;padding:8px 12px;gap:4px;
+  border-bottom:1px solid var(--border);
+  background:var(--bg-2);
+  scrollbar-width:none;
+}
+.m-tab-bar::-webkit-scrollbar{display:none}
+.m-tab-btn{
+  flex-shrink:0;padding:5px 12px;border-radius:7px;border:1px solid var(--border);
+  background:var(--surface);color:var(--t3);font-size:11.5px;font-family:var(--font);
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+}
+.m-tab-btn.active{background:rgba(255,255,255,.07);color:var(--t1);border-color:var(--border-2)}
+
+/* ═══════════════════════════
+   LOGOS
+═══════════════════════════ */
+.logos-section{padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1}
+.logos-label{font-size:12px;color:var(--t3);text-align:center;margin-bottom:28px;letter-spacing:.05em;text-transform:uppercase;font-weight:500}
+.logos-row{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap}
+.logo-item{font-size:13.5px;font-weight:600;color:var(--t3);letter-spacing:.02em;display:flex;align-items:center;gap:7px}
+
+/* ═══════════════════════════
+   SECTIONS — shared
+═══════════════════════════ */
+.section-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:16px;
+}
+.section-eyebrow::before,.section-eyebrow::after{content:'';width:24px;height:1px;background:currentColor;opacity:.4}
+.section-h2{font-size:clamp(26px,4.5vw,44px);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--t1);margin-bottom:16px}
+.section-p{font-size:16px;color:var(--t2);font-weight:300;max-width:480px;line-height:1.72;margin:0 auto}
+
+/* ═══════════════════════════
+   BENTO
+═══════════════════════════ */
+.bento-section{padding:120px 0;position:relative;z-index:1}
+.bento-header{text-align:center;margin-bottom:64px}
+.bento{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:16px}
+.bento-card{
+  background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:32px;position:relative;overflow:hidden;transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.bento-card:hover{border-color:var(--border-2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.06)}
+.bento-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.02) 0%,transparent 50%);pointer-events:none}
+.bc-span2{grid-column:span 2}.bc-tall{grid-row:span 2}
+.bc-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;border:1px solid}
+.ic-blue{background:rgba(94,106,210,.1);border-color:rgba(94,106,210,.2)}
+.ic-sky{background:rgba(56,189,248,.08);border-color:rgba(56,189,248,.18)}
+.ic-green{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.2)}
+.ic-amber{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.18)}
+.bc-label{font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.bc-title{font-size:18px;font-weight:700;color:var(--t1);letter-spacing:-.03em;margin-bottom:10px;line-height:1.3}
+.bc-desc{font-size:13.5px;color:var(--t2);line-height:1.65;font-weight:300}
+.bc-stat{margin-top:20px;display:inline-flex;align-items:baseline;gap:6px}
+.bc-stat-val{font-size:28px;font-weight:800;color:var(--green);letter-spacing:-.04em}
+.bc-stat-label{font-size:12px;color:var(--t3);font-weight:400}
+.eli-chat{margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.chat-bubble{padding:9px 13px;border-radius:10px;font-size:12.5px;line-height:1.5;max-width:85%}
+.cb-in{background:var(--bg-3);border:1px solid var(--border);color:var(--t2);align-self:flex-start;border-bottom-left-radius:3px}
+.cb-out{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.18);color:#a7f3d0;align-self:flex-end;border-bottom-right-radius:3px}
+.chat-meta{font-size:11px;color:var(--t3);padding:0 4px}
+.mini-pipeline{margin-top:20px;display:flex;flex-direction:column;gap:7px}
+.mp-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;background:var(--surface);border:1px solid var(--border)}
+.mp-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.mp-name{font-size:12.5px;color:var(--t2);flex:1;font-weight:400}
+.mp-val{font-size:12px;font-weight:600;color:var(--t1)}
+.mp-tag{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:500}
+.mt-new{background:rgba(56,189,248,.1);color:#7dd3fc}
+.mt-hot{background:rgba(245,158,11,.1);color:#fcd34d}
+.mt-won{background:rgba(16,185,129,.1);color:#6ee7b7}
+.budget-preview{margin-top:20px;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.bp-header{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.bp-title{font-size:12px;font-weight:600;color:var(--t2)}
+.bp-badge{font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(16,185,129,.1);color:#6ee7b7;border:1px solid rgba(16,185,129,.15);font-weight:500}
+.bp-rows{padding:12px 16px;display:flex;flex-direction:column;gap:7px}
+.bp-row{display:flex;align-items:center;justify-content:space-between}
+.bp-item{font-size:11.5px;color:var(--t3)}.bp-price{font-size:11.5px;font-weight:600;color:var(--t2)}
+.bp-total{padding:10px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(16,185,129,.04)}
+.bp-total-label{font-size:12px;font-weight:600;color:var(--t2)}.bp-total-val{font-size:14px;font-weight:700;color:var(--green)}
+.metrics-strip{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metric-item{padding:12px 14px;border-radius:9px;background:var(--surface);border:1px solid var(--border)}
+.mi-val{font-size:22px;font-weight:800;letter-spacing:-.04em;color:var(--t1)}
+.mi-val.g{color:var(--green)}
+.mi-label{font-size:11px;color:var(--t3);margin-top:2px}.mi-change{font-size:11px;color:var(--green);margin-top:3px;font-weight:500}
+
+/* ═══════════════════════════
+   PROBLEM
+═══════════════════════════ */
+.problem-section{padding:120px 0;position:relative;z-index:1}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:60px}
+.prob-cell{background:var(--bg);padding:36px 36px 32px;transition:background .2s}
+.prob-cell:hover{background:var(--bg-2)}
+.prob-cell-icon{font-size:24px;margin-bottom:16px;display:block}
+.prob-cell-title{font-size:16px;font-weight:600;color:var(--t1);margin-bottom:8px;letter-spacing:-.02em}
+.prob-cell-text{font-size:13.5px;color:var(--t2);line-height:1.65;font-weight:300}
+
+/* ═══════════════════════════
+   HOW IT WORKS
+═══════════════════════════ */
+.how-section{padding:120px 0;position:relative;z-index:1}
+.how-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.how-steps{display:flex;flex-direction:column;gap:0;margin-top:44px}
+.how-step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);cursor:default;transition:all .2s}
+.how-step:last-child{border-bottom:none}
+.how-step:hover .hs-num{background:rgba(94,106,210,.15);color:#a5b0ff;border-color:rgba(94,106,210,.3)}
+.hs-num{width:36px;height:36px;border-radius:9px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--t3);transition:all .2s;margin-top:2px}
+.hs-title{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:5px;letter-spacing:-.01em}
+.hs-desc{font-size:13.5px;color:var(--t2);line-height:1.6;font-weight:300}
+.phone-frame{background:var(--bg-2);border:1px solid var(--border-2);border-radius:28px;padding:24px 20px;max-width:320px;margin:0 auto;box-shadow:0 40px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);position:relative}
+.phone-frame::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:100px;height:1px;background:linear-gradient(90deg,transparent,rgba(16,185,129,.5),transparent)}
+.phone-notch{width:80px;height:6px;background:var(--bg-3);border-radius:3px;margin:0 auto 20px}
+.phone-chat{display:flex;flex-direction:column;gap:10px}
+.pc-bubble{padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.5;max-width:82%}
+.pcb-in{background:var(--bg-3);border:1px solid var(--border);color:var(--t2);border-bottom-left-radius:3px}
+.pcb-out{background:rgba(16,185,129,.14);border:1px solid rgba(16,185,129,.2);color:#a7f3d0;align-self:flex-end;border-bottom-right-radius:3px}
+.pc-time{font-size:10.5px;color:var(--t3);padding:0 4px;margin-top:-3px}
+.pc-time.right{text-align:right;align-self:flex-end}
+.phone-input{margin-top:16px;display:flex;align-items:center;gap:9px;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;padding:10px 13px}
+.pi-text{font-size:12px;color:var(--t3);flex:1}
+.pi-btn{font-size:11px;padding:5px 12px;border-radius:6px;background:var(--green);color:#fff;font-weight:600;font-family:var(--font);border:none;cursor:pointer}
+
+/* ═══════════════════════════
+   CASE
+═══════════════════════════ */
+.case-section{padding:120px 0;position:relative;z-index:1}
+.case-section::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(16,185,129,.025) 50%,transparent);pointer-events:none}
+.case-card{background:var(--bg-2);border:1px solid var(--border);border-radius:20px;overflow:hidden;position:relative}
+.case-card::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:360px;height:1px;background:linear-gradient(90deg,transparent,rgba(16,185,129,.55),transparent)}
+.case-top{padding:44px 52px 40px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.case-brand{display:flex;align-items:center;gap:16px}
+.case-brand-box{width:50px;height:50px;border-radius:12px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);display:flex;align-items:center;justify-content:center;font-size:22px}
+.case-brand-name{font-size:20px;font-weight:700;letter-spacing:-.03em}
+.case-brand-sub{font-size:13px;color:var(--t2);margin-top:2px;font-weight:300}
+.case-verified{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#6ee7b7;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.18);padding:6px 14px;border-radius:100px}
+.case-metrics{border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr)}
+.case-metric{padding:36px 52px;border-right:1px solid var(--border);text-align:center}
+.case-metric:last-child{border-right:none}
+.cm-val{font-size:46px;font-weight:800;letter-spacing:-.05em;line-height:1;background:linear-gradient(135deg,#6ee7b7,#10b981 60%,#059669);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cm-label{font-size:13px;color:var(--t2);margin-top:8px;font-weight:300;line-height:1.4}
+.case-quote{padding:36px 52px;border-top:1px solid var(--border);background:rgba(255,255,255,.01);display:flex;gap:20px}
+.quote-mark{font-size:56px;line-height:.7;color:var(--t3);font-weight:700;flex-shrink:0;margin-top:4px;font-family:Georgia,serif}
+.quote-text{font-size:15.5px;color:var(--t2);line-height:1.72;font-weight:300;font-style:italic}
+.quote-cite{margin-top:14px;font-size:13px;color:var(--t3);font-style:normal;font-weight:500}
+
+/* ═══════════════════════════
+   CTA + FORM
+═══════════════════════════ */
+.cta-band{padding:120px 0;position:relative;z-index:1}
+.cta-inner{background:var(--bg-2);border:1px solid var(--border-2);border-radius:20px;padding:64px 64px 56px;text-align:center;position:relative;overflow:hidden}
+.cta-inner::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:320px;height:1px;background:linear-gradient(90deg,transparent,rgba(94,106,210,.6),transparent)}
+.cta-inner::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(94,106,210,.06) 0%,transparent 70%);pointer-events:none}
+.cta-h{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--t1);margin-bottom:16px;line-height:1.1;position:relative;z-index:1}
+.cta-h em{font-style:normal;color:var(--green)}
+.cta-p{font-size:16px;color:var(--t2);font-weight:300;max-width:440px;margin:0 auto 36px;line-height:1.7;position:relative;z-index:1}
+.urg-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.fg{margin-bottom:16px}
+.fl{display:block;font-size:12.5px;font-weight:500;color:var(--t2);margin-bottom:7px}
+.fi,.fs{
+  width:100%;padding:11px 14px;
+  background:rgba(255,255,255,.025);border:1px solid var(--border);
+  border-radius:9px;color:var(--t1);font-family:var(--font);font-size:14px;
+  outline:none;transition:all .18s;appearance:none;
+}
+.fi:focus,.fs:focus{border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.03);box-shadow:0 0 0 3px rgba(16,185,129,.07)}
+.fi::placeholder{color:var(--t3)}
+.fs option{background:#1a1a1a;color:var(--t1)}
+.sw{position:relative}.sa{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--t3);font-size:12px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-submit{
+  width:100%;padding:14px;border-radius:10px;
+  background:var(--green);color:#fff;font-size:15.5px;font-weight:600;
+  font-family:var(--font);border:none;cursor:pointer;transition:all .22s;
+  box-shadow:0 0 0 1px rgba(16,185,129,.35),0 0 28px rgba(16,185,129,.18);
+  margin-top:6px;position:relative;overflow:hidden;
+}
+.f-submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,transparent 55%)}
+.f-submit:hover{background:#0ea574;transform:translateY(-2px);box-shadow:0 0 0 1px rgba(16,185,129,.5),0 0 40px rgba(16,185,129,.28),0 8px 20px rgba(0,0,0,.3)}
+.form-trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;justify-content:flex-start}
+.ft-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t3)}
+.ft-icon{color:var(--green)}
+
+/* ═══════════════════════════
+   FOOTER
+═══════════════════════════ */
+footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-index:1}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-size:15px;font-weight:700;letter-spacing:-.04em;color:var(--t2)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:12.5px;color:var(--t3);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:var(--t2)}
+.footer-copy{font-size:12px;color:var(--t3)}
+
+/* ═══════════════════════════
+   RESPONSIVE — TABLET 900px
+═══════════════════════════ */
+@media(max-width:900px){
+  .nav-center{display:none}
+  .bento{grid-template-columns:1fr 1fr}
+  .bc-span2{grid-column:span 2}.bc-tall{grid-row:auto}
+  .how-inner{grid-template-columns:1fr;gap:48px}
+  .phone-frame{max-width:380px}
+  .case-metrics{grid-template-columns:1fr}
+  .case-metric{border-right:none;border-bottom:1px solid var(--border);padding:28px 32px}
+  .case-metric:last-child{border-bottom:none}
+  .case-top,.case-quote{padding:32px 28px}
+  .cta-inner{padding:44px 32px}
+  .form-row{grid-template-columns:1fr}
+  .mockup-body{grid-template-columns:180px 1fr}
+  .m-pipeline{grid-template-columns:1fr 1fr}
+}
+
+/* ═══════════════════════════
+   RESPONSIVE — MOBILE 640px
+═══════════════════════════ */
+@media(max-width:640px){
+
+  /* GLOBAL — absolute containment */
+  html,body{overflow-x:hidden !important}
+  .wrap,.wrap-narrow{padding:0 18px;width:100%;box-sizing:border-box}
+
+  /* NAV */
+  .mob-toggle{display:flex}
+  .nav-right .nav-login{display:none}
+  nav{padding:0 14px;gap:8px}
+  .nav-logo{font-size:15px}
+  .nav-cta-sm{font-size:11.5px;padding:6px 10px;white-space:nowrap}
+
+  /* HERO */
+  .hero{padding:76px 0 48px;min-height:auto;overflow-x:hidden}
+  .hero-h1{font-size:clamp(26px,7vw,36px) !important;letter-spacing:-.025em !important;line-height:1.12 !important}
+  .hero-eyebrow{font-size:10px;padding:3px 8px 3px 5px;margin-bottom:18px;max-width:calc(100vw - 36px)}
+  .eyebrow-text{font-size:10px}
+  .eyebrow-pill{font-size:10px;padding:2px 7px;flex-shrink:0}
+  .hero-p{font-size:14.5px;margin-bottom:28px;padding:0 2px}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:8px;margin-bottom:40px;width:100%}
+  .btn-hero,.btn-ghost{justify-content:center;padding:13px 16px;font-size:14.5px;width:100%;box-sizing:border-box}
+
+  /* MOCKUP — contained card that scales with viewport */
+  .hero-mockup-wrap{
+    overflow:hidden;
+    /* Fade bottom edge so it looks like a "preview" peeking in */
+    -webkit-mask-image:linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 70%, transparent 100%);
+    padding-bottom:4px;
+  }
+  .hero-mockup{
+    margin:0 auto;
+    width:100%;
+    max-width:100%;
+    animation:none !important;
+    transform-origin:top center;
+  }
+  .mockup-frame{
+    border-radius:14px;
+    border:1px solid var(--border-2);
+    box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);
+  }
+  .mockup-bar{height:36px;padding:0 14px;gap:6px}
+  .m-dot{width:8px;height:8px}
+  .m-url{font-size:10px;padding:3px 12px}
+  .m-tab-bar{display:flex}
+  .m-sidebar{display:none}
+  .mockup-body{grid-template-columns:1fr;height:290px}
+  .m-main{padding:9px 11px 8px}
+  .m-topbar{margin-bottom:7px;flex-wrap:wrap;gap:4px}
+  .m-page-title{font-size:12px}
+  .m-page-sub{font-size:10px}
+  .m-topbar-right{gap:4px}
+  .m-badge{font-size:9px;padding:2px 7px;gap:4px}
+  .m-badge-dot{width:4px;height:4px}
+  .m-csv-btn{display:none}
+  .m-kpi-grid{gap:5px}
+  .m-kpi{padding:7px 8px;border-radius:7px}
+  .m-kpi-val{font-size:14px}
+  .m-kpi-icon{width:18px;height:18px;font-size:9px;margin-bottom:4px;border-radius:5px}
+  .m-kpi-label{font-size:9.5px}
+  .m-chart{padding:7px 9px 6px}
+  .m-chart-title{font-size:10.5px}
+  .m-chart-sub{font-size:9px;margin-bottom:5px}
+  .m-chart-months span{font-size:8.5px}
+  .m-pipeline{grid-template-columns:1fr 1fr;gap:4px}
+  .m-pcard{padding:6px 7px;border-radius:6px;margin-bottom:3px}
+  .m-pc-name{font-size:9.5px}
+  .m-pc-val{font-size:10px}
+  .m-pc-tag{font-size:8px}
+  .m-pipe-name{font-size:8.5px}
+  .m-table .m-th:nth-child(3),.m-table .m-td:nth-child(3){display:none}
+  .m-th{font-size:8.5px;padding:0 7px 5px}
+  .m-td{font-size:10px;padding:5px 7px}
+  .m-cal-grid{gap:1px}
+  .m-cal-day{font-size:9px}
+  .m-cal-day-hd{font-size:8px}
+  .m-cal-events{gap:3px;margin-top:4px}
+  .m-cal-evt{font-size:9.5px;padding:4px 7px}
+  .eli-strip{padding:7px 11px;gap:7px}
+  .eli-bubble{font-size:9.5px}
+  .eli-status{font-size:8.5px;padding:2px 6px}
+  .eli-ava{width:20px;height:20px;font-size:10px;border-radius:6px}
+
+  /* LOGOS */
+  .logos-section{padding:28px 0}
+  .logos-row{gap:16px;flex-wrap:wrap;justify-content:center}
+  .logo-item{font-size:13px}
+
+  /* PROBLEM */
+  .problem-section{padding:64px 0}
+  .prob-grid{display:flex;flex-direction:column;gap:10px;margin-top:32px;background:none;border:none;border-radius:0}
+  .prob-cell{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--bg-2);padding:20px 18px}
+  .prob-cell-title{font-size:14.5px}
+  .prob-cell-text{font-size:13px}
+
+  /* BENTO */
+  .bento-section{padding:64px 0}
+  .bento-header{margin-bottom:36px}
+  .bento{display:flex;flex-direction:column;gap:10px}
+  .bento-card{padding:18px 16px}
+  .bc-title{font-size:15px}
+  .bc-desc{font-size:13px}
+  .bc-stat-val{font-size:22px}
+  .bc-icon{width:36px;height:36px;font-size:16px;margin-bottom:14px;border-radius:9px}
+  .metrics-strip{grid-template-columns:1fr 1fr;gap:7px}
+  .mi-val{font-size:18px}
+  .budget-preview{margin-top:14px}
+  .bp-header{padding:10px 12px}
+  .bp-rows{padding:10px 12px;gap:6px}
+  .bp-item,.bp-price{font-size:11px}
+  .bp-total{padding:8px 12px}
+
+  /* HOW */
+  .how-section{padding:64px 0}
+  .how-inner{grid-template-columns:1fr;gap:32px}
+  .phone-frame{max-width:100%;border-radius:20px}
+  .hs-title{font-size:14.5px}
+  .hs-desc{font-size:13px}
+
+  /* CASE */
+  .case-section{padding:64px 0}
+  .case-top{padding:22px 18px;flex-direction:column;gap:14px}
+  .case-brand-name{font-size:17px}
+  .case-verified{font-size:11px;padding:5px 12px}
+  .case-metrics{display:flex;flex-direction:column}
+  .case-metric{padding:20px 18px;border-right:none;border-bottom:1px solid var(--border)}
+  .case-metric:last-child{border-bottom:none}
+  .cm-val{font-size:32px}
+  .cm-label{font-size:12px}
+  .case-quote{padding:20px 18px;flex-direction:column;gap:8px}
+  .quote-mark{font-size:32px}
+  .quote-text{font-size:13px}
+  .quote-cite{font-size:11.5px}
+
+  /* CTA + FORM */
+  .cta-band{padding:64px 0}
+  .cta-inner{padding:28px 18px 24px;border-radius:14px}
+  .cta-h{font-size:23px;letter-spacing:-.03em;line-height:1.2}
+  .cta-p{font-size:14px;margin-bottom:24px}
+  .form-row{grid-template-columns:1fr}
+  .fi,.fs{font-size:16px} /* prevent iOS zoom */
+  .f-submit{font-size:15px;padding:13px}
+  .form-trust{flex-direction:column;align-items:flex-start;gap:8px}
+  .ft-item{font-size:11.5px}
+
+  /* SECTIONS */
+  .section-h2{font-size:25px;letter-spacing:-.03em}
+  .section-p{font-size:14px}
+  .section-eyebrow{font-size:11px}
+
+  /* FOOTER */
+  footer{padding:24px 0}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:10px}
+  .footer-links{gap:14px;flex-wrap:wrap}
+  .footer-copy{font-size:11px}
+
+  /* Kill float on mobile (performance + no layout shift) */
+  .float,.float-slow{animation:none !important}
+}
+
+/* SMALL 400px */
+@media(max-width:400px){
+  .hero-h1{font-size:25px !important}
+  .mockup-body{height:270px}
+  .m-kpi-val{font-size:13px}
+  .cta-h{font-size:21px}
+  .bento-card{padding:14px}
+}
+</style>
 </head>
 <body>
 
-<!-- ══ NAV ══════════════════════════════════════════════════════ -->
+<div class="mesh">
+  <div class="mesh-blob mb1"></div>
+  <div class="mesh-blob mb2"></div>
+  <div class="mesh-blob mb3"></div>
+</div>
+
+<!-- ══ NAV ══ -->
 <nav id="navbar">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between relative z-10">
-    <a href="#" style="text-decoration:none">
-      <span class="logo">Flüx<em>a</em></span>
-    </a>
-    <div class="hidden md:flex items-center gap-8 text-sm" style="color:var(--muted)">
-      <a href="#problema" class="hover:text-white transition-colors">Problema</a>
-      <a href="#solucao"  class="hover:text-white transition-colors">Solução</a>
-      <a href="#modulos"  class="hover:text-white transition-colors">Módulos</a>
-      <a href="#case"     class="hover:text-white transition-colors">Case</a>
-    </div>
-    <a href="#contato" class="hidden md:block btn-primary text-sm py-2.5 px-5" style="font-size:13px;padding:10px 20px">Diagnóstico Gratuito →</a>
-    <button id="hamburger" class="md:hidden p-1" style="color:var(--muted)">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="19" y2="6"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="3" y1="18" x2="19" y2="18"/></svg>
-    </button>
+  <a href="#" class="nav-logo"><div class="nav-logo-dot"></div>FLÜXA</a>
+  <div class="nav-center" id="navCenter">
+    <a href="#problema">Problema</a>
+    <a href="#solucao">Solução</a>
+    <a href="#case">Cases</a>
+    <a href="#diagnostico">Diagnóstico</a>
   </div>
-  <div id="mobile-menu" class="flex-col gap-0 px-5 pb-4 relative z-10" style="background:rgba(6,9,18,.98);border-bottom:1px solid var(--line)">
-    <a href="#problema" class="block py-3 text-sm border-b" style="color:var(--muted);border-color:var(--line)" onclick="closeMobile()">Problema</a>
-    <a href="#solucao"  class="block py-3 text-sm border-b" style="color:var(--muted);border-color:var(--line)" onclick="closeMobile()">Solução</a>
-    <a href="#modulos"  class="block py-3 text-sm border-b" style="color:var(--muted);border-color:var(--line)" onclick="closeMobile()">Módulos</a>
-    <a href="#case"     class="block py-3 text-sm border-b" style="color:var(--muted);border-color:var(--line)" onclick="closeMobile()">Case</a>
-    <a href="#contato"  class="mt-3 block btn-primary text-center text-sm" onclick="closeMobile()">Diagnóstico Gratuito →</a>
+  <div class="nav-right">
+    <a href="#diagnostico" class="nav-cta-sm">Diagnóstico Gratuito</a>
   </div>
+  <button class="mob-toggle" id="mobBtn">☰</button>
 </nav>
 
-<!-- ══ HERO ══════════════════════════════════════════════════════ -->
-<section id="home" class="relative min-h-screen flex items-center pt-16 overflow-hidden bg-main">
-  <div class="hero-mesh">
-    <div class="mesh-blob blob-1"></div>
-    <div class="mesh-blob blob-2"></div>
-    <div class="mesh-blob blob-3"></div>
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="wrap">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-pill">Novo</span>
+      <span class="eyebrow-text">Flüxa Sales System — Eli + Engine Budget + CRM</span>
+    </div>
+
+    <h1 class="hero-h1">
+      A infraestrutura de vendas que sua vidraçaria
+      <em class="hero-em">sempre precisou.</em>
+    </h1>
+
+    <p class="hero-p">
+      Pare de perder leads no WhatsApp. Automatize 90% do seu processo comercial com IA treinada especificamente para o mercado de vidro.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#diagnostico" class="btn-hero">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Garantir meu Diagnóstico Gratuito
+      </a>
+      <a href="#solucao" class="btn-ghost">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        Ver o sistema
+      </a>
+    </div>
+
+    <!-- Product mockup -->
+    <div class="hero-mockup-wrap">
+    <div class="hero-mockup float-slow float-d2">
+      <div class="mockup-frame">
+        <div class="mockup-bar">
+          <div class="m-dot md-r"></div>
+          <div class="m-dot md-y"></div>
+          <div class="m-dot md-g"></div>
+          <div class="m-url">app.fluxa.com · Pipeline Comercial</div>
+        </div>
+
+        <!-- Mobile tab bar (only visible on small screens) -->
+        <div class="m-tab-bar" id="mTabBar">
+          <button class="m-tab-btn active" data-tab="dashboard">Dashboard</button>
+          <button class="m-tab-btn" data-tab="pipeline">Pipeline</button>
+          <button class="m-tab-btn" data-tab="leads">Leads</button>
+          <button class="m-tab-btn" data-tab="calendario">Calendário</button>
+          <button class="m-tab-btn" data-tab="colaboradores">Equipe</button>
+          <button class="m-tab-btn" data-tab="config">Config</button>
+        </div>
+
+        <div class="mockup-body">
+          <!-- Sidebar -->
+          <div class="m-sidebar">
+            <div class="m-user-block">
+              <div class="m-user-ava">D</div>
+              <div>
+                <div class="m-user-name">Dzarte</div>
+                <div class="m-user-handle">@dzarte</div>
+              </div>
+            </div>
+            <div class="m-nav-item active" data-tab="dashboard"><span class="m-ico">⊞</span>Dashboard</div>
+            <div class="m-nav-item" data-tab="pipeline"><span class="m-ico">◫</span>Pipeline</div>
+            <div class="m-nav-item" data-tab="leads"><span class="m-ico">👤</span>Leads</div>
+            <div class="m-nav-item" data-tab="calendario"><span class="m-ico">📅</span>Calendário</div>
+            <div class="m-nav-item" data-tab="colaboradores"><span class="m-ico">👥</span>Colaboradores</div>
+            <div class="m-sidebar-spacer"></div>
+            <div class="m-sidebar-divider"></div>
+            <div class="m-nav-item" data-tab="config"><span class="m-ico">⚙️</span>Configurações</div>
+            <div class="m-nav-item" data-tab="suporte"><span class="m-ico">🎧</span>Suporte</div>
+          </div>
+
+          <!-- Main -->
+          <div class="m-main">
+
+            <!-- DASHBOARD -->
+            <div class="m-view active" id="tab-dashboard">
+              <div class="m-topbar">
+                <div>
+                  <div class="m-page-title">Dashboard</div>
+                  <div class="m-page-sub">Dzarte · visão geral</div>
+                </div>
+                <div class="m-topbar-right">
+                  <div class="m-badge"><div class="m-badge-dot"></div>Sistema ativo</div>
+                  <div class="m-csv-btn">↓ CSV</div>
+                </div>
+              </div>
+              <div class="m-kpi-grid">
+                <div class="m-kpi"><div class="m-kpi-icon ki-purple">👤</div><div class="m-kpi-val">247</div><div class="m-kpi-label">Total Leads</div></div>
+                <div class="m-kpi"><div class="m-kpi-icon ki-green">🎯</div><div class="m-kpi-val green">74%</div><div class="m-kpi-label">Conversão</div></div>
+                <div class="m-kpi"><div class="m-kpi-icon ki-blue">💰</div><div class="m-kpi-val">R$3,4k</div><div class="m-kpi-label">Ticket Médio</div></div>
+                <div class="m-kpi"><div class="m-kpi-icon ki-amber">📈</div><div class="m-kpi-val amber">R$84k</div><div class="m-kpi-label">Negociação</div></div>
+              </div>
+              <div class="m-chart">
+                <div class="m-chart-title">Evolução de Leads</div>
+                <div class="m-chart-sub">Últimos 6 meses — dados reais</div>
+                <svg viewBox="0 0 380 52" style="width:100%;height:42px;overflow:visible">
+                  <defs>
+                    <linearGradient id="sg2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#10b981" stop-opacity=".25"/>
+                      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,50 L60,44 L120,38 L180,28 L240,18 L300,10 L380,4 L380,52 L0,52Z" fill="url(#sg2)"/>
+                  <path d="M0,50 L60,44 L120,38 L180,28 L240,18 L300,10 L380,4" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="380" cy="4" r="3" fill="#10b981"/>
+                </svg>
+                <div class="m-chart-months"><span>Out</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Fev</span><span>Mar</span></div>
+              </div>
+            </div>
+
+            <!-- PIPELINE — nomes de pessoas físicas -->
+            <div class="m-view" id="tab-pipeline">
+              <div class="m-topbar">
+                <div><div class="m-page-title">Pipeline</div><div class="m-page-sub">Março 2025</div></div>
+                <div class="m-topbar-right"><div class="m-badge"><div class="m-badge-dot"></div>247 leads</div></div>
+              </div>
+              <div class="m-pipeline">
+                <div class="m-pipe-col">
+                  <div class="m-pipe-hd"><span class="m-pipe-name">Novos</span><span class="m-pipe-cnt">6</span></div>
+                  <div class="m-pcard"><div class="m-pc-name">Rafael Mendes</div><div class="m-pc-val">R$ 3.800</div><span class="m-pc-tag tg-new">Novo</span></div>
+                  <div class="m-pcard"><div class="m-pc-name">Camila Rocha</div><div class="m-pc-val">R$ 7.200</div><span class="m-pc-tag tg-new">Novo</span></div>
+                </div>
+                <div class="m-pipe-col">
+                  <div class="m-pipe-hd"><span class="m-pipe-name">Proposta</span><span class="m-pipe-cnt">4</span></div>
+                  <div class="m-pcard"><div class="m-pc-name">Lucas Ferreira</div><div class="m-pc-val">R$ 12.400</div><span class="m-pc-tag tg-prop">Proposta</span></div>
+                  <div class="m-pcard"><div class="m-pc-name">Beatriz Lima</div><div class="m-pc-val">R$ 5.900</div><span class="m-pc-tag tg-prop">Proposta</span></div>
+                </div>
+                <div class="m-pipe-col">
+                  <div class="m-pipe-hd"><span class="m-pipe-name">Negoc.</span><span class="m-pipe-cnt">3</span></div>
+                  <div class="m-pcard"><div class="m-pc-name">Rodrigo Alves</div><div class="m-pc-val">R$ 22.000</div><span class="m-pc-tag tg-neg">Negoc.</span></div>
+                </div>
+                <div class="m-pipe-col">
+                  <div class="m-pipe-hd"><span class="m-pipe-name">Ganhos</span><span class="m-pipe-cnt">8</span></div>
+                  <div class="m-pcard"><div class="m-pc-name">Juliana Costa</div><div class="m-pc-val">R$ 18.500</div><span class="m-pc-tag tg-won">✓ Ganho</span></div>
+                  <div class="m-pcard"><div class="m-pc-name">Paulo Ribeiro</div><div class="m-pc-val">R$ 9.400</div><span class="m-pc-tag tg-won">✓ Ganho</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LEADS -->
+            <div class="m-view" id="tab-leads">
+              <div class="m-topbar">
+                <div><div class="m-page-title">Leads</div><div class="m-page-sub">247 contatos ativos</div></div>
+                <div class="m-topbar-right"><div class="m-badge"><div class="m-badge-dot"></div>+38% este mês</div></div>
+              </div>
+              <table class="m-table">
+                <thead>
+                  <tr><th class="m-th">Nome</th><th class="m-th">Tipo</th><th class="m-th">Valor</th><th class="m-th">Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="m-tr"><td class="m-td">Marcos Souza</td><td class="m-td">Box 8mm</td><td class="m-td">R$ 3.200</td><td class="m-td"><span class="m-td-tag tg-won">Ganho</span></td></tr>
+                  <tr class="m-tr"><td class="m-td">Juliana Ferreira</td><td class="m-td">Fachada</td><td class="m-td">R$ 18.000</td><td class="m-td"><span class="m-td-tag tg-neg">Negoc.</span></td></tr>
+                  <tr class="m-tr"><td class="m-td">Ricardo Lima</td><td class="m-td">Espelho</td><td class="m-td">R$ 1.800</td><td class="m-td"><span class="m-td-tag tg-prop">Proposta</span></td></tr>
+                  <tr class="m-tr"><td class="m-td">Ana Paula Costa</td><td class="m-td">Guarda-corpo</td><td class="m-td">R$ 9.400</td><td class="m-td"><span class="m-td-tag tg-new">Novo</span></td></tr>
+                  <tr class="m-tr"><td class="m-td">Bruno Martins</td><td class="m-td">Box 10mm</td><td class="m-td">R$ 4.600</td><td class="m-td"><span class="m-td-tag tg-won">Ganho</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- CALENDÁRIO -->
+            <div class="m-view" id="tab-calendario">
+              <div class="m-topbar">
+                <div><div class="m-page-title">Calendário</div><div class="m-page-sub">Março 2025</div></div>
+                <div class="m-topbar-right"><div class="m-cal-nav"><div class="m-cal-btn">‹</div><div class="m-cal-btn">›</div></div></div>
+              </div>
+              <div class="m-cal-grid">
+                <div class="m-cal-day-hd">Dom</div><div class="m-cal-day-hd">Seg</div><div class="m-cal-day-hd">Ter</div><div class="m-cal-day-hd">Qua</div><div class="m-cal-day-hd">Qui</div><div class="m-cal-day-hd">Sex</div><div class="m-cal-day-hd">Sáb</div>
+                <div class="m-cal-day"></div><div class="m-cal-day"></div><div class="m-cal-day"></div><div class="m-cal-day"></div><div class="m-cal-day"></div><div class="m-cal-day cur">1</div><div class="m-cal-day cur">2</div>
+                <div class="m-cal-day cur">3</div><div class="m-cal-day cur has-event">4</div><div class="m-cal-day cur">5</div><div class="m-cal-day cur has-event">6</div><div class="m-cal-day cur">7</div><div class="m-cal-day cur">8</div><div class="m-cal-day cur">9</div>
+                <div class="m-cal-day cur today">10</div><div class="m-cal-day cur has-event">11</div><div class="m-cal-day cur">12</div><div class="m-cal-day cur">13</div><div class="m-cal-day cur has-event">14</div><div class="m-cal-day cur">15</div><div class="m-cal-day cur">16</div>
+                <div class="m-cal-day cur">17</div><div class="m-cal-day cur has-event">18</div><div class="m-cal-day cur">19</div><div class="m-cal-day cur">20</div><div class="m-cal-day cur">21</div><div class="m-cal-day cur has-event">22</div><div class="m-cal-day cur">23</div>
+              </div>
+              <div class="m-cal-events">
+                <div class="m-cal-evt"><span>Visita técnica · Marcos Souza</span><span class="m-cal-evt-time">10:00</span></div>
+                <div class="m-cal-evt"><span>Apresentação · Lucas Ferreira</span><span class="m-cal-evt-time">14:30</span></div>
+              </div>
+            </div>
+
+            <!-- COLABORADORES -->
+            <div class="m-view" id="tab-colaboradores">
+              <div class="m-topbar"><div><div class="m-page-title">Colaboradores</div><div class="m-page-sub">3 membros ativos</div></div></div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);border-radius:9px">
+                  <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0">I</div>
+                  <div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--t1)">Israel</div><div style="font-size:10.5px;color:var(--t3)">Gestor · Proprietário</div></div>
+                  <div style="font-size:9.5px;padding:2px 7px;border-radius:100px;background:rgba(16,185,129,.1);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)">Admin</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);border-radius:9px">
+                  <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#5e6ad2,#4f5bbf);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0">C</div>
+                  <div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--t1)">Carlos</div><div style="font-size:10.5px;color:var(--t3)">Vendedor · Comercial</div></div>
+                  <div style="font-size:9.5px;padding:2px 7px;border-radius:100px;background:rgba(94,106,210,.1);color:#a5b0ff;border:1px solid rgba(94,106,210,.2)">Vendedor</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);border-radius:9px">
+                  <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">🤖</div>
+                  <div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--t1)">Eli</div><div style="font-size:10.5px;color:var(--t3)">AI SDR · Automático 24/7</div></div>
+                  <div style="font-size:9.5px;padding:2px 7px;border-radius:100px;background:rgba(245,158,11,.1);color:#fcd34d;border:1px solid rgba(245,158,11,.2)">● Online</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CONFIG -->
+            <div class="m-view" id="tab-config">
+              <div class="m-topbar"><div><div class="m-page-title">Configurações</div><div class="m-page-sub">Workspace · Dzarte</div></div></div>
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <div style="padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:space-between">
+                  <div><div style="font-size:12px;font-weight:500;color:var(--t1)">Notificações por WhatsApp</div><div style="font-size:10.5px;color:var(--t3);margin-top:1px">Alertas de novos leads</div></div>
+                  <div style="width:32px;height:17px;background:#10b981;border-radius:100px;display:flex;align-items:center;padding:2px;justify-content:flex-end"><div style="width:13px;height:13px;background:#fff;border-radius:50%"></div></div>
+                </div>
+                <div style="padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:space-between">
+                  <div><div style="font-size:12px;font-weight:500;color:var(--t1)">Eli — Atendimento automático</div><div style="font-size:10.5px;color:var(--t3);margin-top:1px">IA ativa 24/7 no WhatsApp</div></div>
+                  <div style="width:32px;height:17px;background:#10b981;border-radius:100px;display:flex;align-items:center;padding:2px;justify-content:flex-end"><div style="width:13px;height:13px;background:#fff;border-radius:50%"></div></div>
+                </div>
+                <div style="padding:12px 14px;background:var(--surface);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:space-between">
+                  <div><div style="font-size:12px;font-weight:500;color:var(--t1)">Engine Budget automático</div><div style="font-size:10.5px;color:var(--t3);margin-top:1px">PDF após qualificação</div></div>
+                  <div style="width:32px;height:17px;background:#10b981;border-radius:100px;display:flex;align-items:center;padding:2px;justify-content:flex-end"><div style="width:13px;height:13px;background:#fff;border-radius:50%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SUPORTE -->
+            <div class="m-view" id="tab-suporte">
+              <div class="m-topbar">
+                <div><div class="m-page-title">Suporte</div><div class="m-page-sub">Equipe Flüxa · online</div></div>
+                <div class="m-topbar-right"><div class="m-badge"><div class="m-badge-dot"></div>Online</div></div>
+              </div>
+              <div style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.12);border-radius:9px;padding:12px 14px;margin-bottom:6px">
+                <div style="font-size:12px;font-weight:600;color:#6ee7b7;margin-bottom:3px">⚡ Resposta média: 2 horas</div>
+                <div style="font-size:11.5px;color:var(--t2);font-weight:300">Nossa equipe está disponível para ajudar você.</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:5px">
+                <div style="padding:10px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:11.5px;color:var(--t2);display:flex;align-items:center;gap:9px"><span>📚</span><span>Documentação e tutoriais</span></div>
+                <div style="padding:10px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:11.5px;color:var(--t2);display:flex;align-items:center;gap:9px"><span>💬</span><span>Chat com especialista Flüxa</span></div>
+                <div style="padding:10px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:11.5px;color:var(--t2);display:flex;align-items:center;gap:9px"><span>🎥</span><span>Agendar sessão de onboarding</span></div>
+              </div>
+            </div>
+
+          </div><!-- /m-main -->
+        </div><!-- /mockup-body -->
+
+        <div class="eli-strip">
+          <div class="eli-ava">🤖</div>
+          <div class="eli-bubble"><strong>Eli</strong> — "Olá! Recebi seu contato. Qual a metragem do projeto?"</div>
+          <div class="eli-status">● Respondendo agora</div>
+        </div>
+      </div>
+    </div><!-- /hero-mockup -->
+    </div><!-- /hero-mockup-wrap -->
   </div>
-  <div class="grid-bg"></div>
+</section>
 
-  <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28 w-full">
-    <div class="max-w-3xl">
+<!-- ══ LOGOS ══ -->
+<div class="logos-section r">
+  <div class="wrap">
+    <div class="logos-label">Vidraçarias que já transformaram seus resultados</div>
+    <div class="logos-row">
+      <div class="logo-item"><span style="font-size:16px;opacity:.5">🏢</span>Dzarte Vidros</div>
+    </div>
+  </div>
+</div>
 
-      <!-- Badge -->
-      <div class="reveal mb-7">
-        <span class="badge">
-          <span class="badge-dot"></span>
-          Restam 4 vagas este mês
-        </span>
+<!-- ══ PROBLEM ══ -->
+<section class="problem-section" id="problema">
+  <div class="wrap">
+    <div class="r" style="max-width:520px">
+      <div class="section-eyebrow">O Problema</div>
+      <h2 class="section-h2">Ferramentas do passado para uma empresa do presente.</h2>
+      <p class="section-p" style="margin:0">A maioria das vidraçarias ainda opera com WhatsApp informal, planilhas soltas e nenhuma visibilidade do funil. O resultado? Caos, leads perdidos e crescimento travado.</p>
+    </div>
+    <div class="prob-grid r">
+      <div class="prob-cell">
+        <span class="prob-cell-icon">📱</span>
+        <div class="prob-cell-title">Escravo do WhatsApp</div>
+        <div class="prob-cell-text">Você é o call center da própria empresa. Atendimento no jantar, domingo, madrugada. Não é sustentável — e não escala.</div>
+      </div>
+      <div class="prob-cell">
+        <span class="prob-cell-icon">💀</span>
+        <div class="prob-cell-title">Cemitério de Leads</div>
+        <div class="prob-cell-text">Orçamentos enviados e nunca seguidos. Leads quentes que esfriaram por falta de follow-up. Um graveyard de receita desperdiçada.</div>
+      </div>
+      <div class="prob-cell">
+        <span class="prob-cell-icon">📄</span>
+        <div class="prob-cell-title">Orçamentos Manuais</div>
+        <div class="prob-cell-text">Horas calculando item por item. Erros que custam margem. Um PDF amador que passa falta de credibilidade para o cliente.</div>
+      </div>
+      <div class="prob-cell">
+        <span class="prob-cell-icon">🙈</span>
+        <div class="prob-cell-title">Zero Visibilidade</div>
+        <div class="prob-cell-text">Sem pipeline, sem métricas, sem previsibilidade. Você não sabe onde o funil trava e não consegue tomar decisões com dados.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BENTO ══ -->
+<section class="bento-section" id="solucao">
+  <div class="wrap">
+    <div class="bento-header r">
+      <div class="section-eyebrow">Flüxa Sales System</div>
+      <h2 class="section-h2">Três módulos.<br>Um motor de vendas.</h2>
+      <p class="section-p">Do primeiro contato no WhatsApp ao contrato assinado — tudo integrado, automatizado e com visibilidade total.</p>
+    </div>
+
+    <div class="bento">
+      <!-- Card 1 — Eli tall -->
+      <div class="bento-card bc-tall r d1" style="grid-row:span 2">
+        <div class="bc-icon ic-blue float float-d1">🤖</div>
+        <div class="bc-label">Módulo 01</div>
+        <div class="bc-title">Eli — AI SDR</div>
+        <div class="bc-desc">Seu vendedor digital que nunca dorme. Atende, qualifica e agenda 24/7 — com vocabulário técnico do mercado de vidro.</div>
+        <div class="bc-stat"><span class="bc-stat-val shine">24/7</span><span class="bc-stat-label">disponibilidade</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+          <div style="background:rgba(94,106,210,.08);border:1px solid rgba(94,106,210,.15);border-radius:8px;padding:10px 11px">
+            <div style="font-size:16px;font-weight:800;color:var(--t1);letter-spacing:-.03em">&lt;2min</div>
+            <div style="font-size:10.5px;color:var(--t3);margin-top:1px">1ª resposta</div>
+          </div>
+          <div style="background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);border-radius:8px;padding:10px 11px">
+            <div style="font-size:16px;font-weight:800;color:var(--green);letter-spacing:-.03em">94%</div>
+            <div style="font-size:10.5px;color:var(--t3);margin-top:1px">qualificação</div>
+          </div>
+        </div>
+        <div class="eli-chat">
+          <div class="chat-bubble cb-in">Oi, vi o anúncio. Tenho interesse em box de banheiro temperado 8mm</div>
+          <div class="chat-meta">Cliente · agora</div>
+          <div class="chat-bubble cb-out">Olá! Sou a Eli 👋 Posso te ajudar. Qual a metragem e já tem o projeto?</div>
+          <div class="chat-meta right">Eli · &lt;2 min</div>
+          <div class="chat-bubble cb-in">Aprox. 2m x 2m, sem projeto ainda</div>
+          <div class="chat-meta">Cliente · agora</div>
+          <div class="chat-bubble cb-out">Perfeito! Vou gerar um orçamento estimado agora mesmo 📄</div>
+          <div class="chat-meta right">Eli · qualificado ✓</div>
+        </div>
+        <div style="margin-top:18px;display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">✓</div>Filtra complexidade técnica do projeto</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">✓</div>Agenda visitas técnicas automaticamente</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">✓</div>Detecta urgência e prioriza leads quentes</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">✓</div>Integrado ao WhatsApp Business API</div>
+        </div>
       </div>
 
-      <!-- Headline -->
-      <h1 class="reveal hero-title font-black leading-[1.05] tracking-tight text-white mb-6"
-          style="font-family:'Montserrat',sans-serif;font-size:clamp(2.4rem,5vw,3.8rem);animation-delay:.1s">
-        Sua Vidraçaria não precisa<br />
-        de mais <span style="color:var(--blue)">'vendedores'.</span><br />
-        Ela precisa de uma<br />
-        <span style="background:linear-gradient(90deg,#38b6ff,#60c8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
-          Infraestrutura de Vendas.
-        </span>
-      </h1>
-
-      <p class="reveal text-lg leading-relaxed mb-9 max-w-2xl" style="color:var(--muted);animation-delay:.2s">
-        Pare de ser escravo do WhatsApp e de perder orçamentos no <em style="color:var(--text);font-style:normal;font-weight:500">"cemitério de leads"</em>. Automatize 90% do seu processo comercial com a IA que entende de vidro.
-      </p>
-
-      <div class="reveal flex flex-col sm:flex-row gap-3 mb-14" style="animation-delay:.3s">
-        <a href="#contato" class="btn-primary">Garantir meu Diagnóstico Gratuito →</a>
-        <a href="#modulos" class="btn-secondary">Ver como funciona</a>
+      <!-- Card 2 — Engine Budget -->
+      <div class="bento-card bc-span2 r d2">
+        <div class="bc-icon ic-sky float-slow float-d2">📄</div>
+        <div class="bc-label">Módulo 02</div>
+        <div class="bc-title">Engine Budget — Orçamentos em segundos</div>
+        <div class="bc-desc">Gera PDFs técnicos e profissionais automaticamente. Zero erro humano, zero retrabalho, máxima credibilidade.</div>
+        <div class="budget-preview">
+          <div class="bp-header"><span class="bp-title">Orçamento #2847 · Dzarte Vidros</span><span class="bp-badge">✓ Gerado em 4s</span></div>
+          <div class="bp-rows">
+            <div class="bp-row"><span class="bp-item">Box 8mm temperado (2×2m)</span><span class="bp-price">R$ 2.400</span></div>
+            <div class="bp-row"><span class="bp-item">Perfis alumínio + instalação</span><span class="bp-price">R$ 680</span></div>
+            <div class="bp-row"><span class="bp-item">Espelho bisotado 4mm</span><span class="bp-price">R$ 420</span></div>
+          </div>
+          <div class="bp-total"><span class="bp-total-label">Total</span><span class="bp-total-val shine">R$ 3.500</span></div>
+        </div>
       </div>
 
-      <!-- Social proof -->
-      <div class="reveal flex flex-wrap items-center gap-6 text-sm" style="color:var(--muted);animation-delay:.4s">
-        <div class="flex items-center gap-2">
-          <span style="color:#fbbf24;font-size:14px">★★★★★</span>
-          <span style="color:var(--text);font-weight:600">5.0 satisfação</span>
+      <!-- Card 3 — CRM -->
+      <div class="bento-card r d3">
+        <div class="bc-icon ic-green float float-d1">📊</div>
+        <div class="bc-label">Módulo 03</div>
+        <div class="bc-title">CRM & Pipeline</div>
+        <div class="bc-desc">Visão Kanban do funil completo. Nunca mais perca um follow-up.</div>
+        <div class="mini-pipeline">
+          <div class="mp-row"><div class="mp-dot" style="background:#38bdf8"></div><span class="mp-name">Rafael Mendes</span><span class="mp-val">R$ 3,8k</span><span class="mp-tag mt-new">Novo</span></div>
+          <div class="mp-row"><div class="mp-dot" style="background:#f59e0b"></div><span class="mp-name">Rodrigo Alves</span><span class="mp-val">R$ 22k</span><span class="mp-tag mt-hot">Negoc.</span></div>
+          <div class="mp-row"><div class="mp-dot" style="background:#10b981"></div><span class="mp-name">Juliana Costa</span><span class="mp-val">R$ 18,5k</span><span class="mp-tag mt-won">✓ Ganho</span></div>
         </div>
-        <div style="width:1px;height:16px;background:var(--line)"></div>
-        <div class="flex items-center gap-2">
-          <svg class="w-4 h-4" style="fill:var(--blue)" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-          <span style="color:var(--text);font-weight:600">Validado na Dzarte Vidros</span>
-        </div>
-        <div style="width:1px;height:16px;background:var(--line)"></div>
-        <div class="flex items-center gap-2">
-          <span style="color:#34d399">●</span>
-          <span>Sistema ativo agora</span>
+      </div>
+
+      <!-- Card 4 — Metrics -->
+      <div class="bento-card r d4">
+        <div class="bc-icon ic-amber float-slow float-d2">📈</div>
+        <div class="bc-label">Resultados</div>
+        <div class="bc-title">Métricas em tempo real</div>
+        <div class="bc-desc">Saiba exatamente o que funciona e onde investir.</div>
+        <div class="metrics-strip">
+          <div class="metric-item"><div class="mi-val g shine">+620%</div><div class="mi-label">Faturamento</div><div class="mi-change">↑ vs. antes da Flüxa</div></div>
+          <div class="metric-item"><div class="mi-val">247</div><div class="mi-label">Leads/mês</div><div class="mi-change">↑ +38% MoM</div></div>
+          <div class="metric-item"><div class="mi-val g">74%</div><div class="mi-label">Taxa orçamento</div><div class="mi-change">↑ era 31%</div></div>
+          <div class="metric-item"><div class="mi-val">90%</div><div class="mi-label">Automação</div><div class="mi-change">comercial</div></div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Eli card flutuando (desktop) -->
-    <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block w-80 float-card">
-      <div class="card-dark p-4" style="background:rgba(13,20,36,.9);backdrop-filter:blur(20px)">
-        <div class="flex items-center gap-2.5 mb-4 pb-3" style="border-bottom:1px solid var(--line)">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm" style="background:linear-gradient(135deg,#38b6ff,#0077cc)">E</div>
-          <div>
-            <p class="text-white text-sm font-semibold">Eli — AI SDR</p>
-            <div class="flex items-center gap-1.5 mt-0.5">
-              <span class="w-2 h-2 rounded-full" style="background:#38b6ff;animation:pulse-dot 1.8s infinite"></span>
-              <span class="text-xs font-medium" style="color:var(--blue)">Online agora</span>
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-section">
+  <div class="wrap">
+    <div class="how-inner">
+      <div class="how-text-col r">
+        <div class="section-eyebrow">Como funciona</div>
+        <h2 class="section-h2">De lead a contrato,<br>no automático.</h2>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="hs-num">01</div>
+            <div class="hs-content">
+              <div class="hs-title">Lead chega pelo WhatsApp ou anúncio</div>
+              <div class="hs-desc">O Eli intercepta, responde em menos de 2 minutos e inicia o processo de qualificação com perguntas técnicas específicas para vidro.</div>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="hs-num">02</div>
+            <div class="hs-content">
+              <div class="hs-title">Eli qualifica e filtra automaticamente</div>
+              <div class="hs-desc">Identifica tipo de vidro, metragem, urgência e budget. Separa os leads quentes dos frios — você só recebe os que valem seu tempo.</div>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="hs-num">03</div>
+            <div class="hs-content">
+              <div class="hs-title">Engine Budget gera o orçamento em segundos</div>
+              <div class="hs-desc">PDF profissional com todos os itens, medidas e valores. Enviado automaticamente para o cliente. Zero retrabalho.</div>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="hs-num">04</div>
+            <div class="hs-content">
+              <div class="hs-title">CRM registra tudo, follow-up automático</div>
+              <div class="hs-desc">Cada interação fica no pipeline. Lembretes de follow-up automáticos. Você fecha o contrato — o sistema cuida do resto.</div>
             </div>
           </div>
         </div>
-        <div class="space-y-3">
-          <div class="chat-bot">Olá! Vi que você tem interesse em fechamento de sacada. Posso enviar um orçamento agora?</div>
-          <div class="chat-usr">Sim, me manda sim!</div>
-          <div class="chat-bot">Perfeito! Me fala a metragem e o tipo de vidro? 😊</div>
-        </div>
-        <div class="mt-4 pt-3 grid grid-cols-3 gap-2 text-center" style="border-top:1px solid var(--line)">
-          <div><p class="font-bold text-sm" style="color:var(--blue)">24/7</p><p class="text-xs" style="color:var(--muted)">Disponível</p></div>
-          <div><p class="font-bold text-sm" style="color:#60c8ff">2min</p><p class="text-xs" style="color:var(--muted)">Resposta</p></div>
-          <div><p class="font-bold text-sm" style="color:#a78bfa">94%</p><p class="text-xs" style="color:var(--muted)">Qualificação</p></div>
-        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 scroll-ind" style="color:var(--muted)">
-    <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase">scroll</span>
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-  </div>
-</section>
-
-<!-- ══ STATS BAR ═════════════════════════════════════════════════ -->
-<div class="div-line"></div>
-<section class="py-12 bg-section">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="reveal text-center p-6" style="border-right:1px solid var(--line)">
-        <p class="stat-number mb-1">+120%</p>
-        <p class="text-sm" style="color:var(--muted)">crescimento médio</p>
-      </div>
-      <div class="reveal text-center p-6" style="border-right:1px solid var(--line);animation-delay:.1s">
-        <p class="stat-number mb-1">R$2M+</p>
-        <p class="text-sm" style="color:var(--muted)">em resultados</p>
-      </div>
-      <div class="reveal text-center p-6" style="border-right:1px solid var(--line);animation-delay:.2s">
-        <p class="stat-number mb-1">90%</p>
-        <p class="text-sm" style="color:var(--muted)">automação comercial</p>
-      </div>
-      <div class="reveal text-center p-6" style="animation-delay:.3s">
-        <p class="stat-number mb-1">24/7</p>
-        <p class="text-sm" style="color:var(--muted)">Eli sempre ativa</p>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="div-line"></div>
-
-<!-- ══ PROBLEMA ══════════════════════════════════════════════════ -->
-<section id="problema" class="py-24 bg-main">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal mb-5">
-      <span class="chip chip-red">O Problema</span>
-    </div>
-    <h2 class="reveal text-4xl sm:text-5xl font-black tracking-tight text-white mb-4 max-w-2xl" style="font-family:'Montserrat',sans-serif;animation-delay:.1s;line-height:1.1">
-      O Custo Invisível da<br /><span style="color:#f87171">Desorganização.</span>
-    </h2>
-    <p class="reveal text-lg mb-16 max-w-2xl leading-relaxed" style="color:var(--muted);animation-delay:.2s">
-      Hoje, você gasta horas calculando área de vidro e respondendo curiosos. Enquanto faz um orçamento manual, seu concorrente automatizado já fechou a venda.
-    </p>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="reveal pain-card" style="animation-delay:.1s">
-        <div style="font-size:26px;margin-bottom:14px">📱</div>
-        <h3 class="font-bold text-white mb-2" style="font-size:16px">Escravo do WhatsApp</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--muted)">Mensagens sem resposta, leads esquecidos, follow-up manual que nunca acontece. Você virou atendente, não empresário.</p>
-      </div>
-      <div class="reveal pain-card" style="animation-delay:.2s">
-        <div style="font-size:26px;margin-bottom:14px">💀</div>
-        <h3 class="font-bold text-white mb-2" style="font-size:16px">Cemitério de Leads</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--muted)">Planilhas lotadas, cadernos rabiscados, contatos perdidos. Cada lead morto é dinheiro jogado fora em tráfego pago.</p>
-      </div>
-      <div class="reveal pain-card" style="animation-delay:.3s">
-        <div style="font-size:26px;margin-bottom:14px">⏳</div>
-        <h3 class="font-bold text-white mb-2" style="font-size:16px">Orçamentos Manuais</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--muted)">Horas calculando área, preço de vidro, mão de obra. Demora que faz o cliente fechar com a concorrência.</p>
-      </div>
-      <div class="reveal pain-card" style="animation-delay:.4s">
-        <div style="font-size:26px;margin-bottom:14px">📊</div>
-        <h3 class="font-bold text-white mb-2" style="font-size:16px">Zero Visibilidade</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--muted)">Você não sabe quantos leads entram, quantos convertem, nem qual vendedor performa melhor. Gestão no escuro.</p>
-      </div>
-      <div class="reveal pain-card" style="animation-delay:.5s">
-        <div style="font-size:26px;margin-bottom:14px">🔄</div>
-        <h3 class="font-bold text-white mb-2" style="font-size:16px">Sem Follow-up</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--muted)">O lead pediu orçamento, você mandou, ele sumiu. Sem reativação automática. Venda perdida.</p>
-      </div>
-      <div class="reveal" style="animation-delay:.6s">
-        <div class="h-full rounded-xl p-6 flex flex-col justify-center" style="background:linear-gradient(145deg,rgba(239,68,68,.08),rgba(239,68,68,.03));border:1px solid rgba(239,68,68,.2);border-radius:12px">
-          <div style="font-size:26px;margin-bottom:14px">🏭</div>
-          <h3 class="font-bold text-white mb-2" style="font-size:16px">Ferramentas do Passado</h3>
-          <p class="text-sm leading-relaxed" style="color:var(--muted)">O vilão não é a falta de clientes. É a <strong style="color:#f87171">fissura cultural</strong> de gerir uma empresa moderna com ferramentas ultrapassadas.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SOLUÇÃO / PIPELINE ══════════════════════════════════════ -->
-<section id="solucao" class="py-24 bg-section">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal mb-5">
-      <span class="chip chip-blue">A Solução</span>
-    </div>
-    <h2 class="reveal text-4xl sm:text-5xl font-black tracking-tight text-white mb-4 max-w-3xl" style="font-family:'Montserrat',sans-serif;animation-delay:.1s;line-height:1.1">
-      O motor que transforma leads<br />em <span style="color:var(--blue)">receita previsível.</span>
-    </h2>
-    <p class="reveal text-lg mb-12 max-w-2xl leading-relaxed" style="color:var(--muted);animation-delay:.15s">
-      Flüxa Sales Engine — três módulos integrados que transformam sua vidraçaria em uma máquina de vendas escalável.
-    </p>
-
-    <!-- Pipeline visual -->
-    <div class="reveal card-dark p-6 sm:p-8 overflow-x-auto" style="animation-delay:.2s">
-      <p class="text-xs font-semibold mb-7 uppercase tracking-widest" style="color:var(--muted)">Fluxo automatizado de vendas</p>
-      <div class="flex items-center gap-2 sm:gap-3 min-w-max">
-        <div class="pipe-step">
-          <div class="pipe-icon">📲</div>
-          <span class="text-xs leading-tight" style="color:var(--muted)">Lead no<br/>WhatsApp</span>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon" style="background:rgba(56,182,255,.08);border-color:rgba(56,182,255,.2)">🤖</div>
-          <span class="text-xs leading-tight" style="color:var(--muted)">Eli<br/>qualifica</span>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon">📋</div>
-          <span class="text-xs leading-tight" style="color:var(--muted)">Formulário<br/>técnico</span>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon" style="background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.2)">⚙️</div>
-          <span class="text-xs leading-tight" style="color:var(--muted)">Motor de<br/>cálculo</span>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon">📄</div>
-          <span class="text-xs leading-tight" style="color:var(--muted)">Orçamento<br/>PDF</span>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon">📊</div>
-          <span class="text-xs leading-tight" style="color:var(--muted)">CRM +<br/>Follow-up</span>
-        </div>
-        <div class="pipe-arrow">→</div>
-        <div class="pipe-step">
-          <div class="pipe-icon" style="background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.3)">💰</div>
-          <span class="text-xs font-bold leading-tight" style="color:#34d399">Venda<br/>Fechada</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ MÓDULOS ══════════════════════════════════════════════════ -->
-<section id="modulos" class="py-24 bg-main">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="text-center mb-16">
-      <div class="reveal inline-block mb-5">
-        <span class="chip chip-blue">Flüxa Sales Engine</span>
-      </div>
-      <h2 class="reveal text-4xl sm:text-5xl font-black tracking-tight text-white mb-4" style="font-family:'Montserrat',sans-serif;animation-delay:.1s;line-height:1.1">
-        Três módulos.<br /><span style="color:var(--blue)">Uma máquina.</span>
-      </h2>
-      <p class="reveal max-w-xl mx-auto text-lg" style="color:var(--muted);animation-delay:.2s">
-        Cada módulo é poderoso sozinho. Juntos, criam um sistema que opera no piloto automático.
-      </p>
-    </div>
-
-    <div class="grid lg:grid-cols-3 gap-5">
-      <!-- Eli -->
-      <div class="reveal card-dark p-7 group" style="animation-delay:.1s">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 transition-transform group-hover:scale-110" style="background:rgba(56,182,255,.08);border:1px solid rgba(56,182,255,.2)">🤖</div>
-        <span class="chip chip-blue mb-4 inline-block">IA Conversacional</span>
-        <h3 class="text-xl font-bold text-white mb-3" style="font-family:'Montserrat',sans-serif">Eli — AI Agent SDR</h3>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">Prospecta, qualifica e agenda 24/7 — sem salário, sem férias, sem falhas. Atende leads no WhatsApp e filtra complexidade antes de chegar em você.</p>
-        <div class="space-y-2.5">
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:var(--blue)" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">Resposta em menos de 2 minutos</span>
+      <div class="r d2">
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div style="font-size:11px;color:var(--t3);margin-bottom:12px;text-align:center;font-weight:500;letter-spacing:.03em">FLÜXA · Eli SDR</div>
+          <div class="phone-chat">
+            <div class="pc-bubble pcb-in">Oi! Vi o anúncio de vocês. Preciso de um box de banheiro</div>
+            <div class="pc-time">10:23</div>
+            <div class="pc-bubble pcb-out">Olá! Sou a Eli, especialista da Flüxa 👋 Que tipo de vidro você precisa para o box?</div>
+            <div class="pc-time right">10:23 · Eli</div>
+            <div class="pc-bubble pcb-in">Temperado, 8mm. Box de canto aprox. 90×90</div>
+            <div class="pc-time">10:24</div>
+            <div class="pc-bubble pcb-out">Perfeito! Já estou gerando seu orçamento. Em qual cidade você está? Para incluir a instalação ✅</div>
+            <div class="pc-time right">10:24 · Eli</div>
+            <div class="pc-bubble pcb-in">São Paulo, zona Sul</div>
+            <div class="pc-time">10:25</div>
+            <div class="pc-bubble pcb-out">📄 Orçamento #2851 enviado! R$ 2.180 com instalação inclusa. Quer agendar uma visita técnica?</div>
+            <div class="pc-time right">10:25 · Eli · qualificado ✓</div>
           </div>
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:var(--blue)" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">94% de taxa de qualificação</span>
-          </div>
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:var(--blue)" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">Escala pedidos simples e complexos</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Engine Budget (destaque) -->
-      <div class="reveal card-featured p-7 group relative" style="animation-delay:.2s">
-        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 text-white text-[11px] font-bold px-4 py-1 rounded-full" style="background:var(--blue);white-space:nowrap">✦ Principal</div>
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 transition-transform group-hover:scale-110" style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2)">📄</div>
-        <span class="chip chip-amb mb-4 inline-block">Automação</span>
-        <h3 class="text-xl font-bold text-white mb-3" style="font-family:'Montserrat',sans-serif">Engine Budget</h3>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">Gera orçamentos técnicos precisos em segundos. Elimina retrabalho, erro humano e acelera o fechamento. Baseado em área, tipo de vidro e instalação.</p>
-        <div class="space-y-2.5">
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:#fbbf24" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">Cálculo por área e tipo de vidro</span>
-          </div>
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:#fbbf24" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">PDF profissional automático</span>
-          </div>
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:#fbbf24" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">Zero erro de cálculo humano</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- CRM -->
-      <div class="reveal card-dark p-7 group" style="animation-delay:.3s">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 transition-transform group-hover:scale-110" style="background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2)">📊</div>
-        <span class="chip chip-vio mb-4 inline-block">Gestão de Vendas</span>
-        <h3 class="text-xl font-bold text-white mb-3" style="font-family:'Montserrat',sans-serif">CRM Multi-tenant</h3>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--muted)">Pipeline com visibilidade total. Do primeiro contato ao fechamento, com métricas em tempo real. Sua vidraçaria com visão de "Hub de Controle".</p>
-        <div class="space-y-2.5">
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:#a78bfa" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">Kanban de pipeline visual</span>
-          </div>
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:#a78bfa" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">Follow-up automático por IA</span>
-          </div>
-          <div class="flex items-center gap-2.5 text-sm">
-            <svg class="w-4 h-4 shrink-0" style="fill:#a78bfa" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
-            <span style="color:var(--text)">Métricas de conversão em tempo real</span>
+          <div class="phone-input">
+            <span class="pi-text">Responder...</span>
+            <button class="pi-btn">Enviar</button>
           </div>
         </div>
       </div>
@@ -616,203 +1304,251 @@
   </div>
 </section>
 
-<!-- ══ CASE DZARTE ══════════════════════════════════════════════ -->
-<section id="case" class="py-24 bg-section">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="reveal mb-5">
-      <span class="chip chip-vio">Validação</span>
+<!-- ══ CASE ══ -->
+<section class="case-section" id="case">
+  <div class="wrap">
+    <div class="r" style="text-align:center;max-width:480px;margin:0 auto 56px">
+      <div class="section-eyebrow">Case Real</div>
+      <h2 class="section-h2">Resultados que<br>falam por si.</h2>
     </div>
-    <h2 class="reveal text-4xl sm:text-5xl font-black tracking-tight text-white mb-4 max-w-3xl" style="font-family:'Montserrat',sans-serif;animation-delay:.1s;line-height:1.1">
-      Nascida no chão de fábrica.<br /><span style="color:var(--blue)">Validada no mercado real.</span>
-    </h2>
-    <p class="reveal text-lg mb-14 max-w-2xl leading-relaxed" style="color:var(--muted);animation-delay:.15s">
-      A Flüxa nasceu dentro da <strong class="text-white">Dzarte Vidros</strong>, validada no dia a dia antes de ser oferecida ao mercado. Não é teoria — é resultado comprovado.
-    </p>
 
-    <div class="reveal grid lg:grid-cols-2 gap-8 items-start" style="animation-delay:.2s">
-      <!-- Depoimento -->
-      <div class="card-featured p-8">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-base" style="background:linear-gradient(135deg,#38b6ff,#0077cc)">D</div>
+    <div class="case-card r">
+      <div class="case-top">
+        <div class="case-brand">
+          <div class="case-brand-box">🏢</div>
           <div>
-            <p class="text-white font-bold">Dzarte Vidros</p>
-            <p class="text-sm" style="color:var(--muted)">Blumenau, SC — Case validador</p>
+            <div class="case-brand-name">Dzarte Vidros</div>
+            <div class="case-brand-sub">Vidraçaria · São Paulo, SP · Cliente desde 2024</div>
           </div>
         </div>
-        <p class="text-base leading-relaxed mb-6 pl-4 italic" style="color:var(--text);border-left:2px solid rgba(56,182,255,.4)">
-          "Como a Dzarte automatizou 90% dos orçamentos e escalou o faturamento sem contratar novos vendedores — usando a própria Flüxa como laboratório antes de lançar ao mercado."
-        </p>
-        <div class="flex items-center gap-1 mb-1" style="color:#fbbf24">★★★★★</div>
-        <p class="text-sm" style="color:var(--muted)">Validado internamente pela equipe Monnarka</p>
+        <div class="case-verified pulse-slow">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Case verificado
+        </div>
       </div>
-
-      <!-- Métricas -->
-      <div class="grid grid-cols-2 gap-4">
-        <div class="card-dark p-6 text-center">
-          <p class="stat-number mb-2">90%</p>
-          <p class="font-medium text-sm text-white mb-1">Orçamentos automáticos</p>
-          <p class="text-xs" style="color:var(--muted)">Sem intervenção humana</p>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="cm-val shine">+120%</div>
+          <div class="cm-label">Crescimento em faturamento após implementação</div>
         </div>
-        <div class="card-dark p-6 text-center">
-          <p class="stat-number mb-2">0</p>
-          <p class="font-medium text-sm text-white mb-1">Novos vendedores</p>
-          <p class="text-xs" style="color:var(--muted)">Escala sem contratar</p>
+        <div class="case-metric">
+          <div class="cm-val shine">R$2M+</div>
+          <div class="cm-label">Em resultados gerados no período com a Flüxa</div>
         </div>
-        <div class="card-dark p-6 text-center">
-          <p class="stat-number mb-2">3×</p>
-          <p class="font-medium text-sm text-white mb-1">Faturamento</p>
-          <p class="text-xs" style="color:var(--muted)">Em 8 meses</p>
+        <div class="case-metric">
+          <div class="cm-val shine">90%</div>
+          <div class="cm-label">Do processo comercial rodando no automático</div>
         </div>
-        <div class="card-dark p-6 text-center">
-          <p class="stat-number mb-2">24/7</p>
-          <p class="font-medium text-sm text-white mb-1">Atendimento ativo</p>
-          <p class="text-xs" style="color:var(--muted)">Eli nunca para</p>
+      </div>
+      <div class="case-quote">
+        <div class="quote-mark">"</div>
+        <div>
+          <div class="quote-text">A Flüxa transformou completamente como operamos. Antes eu era refém do WhatsApp, perdendo lead, sem saber o que estava entrando. Hoje o Eli qualifica, o sistema gera orçamento, e eu só entro quando é hora de fechar. Saímos de R$ 80k para mais de R$ 500k de faturamento em menos de um ano.</div>
+          <div class="quote-cite">— Fundador, Dzarte Vidros &nbsp;·&nbsp; ★★★★★ 5.0 satisfação</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CONTATO ══════════════════════════════════════════════════ -->
-<section id="contato" class="py-28 bg-main relative overflow-hidden">
-  <!-- glow de fundo -->
-  <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 50% at 50% 100%, rgba(56,182,255,.07), transparent)"></div>
+<!-- ══ CTA + FORM ══ -->
+<section class="cta-band" id="diagnostico">
+  <div class="wrap">
+    <div class="cta-inner r" style="padding-bottom:64px">
+      <h2 class="cta-h">Pronto para construir sua<br><em>infraestrutura de vendas?</em></h2>
+      <p class="cta-p">Agende um diagnóstico gratuito e descubra exatamente como a Flüxa pode transformar o processo comercial da sua vidraçaria.</p>
 
-  <div class="relative z-10 max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="text-center mb-16">
-      <span class="chip chip-grn mb-5 inline-block">Contato</span>
-      <h2 class="reveal text-4xl sm:text-5xl font-black tracking-tight text-white mb-4" style="font-family:'Montserrat',sans-serif;line-height:1.1">
-        Pronto para <span style="color:var(--blue)">escalar?</span>
-      </h2>
-      <p class="reveal max-w-xl mx-auto text-lg" style="color:var(--muted);animation-delay:.1s">
-        Preencha o formulário e nossa equipe entrará em contato em até 4 horas.
-      </p>
-    </div>
-
-    <div class="ct-layout reveal grid gap-12 items-start" style="grid-template-columns:1fr 1.5fr;animation-delay:.15s">
-      <!-- Info lateral -->
-      <div class="space-y-8">
-        <div class="flex items-start gap-4">
-          <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-xl" style="background:rgba(56,182,255,.08);border:1px solid rgba(56,182,255,.15)">⏱</div>
-          <div>
-            <p class="font-semibold text-white mb-1">Resposta rápida</p>
-            <p class="text-sm leading-relaxed" style="color:var(--muted)">Nosso time entra em contato em até 4 horas úteis para agendar sua reunião estratégica.</p>
+      <div style="max-width:480px;margin:0 auto;text-align:left">
+        <div style="display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:#fcd34d;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);padding:6px 13px;border-radius:100px;margin-bottom:24px">
+          <div class="urg-dot"></div>
+          Restam apenas <strong style="color:#fbbf24;margin:0 3px">4 vagas</strong> para este mês
+        </div>
+        <form id="mainForm" onsubmit="submitForm(event)">
+          <div class="form-row" style="margin-bottom:16px">
+            <div class="fg" style="margin-bottom:0">
+              <label class="fl" for="f-nome">Seu nome</label>
+              <input class="fi" id="f-nome" type="text" placeholder="Como prefere ser chamado?" required>
+            </div>
+            <div class="fg" style="margin-bottom:0">
+              <label class="fl" for="f-empresa">Nome da empresa</label>
+              <input class="fi" id="f-empresa" type="text" placeholder="Ex: Vidraçaria São Paulo" required>
+            </div>
           </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-xl" style="background:rgba(56,182,255,.08);border:1px solid rgba(56,182,255,.15)">🔒</div>
-          <div>
-            <p class="font-semibold text-white mb-1">Dados protegidos</p>
-            <p class="text-sm leading-relaxed" style="color:var(--muted)">Suas informações são usadas exclusivamente para contato. Privacidade garantida.</p>
+          <div class="fg">
+            <label class="fl" for="f-cargo">Cargo</label>
+            <div class="sw">
+              <select class="fs" id="f-cargo" required>
+                <option value="" disabled selected>Selecione seu cargo</option>
+                <option>Dono / Sócio</option>
+                <option>Gerente Comercial</option>
+                <option>Diretor</option>
+                <option>Outro</option>
+              </select>
+              <span class="sa">▾</span>
+            </div>
           </div>
-        </div>
-        <div class="flex items-start gap-4">
-          <div class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-xl" style="background:rgba(56,182,255,.08);border:1px solid rgba(56,182,255,.15)">🎁</div>
-          <div>
-            <p class="font-semibold text-white mb-1">Consultoria grátis</p>
-            <p class="text-sm leading-relaxed" style="color:var(--muted)">Agende agora e ganhe uma sessão estratégica de 30 minutos sem compromisso.</p>
+          <div class="fg">
+            <label class="fl" for="f-fat">Faturamento mensal</label>
+            <div class="sw">
+              <select class="fs" id="f-fat" required>
+                <option value="" disabled selected>Selecione a faixa</option>
+                <option>Até R$ 30.000</option>
+                <option>R$ 30.000 – R$ 80.000</option>
+                <option>R$ 80.000 – R$ 200.000</option>
+                <option>Acima de R$ 200.000</option>
+              </select>
+              <span class="sa">▾</span>
+            </div>
           </div>
+          <div class="fg">
+            <label class="fl" for="f-wa">WhatsApp</label>
+            <input class="fi" id="f-wa" type="tel" placeholder="(11) 99999-9999" required>
+          </div>
+          <button type="submit" class="f-submit" id="fBtn">
+            🚀 &nbsp;Garantir meu Diagnóstico Gratuito
+          </button>
+        </form>
+        <div class="form-trust">
+          <div class="ft-item"><span class="ft-icon">🔒</span>Dados protegidos</div>
+          <div class="ft-item"><span class="ft-icon">⚡</span>Resposta em até 4h</div>
+          <div class="ft-item"><span class="ft-icon">🎁</span>100% gratuito</div>
         </div>
-      </div>
-
-      <!-- Form -->
-      <div class="card-dark p-8" style="background:var(--surface)">
-        <div class="grid grid-cols-2 gap-3 mb-3">
-          <input class="ff" id="f-nome" type="text" placeholder="Seu nome"/>
-          <input class="ff" id="f-email" type="email" placeholder="Seu melhor e-mail"/>
-        </div>
-        <div class="grid grid-cols-2 gap-3 mb-3">
-          <input class="ff" id="f-tel" type="tel" placeholder="Telefone com DDD"/>
-          <input class="ff" id="f-empresa" type="text" placeholder="Nome da empresa"/>
-        </div>
-        <select class="ff mb-3" id="f-cargo">
-          <option value="" disabled selected>Qual seu cargo?</option>
-          <option>Dono / Sócio</option>
-          <option>Gerente Comercial</option>
-          <option>Diretor</option>
-          <option>Outro</option>
-        </select>
-        <select class="ff mb-5" id="f-fat">
-          <option value="" disabled selected>Qual o seu faturamento mensal?</option>
-          <option>Até R$30.000</option>
-          <option>R$30.000 – R$80.000</option>
-          <option>R$80.000 – R$200.000</option>
-          <option>R$200.000 – R$500.000</option>
-          <option>Acima de R$500.000</option>
-        </select>
-        <button id="btn-send" type="button" class="btn-primary w-full justify-center" style="padding:16px" onclick="sendLead()">
-          Enviar e agendar reunião ✈
-        </button>
-        <div id="msg"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══════════════════════════════════════════════════ -->
-<footer style="background:var(--dark-2);border-top:1px solid var(--line);padding:48px 0 32px">
-  <div class="max-w-6xl mx-auto px-5 sm:px-8">
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-5">
-      <span class="logo" style="opacity:.5">Flüx<em>a</em></span>
-      <div class="flex items-center gap-7 text-sm" style="color:var(--muted)">
-        <a href="#modulos"  class="hover:text-white transition-colors">Módulos</a>
-        <a href="#case"     class="hover:text-white transition-colors">Case</a>
-        <a href="#contato"  class="hover:text-white transition-colors">Contato</a>
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">FLÜXA</div>
+      <div class="footer-links">
+        <a href="#problema">Problema</a>
+        <a href="#solucao">Solução</a>
+        <a href="#case">Cases</a>
       </div>
-      <p class="text-xs" style="color:var(--muted)">© 2025 Flüxa · Monnarka. Todos os direitos reservados.</p>
+      <div class="footer-copy">© 2025 Flüxa Assessoria · Revenue Engine para Vidraçarias</div>
     </div>
   </div>
 </footer>
 
-<!-- ══ SCRIPTS ══════════════════════════════════════════════════ -->
 <script>
-// Nav scroll
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
+// ── Tab switching — sidebar (desktop) + tab bar (mobile) ──
+function switchTab(tab) {
+  document.querySelectorAll('.m-nav-item[data-tab]').forEach(n => n.classList.toggle('active', n.dataset.tab === tab));
+  document.querySelectorAll('.m-tab-btn[data-tab]').forEach(n => n.classList.toggle('active', n.dataset.tab === tab));
+  document.querySelectorAll('.m-view').forEach(v => v.classList.remove('active'));
+  const target = document.getElementById('tab-' + tab);
+  if (target) target.classList.add('active');
+}
+document.querySelectorAll('.m-nav-item[data-tab]').forEach(item => item.addEventListener('click', () => switchTab(item.dataset.tab)));
+document.querySelectorAll('.m-tab-btn[data-tab]').forEach(item => item.addEventListener('click', () => switchTab(item.dataset.tab)));
 
-// Mobile menu
-document.getElementById('hamburger').addEventListener('click', () => {
-  document.getElementById('mobile-menu').classList.toggle('open');
-});
-function closeMobile() { document.getElementById('mobile-menu').classList.remove('open') }
-
-// Scroll reveal
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') });
-}, { threshold: .12 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Webhook
-const WEBHOOK = "https://n8n-n8n.uhcnbw.easypanel.host/webhook/LP%20Fluxa"
-
-async function sendLead() {
-  const g = id => document.getElementById(id).value.trim()
-  const nome = g("f-nome"), email = g("f-email"), tel = g("f-tel")
-  const empresa = g("f-empresa"), cargo = g("f-cargo"), fat = g("f-fat")
-  const msg = document.getElementById("msg")
-  const btn = document.getElementById("btn-send")
-  if (!nome || !email || !tel || !empresa || !cargo || !fat) {
-    msg.textContent = "Preencha todos os campos."
-    msg.className = "err"; msg.style.display = "block"; return
-  }
-  btn.disabled = true; btn.textContent = "Enviando..."
-  try {
-    const res = await fetch(WEBHOOK, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nome, email, telefone: tel, empresa, cargo, faturamento: fat, origem: "lp-fluxa-v7", data: new Date().toISOString() })
-    })
-    if (res.ok) {
-      msg.textContent = "Recebemos seu contato! Em até 4 horas falaremos com você."
-      msg.className = "ok"; msg.style.display = "block"
-      btn.textContent = "✓ Enviado!"
-    } else { throw new Error() }
-  } catch {
-    msg.textContent = "Algo deu errado. Tente novamente."
-    msg.className = "err"; msg.style.display = "block"
-    btn.disabled = false; btn.textContent = "Enviar e agendar reunião ✈"
+// ── Scroll reveal ──
+// Responsive mockup scale — shrinks proportionally on small screens
+function scaleMockup() {
+  const mockup = document.querySelector('.hero-mockup');
+  if (!mockup) return;
+  const vw = window.innerWidth;
+  if (vw <= 640) {
+    // At 640px = scale 1.0, at 300px = scale ~0.6
+    const scale = Math.max(0.58, Math.min(1.0, (vw - 260) / (640 - 260)));
+    mockup.style.transform = `scale(${scale.toFixed(3)})`;
+    mockup.style.transformOrigin = 'top center';
+    // Pull up subsequent content to compensate for scaled-down height
+    const naturalH = mockup.offsetHeight;
+    mockup.style.marginBottom = `${Math.round(naturalH * (scale - 1))}px`;
+  } else {
+    mockup.style.transform = '';
+    mockup.style.transformOrigin = '';
+    mockup.style.marginBottom = '';
   }
 }
+scaleMockup();
+window.addEventListener('resize', scaleMockup);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('v'); observer.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.r').forEach(el => observer.observe(el));
+
+// ── Mobile nav ──
+const mobBtn = document.getElementById('mobBtn');
+const nc = document.getElementById('navCenter');
+let menuOpen = false;
+mobBtn.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobBtn.textContent = menuOpen ? '✕' : '☰';
+  if (menuOpen) {
+    nc.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:rgba(6,6,9,.98);border-bottom:1px solid rgba(255,255,255,.07);padding:16px 24px;gap:4px;backdrop-filter:blur(24px);z-index:199';
+  } else {
+    nc.style.cssText = '';
+  }
+});
+nc.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menuOpen = false; mobBtn.textContent = '☰'; nc.style.cssText = '';
+}));
+
+// ── Form ──
+async function submitForm(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById('fBtn');
+  const form = document.getElementById('mainForm');
+
+  const payload = {
+    nome:        document.getElementById('f-nome').value.trim(),
+    empresa:     document.getElementById('f-empresa').value.trim(),
+    cargo:       document.getElementById('f-cargo').value,
+    faturamento: document.getElementById('f-fat').value,
+    whatsapp:    document.getElementById('f-wa').value.trim(),
+    origem:      'landing-fluxa',
+    timestamp:   new Date().toISOString()
+  };
+
+  btn.disabled = true;
+  btn.innerHTML = '<span style="display:inline-block;animation:spin .7s linear infinite">⏳</span>&nbsp; Enviando...';
+
+  try {
+    const res = await fetch(
+      'https://n8n-n8n.uhcnbw.easypanel.host/webhook/d079ece0-6062-4d70-9d05-c850aae89c1b',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }
+    );
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+
+    btn.innerHTML = '✅&nbsp; Diagnóstico garantido! Entraremos em contato em breve.';
+    btn.style.cssText = 'width:100%;padding:14px;border-radius:10px;background:#059669;color:#fff;font-size:15px;font-weight:600;font-family:var(--font);border:none;pointer-events:none;cursor:default;box-shadow:0 0 0 1px rgba(16,185,129,.5),0 0 40px rgba(16,185,129,.3)';
+    form.querySelectorAll('input,select').forEach(el => el.disabled = true);
+
+  } catch (err) {
+    btn.disabled = false;
+    btn.innerHTML = '⚠️&nbsp; Erro ao enviar — tente novamente.';
+    btn.style.cssText = 'width:100%;padding:14px;border-radius:10px;background:#b91c1c;color:#fff;font-size:15px;font-weight:600;font-family:var(--font);border:none;cursor:pointer;';
+    setTimeout(() => {
+      btn.innerHTML = '🚀&nbsp; Garantir meu Diagnóstico Gratuito';
+      btn.style.cssText = '';
+    }, 4000);
+  }
+}
+
+const _ss = document.createElement('style');
+_ss.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+document.head.appendChild(_ss);
+
+// ── Nav active highlight on scroll ──
+const sections = [...document.querySelectorAll('section[id]')];
+const navAs = document.querySelectorAll('#navCenter a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navAs.forEach(a => { a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--t1)' : ''; });
+}, { passive: true });
 </script>
+
 </body>
 </html>
