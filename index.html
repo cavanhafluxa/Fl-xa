@@ -99,39 +99,39 @@ body::after{
 ═══════════════════════════ */
 /* Fade up on scroll */
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
-.r.v{opacity:2;transform:translateY(0)}
-.r.d1{transition-delay:.09s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}.r.d4{transition-delay:.32s}
+.r{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.r.v{opacity:1;transform:translateY(0)}
+.r.d1{transition-delay:.1s}.r.d2{transition-delay:.18s}.r.d3{transition-delay:.28s}.r.d4{transition-delay:.38s}
 
-/* Shimmer on key numbers — subtle glow pulse */
+/* Shimmer on key numbers — green glow pulse */
 @keyframes shimmer{
-  0%,100%{text-shadow:0 0 0 transparent}
-  50%{text-shadow:0 0 18px rgba(16,185,129,.35),0 0 40px rgba(16,185,129,.1)}
+  0%,100%{text-shadow:0 0 8px rgba(16,185,129,.6),0 0 20px rgba(16,185,129,.3);color:#6ee7b7}
+  50%{text-shadow:0 0 24px rgba(16,185,129,.9),0 0 60px rgba(16,185,129,.5),0 0 100px rgba(16,185,129,.2);color:#fff}
 }
-.shine{animation:shimmer 3.5s ease-in-out infinite}
-.shine-blue{animation:shimmerBlue 4s ease-in-out infinite}
+.shine{animation:shimmer 2.5s ease-in-out infinite;will-change:text-shadow,color}
 @keyframes shimmerBlue{
-  0%,100%{text-shadow:0 0 0 transparent}
-  50%{text-shadow:0 0 16px rgba(94,106,210,.45),0 0 36px rgba(94,106,210,.12)}
+  0%,100%{text-shadow:0 0 8px rgba(94,106,210,.6),0 0 20px rgba(94,106,210,.3);color:#a5b4fc}
+  50%{text-shadow:0 0 24px rgba(94,106,210,.95),0 0 60px rgba(94,106,210,.5),0 0 100px rgba(94,106,210,.2);color:#fff}
 }
+.shine-blue{animation:shimmerBlue 2.5s ease-in-out infinite;will-change:text-shadow,color}
 
-/* Float — for section numbers / accent elements */
+/* Float */
 @keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-10px) scale(1.03)}
 }
-.float{animation:float 4s ease-in-out infinite}
-.float-slow{animation:float 6s ease-in-out infinite}
+.float{animation:float 3.5s ease-in-out infinite;will-change:transform}
+.float-slow{animation:float 5s ease-in-out infinite;will-change:transform}
 .float-d1{animation-delay:-0.8s}
 .float-d2{animation-delay:-1.8s}
 
-/* Pulse scale — gentle breath on key badges/numbers */
+/* Pulse scale */
 @keyframes pulseScale{
-  0%,100%{transform:scale(1)}
-  70%{transform:scale(1.04)}
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(16,185,129,0)}
+  50%{transform:scale(1.07);box-shadow:0 0 0 10px rgba(16,185,129,.1)}
 }
-.pulse{animation:pulseScale 3s ease-in-out infinite}
-.pulse-slow{animation:pulseScale 3s ease-in-out infinite}
+.pulse{animation:pulseScale 2.4s ease-in-out infinite;will-change:transform,box-shadow}
+.pulse-slow{animation:pulseScale 3.2s ease-in-out infinite;will-change:transform,box-shadow}
 
 /* Text reveal */
 @keyframes wordIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -142,8 +142,19 @@ body::after{
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
 /* Live dot pulse */
-@keyframes liveDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.65)}}
-.m-badge-dot{animation:liveDot 1.8s ease-in-out infinite !important}
+@keyframes liveDot{
+  0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(16,185,129,.7)}
+  50%{opacity:.8;transform:scale(1.5);box-shadow:0 0 0 6px rgba(16,185,129,0)}
+}
+.m-badge-dot{animation:liveDot 1.6s ease-in-out infinite !important;will-change:transform,box-shadow}
+
+/* Hero CTA button glow pulse */
+@keyframes btnGlow{
+  0%,100%{box-shadow:0 0 0 1px rgba(16,185,129,.35),0 0 32px rgba(16,185,129,.22),0 2px 8px rgba(0,0,0,.3)}
+  50%{box-shadow:0 0 0 1px rgba(16,185,129,.7),0 0 60px rgba(16,185,129,.5),0 0 100px rgba(16,185,129,.15),0 2px 8px rgba(0,0,0,.3)}
+}
+.btn-hero{animation:btnGlow 2.5s ease-in-out infinite;will-change:box-shadow}
+.btn-hero:hover{animation:none}
 
 /* ═══════════════════════════
    NAV
@@ -1499,8 +1510,16 @@ window.addEventListener('resize', scaleMockup);
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('v'); observer.unobserve(e.target); } });
-}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 document.querySelectorAll('.r').forEach(el => observer.observe(el));
+
+// Força reveal dos elementos já visíveis na viewport ao carregar
+setTimeout(() => {
+  document.querySelectorAll('.r:not(.v)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight) el.classList.add('v');
+  });
+}, 100);
 
 // ── Mobile nav ──
 const mobBtn = document.getElementById('mobBtn');
