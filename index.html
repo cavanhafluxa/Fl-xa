@@ -14,8 +14,8 @@
   ║  O favicon será carregado automaticamente.   ║
   ╚══════════════════════════════════════════════╝
 -->
-<link id="favicon" rel="icon" type="image/png" href="favicon.png">
-<link id="favicon-apple" rel="apple-touch-icon" href="favicon.png">
+<link id="favicon" rel="icon" type="image/png" href="icon.png">
+<link id="favicon-apple" rel="apple-touch-icon" href="icon.png">
 
 <script>
 // Auto-detect favicon — testa extensões em ordem até encontrar uma válida
@@ -28,7 +28,7 @@
   function tryNext(i) {
     if (i >= exts.length || found) return;
     const img = new Image();
-    const url = 'favicon.' + exts[i];
+    const url = 'icon.' + exts[i];
     img.onload = function() {
       if (!found) {
         found = true;
@@ -154,7 +154,7 @@ nav{
   padding:0 24px;
   background:rgba(6,6,9,0.8);
   backdrop-filter:blur(24px) saturate(200%);
-  -webkit-backdrop-filter:blur(24px) saturate(200%);
+  -webkit-backdrop-filter:blur(24px) saturate(300%);
   border-bottom:1px solid var(--border);
 }
 .nav-logo{
@@ -838,6 +838,24 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
   .cta-h{font-size:21px}
   .bento-card{padding:14px}
 }
+
+  @media (max-width:768px){
+
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-left:auto;
+  }
+
+}
+  
 </style>
 </head>
 <body>
