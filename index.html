@@ -1922,32 +1922,51 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── Lenis smooth scroll — carregamento dinâmico com fallback ──
+// ── Smooth scroll puro — sem dependências externas ──
 (function() {
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js';
-  script.onload = function() {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1.5,
+  // Scroll suave para âncoras
+  function scrollToTarget(href) {
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - 64;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      scrollToTarget(a.getAttribute('href'));
     });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    // Âncoras funcionam com Lenis
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) lenis.scrollTo(target, { offset: -64, duration: 1.4 });
-      });
-    });
-  };
-  // Se CDN falhar, a página continua funcionando normalmente
-  script.onerror = function() { console.warn('Lenis CDN indisponível — scroll padrão ativo'); };
-  document.body.appendChild(script);
+  });
+
+  // Inércia com lerp — efeito "deslizante" no scroll de mouse
+  let cur = window.scrollY;
+  let tgt = window.scrollY;
+  let ticking = false;
+
+  function lerp(a, b, n) { return a + (b - a) * n; }
+
+  function animate() {
+    cur = lerp(cur, tgt, 0.1);
+    if (Math.abs(tgt - cur) < 0.5) { cur = tgt; ticking = false; return; }
+    window.scrollTo(0, Math.round(cur));
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    tgt = Math.max(0, Math.min(
+      document.documentElement.scrollHeight - window.innerHeight,
+      tgt + e.deltaY * 0.85
+    ));
+    if (!ticking) { ticking = true; requestAnimationFrame(animate); }
+  }, { passive: false });
+
+  // Sync com scroll nativo (teclado, scrollbar, touch)
+  let wheelActive = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) { cur = window.scrollY; tgt = window.scrollY; }
+  }, { passive: true });
 })();
 
 // ── Tab switching — sidebar (desktop) + tab bar (mobile) ──
