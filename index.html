@@ -2065,11 +2065,9 @@ var t,e;t=this,e=function(){function t(t,e,i){return Math.max(t,Math.min(e,i))}c
 
 // ── Inicializar Lenis ──
 const lenis = new Lenis({
-  duration: 1.1,
-  easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  lerp: 0.1,
   smoothWheel: true,
-  wheelMultiplier: 0.8,
-  touchMultiplier: 1.0,
+  wheelMultiplier: 1.0,
   syncTouch: false,
 });
 function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
