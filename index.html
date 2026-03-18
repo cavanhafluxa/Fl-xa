@@ -1922,52 +1922,18 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── Smooth scroll puro — sem dependências externas ──
-(function() {
-  // Scroll suave para âncoras
-  function scrollToTarget(href) {
+// ── Scroll suave para âncoras ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
     if (!href || href === '#') return;
     const target = document.querySelector(href);
     if (!target) return;
+    e.preventDefault();
     const top = target.getBoundingClientRect().top + window.scrollY - 64;
     window.scrollTo({ top, behavior: 'smooth' });
-  }
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      scrollToTarget(a.getAttribute('href'));
-    });
   });
-
-  // Inércia com lerp — efeito "deslizante" no scroll de mouse
-  let cur = window.scrollY;
-  let tgt = window.scrollY;
-  let ticking = false;
-
-  function lerp(a, b, n) { return a + (b - a) * n; }
-
-  function animate() {
-    cur = lerp(cur, tgt, 0.1);
-    if (Math.abs(tgt - cur) < 0.5) { cur = tgt; ticking = false; return; }
-    window.scrollTo(0, Math.round(cur));
-    requestAnimationFrame(animate);
-  }
-
-  window.addEventListener('wheel', function(e) {
-    e.preventDefault();
-    tgt = Math.max(0, Math.min(
-      document.documentElement.scrollHeight - window.innerHeight,
-      tgt + e.deltaY * 0.85
-    ));
-    if (!ticking) { ticking = true; requestAnimationFrame(animate); }
-  }, { passive: false });
-
-  // Sync com scroll nativo (teclado, scrollbar, touch)
-  let wheelActive = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) { cur = window.scrollY; tgt = window.scrollY; }
-  }, { passive: true });
-})();
+});
 
 // ── Tab switching — sidebar (desktop) + tab bar (mobile) ──
 function switchTab(tab) {
