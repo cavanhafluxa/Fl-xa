@@ -1014,9 +1014,9 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
           <button class="m-tab-btn" data-tab="config">Config</button>
         </div>
 
-        <div class="mockup-body">
+        <div class="mockup-body" data-lenis-prevent>
           <!-- Sidebar -->
-          <div class="m-sidebar">
+          <div class="m-sidebar" data-lenis-prevent>
             <div class="m-user-block">
               <div class="m-user-ava">D</div>
               <div>
@@ -2065,12 +2065,15 @@ var t,e;t=this,e=function(){function t(t,e,i){return Math.max(t,Math.min(e,i))}c
 
 // ── Inicializar Lenis ──
 const lenis = new Lenis({
-  duration: 1.2,
+  duration: 1.1,
   easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smoothWheel: true,
-  wheelMultiplier: 1.0,
-  touchMultiplier: 1.5,
+  wheelMultiplier: 0.8,
+  touchMultiplier: 1.0,
+  syncTouch: false,
 });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
 function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
 </script>
