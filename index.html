@@ -56,12 +56,12 @@
    TOKENS
 ═══════════════════════════ */
 :root{
-  --bg:#060609;--bg-2:#0c0c10;--bg-3:#111116;
-  --surface:rgba(255,255,255,0.03);--surface-2:rgba(255,255,255,0.055);
-  --border:rgba(255,255,255,0.07);--border-2:rgba(255,255,255,0.12);
-  --t1:#f0f2f5;--t2:#8b92a5;--t3:#484f63;
-  --accent:#5e6ad2;--accent-2:#4f5bbf;
-  --sky:#38bdf8;--green:#38b6ff;--btn:#0055aa;--green-g:rgba(56,182,255,.18);
+  --bg:#05050a;--bg-2:#0e0e14;--bg-3:#161620;
+  --surface:rgba(255,255,255,0.05);--surface-2:rgba(255,255,255,0.085);
+  --border:rgba(255,255,255,0.10);--border-2:rgba(255,255,255,0.18);
+  --t1:#eef0f5;--t2:#9ba3b8;--t3:#5a6278;
+  --accent:#6c78e0;--accent-2:#5a67cc;
+  --sky:#38bdf8;--green:#3bbfff;--btn:#0060c4;--green-g:rgba(56,182,255,.18);
   --red:#ef4444;--amber:#f59e0b;
   --font:'DM Sans',system-ui,sans-serif;
   --r:10px;--r-lg:16px;
@@ -84,15 +84,15 @@ body::after{
 
 /* ── Gradient mesh ── */
 .mesh{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.mesh-blob{position:absolute;border-radius:50%;filter:blur(140px);opacity:.065;animation:drift 20s ease-in-out infinite alternate}
+.mesh-blob{position:absolute;border-radius:50%;filter:blur(140px);opacity:.12;animation:drift 20s ease-in-out infinite alternate}
 .mb1{width:700px;height:700px;background:#3b4fd4;top:-200px;left:-200px;animation-delay:0s}
-.mb2{width:500px;height:500px;background:#0ea5e9;top:40%;right:-150px;opacity:.04;animation-delay:-7s}
-.mb3{width:400px;height:400px;background:#38b6ff;bottom:0;left:30%;opacity:.035;animation-delay:-14s}
+.mb2{width:500px;height:500px;background:#0ea5e9;top:40%;right:-150px;opacity:.079;animation-delay:-7s}
+.mb3{width:400px;height:400px;background:#38b6ff;bottom:0;left:30%;opacity:.067;animation-delay:-14s}
 @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,30px) scale(1.08)}}
 
 /* ── Layout ── */
-.wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-.wrap-narrow{max-width:760px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+.wrap{max-width:1140px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
+.wrap-narrow{max-width:800px;margin:0 auto;padding:0 48px;position:relative;z-index:1}
 
 /* ═══════════════════════════
    ANIMATIONS
@@ -163,10 +163,10 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   height:56px;display:flex;align-items:center;
   padding:0 24px;
-  background:rgba(6,6,9,0.8);
+  background:rgba(5,5,10,0.92);
   backdrop-filter:blur(24px) saturate(200%);
   -webkit-backdrop-filter:blur(24px) saturate(300%);
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid rgba(255,255,255,.1);
 }
 .nav-logo{
   text-decoration:none;
@@ -217,7 +217,7 @@ nav{
 .hero{
   min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  padding:100px 0 80px;text-align:center;position:relative;
+  padding:90px 0 64px;text-align:center;position:relative;
   overflow:hidden;
 }
 .hero-grid{
@@ -249,9 +249,9 @@ nav{
   letter-spacing:.03em;text-transform:uppercase;
 }
 .hero-h1{
-  font-size:clamp(32px,5.5vw,68px);font-weight:800;
+  font-size:clamp(22px,3.5vw,44px);font-weight:800;
   line-height:1.08;letter-spacing:-.04em;color:var(--t1);
-  margin-bottom:24px;position:relative;z-index:1;
+  margin-bottom:18px;position:relative;z-index:1;
   word-break:break-word;overflow-wrap:break-word;
 }
 .hero-h1 em, .hero-em{
@@ -263,8 +263,8 @@ nav{
   display:inline;
 }
 .hero-p{
-  font-size:clamp(15px,2vw,18.5px);color:var(--t2);font-weight:300;
-  max-width:540px;line-height:1.72;margin:0 auto 44px;
+  font-size:clamp(12px,1.4vw,14px);color:var(--t2);font-weight:300;
+  max-width:420px;line-height:1.72;margin:0 auto 32px;
   position:relative;z-index:1;animation:fadeUp .55s .22s ease both;
 }
 .hero-actions{
@@ -273,8 +273,8 @@ nav{
 }
 .btn-hero{
   display:inline-flex;align-items:center;gap:8px;
-  padding:13px 26px;border-radius:10px;background:var(--btn);color:#fff;
-  font-size:15px;font-weight:600;font-family:var(--font);
+  padding:10px 20px;border-radius:9px;background:var(--btn);color:#fff;
+  font-size:13px;font-weight:600;font-family:var(--font);
   text-decoration:none;border:none;cursor:pointer;transition:all .22s;
   box-shadow:0 0 0 1px rgba(0,85,170,.4),0 0 32px rgba(0,85,170,.2),0 2px 8px rgba(0,0,0,.3);
   position:relative;overflow:hidden;max-width:100%;box-sizing:border-box;
@@ -283,8 +283,8 @@ nav{
 .btn-hero:hover{background:#38b6ff;transform:translateY(-2px);box-shadow:0 0 0 1px rgba(56,182,255,.6),0 0 44px rgba(56,182,255,.4),0 8px 24px rgba(0,0,0,.35)}
 .btn-ghost{
   display:inline-flex;align-items:center;gap:8px;
-  padding:13px 24px;border-radius:10px;background:var(--surface);color:var(--t2);
-  font-size:15px;font-weight:500;font-family:var(--font);
+  padding:10px 20px;border-radius:9px;background:var(--surface);color:var(--t2);
+  font-size:13px;font-weight:500;font-family:var(--font);
   text-decoration:none;border:1px solid var(--border-2);cursor:pointer;transition:all .22s;
 }
 .btn-ghost:hover{color:var(--t1);background:var(--surface-2);border-color:rgba(255,255,255,.18);transform:translateY(-1px)}
@@ -301,7 +301,7 @@ nav{
 }
 .mockup-frame{
   background:var(--bg-2);border:1px solid var(--border-2);border-radius:20px;overflow:hidden;
-  box-shadow:0 0 0 1px rgba(255,255,255,.04),0 40px 80px rgba(0,0,0,.6),0 0 120px rgba(94,106,210,.08);
+  box-shadow:0 0 0 1px rgba(255,255,255,.07),0 40px 80px rgba(0,0,0,.7),0 0 120px rgba(94,106,210,.1);
   position:relative;
 }
 .mockup-frame::before{
@@ -330,10 +330,14 @@ nav{
 
 /* ── Sidebar ── */
 .m-sidebar{
-  display:flex;flex-direction:column;padding:18px 12px 14px;
+  display:flex;flex-direction:column;padding:14px 10px 12px;
   border-right:1px solid var(--border);background:rgba(255,255,255,.01);
-  gap:2px;height:100%;overflow:hidden;flex-shrink:0;
+  gap:2px;height:100%;overflow-y:auto;flex-shrink:0;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
 }
+.m-sidebar::-webkit-scrollbar{width:3px}
+.m-sidebar::-webkit-scrollbar-track{background:transparent}
+.m-sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 .m-user-block{
   display:flex;align-items:center;gap:9px;padding:2px 6px 14px;
   border-bottom:1px solid var(--border);margin-bottom:8px;
@@ -355,7 +359,6 @@ nav{
 .m-nav-item.active{background:rgba(255,255,255,.06);color:var(--t1);border-color:var(--border)}
 .m-ico{width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:12px;opacity:.75;flex-shrink:0}
 .m-nav-item.active .m-ico{opacity:1}
-.m-sidebar-spacer{flex:1}
 .m-sidebar-divider{height:1px;background:var(--border);margin:6px 0}
 
 /* ── Main area ── */
@@ -380,7 +383,10 @@ nav{
 
 /* Tab views — FIXED, overflow-y:auto so inner content scrolls, parent stays same size */
 .m-view{display:none;overflow-y:auto;flex:1;min-height:0}
-.m-view.active{display:flex;flex-direction:column;gap:9px}
+.m-view.active{display:block;overflow-y:auto;flex:1;min-height:0}
+/* Dashboard e Pipeline ainda precisam de gap — aplicar via class específica */
+#tab-dashboard.active,#tab-pipeline.active,#tab-leads.active,#tab-calendario.active,#tab-colaboradores.active,#tab-config.active,#tab-suporte.active{display:flex;flex-direction:column;gap:9px}
+#tab-eli.active,#tab-fornecedores.active{display:flex;flex-direction:column;gap:9px;padding:2px 0}
 /* Thin scrollbar inside tabs */
 .m-view::-webkit-scrollbar{width:3px}
 .m-view::-webkit-scrollbar-track{background:transparent}
@@ -489,37 +495,38 @@ nav{
 ═══════════════════════════ */
 .section-eyebrow{
   display:inline-flex;align-items:center;gap:6px;
-  font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:16px;
+  font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px;
 }
-.section-eyebrow::before,.section-eyebrow::after{content:'';width:24px;height:1px;background:currentColor;opacity:.4}
-.section-h2{font-size:clamp(26px,4.5vw,44px);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--t1);margin-bottom:16px}
-.section-p{font-size:16px;color:var(--t2);font-weight:300;max-width:480px;line-height:1.72;margin:0 auto}
+.section-eyebrow::before,.section-eyebrow::after{content:'';width:20px;height:1px;background:currentColor;opacity:.4}
+.section-h2{font-size:clamp(19px,2.9vw,29px);font-weight:800;letter-spacing:-.04em;line-height:1.1;color:var(--t1);margin-bottom:12px}
+.section-p{font-size:13px;color:var(--t2);font-weight:300;max-width:420px;line-height:1.72;margin:0 auto}
 
 /* ═══════════════════════════
    BENTO
 ═══════════════════════════ */
-.bento-section{padding:120px 0;position:relative;z-index:1}
-.bento-header{text-align:center;margin-bottom:64px}
-.bento{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:16px}
+.bento-section{padding:72px 0;position:relative;z-index:1}
+.bento-header{text-align:center;margin-bottom:48px}
+.bento{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
 .bento-card{
   background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);
-  padding:32px;position:relative;overflow:hidden;transition:border-color .25s,box-shadow .25s,transform .25s;
+  padding:22px;position:relative;overflow:hidden;transition:border-color .25s,box-shadow .25s,transform .25s;
+  box-shadow:0 1px 3px rgba(0,0,0,.4);
 }
-.bento-card:hover{border-color:var(--border-2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.06)}
+.bento-card:hover{border-color:var(--border-2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.10)}
 .bento-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.02) 0%,transparent 50%);pointer-events:none}
 .bc-span2{grid-column:span 2}.bc-tall{grid-row:span 2}
-.bc-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;border:1px solid}
+.bc-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:14px;border:1px solid}
 .ic-blue{background:rgba(94,106,210,.1);border-color:rgba(94,106,210,.2)}
 .ic-sky{background:rgba(56,189,248,.08);border-color:rgba(56,189,248,.18)}
 .ic-green{background:rgba(56,182,255,.1);border-color:rgba(56,182,255,.2)}
 .ic-amber{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.18)}
-.bc-label{font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
-.bc-title{font-size:18px;font-weight:700;color:var(--t1);letter-spacing:-.03em;margin-bottom:10px;line-height:1.3}
-.bc-desc{font-size:13.5px;color:var(--t2);line-height:1.65;font-weight:300}
-.bc-stat{margin-top:20px;display:inline-flex;align-items:baseline;gap:6px}
-.bc-stat-val{font-size:28px;font-weight:800;color:var(--green);letter-spacing:-.04em}
-.bc-stat-label{font-size:12px;color:var(--t3);font-weight:400}
+.bc-label{font-size:9.5px;color:var(--accent);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}
+.bc-title{font-size:14px;font-weight:700;color:var(--t1);letter-spacing:-.03em;margin-bottom:7px;line-height:1.3}
+.bc-desc{font-size:12px;color:var(--t2);line-height:1.65;font-weight:300}
+.bc-stat{margin-top:14px;display:inline-flex;align-items:baseline;gap:5px}
+.bc-stat-val{font-size:22px;font-weight:800;color:var(--green);letter-spacing:-.04em}
+.bc-stat-label{font-size:10.5px;color:var(--t3);font-weight:400}
 .eli-chat{margin-top:22px;display:flex;flex-direction:column;gap:8px}
 .chat-bubble{padding:9px 13px;border-radius:10px;font-size:12.5px;line-height:1.5;max-width:85%}
 .cb-in{background:var(--bg-3);border:1px solid var(--border);color:var(--t2);align-self:flex-start;border-bottom-left-radius:3px}
@@ -552,80 +559,80 @@ nav{
 /* ═══════════════════════════
    PROBLEM
 ═══════════════════════════ */
-.problem-section{padding:120px 0;position:relative;z-index:1}
-.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:60px}
-.prob-cell{background:var(--bg);padding:36px 36px 32px;transition:background .2s}
-.prob-cell:hover{background:var(--bg-2)}
-.prob-cell-icon{font-size:24px;margin-bottom:16px;display:block}
-.prob-cell-title{font-size:16px;font-weight:600;color:var(--t1);margin-bottom:8px;letter-spacing:-.02em}
+.problem-section{padding:72px 0;position:relative;z-index:1}
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:48px}
+.prob-cell{background:var(--bg-2);padding:28px 28px 24px;transition:background .2s;border-right:1px solid var(--border)}
+.prob-cell:hover{background:var(--bg-3)}
+.prob-cell-icon{font-size:20px;margin-bottom:12px;display:block}
+.prob-cell-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:6px;letter-spacing:-.02em}
 .prob-cell-text{font-size:13.5px;color:var(--t2);line-height:1.65;font-weight:300}
 
 /* ═══════════════════════════
    HOW IT WORKS
 ═══════════════════════════ */
-.how-section{padding:120px 0;position:relative;z-index:1}
-.how-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.how-steps{display:flex;flex-direction:column;gap:0;margin-top:44px}
-.how-step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);cursor:default;transition:all .2s}
+.how-section{padding:72px 0;position:relative;z-index:1}
+.how-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.how-steps{display:flex;flex-direction:column;gap:0;margin-top:36px}
+.how-step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);cursor:default;transition:all .2s}
 .how-step:last-child{border-bottom:none}
 .how-step:hover .hs-num{background:rgba(94,106,210,.15);color:#a5b0ff;border-color:rgba(94,106,210,.3)}
-.hs-num{width:36px;height:36px;border-radius:9px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--t3);transition:all .2s;margin-top:2px}
-.hs-title{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:5px;letter-spacing:-.01em}
-.hs-desc{font-size:13.5px;color:var(--t2);line-height:1.6;font-weight:300}
-.phone-frame{background:var(--bg-2);border:1px solid var(--border-2);border-radius:28px;padding:24px 20px;max-width:320px;margin:0 auto;box-shadow:0 40px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);position:relative}
-.phone-frame::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:100px;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.5),transparent)}
-.phone-notch{width:80px;height:6px;background:var(--bg-3);border-radius:3px;margin:0 auto 20px}
-.phone-chat{display:flex;flex-direction:column;gap:10px}
-.pc-bubble{padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.5;max-width:82%}
+.hs-num{width:30px;height:30px;border-radius:8px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:var(--t3);transition:all .2s;margin-top:2px}
+.hs-title{font-size:13.5px;font-weight:600;color:var(--t1);margin-bottom:4px;letter-spacing:-.01em}
+.hs-desc{font-size:12px;color:var(--t2);line-height:1.6;font-weight:300}
+.phone-frame{background:var(--bg-2);border:1px solid var(--border-2);border-radius:24px;padding:20px 16px;max-width:280px;margin:0 auto;box-shadow:0 40px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);position:relative}
+.phone-frame::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.5),transparent)}
+.phone-notch{width:64px;height:5px;background:var(--bg-3);border-radius:3px;margin:0 auto 16px}
+.phone-chat{display:flex;flex-direction:column;gap:9px}
+.pc-bubble{padding:8px 11px;border-radius:10px;font-size:11.5px;line-height:1.5;max-width:82%}
 .pcb-in{background:var(--bg-3);border:1px solid var(--border);color:var(--t2);border-bottom-left-radius:3px}
 .pcb-out{background:rgba(56,182,255,.14);border:1px solid rgba(56,182,255,.2);color:#a7f3d0;align-self:flex-end;border-bottom-right-radius:3px}
-.pc-time{font-size:10.5px;color:var(--t3);padding:0 4px;margin-top:-3px}
+.pc-time{font-size:9.5px;color:var(--t3);padding:0 4px;margin-top:-3px}
 .pc-time.right{text-align:right;align-self:flex-end}
-.phone-input{margin-top:16px;display:flex;align-items:center;gap:9px;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;padding:10px 13px}
-.pi-text{font-size:12px;color:var(--t3);flex:1}
-.pi-btn{font-size:11px;padding:5px 12px;border-radius:6px;background:var(--btn);color:#fff;font-weight:600;font-family:var(--font);border:none;cursor:pointer;transition:background .2s}.pi-btn:hover{background:#38b6ff}
+.phone-input{margin-top:14px;display:flex;align-items:center;gap:8px;background:var(--bg-3);border:1px solid var(--border);border-radius:9px;padding:8px 11px}
+.pi-text{font-size:11px;color:var(--t3);flex:1}
+.pi-btn{font-size:10px;padding:4px 10px;border-radius:6px;background:var(--btn);color:#fff;font-weight:600;font-family:var(--font);border:none;cursor:pointer;transition:background .2s}.pi-btn:hover{background:#38b6ff}
 
 /* ═══════════════════════════
    CASE
 ═══════════════════════════ */
-.case-section{padding:120px 0;position:relative;z-index:1}
+.case-section{padding:72px 0;position:relative;z-index:1}
 .case-section::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(56,182,255,.025) 50%,transparent);pointer-events:none}
-.case-card{background:var(--bg-2);border:1px solid var(--border);border-radius:20px;overflow:hidden;position:relative}
-.case-card::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:360px;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.55),transparent)}
-.case-top{padding:44px 52px 40px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:24px}
-.case-brand{display:flex;align-items:center;gap:16px}
-.case-brand-box{width:50px;height:50px;border-radius:12px;background:rgba(56,182,255,.1);border:1px solid rgba(56,182,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px}
-.case-brand-name{font-size:20px;font-weight:700;letter-spacing:-.03em}
-.case-brand-sub{font-size:13px;color:var(--t2);margin-top:2px;font-weight:300}
-.case-verified{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#7dd3fc;background:rgba(56,182,255,.08);border:1px solid rgba(56,182,255,.18);padding:6px 14px;border-radius:100px}
+.case-card{background:var(--bg-2);border:1px solid var(--border-2);border-radius:18px;overflow:hidden;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.case-card::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:300px;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.55),transparent)}
+.case-top{padding:32px 40px 28px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:18px}
+.case-brand{display:flex;align-items:center;gap:14px}
+.case-brand-box{width:42px;height:42px;border-radius:10px;background:rgba(56,182,255,.1);border:1px solid rgba(56,182,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px}
+.case-brand-name{font-size:17px;font-weight:700;letter-spacing:-.03em}
+.case-brand-sub{font-size:12px;color:var(--t2);margin-top:2px;font-weight:300}
+.case-verified{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:#7dd3fc;background:rgba(56,182,255,.08);border:1px solid rgba(56,182,255,.18);padding:5px 12px;border-radius:100px}
 .case-metrics{border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr)}
-.case-metric{padding:36px 52px;border-right:1px solid var(--border);text-align:center}
+.case-metric{padding:28px 40px;border-right:1px solid var(--border);text-align:center}
 .case-metric:last-child{border-right:none}
-.cm-val{font-size:46px;font-weight:800;letter-spacing:-.05em;line-height:1;background:linear-gradient(135deg,#7dd3fc,#38b6ff 60%,#0077cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.cm-label{font-size:13px;color:var(--t2);margin-top:8px;font-weight:300;line-height:1.4}
-.case-quote{padding:36px 52px;border-top:1px solid var(--border);background:rgba(255,255,255,.01);display:flex;gap:20px}
-.quote-mark{font-size:56px;line-height:.7;color:var(--t3);font-weight:700;flex-shrink:0;margin-top:4px;font-family:Georgia,serif}
-.quote-text{font-size:15.5px;color:var(--t2);line-height:1.72;font-weight:300;font-style:italic}
-.quote-cite{margin-top:14px;font-size:13px;color:var(--t3);font-style:normal;font-weight:500}
+.cm-val{font-size:38px;font-weight:800;letter-spacing:-.05em;line-height:1;background:linear-gradient(135deg,#7dd3fc,#38b6ff 60%,#0077cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cm-label{font-size:12px;color:var(--t2);margin-top:6px;font-weight:300;line-height:1.4}
+.case-quote{padding:28px 40px;border-top:1px solid var(--border);background:rgba(255,255,255,.01);display:flex;gap:16px}
+.quote-mark{font-size:44px;line-height:.7;color:var(--t3);font-weight:700;flex-shrink:0;margin-top:4px;font-family:Georgia,serif}
+.quote-text{font-size:13.5px;color:var(--t2);line-height:1.72;font-weight:300;font-style:italic}
+.quote-cite{margin-top:12px;font-size:12px;color:var(--t3);font-style:normal;font-weight:500}
 
 /* ═══════════════════════════
    CTA + FORM
 ═══════════════════════════ */
-.cta-band{padding:120px 0;position:relative;z-index:1}
-.cta-inner{background:var(--bg-2);border:1px solid var(--border-2);border-radius:20px;padding:64px 64px 56px;text-align:center;position:relative;overflow:hidden}
-.cta-inner::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:320px;height:1px;background:linear-gradient(90deg,transparent,rgba(94,106,210,.6),transparent)}
+.cta-band{padding:96px 0;position:relative;z-index:1}
+.cta-inner{background:var(--bg-2);border:1px solid var(--border-2);border-radius:18px;padding:52px 52px 48px;text-align:center;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.cta-inner::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:280px;height:1px;background:linear-gradient(90deg,transparent,rgba(94,106,210,.6),transparent)}
 .cta-inner::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(94,106,210,.06) 0%,transparent 70%);pointer-events:none}
-.cta-h{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--t1);margin-bottom:16px;line-height:1.1;position:relative;z-index:1}
+.cta-h{font-size:clamp(22px,3.2vw,36px);font-weight:800;letter-spacing:-.04em;color:var(--t1);margin-bottom:14px;line-height:1.1;position:relative;z-index:1}
 .cta-h em{font-style:normal;color:var(--green)}
-.cta-p{font-size:16px;color:var(--t2);font-weight:300;max-width:440px;margin:0 auto 36px;line-height:1.7;position:relative;z-index:1}
+.cta-p{font-size:14px;color:var(--t2);font-weight:300;max-width:400px;margin:0 auto 30px;line-height:1.7;position:relative;z-index:1}
 .urg-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);animation:blink 1.4s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.fg{margin-bottom:16px}
-.fl{display:block;font-size:12.5px;font-weight:500;color:var(--t2);margin-bottom:7px}
+.fg{margin-bottom:14px}
+.fl{display:block;font-size:11.5px;font-weight:500;color:var(--t2);margin-bottom:6px}
 .fi,.fs{
-  width:100%;padding:11px 14px;
+  width:100%;padding:10px 13px;
   background:rgba(255,255,255,.025);border:1px solid var(--border);
-  border-radius:9px;color:var(--t1);font-family:var(--font);font-size:14px;
+  border-radius:8px;color:var(--t1);font-family:var(--font);font-size:13.5px;
   outline:none;transition:all .18s;appearance:none;
 }
 .fi:focus,.fs:focus{border-color:rgba(56,182,255,.4);background:rgba(56,182,255,.03);box-shadow:0 0 0 3px rgba(56,182,255,.07)}
@@ -634,8 +641,8 @@ nav{
 .sw{position:relative}.sa{position:absolute;right:12px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--t3);font-size:12px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .f-submit{
-  width:100%;padding:14px;border-radius:10px;
-  background:var(--btn);color:#fff;font-size:15.5px;font-weight:600;
+  width:100%;padding:12px;border-radius:9px;
+  background:var(--btn);color:#fff;font-size:14px;font-weight:600;
   font-family:var(--font);border:none;cursor:pointer;transition:all .22s;
   box-shadow:0 0 0 1px rgba(0,85,170,.4),0 0 28px rgba(0,85,170,.15);
   margin-top:6px;position:relative;overflow:hidden;
@@ -850,23 +857,87 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
   .bento-card{padding:14px}
 }
 
-  @media (max-width:768px){
+/* ═══════════════════════════
+   ECOSSISTEMA
+═══════════════════════════ */
+.eco-section{padding:80px 0;position:relative;z-index:1;border-top:1px solid var(--border)}
+.eco-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(94,106,210,.04) 0%,transparent 70%);pointer-events:none}
+.eco-header{text-align:center;max-width:560px;margin:0 auto 56px}
+.eco-flow{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;align-items:center;gap:0;margin-bottom:48px}
+.eco-node{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:22px 20px;text-align:center;transition:border-color .25s,transform .25s}
+.eco-node:hover{border-color:var(--border-2);transform:translateY(-2px)}
+.eco-node-icon{width:40px;height:40px;border-radius:10px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:18px;border:1px solid}
+.eco-node-title{font-size:13px;font-weight:700;color:var(--t1);letter-spacing:-.02em;margin-bottom:5px}
+.eco-node-desc{font-size:12px;color:var(--t2);line-height:1.55;font-weight:300}
+.eco-arrow{display:flex;align-items:center;justify-content:center;color:var(--t3);flex-shrink:0}
+.eco-bottom{background:var(--bg-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px 32px;display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.eco-bottom-text{flex:1;min-width:240px}
+.eco-bottom-title{font-size:16px;font-weight:700;color:var(--t1);letter-spacing:-.03em;margin-bottom:7px}
+.eco-bottom-desc{font-size:13px;color:var(--t2);line-height:1.65;font-weight:300}
+.eco-tags{display:flex;flex-wrap:wrap;gap:7px;flex-shrink:0}
+.eco-tag{font-size:11px;padding:4px 12px;border-radius:100px;font-weight:500;background:rgba(94,106,210,.08);color:#a5b0ff;border:1px solid rgba(94,106,210,.18)}
 
+/* ═══════════════════════════
+   DZARTE SECTION
+═══════════════════════════ */
+.dzarte-section{padding:80px 0;position:relative;z-index:1}
+.dzarte-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 80%,rgba(245,158,11,.035) 0%,transparent 65%);pointer-events:none}
+.dzarte-card{
+  border:1px solid rgba(245,158,11,.18);
+  border-radius:24px;overflow:hidden;position:relative;
+  background:linear-gradient(145deg,rgba(245,158,11,.03) 0%,var(--bg-2) 40%,var(--bg-2) 100%);
+}
+.dzarte-card::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:500px;height:1px;background:linear-gradient(90deg,transparent,rgba(245,158,11,.5),transparent)}
+.dzarte-top{padding:56px 60px 48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.dzarte-badge{display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:100px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);font-size:10.5px;font-weight:600;color:#fcd34d;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
+.dzarte-badge-dot{width:5px;height:5px;border-radius:50%;background:#f59e0b;animation:liveDot 1.6s ease-in-out infinite}
+.dzarte-h{font-size:clamp(18px,2.4vw,28px);font-weight:800;letter-spacing:-.04em;line-height:1.15;color:var(--t1);margin-bottom:13px}
+.dzarte-h em{font-style:normal;background:linear-gradient(100deg,#fcd34d,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.dzarte-p{font-size:13.5px;color:var(--t2);line-height:1.72;font-weight:300;margin-bottom:24px}
+.dzarte-steps{display:flex;flex-direction:column;gap:0}
+.dzarte-step{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--border)}
+.dzarte-step:last-child{border-bottom:none}
+.dz-num{width:24px;height:24px;border-radius:6px;flex-shrink:0;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#f59e0b;margin-top:2px}
+.dz-step-title{font-size:12.5px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.dz-step-desc{font-size:11.5px;color:var(--t2);font-weight:300;line-height:1.55}
+.dzarte-roadmap{background:var(--bg-3);border:1px solid var(--border);border-radius:12px;padding:20px}
+.dzarte-phase{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.dzarte-phase:last-child{border-bottom:none;padding-bottom:0}
+.dp-pill{font-size:9.5px;font-weight:600;padding:2px 9px;border-radius:100px;flex-shrink:0;height:fit-content;margin-top:2px;white-space:nowrap}
+.dp-done{background:rgba(56,182,255,.1);color:#7dd3fc;border:1px solid rgba(56,182,255,.2)}
+.dp-current{background:rgba(94,106,210,.12);color:#a5b0ff;border:1px solid rgba(94,106,210,.25)}
+.dp-soon{background:rgba(245,158,11,.08);color:#fcd34d;border:1px solid rgba(245,158,11,.2)}
+.dp-title{font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.dp-desc{font-size:11.5px;color:var(--t2);font-weight:300;line-height:1.5}
+.dzarte-bottom{padding:22px 48px;border-top:1px solid rgba(245,158,11,.12);background:rgba(245,158,11,.02);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.dzarte-bottom-text{font-size:13px;color:var(--t2);font-weight:300;max-width:440px;line-height:1.6}
+.dzarte-bottom-text strong{color:#fcd34d;font-weight:600}
+.dzarte-top{padding:44px 48px 36px;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+
+@media(max-width:900px){
+  .eco-flow{grid-template-columns:1fr;gap:8px}
+  .eco-arrow{transform:rotate(90deg)}
+  .dzarte-top{grid-template-columns:1fr;gap:32px;padding:32px 24px 28px}
+  .dzarte-bottom{padding:20px 24px}
+}
+@media(max-width:640px){
+  .eco-bottom{padding:24px 20px;gap:20px}
+}
+
+@media (max-width:768px){
   nav{
     display:flex;
     align-items:center;
     justify-content:space-between;
   }
-
   .nav-right{
     display:flex;
     align-items:center;
     gap:12px;
     margin-left:auto;
   }
-
 }
-  
+
 </style>
 </head>
 <body>
@@ -883,6 +954,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
   <div class="nav-center" id="navCenter">
     <a href="#problema">Problema</a>
     <a href="#solucao">Solução</a>
+    <a href="#modulos">Módulos</a>
     <a href="#case">Cases</a>
     <a href="#diagnostico">Diagnóstico</a>
   </div>
@@ -898,12 +970,12 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
   <div class="wrap">
     <div class="hero-eyebrow">
       <span class="eyebrow-pill">Novo</span>
-      <span class="eyebrow-text">Flüxa Sales System — Eli + Engine Budget + CRM + Landing Page</span>
+      <span class="eyebrow-text">Novo Flüxa Sales System</span>
     </div>
 
     <h1 class="hero-h1">
       A infraestrutura de vendas que sua vidraçaria
-      <em class="hero-em">sempre precisou.</em>
+      <em class="hero-em">sempre&nbsp;precisou.</em>
     </h1>
 
     <p class="hero-p">
@@ -937,8 +1009,8 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
           <button class="m-tab-btn active" data-tab="dashboard">Dashboard</button>
           <button class="m-tab-btn" data-tab="pipeline">Pipeline</button>
           <button class="m-tab-btn" data-tab="leads">Leads</button>
-          <button class="m-tab-btn" data-tab="calendario">Calendário</button>
-          <button class="m-tab-btn" data-tab="colaboradores">Equipe</button>
+          <button class="m-tab-btn" data-tab="eli">Eli</button>
+          <button class="m-tab-btn" data-tab="fornecedores">Fornec.</button>
           <button class="m-tab-btn" data-tab="config">Config</button>
         </div>
 
@@ -957,7 +1029,9 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
             <div class="m-nav-item" data-tab="leads"><span class="m-ico">👤</span>Leads</div>
             <div class="m-nav-item" data-tab="calendario"><span class="m-ico">📅</span>Calendário</div>
             <div class="m-nav-item" data-tab="colaboradores"><span class="m-ico">👥</span>Colaboradores</div>
-            <div class="m-sidebar-spacer"></div>
+            <div class="m-sidebar-divider"></div>
+            <div class="m-nav-item" data-tab="eli"><span class="m-ico">🤖</span>Configurar Eli</div>
+            <div class="m-nav-item" data-tab="fornecedores"><span class="m-ico">📦</span>Fornecedores</div>
             <div class="m-sidebar-divider"></div>
             <div class="m-nav-item" data-tab="config"><span class="m-ico">⚙️</span>Configurações</div>
             <div class="m-nav-item" data-tab="suporte"><span class="m-ico">🎧</span>Suporte</div>
@@ -1002,7 +1076,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
               </div>
             </div>
 
-            <!-- PIPELINE — nomes de pessoas físicas -->
+            <!-- PIPELINE -->
             <div class="m-view" id="tab-pipeline">
               <div class="m-topbar">
                 <div><div class="m-page-title">Pipeline</div><div class="m-page-sub">Março 2025</div></div>
@@ -1092,6 +1166,134 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
               </div>
             </div>
 
+            <!-- CONFIGURAR ELI (novo — grid de quadradinhos + barra de progresso) -->
+            <div class="m-view" id="tab-eli">
+              <div class="m-topbar">
+                <div><div class="m-page-title">Configurar Eli</div><div class="m-page-sub">Base de conhecimento · 71% completo</div></div>
+                <div class="m-topbar-right"><div class="m-badge" style="background:rgba(56,182,255,.08);border-color:rgba(56,182,255,.2);color:#7dd3fc">🤖 Eli ativo</div></div>
+              </div>
+              <!-- Barra de progresso -->
+              <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">
+                  <div style="font-size:11px;font-weight:600;color:var(--t2)">Preenchimento da base</div>
+                  <div style="font-size:13px;font-weight:800;color:#38b6ff">71%</div>
+                </div>
+                <div style="height:5px;background:var(--bg-3);border-radius:3px;overflow:hidden">
+                  <div style="height:5px;width:71%;background:linear-gradient(90deg,#38b6ff,#6c78e0);border-radius:3px;transition:width .5s ease"></div>
+                </div>
+              </div>
+              <!-- Grid de quadradinhos -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                <div style="padding:10px 11px;background:var(--surface);border:1px solid rgba(56,182,255,.25);border-radius:9px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-size:14px">🏢</span>
+                    <span style="font-size:9px;padding:1.5px 6px;border-radius:100px;background:rgba(56,182,255,.12);color:#7dd3fc;border:1px solid rgba(56,182,255,.2);font-weight:600">✓</span>
+                  </div>
+                  <div style="font-size:11px;font-weight:600;color:var(--t1)">Apresentação</div>
+                </div>
+                <div style="padding:10px 11px;background:var(--surface);border:1px solid rgba(56,182,255,.25);border-radius:9px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-size:14px">🔧</span>
+                    <span style="font-size:9px;padding:1.5px 6px;border-radius:100px;background:rgba(56,182,255,.12);color:#7dd3fc;border:1px solid rgba(56,182,255,.2);font-weight:600">✓</span>
+                  </div>
+                  <div style="font-size:11px;font-weight:600;color:var(--t1)">Serviços</div>
+                </div>
+                <div style="padding:10px 11px;background:var(--surface);border:1px solid rgba(56,182,255,.25);border-radius:9px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-size:14px">💳</span>
+                    <span style="font-size:9px;padding:1.5px 6px;border-radius:100px;background:rgba(56,182,255,.12);color:#7dd3fc;border:1px solid rgba(56,182,255,.2);font-weight:600">✓</span>
+                  </div>
+                  <div style="font-size:11px;font-weight:600;color:var(--t1)">Pagamento</div>
+                </div>
+                <div style="padding:10px 11px;background:var(--surface);border:1px solid rgba(56,182,255,.25);border-radius:9px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-size:14px">⏱️</span>
+                    <span style="font-size:9px;padding:1.5px 6px;border-radius:100px;background:rgba(56,182,255,.12);color:#7dd3fc;border:1px solid rgba(56,182,255,.2);font-weight:600">✓</span>
+                  </div>
+                  <div style="font-size:11px;font-weight:600;color:var(--t1)">Prazo</div>
+                </div>
+                <div style="padding:10px 11px;background:var(--surface);border:1px solid rgba(56,182,255,.25);border-radius:9px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-size:14px">📍</span>
+                    <span style="font-size:9px;padding:1.5px 6px;border-radius:100px;background:rgba(56,182,255,.12);color:#7dd3fc;border:1px solid rgba(56,182,255,.2);font-weight:600">✓</span>
+                  </div>
+                  <div style="font-size:11px;font-weight:600;color:var(--t1)">Área de Atendimento</div>
+                </div>
+                <div style="padding:10px 11px;background:var(--surface);border:1px solid var(--border);border-radius:9px;opacity:.6">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-size:14px">❓</span>
+                    <span style="font-size:9px;padding:1.5px 6px;border-radius:100px;background:var(--surface-2);color:var(--t3);border:1px solid var(--border);font-weight:500">vazio</span>
+                  </div>
+                  <div style="font-size:11px;font-weight:600;color:var(--t2)">Perguntas Frequentes</div>
+                </div>
+                <div style="padding:10px 11px;background:var(--surface);border:1px solid var(--border);border-radius:9px;opacity:.6;grid-column:span 2">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+                    <span style="font-size:14px">📝</span>
+                    <span style="font-size:9px;padding:1.5px 6px;border-radius:100px;background:var(--surface-2);color:var(--t3);border:1px solid var(--border);font-weight:500">vazio</span>
+                  </div>
+                  <div style="font-size:11px;font-weight:600;color:var(--t2)">Observações</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FORNECEDORES (novo — lista → tabela de produtos) -->
+            <div class="m-view" id="tab-fornecedores">
+              <div class="m-topbar">
+                <div><div class="m-page-title">Fornecedores</div><div class="m-page-sub">Vidraçaria Blumenau Glass</div></div>
+                <div class="m-topbar-right"><div class="m-badge"><div class="m-badge-dot"></div>4 produtos</div></div>
+              </div>
+              <!-- Botão voltar simulado -->
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:11px;color:var(--t3);cursor:pointer">
+                <span>←</span><span>Voltar para fornecedores</span>
+              </div>
+              <!-- Header do fornecedor -->
+              <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--surface);border:1px solid var(--border);border-radius:9px;margin-bottom:8px">
+                <div style="width:28px;height:28px;border-radius:7px;background:rgba(56,182,255,.15);color:#7dd3fc;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">B</div>
+                <div style="flex:1"><div style="font-size:12px;font-weight:600;color:var(--t1)">Blumenau Glass</div><div style="font-size:10.5px;color:var(--t3)">3 contato · blumenau@glass.com</div></div>
+                <div style="font-size:10px;padding:3px 8px;background:rgba(56,182,255,.08);border:1px solid rgba(56,182,255,.15);border-radius:6px;color:#7dd3fc;font-weight:500">↑ CSV</div>
+              </div>
+              <!-- Tabela de produtos -->
+              <div style="background:var(--bg-3);border:1px solid var(--border);border-radius:9px;overflow:hidden">
+                <!-- Header tabela -->
+                <div style="display:grid;grid-template-columns:2fr 1fr 0.7fr 0.8fr 0.9fr;padding:7px 10px;background:var(--surface);border-bottom:1px solid var(--border)">
+                  <span style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em">Serviço</span>
+                  <span style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em">Tipo</span>
+                  <span style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em">Esp.</span>
+                  <span style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em">Custo</span>
+                  <span style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em">Venda</span>
+                </div>
+                <!-- Rows -->
+                <div style="display:grid;grid-template-columns:2fr 1fr 0.7fr 0.8fr 0.9fr;padding:7px 10px;border-bottom:1px solid var(--border);align-items:center">
+                  <span style="font-size:11px;font-weight:600;color:var(--t1)">Box</span>
+                  <span style="font-size:11px;color:var(--t2)">Incolor</span>
+                  <span style="font-size:11px;color:var(--t2)">8mm</span>
+                  <span style="font-size:11px;color:var(--t2)">R$280</span>
+                  <span style="font-size:11px;font-weight:700;color:#38b6ff">R$396</span>
+                </div>
+                <div style="display:grid;grid-template-columns:2fr 1fr 0.7fr 0.8fr 0.9fr;padding:7px 10px;border-bottom:1px solid var(--border);align-items:center">
+                  <span style="font-size:11px;font-weight:600;color:var(--t1)">Espelho</span>
+                  <span style="font-size:11px;color:var(--t2)">—</span>
+                  <span style="font-size:11px;color:var(--t2)">4mm</span>
+                  <span style="font-size:11px;color:var(--t2)">R$120</span>
+                  <span style="font-size:11px;font-weight:700;color:#38b6ff">R$170</span>
+                </div>
+                <div style="display:grid;grid-template-columns:2fr 1fr 0.7fr 0.8fr 0.9fr;padding:7px 10px;border-bottom:1px solid var(--border);align-items:center">
+                  <span style="font-size:11px;font-weight:600;color:var(--t1)">Guarda-corpo</span>
+                  <span style="font-size:11px;color:var(--t2)">Temperado</span>
+                  <span style="font-size:11px;color:var(--t2)">10mm</span>
+                  <span style="font-size:11px;color:var(--t2)">R$420</span>
+                  <span style="font-size:11px;font-weight:700;color:#38b6ff">R$595</span>
+                </div>
+                <!-- Footer totais -->
+                <div style="display:grid;grid-template-columns:2fr 1fr 0.7fr 0.8fr 0.9fr;padding:7px 10px;background:rgba(56,182,255,.04);align-items:center">
+                  <span style="font-size:10.5px;font-weight:700;color:var(--t2)">3 item(s)</span>
+                  <span></span><span></span>
+                  <span style="font-size:10.5px;font-weight:700;color:var(--t2)">R$820</span>
+                  <span style="font-size:10.5px;font-weight:700;color:#38b6ff">R$1.161</span>
+                </div>
+              </div>
+            </div>
+
             <!-- CONFIG -->
             <div class="m-view" id="tab-config">
               <div class="m-topbar"><div><div class="m-page-title">Configurações</div><div class="m-page-sub">Workspace · Dzarte</div></div></div>
@@ -1127,8 +1329,6 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
                 <div style="padding:10px 13px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:11.5px;color:var(--t2);display:flex;align-items:center;gap:9px"><span>🎥</span><span>Agendar sessão de onboarding</span></div>
               </div>
             </div>
-
-          </div><!-- /m-main -->
         </div><!-- /mockup-body -->
 
         <div class="eli-strip">
@@ -1148,6 +1348,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
     <div class="logos-label">Vidraçarias que já transformaram seus resultados</div>
     <div class="logos-row">
       <div class="logo-item"><span style="font-size:16px;opacity:.5">🏢</span>Dzarte Vidros</div>
+      <div class="logo-item"><span style="font-size:16px;opacity:.5">🏭</span>WKS LTDA</div>
     </div>
   </div>
 </div>
@@ -1185,13 +1386,155 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
   </div>
 </section>
 
+<!-- ══ ECOSSISTEMA ══ -->
+<section class="eco-section" id="solucao">
+  <div class="wrap">
+    <div class="eco-header r">
+      <div class="section-eyebrow">Inteligência Integrada</div>
+      <h2 class="section-h2">Um ecossistema que<br>conversa entre si.</h2>
+      <p class="section-p" style="max-width:560px">Na Flüxa, nada funciona isolado. Criamos um organismo vivo onde cada módulo alimenta o próximo — em tempo real, sem intervenção humana.</p>
+    </div>
+
+    <div class="eco-flow r d1">
+      <!-- Nó 1 — Eli -->
+      <div class="eco-node">
+        <div class="eco-node-icon ic-blue" style="font-size:22px">🤖</div>
+        <div class="eco-node-title">Eli — AI SDR</div>
+        <div class="eco-node-desc">Qualifica o lead e atualiza o CRM instantaneamente com dados técnicos, nível de interesse e próxima ação.</div>
+      </div>
+      <!-- Arrow -->
+      <div class="eco-arrow">
+        <svg width="24" height="24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <!-- Nó 2 — CRM -->
+      <div class="eco-node">
+        <div class="eco-node-icon ic-green" style="font-size:22px">📊</div>
+        <div class="eco-node-title">CRM & Pipeline</div>
+        <div class="eco-node-desc">Identifica o momento certo e comanda a Eli para realizar o follow-up automaticamente, sem esquecer ninguém.</div>
+      </div>
+      <!-- Arrow -->
+      <div class="eco-arrow">
+        <svg width="24" height="24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <!-- Nó 3 — Engine Budget -->
+      <div class="eco-node">
+        <div class="eco-node-icon ic-sky" style="font-size:22px">📄</div>
+        <div class="eco-node-title">Engine Budget</div>
+        <div class="eco-node-desc">Gera o orçamento em segundos e alimenta o histórico do cliente no CRM — dando contexto para cada próxima interação.</div>
+      </div>
+    </div>
+
+    <div class="eco-bottom r d2">
+      <div class="eco-bottom-text">
+        <div class="eco-bottom-title">É o fim dos dados perdidos.</div>
+        <div class="eco-bottom-desc">Não é automação de tarefas. É <strong style="color:var(--t1);font-weight:600">Engenharia de Receita em tempo real</strong> — onde cada ação gera inteligência para a próxima. Seu processo comercial se torna uma máquina que aprende e melhora sozinha.</div>
+      </div>
+      <div class="eco-tags">
+        <span class="eco-tag">Zero dado perdido</span>
+        <span class="eco-tag">Follow-up automático</span>
+        <span class="eco-tag">Contexto em cada interação</span>
+        <span class="eco-tag">Decisões baseadas em dados</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DZARTE ══ -->
+<section class="dzarte-section">
+  <div class="wrap">
+    <div class="r" style="text-align:center;max-width:520px;margin:0 auto 48px">
+      <div class="section-eyebrow" style="color:#f59e0b;border-color:rgba(245,158,11,.3)">Rede Nacional</div>
+      <h2 class="section-h2">O próximo nível da<br>sua vidraçaria.</h2>
+    </div>
+
+    <div class="dzarte-card r">
+      <div class="dzarte-top">
+        <!-- Esquerda — narrativa -->
+        <div>
+          <div class="dzarte-badge">
+            <div class="dzarte-badge-dot"></div>
+            Em Breve — Roadmap Fase 3
+          </div>
+          <h3 class="dzarte-h">O Futuro da sua Vidraçaria<br>começa aqui: <em>Rede Dzarte.</em></h3>
+          <p class="dzarte-p">A Dzarte está se tornando a marca nacional de referência em vidros — o rosto que atrai leads de todo o Brasil e os distribui exclusivamente para quem usa a infraestrutura Flüxa.<br><br>Ao contratar a Flüxa hoje, você não ganha apenas tecnologia; você entra para a <strong style="color:#fcd34d;font-weight:600">lista de espera prioritária</strong> para ser o braço executor oficial da Dzarte na sua região.</p>
+          <div class="dzarte-steps">
+            <div class="dzarte-step">
+              <div class="dz-num">01</div>
+              <div>
+                <div class="dz-step-title">Exclusividade territorial</div>
+                <div class="dz-step-desc">Uma empresa por região. Quem chegar primeiro garante o território.</div>
+              </div>
+            </div>
+            <div class="dzarte-step">
+              <div class="dz-num">02</div>
+              <div>
+                <div class="dz-step-title">Leads nacionais para você</div>
+                <div class="dz-step-desc">A Dzarte investe em tráfego nacional. Os leads chegam direto no seu Eli.</div>
+              </div>
+            </div>
+            <div class="dzarte-step">
+              <div class="dz-num">03</div>
+              <div>
+                <div class="dz-step-title">Marca + credibilidade + escala</div>
+                <div class="dz-step-desc">Você opera com a força de uma marca nacional, mantendo sua autonomia.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direita — roadmap -->
+        <div>
+          <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px">Roadmap Flüxa</div>
+          <div class="dzarte-roadmap">
+            <div class="dzarte-phase">
+              <div class="dp-pill dp-done">✓ Fase 1</div>
+              <div>
+                <div class="dp-title">Infraestrutura Core</div>
+                <div class="dp-desc">Eli SDR, Engine Budget, CRM & Pipeline — sistema completo no ar.</div>
+              </div>
+            </div>
+            <div class="dzarte-phase">
+              <div class="dp-pill dp-current">→ Fase 2</div>
+              <div>
+                <div class="dp-title">Expansão de Serviços</div>
+                <div class="dp-desc">Landing Pages de Elite, Tráfego de Precisão e escala para novas vidraçarias.</div>
+              </div>
+            </div>
+            <div class="dzarte-phase">
+              <div class="dp-pill dp-soon">Fase 3</div>
+              <div>
+                <div class="dp-title">Rede Nacional Dzarte</div>
+                <div class="dp-desc">Distribuição nacional de leads, franquia de marca e parceiros exclusivos por região.</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:20px;padding:16px 18px;background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15);border-radius:10px">
+            <div style="font-size:12.5px;font-weight:600;color:#fcd34d;margin-bottom:4px">Vagas por estado: limitadas</div>
+            <div style="font-size:12px;color:var(--t2);font-weight:300;line-height:1.55">Apenas empresas que hoje usam a Flüxa estarão na lista de espera prioritária para Fase 3.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dzarte-bottom">
+        <div class="dzarte-bottom-text">
+          <strong>Não perca sua janela.</strong> O mapa de regiões disponíveis está sendo definido agora. Quem entrar para a Flüxa hoje garante prioridade absoluta quando a Fase 3 abrir.
+        </div>
+        <a href="#diagnostico" class="btn-hero" style="background:linear-gradient(135deg,#d97706,#f59e0b);box-shadow:0 0 0 1px rgba(245,158,11,.4),0 0 32px rgba(245,158,11,.2);animation:none;flex-shrink:0">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Garantir minha vaga na lista
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ BENTO ══ -->
-<section class="bento-section" id="solucao">
+<section class="bento-section" id="modulos">
   <div class="wrap">
     <div class="bento-header r">
       <div class="section-eyebrow">Flüxa Sales System</div>
-      <h2 class="section-h2">Quatro módulos.<br>Um motor de vendas.</h2>
-      <p class="section-p">Do primeiro contato no WhatsApp ao contrato assinado — tudo integrado, automatizado e com visibilidade total.</p>
+      <h2 class="section-h2">Seis soluções.<br>Um motor de receita.</h2>
+      <p class="section-p">Do primeiro contato no WhatsApp ao contrato assinado, e do tráfego pago à rede nacional — tudo integrado, automatizado e com visibilidade total.</p>
     </div>
 
     <div class="bento">
@@ -1309,6 +1652,62 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
           </div>
         </div>
       </div>
+
+      <!-- ── LINHA 3: Novos serviços ── -->
+
+      <!-- Card 5 — Landing Page de Elite -->
+      <div class="bento-card r d1">
+        <div class="bc-icon ic-sky float float-d1">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="bc-label">Serviço 05</div>
+        <div class="bc-title">Landing Page de Elite</div>
+        <div class="bc-desc">Sua vidraçaria com a mesma tecnologia de captura da Flüxa. Páginas ultra-rápidas e otimizadas para converter visitantes em orçamentos reais.</div>
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">✓</div>Performance Core Web Vitals A+</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">✓</div>Formulário integrado à Eli 24/7</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">✓</div>Identidade visual da sua empresa</div>
+        </div>
+        <div class="bc-stat" style="margin-top:18px"><span class="bc-stat-val" style="font-size:22px;color:#38bdf8">24h</span><span class="bc-stat-label">para ir ao ar</span></div>
+      </div>
+
+      <!-- Card 6 — Tráfego de Precisão -->
+      <div class="bento-card r d2">
+        <div class="bc-icon ic-blue float-slow float-d2">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div class="bc-label">Serviço 06</div>
+        <div class="bc-title">Tráfego de Precisão</div>
+        <div class="bc-desc">Gestão de anúncios (Google/Meta) focada em atrair o público certo para alimentar sua IA Eli. Transformamos investimento em demanda qualificada.</div>
+        <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+          <div style="font-size:11px;padding:4px 12px;border-radius:100px;background:rgba(94,106,210,.1);color:#a5b0ff;border:1px solid rgba(94,106,210,.2);font-weight:500">Google Ads</div>
+          <div style="font-size:11px;padding:4px 12px;border-radius:100px;background:rgba(94,106,210,.1);color:#a5b0ff;border:1px solid rgba(94,106,210,.2);font-weight:500">Meta Ads</div>
+          <div style="font-size:11px;padding:4px 12px;border-radius:100px;background:rgba(94,106,210,.1);color:#a5b0ff;border:1px solid rgba(94,106,210,.2);font-weight:500">Funil completo</div>
+        </div>
+        <div style="margin-top:16px;background:var(--bg-3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="text-align:center"><div style="font-size:16px;font-weight:800;color:#a5b0ff;letter-spacing:-.03em">3x</div><div style="font-size:10px;color:var(--t3);margin-top:2px">ROAS médio</div></div>
+          <div style="text-align:center"><div style="font-size:16px;font-weight:800;color:#a5b0ff;letter-spacing:-.03em">-40%</div><div style="font-size:10px;color:var(--t3);margin-top:2px">Custo/lead</div></div>
+        </div>
+      </div>
+
+      <!-- Card 7 — Rede Nacional Dzarte (Em Breve) -->
+      <div class="bento-card r d3" style="position:relative;overflow:hidden">
+        <div style="position:absolute;top:16px;right:16px;font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;background:rgba(245,158,11,.1);color:#fcd34d;border:1px solid rgba(245,158,11,.25);letter-spacing:.04em;text-transform:uppercase">Em Breve</div>
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(245,158,11,.04) 0%,transparent 60%);pointer-events:none"></div>
+        <div class="bc-icon ic-amber float float-d1">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="bc-label" style="color:#f59e0b">Rede Exclusiva</div>
+        <div class="bc-title">Rede Nacional Dzarte</div>
+        <div class="bc-desc">Garanta seu lugar na elite. Ao usar a Flüxa, sua empresa entra na lista de espera para se tornar um parceiro oficial e braço executor da marca Dzarte em sua região.</div>
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">★</div>Exclusividade territorial por região</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">★</div>Marca + credibilidade nacional</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--t2)"><div style="width:18px;height:18px;border-radius:5px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px">★</div>Vagas limitadas por estado</div>
+        </div>
+        <div class="bc-stat" style="margin-top:18px"><span class="bc-stat-val" style="font-size:18px;color:#f59e0b">Lista</span><span class="bc-stat-label">de espera aberta</span></div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1401,7 +1800,7 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
           <div class="case-brand-box">🏢</div>
           <div>
             <div class="case-brand-name">Dzarte Vidros</div>
-            <div class="case-brand-sub">Vidraçaria · São Paulo, SP · Cliente desde 2024</div>
+            <div class="case-brand-sub">Vidraçaria · Blumenau, SC · Cliente desde 2024</div>
           </div>
         </div>
         <div class="case-verified pulse-slow">
@@ -1426,8 +1825,8 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
       <div class="case-quote">
         <div class="quote-mark">"</div>
         <div>
-          <div class="quote-text">A Flüxa transformou completamente como operamos. Antes eu era refém do WhatsApp, perdendo lead, sem saber o que estava entrando. Hoje o Eli qualifica, o sistema gera orçamento, e eu só entro quando é hora de fechar. Saímos de R$ 80k para mais de R$ 500k de faturamento em menos de um ano.</div>
-          <div class="quote-cite">— Fundador, Dzarte Vidros &nbsp;·&nbsp; ★★★★★ 5.0 satisfação</div>
+          <div class="quote-text">No começo, eu achei que era só mais um sistema complicado. Eu vivia sobrecarregado, sendo 'secretário' de WhatsApp e perdendo prazo de orçamento porque não dava conta de calcular tudo. A Flüxa não fez milagre, ela trouxe infraestrutura.</div>
+          <div class="quote-cite">— Israel, dono da Dzarte Vidros &nbsp;·&nbsp; ★★★★★ 5.0 satisfação</div>
         </div>
       </div>
     </div>
@@ -1442,10 +1841,6 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
       <p class="cta-p">Agende um diagnóstico gratuito e descubra exatamente como a Flüxa pode transformar o processo comercial da sua vidraçaria.</p>
 
       <div style="max-width:480px;margin:0 auto;text-align:left">
-        <div style="display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:#fcd34d;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);padding:6px 13px;border-radius:100px;margin-bottom:24px">
-          <div class="urg-dot"></div>
-          Restam apenas <strong style="color:#fbbf24;margin:0 3px">4 vagas</strong> para este mês
-        </div>
         <form id="mainForm" onsubmit="submitForm(event)">
           <div class="form-row" style="margin-bottom:16px">
             <div class="fg" style="margin-bottom:0">
@@ -1486,6 +1881,16 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
           <div class="fg">
             <label class="fl" for="f-wa">WhatsApp</label>
             <input class="fi" id="f-wa" type="tel" placeholder="(11) 99999-9999" required>
+          </div>
+          <!-- Checkbox Rede Dzarte -->
+          <div style="margin-bottom:20px">
+            <label style="display:flex;align-items:flex-start;gap:11px;cursor:pointer;padding:14px 16px;border:1px solid rgba(245,158,11,.2);border-radius:10px;background:rgba(245,158,11,.04);transition:border-color .2s" onmouseover="this.style.borderColor='rgba(245,158,11,.4)'" onmouseout="this.style.borderColor='rgba(245,158,11,.2)'">
+              <input type="checkbox" id="f-dzarte" style="width:16px;height:16px;margin-top:2px;accent-color:#f59e0b;cursor:pointer;flex-shrink:0">
+              <div>
+                <div style="font-size:13px;font-weight:600;color:#fcd34d;margin-bottom:3px">⭐ Quero entrar na Rede Dzarte (Lista de Espera)</div>
+                <div style="font-size:12px;color:var(--t2);font-weight:300;line-height:1.5">Tenho interesse em me tornar um parceiro oficial e braço executor da marca Dzarte na minha região.</div>
+              </div>
+            </label>
           </div>
           <button type="submit" class="f-submit" id="fBtn">
             🚀 &nbsp;Garantir meu Diagnóstico Gratuito
@@ -1594,6 +1999,7 @@ async function submitForm(e) {
     cargo:       document.getElementById('f-cargo').value,
     faturamento: document.getElementById('f-fat').value,
     whatsapp:    document.getElementById('f-wa').value.trim(),
+    rede_dzarte: document.getElementById('f-dzarte').checked,
     origem:      'landing-fluxa',
     timestamp:   new Date().toISOString()
   };
