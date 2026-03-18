@@ -2089,3 +2089,10 @@ const sections = [...document.querySelectorAll('section[id]')];
 const navAs = document.querySelectorAll('#navCenter a');
 window.addEventListener('scroll', () => {
   let cur = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navAs.forEach(a => { a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--t1)' : ''; });
+}, { passive: true });
+</script>
+
+</body>
+</html>
