@@ -1873,6 +1873,19 @@ footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-ind
             </div>
           </div>
           <div class="fg">
+            <label class="fl" for="f-nicho">Segmento da empresa</label>
+            <div class="sw">
+              <select class="fs" id="f-nicho" required>
+                <option value="" disabled selected>Selecione seu segmento</option>
+                <option value="vidracaria">Vidraçaria / Vidros</option>
+                <option value="clinica">Clínica / Saúde / Estética</option>
+                <option value="restaurante">Restaurante / Lanchonete / Food</option>
+                <option value="outro">Outro</option>
+              </select>
+              <span class="sa">▾</span>
+            </div>
+          </div>
+          <div class="fg">
             <label class="fl" for="f-cargo">Cargo</label>
             <div class="sw">
               <select class="fs" id="f-cargo" required>
@@ -2029,6 +2042,7 @@ async function submitForm(e) {
   const payload = {
     nome:        document.getElementById('f-nome').value.trim(),
     empresa:     document.getElementById('f-empresa').value.trim(),
+    nicho:       document.getElementById('f-nicho').value,
     cargo:       document.getElementById('f-cargo').value,
     faturamento: document.getElementById('f-fat').value,
     whatsapp:    document.getElementById('f-wa').value.trim(),
@@ -2042,7 +2056,7 @@ async function submitForm(e) {
 
   try {
     const res = await fetch(
-      'https://n8n-n8n.uhcnbw.easypanel.host/webhook/d079ece0-6062-4d70-9d05-c850aae89c1b',
+      'https://n8n-n8n.uhcnbw.easypanel.host/webhook/fluxa-lp-lead',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
