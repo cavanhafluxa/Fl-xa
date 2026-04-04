@@ -1,1119 +1,749 @@
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║  FLÜXA FOOD'S — GUIA DE IMAGENS                                  ║
+╠══════════════════════════════════════════════════════════════════╣
+║  Coloque os arquivos na MESMA PASTA que este index.html          ║
+║                                                                   ║
+║  LOGO (nav + footer):                                             ║
+║    → logo.png  (ou .webp / .jpeg — edite o src abaixo)           ║
+║                                                                   ║
+║  CARDS DO LEQUE (hero):                                           ║
+║    → card-fidelidade.jpg   (card esquerda — Fidelidade)          ║
+║    → card-kitchens.jpg     (card — Kitchen's App)                ║
+║    → card-eli.jpg          (card CENTRAL — Eli Food's)           ║
+║    → card-cardapio.jpg     (card — Cardápio Exclusivo)           ║
+║    → card-trafego.jpg      (card direita — Tráfego Pago)         ║
+║                                                                   ║
+║  Formatos aceitos: .jpg .jpeg .png .webp .avif                   ║
+║  Tamanho ideal: 400×600px mínimo, proporção 2:3                  ║
+╚══════════════════════════════════════════════════════════════════╝
+-->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Flüxa</title>
-<link rel="icon" type="image/png" href="icon.png">
+<title>Flüxa Food's — Mais pedidos. Todo dia.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,200;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <style>
-/* ════════════════════════════════════════
-   TOKENS
-════════════════════════════════════════ */
-:root{
-  --bg:#030308;--bg2:#08080f;--bg3:#0d0d18;--bg4:#121220;
-  --s1:rgba(255,255,255,.035);--s2:rgba(255,255,255,.065);--s3:rgba(255,255,255,.1);
-  --b1:rgba(255,255,255,.07);--b2:rgba(255,255,255,.13);--b3:rgba(255,255,255,.22);
-  --t1:#eef0f8;--t2:#7a84a0;--t3:#3d4460;
-  --sky:#38b6ff;--sky2:#0ea5e9;--ink:#0058b8;
-  --violet:#6c78e0;--amber:#f59e0b;--lilac:#8b5cf6;--green:#22c55e;
-  --font:'DM Sans',system-ui,sans-serif;
-  --ease-expo:cubic-bezier(.16,1,.3,1);
-  --ease-spring:cubic-bezier(.34,1.56,.64,1);
-  --ease-out:cubic-bezier(.25,.46,.45,.94);
+:root {
+  --bg:    #F5E6D8;
+  --bg2:   #EDD9C8;
+  --bg3:   #E6CDB5;
+  --red:   #E8383A;
+  --red2:  #C82E30;
+  --red3:  #FF5254;
+  --dark:  #1A0A0A;
+  --text:  #2D1515;
+  --muted: #8A6060;
+  --muted2:#C4A090;
+  --border:rgba(45,21,21,.10);
+  --border2:rgba(45,21,21,.06);
+  --f: 'DM Sans', system-ui, sans-serif;
+  --ease: cubic-bezier(.16,1,.3,1);
+  --spring: cubic-bezier(.34,1.56,.64,1);
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{overflow-x:hidden;scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--t1);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { overflow-x:hidden; scroll-behavior:smooth }
+body { font-family:var(--f); background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; overflow-x:hidden }
 
-/* ════════════════════════════════════════
-   CURSOR MAGNÉTICO
-════════════════════════════════════════ */
-#CUR{position:fixed;width:8px;height:8px;background:var(--sky);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;will-change:left,top;transition:width .15s,height .15s,background .2s}
-#RING{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(56,182,255,.32);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);will-change:left,top;transition:width .3s var(--ease-expo),height .3s var(--ease-expo),opacity .3s,border-color .3s;opacity:.5}
-body:not(.hm) #CUR,body:not(.hm) #RING{display:none}
+/* CURSOR */
+#CUR { position:fixed; width:8px; height:8px; background:var(--red); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .15s,height .15s }
+#RING { position:fixed; width:32px; height:32px; border-radius:50%; border:1.5px solid rgba(232,56,58,.35); pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:width .28s var(--ease),height .28s var(--ease); opacity:.6 }
+body:not(.hm) #CUR, body:not(.hm) #RING { display:none }
 
-/* ════════════════════════════════════════
-   GRAIN VIVO
-════════════════════════════════════════ */
-#GRAIN{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:9997;opacity:.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain .35s steps(3) infinite}
-@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,-6%)}40%{transform:translate(-8%,3%)}60%{transform:translate(4%,-12%)}80%{transform:translate(-2%,8%)}100%{transform:translate(5%,-4%)}}
+/* GRAIN */
+#GR { position:fixed; inset:-50%; width:200%; height:200%; pointer-events:none; z-index:9997; opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain .45s steps(3) infinite }
+@keyframes grain { 0%{transform:translate(0,0)} 33%{transform:translate(-3%,-4%)} 66%{transform:translate(2%,5%)} 100%{transform:translate(-1%,-2%)} }
 
-/* ════════════════════════════════════════
-   ORBS ATMOSFÉRICOS
-════════════════════════════════════════ */
-.orb{position:fixed;border-radius:50%;filter:blur(150px);pointer-events:none;z-index:0;will-change:transform}
-.o1{width:1100px;height:1100px;background:radial-gradient(circle,rgba(42,62,200,.14),transparent 68%);top:-500px;left:-400px;animation:oa 30s ease-in-out infinite alternate}
-.o2{width:700px;height:700px;background:radial-gradient(circle,rgba(14,165,233,.1),transparent 68%);top:25%;right:-300px;animation:ob 24s ease-in-out infinite alternate}
-.o3{width:600px;height:600px;background:radial-gradient(circle,rgba(56,182,255,.065),transparent 68%);bottom:-150px;left:15%;animation:oc 34s ease-in-out infinite alternate}
-.o4{width:400px;height:400px;background:radial-gradient(circle,rgba(139,92,246,.055),transparent 70%);top:60%;left:45%;animation:od 28s ease-in-out infinite alternate}
-@keyframes oa{from{transform:translate(0,0) scale(1)}to{transform:translate(80px,60px) scale(1.12)}}
-@keyframes ob{from{transform:translate(0,0)}to{transform:translate(-60px,80px) scale(1.1)}}
-@keyframes oc{from{transform:translate(0,0) scale(1.08)}to{transform:translate(50px,-70px) scale(1)}}
-@keyframes od{from{transform:translate(0,0)}to{transform:translate(-40px,50px) scale(1.15)}}
+/* REVEAL */
+[data-r] { opacity:0; transition:opacity 1s var(--ease), transform 1s var(--ease) }
+[data-r].in { opacity:1; transform:none!important }
+[data-r="up"]    { transform:translateY(48px) }
+[data-r="scale"] { transform:scale(.96) translateY(20px) }
+[data-r="fade"]  { transform:none }
+[data-d="1"]{ transition-delay:.07s }[data-d="2"]{ transition-delay:.16s }
+[data-d="3"]{ transition-delay:.27s }[data-d="4"]{ transition-delay:.4s }
+[data-d="5"]{ transition-delay:.55s }
 
-/* ════════════════════════════════════════
-   LAYOUT
-════════════════════════════════════════ */
-.wrap{max-width:1220px;margin:0 auto;padding:0 56px;position:relative;z-index:2}
-
-/* ════════════════════════════════════════
-   SISTEMA DE REVEAL — STAGGER PROFUNDO
-════════════════════════════════════════ */
-[data-r]{opacity:0;will-change:opacity,transform;transition:opacity 1.1s var(--ease-expo),transform 1.1s var(--ease-expo)}
-[data-r].in{opacity:1;transform:none!important}
-[data-r="up"]{transform:translateY(52px)}
-[data-r="up-sm"]{transform:translateY(28px)}
-[data-r="up-lg"]{transform:translateY(80px)}
-[data-r="left"]{transform:translateX(-56px)}
-[data-r="right"]{transform:translateX(56px)}
-[data-r="scale"]{transform:scale(.9) translateY(32px)}
-[data-r="scale-sm"]{transform:scale(.96) translateY(18px)}
-[data-r="fade"]{transform:none}
-[data-r="rot"]{transform:rotate(-4deg) translateY(40px)}
-/* delays 0→12 */
-[data-d="0"]{transition-delay:0s}
-[data-d="1"]{transition-delay:.06s}[data-d="2"]{transition-delay:.14s}
-[data-d="3"]{transition-delay:.24s}[data-d="4"]{transition-delay:.36s}
-[data-d="5"]{transition-delay:.50s}[data-d="6"]{transition-delay:.66s}
-[data-d="7"]{transition-delay:.84s}[data-d="8"]{transition-delay:1.04s}
-[data-d="9"]{transition-delay:1.26s}[data-d="10"]{transition-delay:1.5s}
-
-/* ════════════════════════════════════════
-   FÍSICA DE FLUTUAÇÃO — 6 VARIAÇÕES
-════════════════════════════════════════ */
-@keyframes floatA{
-  0%,100%{transform:translateY(0px) rotate(0deg)}
-  25%{transform:translateY(-18px) rotate(.7deg)}
-  50%{transform:translateY(-8px) rotate(-.3deg)}
-  75%{transform:translateY(-14px) rotate(.5deg)}
+@keyframes heroIn  { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:none} }
+@keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+@keyframes ticker  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes live    { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:.5} }
+@keyframes blink   { 0%,100%{opacity:1} 50%{opacity:.25} }
+@keyframes spin    { to{transform:rotate(360deg)} }
+@keyframes bobA    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes bobB    { 0%,100%{transform:translateY(0)} 40%{transform:translateY(-8px) rotate(1deg)} }
+@keyframes fall {
+  0%   { opacity:0; transform:translateY(0) rotate(0deg) scale(.7) }
+  6%   { opacity:.5 }
+  88%  { opacity:.5 }
+  100% { opacity:0; transform:translateY(calc(100vh - 0px)) rotate(500deg) scale(1.1) }
 }
-@keyframes floatB{
-  0%,100%{transform:translateY(0px) rotate(0deg) scale(1)}
-  30%{transform:translateY(-22px) rotate(-1deg) scale(1.01)}
-  65%{transform:translateY(-9px) rotate(.6deg) scale(1)}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:600; height:54px;
+  display:flex; align-items:center; justify-content:space-between; padding:0 36px;
+  transition:all .4s var(--ease)
 }
-@keyframes floatC{
-  0%,100%{transform:translateY(0) translateX(0)}
-  40%{transform:translateY(-14px) translateX(5px)}
-  70%{transform:translateY(-6px) translateX(-3px)}
+nav.sc { background:rgba(245,230,216,.92); backdrop-filter:blur(24px); border-bottom:1px solid var(--border) }
+.n-logo { display:flex; align-items:center; text-decoration:none }
+/* ── LOGO: troque "logo.png" pelo nome do seu arquivo ── */
+.n-logo img { height:22px; width:auto }
+.n-links { display:flex; margin:0 auto }
+.n-links a { font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; padding:6px 14px; transition:color .2s; letter-spacing:-.01em }
+.n-links a:hover { color:var(--text) }
+.n-cta {
+  display:inline-flex; align-items:center; gap:6px; padding:8px 20px; border-radius:100px;
+  background:var(--red); color:#fff; font-size:13px; font-weight:700; font-family:var(--f);
+  text-decoration:none; border:none; cursor:pointer; letter-spacing:-.01em;
+  transition:all .26s var(--ease); box-shadow:0 4px 16px rgba(232,56,58,.28)
 }
-@keyframes floatD{
-  0%,100%{transform:translateY(0) scale(1)}
-  50%{transform:translateY(-10px) scale(1.025)}
+.n-cta:hover { background:var(--red2); transform:translateY(-2px); box-shadow:0 8px 28px rgba(232,56,58,.4) }
+.mob-btn { display:none; background:none; border:none; color:var(--muted); cursor:pointer; font-size:22px }
+
+/* WRAP */
+.wrap { max-width:1140px; margin:0 auto; padding:0 40px; position:relative; z-index:2 }
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:96px 40px 0; text-align:center;
+  position:relative; overflow:hidden; background:var(--bg)
 }
-@keyframes floatE{
-  0%,100%{transform:translateY(0) rotate(0)}
-  35%{transform:translateY(-16px) rotate(1.2deg)}
-  70%{transform:translateY(-5px) rotate(-.4deg)}
+
+/* CASCADE — ocupa TODO o hero, 50% opacidade */
+#cascade {
+  position:absolute;
+  inset:0;               /* cobre 100% do hero */
+  pointer-events:none;
+  z-index:1;
+  overflow:hidden        /* não sai do hero */
 }
-@keyframes floatF{
-  0%,100%{transform:translateY(0)}
-  60%{transform:translateY(-20px)}
+.fd {
+  position:absolute;
+  top:-70px;
+  pointer-events:none;
+  animation:fall linear forwards;
+  opacity:0;
+  filter:drop-shadow(0 3px 6px rgba(232,56,58,.10))
 }
-.flA{animation:floatA 7s ease-in-out infinite}
-.flB{animation:floatB 9s ease-in-out infinite}
-.flC{animation:floatC 6s ease-in-out infinite}
-.flD{animation:floatD 8s ease-in-out infinite}
-.flE{animation:floatE 11s ease-in-out infinite}
-.flF{animation:floatF 5.5s ease-in-out infinite}
-/* delay classes */
-.dl0{animation-delay:0s}.dl1{animation-delay:-1.4s}.dl2{animation-delay:-3.1s}
-.dl3{animation-delay:-5.2s}.dl4{animation-delay:-7s}.dl5{animation-delay:-2.5s}
 
-/* ════════════════════════════════════════
-   KEYFRAMES GERAIS
-════════════════════════════════════════ */
-@keyframes shimmer{0%,100%{filter:brightness(1) drop-shadow(0 0 12px rgba(56,182,255,.55))}50%{filter:brightness(1.4) drop-shadow(0 0 32px rgba(56,182,255,.95))}}
-@keyframes gradDrift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@keyframes pulsering{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.6);opacity:0}}
-@keyframes linedraw{from{stroke-dashoffset:2000}to{stroke-dashoffset:0}}
-@keyframes tagAppear{from{opacity:0;transform:translateY(12px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes liveDot{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(56,182,255,.6)}50%{transform:scale(1.6);box-shadow:0 0 0 6px rgba(56,182,255,0)}}
-@keyframes scanLine{0%{top:-2px;opacity:0}15%{opacity:.6}85%{opacity:.3}100%{top:100%;opacity:0}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes heroIn{from{opacity:0;transform:translateY(80px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes counterUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+/* pill label */
+.h-pill {
+  display:inline-flex; align-items:center; gap:8px; padding:5px 14px;
+  background:rgba(232,56,58,.10); border:1px solid rgba(232,56,58,.20);
+  border-radius:100px; font-size:11px; font-weight:600; color:var(--red);
+  letter-spacing:.04em; text-transform:uppercase;
+  margin-bottom:28px; opacity:0; animation:fadeIn .8s .2s var(--ease) forwards
+}
+.h-pill-dot { width:6px; height:6px; border-radius:50%; background:var(--red); animation:live 2s infinite }
 
-/* ════════════════════════════════════════
-   GRADIENT TEXT
-════════════════════════════════════════ */
-.gt{background:linear-gradient(130deg,#7dd3fc 0%,#a5b4fc 30%,#c084fc 55%,#38b6ff 80%,#7dd3fc 100%);background-size:350% 350%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradDrift 8s ease infinite}
-.glow-num{animation:shimmer 3.5s ease-in-out infinite}
+.h-title {
+  font-size:clamp(44px,7.5vw,108px); font-weight:800; line-height:.92;
+  letter-spacing:-.04em; color:var(--text); margin-bottom:22px;
+  opacity:0; animation:heroIn .9s .32s var(--ease) forwards; position:relative; z-index:2
+}
+.h-title em { font-style:italic; font-weight:300; color:var(--red) }
 
-/* PULSE RING */
-.pr{position:relative}
-.pr::before,.pr::after{content:'';position:absolute;inset:-2px;border-radius:inherit;border:1.5px solid rgba(56,182,255,.5);animation:pulsering 2.8s ease-out infinite;pointer-events:none}
-.pr::after{animation-delay:1.4s}
+.h-sub {
+  font-size:16px; font-weight:400; color:var(--muted); line-height:1.7;
+  max-width:400px; margin:0 auto 40px;
+  opacity:0; animation:heroIn .8s .5s var(--ease) forwards; position:relative; z-index:2
+}
 
-/* ════════════════════════════════════════
-   SCANLINE — EFEITO CRT SUTIL
-════════════════════════════════════════ */
-.scan{position:relative;overflow:hidden}
-.scan::after{content:'';position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.15),transparent);animation:scanLine 4s ease-in-out infinite;pointer-events:none;z-index:10}
+.h-btns {
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+  opacity:0; animation:heroIn .7s .64s var(--ease) forwards;
+  margin-bottom:72px; position:relative; z-index:2
+}
+.btn-main {
+  display:inline-flex; align-items:center; gap:8px; padding:13px 28px;
+  border-radius:100px; background:var(--red); color:#fff;
+  font-size:14px; font-weight:700; font-family:var(--f); text-decoration:none;
+  border:none; cursor:pointer; letter-spacing:-.01em;
+  transition:all .28s var(--ease); box-shadow:0 6px 24px rgba(232,56,58,.3)
+}
+.btn-main:hover { background:var(--red2); transform:translateY(-3px); box-shadow:0 12px 40px rgba(232,56,58,.45) }
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:8px; padding:13px 24px;
+  border-radius:100px; background:transparent; color:var(--muted);
+  font-size:14px; font-weight:500; font-family:var(--f); text-decoration:none;
+  border:1.5px solid var(--border); cursor:pointer;
+  transition:all .24s var(--ease)
+}
+.btn-ghost:hover { color:var(--text); border-color:rgba(45,21,21,.25); background:rgba(45,21,21,.03) }
 
-/* ════════════════════════════════════════
-   NAV
-════════════════════════════════════════ */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;transition:all .5s var(--ease-expo)}
-nav.sc{background:rgba(3,3,8,.88);backdrop-filter:blur(40px) saturate(160%);-webkit-backdrop-filter:blur(40px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.055)}
-.nav-logo{text-decoration:none;display:flex;align-items:center;flex-shrink:0}
-.nav-logo img{height:100px;width:auto;mix-blend-mode:screen;transition:opacity .3s}
-.nav-logo:hover img{opacity:.8}
-.nav-links{display:flex;gap:0;margin:0 auto}
-.nav-links a{font-size:12.5px;color:var(--t2);text-decoration:none;padding:6px 18px;letter-spacing:.02em;transition:color .2s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--sky);transition:all .3s var(--ease-expo);transform:translateX(-50%)}
-.nav-links a:hover{color:var(--t1)}
-.nav-links a:hover::after{width:60%}
-.nav-cta{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;padding:8px 20px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;transition:all .28s var(--ease-expo);border:none;cursor:pointer;font-family:var(--font);position:relative;overflow:hidden;letter-spacing:.02em}
-.nav-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14),transparent 55%)}
-.nav-cta:hover{background:var(--sky);transform:translateY(-2px) scale(1.03);box-shadow:0 0 36px rgba(56,182,255,.55)}
-.mob-btn{display:none;background:none;border:none;color:var(--t2);cursor:pointer;font-size:24px;padding:6px;line-height:1;transition:color .2s}
-.mob-btn:hover{color:var(--t1)}
+/* FAN CARDS */
+.fan-wrap {
+  width:100%; max-width:940px; height:340px;
+  position:relative; display:flex; align-items:flex-end; justify-content:center;
+  opacity:0; animation:heroIn 1s .82s var(--ease) forwards; overflow:visible;
+  z-index:3
+}
+.fan-card {
+  position:absolute; bottom:0; width:168px; border-radius:16px; overflow:hidden;
+  box-shadow:0 32px 64px rgba(45,21,21,.18); transition:all .5s var(--ease);
+  background-size:cover; background-position:center; background-repeat:no-repeat
+}
+/* Overlay escuro para garantir legibilidade do label sobre a foto */
+.fan-card-inner {
+  width:100%; height:100%; position:relative;
+  background:linear-gradient(160deg, rgba(26,10,10,.35) 0%, rgba(26,10,10,.1) 60%, transparent 100%)
+}
+.fc-label { position:absolute; bottom:0; left:0; right:0; padding:12px 14px 14px; background:linear-gradient(transparent,rgba(26,10,10,.82)) }
+.fc-tag  { font-size:8.5px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:3px; font-weight:500 }
+.fc-name { font-size:17px; font-weight:700; color:#fff; line-height:1.1; letter-spacing:-.02em }
 
-/* ════════════════════════════════════════
-   HERO — BRUTALISMO TÉCNICO
-════════════════════════════════════════ */
-.hero{min-height:100vh;display:flex;align-items:center;padding:100px 0 80px;position:relative;overflow:hidden}
+/* posições */
+.fc0 { height:210px; left:50%; margin-left:-330px; transform:rotate(-8deg) translateY(28px); z-index:1 }
+.fc1 { height:240px; left:50%; margin-left:-195px; transform:rotate(-4deg) translateY(14px); z-index:2 }
+.fc2 { height:280px; left:50%; margin-left:-84px;  transform:rotate(0deg)  translateY(0);    z-index:5 }
+.fc3 { height:240px; left:50%; margin-left:68px;   transform:rotate(4deg)  translateY(14px); z-index:2 }
+.fc4 { height:210px; left:50%; margin-left:196px;  transform:rotate(8deg)  translateY(28px); z-index:1 }
 
-/* Grid técnico */
-.h-grid{position:absolute;inset:0;pointer-events:none;z-index:0}
+.fan-wrap:hover .fc0 { transform:rotate(-10deg) translateY(34px) translateX(-14px) }
+.fan-wrap:hover .fc1 { transform:rotate(-5deg)  translateY(18px) translateX(-7px) }
+.fan-wrap:hover .fc2 { transform:rotate(0deg)   translateY(-18px) }
+.fan-wrap:hover .fc3 { transform:rotate(5deg)   translateY(18px)  translateX(7px) }
+.fan-wrap:hover .fc4 { transform:rotate(10deg)  translateY(34px)  translateX(14px) }
 
-/* NÚMERO GIGANTE de fundo */
-.h-bg-num{position:absolute;right:-2%;top:50%;transform:translateY(-50%);font-size:clamp(200px,28vw,400px);font-weight:900;letter-spacing:-.08em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.04);pointer-events:none;z-index:0;line-height:1;user-select:none;animation:floatD 14s ease-in-out infinite}
+/* ═══ TICKER ═══ */
+.ticker-sec {
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  padding:16px 0; overflow:hidden; position:relative; z-index:2; background:var(--bg2)
+}
+.ticker-inner { display:flex; white-space:nowrap; animation:ticker 26s linear infinite }
+.t-item { display:inline-flex; align-items:center; gap:28px; padding:0 28px; font-size:13px; color:var(--muted); font-weight:400 }
+.t-item strong { font-weight:800; color:var(--red); font-size:15px }
+.t-dot { width:4px; height:4px; border-radius:50%; background:var(--red); opacity:.5; flex-shrink:0 }
 
-/* LINHAS DIAGONAIS decorativas */
-.h-diag{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+/* ═══ STATS ═══ */
+.stats-sec { padding:72px 0; position:relative; z-index:2 }
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:16px; overflow:hidden }
+.s-box { background:var(--bg); padding:32px 24px; text-align:center; transition:background .25s; cursor:default }
+.s-box:hover { background:var(--bg2) }
+.s-num { font-size:clamp(36px,4vw,52px); font-weight:800; color:var(--red); letter-spacing:-.04em; line-height:1 }
+.s-lbl { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.5; font-weight:400 }
 
-/* FLOAT TAGS — etiquetas técnicas flutuantes */
-.f-tags{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
-.ftag{position:absolute;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:6px;border:1px solid;opacity:0;transition:opacity .6s var(--ease-expo);line-height:1.4}
-.ftag.show{opacity:.55}
-.ft1{top:18%;left:7%;color:#7dd3fc;border-color:rgba(56,182,255,.2);background:rgba(56,182,255,.04)}
-.ft2{top:42%;right:6%;color:#a5b0ff;border-color:rgba(94,106,210,.2);background:rgba(94,106,210,.04)}
-.ft3{bottom:28%;left:5%;color:#fcd34d;border-color:rgba(245,158,11,.18);background:rgba(245,158,11,.03)}
-.ft4{top:62%;right:9%;color:#c4b5fd;border-color:rgba(139,92,246,.18);background:rgba(139,92,246,.03)}
-.ft5{bottom:18%;right:20%;color:#86efac;border-color:rgba(34,197,94,.16);background:rgba(34,197,94,.03)}
-.ft6{top:26%;left:40%;color:var(--t3);border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+/* ═══ PRODUTO ═══ */
+.prod-sec { padding:88px 0; position:relative; z-index:2 }
+.prod-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center }
+.tag { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--red); margin-bottom:16px; display:block }
+.sec-h { font-size:clamp(28px,3.8vw,50px); font-weight:800; letter-spacing:-.04em; color:var(--text); line-height:1.0; margin-bottom:14px }
+.sec-p { font-size:14.5px; color:var(--muted); line-height:1.75; font-weight:400 }
+.feat-rows { display:flex; flex-direction:column; gap:0; margin-top:32px; border-top:1px solid var(--border) }
+.feat-row { display:flex; align-items:center; gap:14px; padding:16px 0; border-bottom:1px solid var(--border); transition:padding-left .25s var(--ease); cursor:default }
+.feat-row:hover { padding-left:8px }
+.fr-n { font-size:11px; font-weight:700; color:var(--muted2); width:20px; flex-shrink:0 }
+.fr-t { font-size:14px; font-weight:600; color:var(--text); flex:1; letter-spacing:-.01em }
+.fr-s { font-size:12px; color:var(--muted) }
 
-/* HERO CONTEÚDO */
-.h-inner{position:relative;z-index:3;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%}
-.h-left{}
-.h-label{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px;opacity:0;animation:heroIn .7s .1s var(--ease-expo) forwards}
-.h-label-dot{width:7px;height:7px;border-radius:50%;background:var(--sky);flex-shrink:0;position:relative}
-.h-label-dot.pr::before,.h-label-dot.pr::after{inset:-3px;border-color:var(--sky)}
-.h-label-text{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sky)}
-.h-label-line{width:28px;height:1px;background:rgba(56,182,255,.4)}
+/* PROD CARD */
+.prod-card { background:var(--bg); border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 16px 48px rgba(45,21,21,.08); position:relative; animation:bobA 8s ease-in-out infinite }
+.pc-head { padding:18px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; background:var(--bg2) }
+.pc-ico { width:32px; height:32px; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:var(--bg3); font-size:18px }
+.pc-name { font-size:14px; font-weight:700; color:var(--text); letter-spacing:-.02em }
+.pc-sub  { font-size:11px; color:var(--muted); margin-top:1px }
+.pc-rows { display:flex; flex-direction:column }
+.pc-row  { display:flex; align-items:center; gap:12px; padding:13px 20px; border-bottom:1px solid var(--border2); transition:background .18s; cursor:default }
+.pc-row:last-child { border-bottom:none }
+.pc-row:hover { background:var(--bg2) }
+.pr-ico { font-size:14px; width:20px; text-align:center; flex-shrink:0 }
+.pr-t   { font-size:13px; font-weight:600; color:var(--text); flex:1; letter-spacing:-.01em }
+.pr-s   { font-size:11px; color:var(--muted) }
+.pc-price { padding:16px 20px; border-top:1px solid var(--border); display:flex; align-items:baseline; gap:8px; background:var(--bg2) }
+.pc-pv { font-size:26px; font-weight:800; color:var(--text); letter-spacing:-.04em }
+.pc-ps { font-size:11px; color:var(--muted) }
+.pc-float { position:absolute; background:var(--bg); border:1px solid var(--border); border-radius:100px; padding:7px 14px; font-size:11px; font-weight:600; color:var(--text); white-space:nowrap; box-shadow:0 4px 16px rgba(45,21,21,.1) }
+.pf1 { bottom:-16px; left:-20px; display:flex; align-items:center; gap:6px }
+.pf1-dot { width:6px; height:6px; border-radius:50%; background:#22c55e; animation:live 2s infinite; flex-shrink:0 }
+.pf2 { top:-14px; right:-14px; font-size:10px; color:var(--muted) }
 
-.h-h1{font-size:clamp(36px,5.8vw,80px);font-weight:900;line-height:.94;letter-spacing:-.055em;color:var(--t1);margin-bottom:10px;opacity:0;animation:heroIn .8s .18s var(--ease-expo) forwards}
-.h-h2{font-size:clamp(36px,5.8vw,80px);font-weight:900;line-height:.94;letter-spacing:-.055em;margin-bottom:28px;opacity:0;animation:heroIn .8s .28s var(--ease-expo) forwards}
-.h-h2 em{font-style:italic;font-weight:200;color:var(--t2);letter-spacing:-.03em}
-.h-h3{font-size:clamp(32px,4.5vw,64px);font-weight:900;line-height:1;letter-spacing:-.05em;margin-bottom:36px;opacity:0;animation:heroIn .8s .38s var(--ease-expo) forwards}
-.h-sep{width:48px;height:2px;background:linear-gradient(90deg,var(--sky),transparent);margin-bottom:28px;opacity:0;animation:heroIn .6s .48s var(--ease-expo) forwards}
-.h-sub{font-size:15px;color:var(--t2);font-weight:300;line-height:1.75;max-width:400px;margin-bottom:40px;opacity:0;animation:heroIn .8s .54s var(--ease-expo) forwards}
+/* ═══ ELI ═══ */
+.eli-sec { padding:88px 0; position:relative; z-index:2; background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border) }
+.eli-inner { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center }
+.eli-chat { background:var(--bg); border:1px solid var(--border); border-radius:16px; overflow:hidden; animation:bobB 9s ease-in-out infinite }
+.eli-hdr  { padding:12px 16px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; background:var(--bg2) }
+.eli-av   { width:32px; height:32px; border-radius:50%; overflow:hidden; flex-shrink:0; background:var(--red) }
+.eli-av img { width:100%; height:100%; object-fit:cover }
+.eli-nm   { font-size:13px; font-weight:700; color:var(--text); letter-spacing:-.01em }
+.eli-st   { font-size:10px; color:var(--muted); display:flex; align-items:center; gap:4px; margin-top:1px }
+.eli-sdot { width:5px; height:5px; border-radius:50%; background:#22c55e; animation:live 2s infinite }
+.eli-body { padding:14px; display:flex; flex-direction:column; gap:8px; min-height:200px }
+.msg      { max-width:80%; padding:8px 13px; border-radius:12px; font-size:13px; line-height:1.5; font-weight:400 }
+.msg.in   { background:var(--bg2); color:var(--text); border:1px solid var(--border); align-self:flex-start; border-radius:12px 12px 12px 3px }
+.msg.out  { background:var(--red); color:#fff; align-self:flex-end; border-radius:12px 12px 3px 12px; font-weight:600 }
+.msg-t    { font-size:9px; color:var(--muted2); margin-top:2px }
+.msg-t.r  { text-align:right }
+.typing   { display:flex; align-items:center; gap:3px; padding:8px 13px; background:var(--bg2); border:1px solid var(--border); border-radius:12px 12px 12px 3px; width:48px; align-self:flex-start }
+.typing span { width:4px; height:4px; border-radius:50%; background:var(--muted2); animation:blink 1.2s infinite }
+.typing span:nth-child(2){animation-delay:.17s} .typing span:nth-child(3){animation-delay:.34s}
+.eli-feats { display:flex; flex-direction:column; gap:0; border-top:1px solid var(--border); margin-top:28px }
+.ef { display:flex; align-items:flex-start; gap:14px; padding:18px 0; border-bottom:1px solid var(--border); transition:padding-left .25s var(--ease); cursor:default }
+.ef:hover { padding-left:6px }
+.ef-ico { font-size:20px; flex-shrink:0; margin-top:1px; width:24px; text-align:center }
+.ef-t   { font-size:14px; font-weight:700; color:var(--text); margin-bottom:3px; letter-spacing:-.02em }
+.ef-d   { font-size:12.5px; color:var(--muted); line-height:1.6 }
 
-.h-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:heroIn .7s .66s var(--ease-expo) forwards}
-.btn-main{display:inline-flex;align-items:center;gap:9px;padding:14px 30px;border-radius:12px;background:var(--ink);color:#fff;font-size:14px;font-weight:700;font-family:var(--font);text-decoration:none;border:none;cursor:pointer;transition:all .32s var(--ease-expo);position:relative;overflow:hidden;letter-spacing:.015em;box-shadow:0 0 0 1px rgba(0,88,184,.6),0 6px 32px rgba(0,80,180,.32)}
-.btn-main::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14),transparent 55%)}
-.btn-main:hover{background:var(--sky);transform:translateY(-4px) scale(1.03);box-shadow:0 0 0 1px rgba(56,182,255,.7),0 12px 52px rgba(56,182,255,.45),0 28px 70px rgba(56,182,255,.15)}
-.btn-ghost{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:12px;background:transparent;color:var(--t2);font-size:14px;font-weight:500;font-family:var(--font);text-decoration:none;border:1px solid var(--b2);cursor:pointer;transition:all .28s var(--ease-expo);letter-spacing:.01em}
-.btn-ghost:hover{color:var(--t1);background:var(--s2);border-color:var(--b3);transform:translateY(-3px)}
+/* ═══ COMO FUNCIONA ═══ */
+.how-sec { padding:88px 0; position:relative; z-index:2 }
+.how-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:52px; border:1px solid var(--border); border-radius:16px; overflow:hidden }
+.how-step { padding:28px 22px; border-right:1px solid var(--border); transition:background .25s; cursor:default }
+.how-step:last-child { border-right:none }
+.how-step:hover { background:var(--bg2) }
+.hs-ico { font-size:28px; margin-bottom:14px }
+.hs-n   { font-size:10px; font-weight:700; color:var(--red); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px }
+.hs-t   { font-size:15px; font-weight:700; color:var(--text); margin-bottom:6px; letter-spacing:-.02em; line-height:1.2 }
+.hs-d   { font-size:12.5px; color:var(--muted); line-height:1.6 }
 
-/* HERO DIREITA — MOCKUP */
-.h-right{opacity:0;animation:heroIn .9s .72s var(--ease-expo) forwards}
+/* ═══ QUOTE ═══ */
+.quote-sec { padding:96px 0; text-align:center; position:relative; z-index:2; background:var(--red); overflow:hidden }
+.q-bg { position:absolute; inset:0; background:radial-gradient(ellipse at 30% 50%,rgba(255,255,255,.06),transparent 60%); pointer-events:none }
+.q-mark { font-size:72px; color:rgba(255,255,255,.2); line-height:1; margin-bottom:-16px; display:block; font-family:Georgia,serif }
+.q-text { font-size:clamp(22px,3.5vw,42px); font-weight:700; color:#fff; line-height:1.25; letter-spacing:-.03em; max-width:760px; margin:0 auto 28px }
+.q-name { font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.55) }
+.q-role { font-size:12px; color:rgba(255,255,255,.35); margin-top:4px }
 
-/* ════════════════════════════════════════
-   MOCKUP CRM
-════════════════════════════════════════ */
-.mock-wrap{position:relative}
-.mock-glow{position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:75%;height:200px;background:radial-gradient(ellipse,rgba(56,182,255,.11),transparent 70%);filter:blur(30px);pointer-events:none;z-index:0}
-.mock{background:var(--bg2);border:1px solid var(--b2);border-radius:22px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.05),0 60px 120px rgba(0,0,0,.9),0 0 160px rgba(56,182,255,.05);position:relative;z-index:1}
-.mock::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:280px;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.7),transparent)}
-.m-bar{height:46px;display:flex;align-items:center;gap:8px;padding:0 20px;border-bottom:1px solid var(--b1);background:rgba(255,255,255,.01)}
-.m-dot{width:10px;height:10px;border-radius:50%}
-.m-dot.r{background:#ff5f57}.m-dot.y{background:#ffbd2e}.m-dot.g{background:#27c840}
-.m-url{margin:0 auto;font-size:11px;color:var(--t3);background:var(--s1);border:1px solid var(--b1);padding:4px 18px;border-radius:6px;letter-spacing:.01em}
-.m-body{display:grid;grid-template-columns:220px 1fr;height:420px;overflow:hidden}
-.m-side{display:flex;flex-direction:column;padding:14px 10px;border-right:1px solid var(--b1);background:rgba(255,255,255,.006);gap:2px;scrollbar-width:none;overflow-y:auto}
-.m-side::-webkit-scrollbar{display:none}
-.m-usr{display:flex;align-items:center;gap:9px;padding:2px 6px 14px;border-bottom:1px solid var(--b1);margin-bottom:8px}
-.m-ava{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#38b6ff,#0058b8);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
-.m-un{font-size:12.5px;font-weight:600;color:var(--t1)}.m-uh{font-size:10.5px;color:var(--t3)}
-.m-ni{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;font-size:12px;color:var(--t3);cursor:pointer;transition:all .18s;border:1px solid transparent}
-.m-ni:hover{color:var(--t2);background:rgba(255,255,255,.03)}
-.m-ni.on{background:rgba(255,255,255,.058);color:var(--t1);border-color:var(--b1)}
-.m-ico{width:15px;height:15px;display:flex;align-items:center;justify-content:center;font-size:11px;opacity:.7;flex-shrink:0}
-.m-ni.on .m-ico{opacity:1}
-.m-div{height:1px;background:var(--b1);margin:6px 0}
-.m-main{display:flex;flex-direction:column;padding:16px 18px;min-width:0;height:100%;overflow:hidden}
-.m-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:13px;flex-shrink:0;gap:8px}
-.m-tit{font-size:14.5px;font-weight:700;color:var(--t1);letter-spacing:-.02em}
-.m-sub{font-size:11px;color:var(--t3);margin-top:1px}
-.m-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(56,182,255,.07);border:1px solid rgba(56,182,255,.18);color:#7dd3fc;white-space:nowrap}
-.m-bdot{width:5px;height:5px;border-radius:50%;background:var(--sky);flex-shrink:0;animation:liveDot 1.8s ease-in-out infinite}
-.m-view{display:none;flex-direction:column;gap:9px;height:100%;overflow:hidden}
-.m-view.on{display:flex}
-.m-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;flex-shrink:0}
-.m-kpi{background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:10px 10px 9px;transition:border-color .2s}
-.m-kpi:hover{border-color:var(--b2)}
-.ki-v{background:rgba(94,106,210,.15);border:1px solid rgba(94,106,210,.2)}.ki-g{background:rgba(56,182,255,.12);border:1px solid rgba(56,182,255,.2)}.ki-b{background:rgba(0,88,184,.15);border:1px solid rgba(0,88,184,.25)}.ki-a{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
-.m-ki{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;margin-bottom:6px}
-.m-kv{font-size:15px;font-weight:800;color:var(--t1);letter-spacing:-.03em;line-height:1}
-.m-kv.g{color:var(--sky)}.m-kv.a{color:var(--amber)}
-.m-kl{font-size:9.5px;color:var(--t3);margin-top:2px}
-.m-chart{background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:10px 12px;flex:1;min-height:0;overflow:hidden}
-.m-ct{font-size:11px;font-weight:600;color:var(--t1)}.m-cs{font-size:9.5px;color:var(--t3);margin-bottom:6px}
-.m-months{display:flex;justify-content:space-between;margin-top:3px}
-.m-months span{font-size:9px;color:var(--t3)}
-.m-pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;flex:1;overflow:hidden}
-.m-col{display:flex;flex-direction:column;gap:5px;overflow:hidden}
-.m-col-h{display:flex;justify-content:space-between;padding:0 2px 5px;border-bottom:1px solid var(--b1);flex-shrink:0}
-.m-col-n{font-size:10px;font-weight:600;color:var(--t2)}
-.m-col-c{font-size:9px;padding:1px 6px;border-radius:100px;background:var(--s1);border:1px solid var(--b1);color:var(--t3)}
-.m-card{background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:7px 8px;flex-shrink:0;transition:all .2s}
-.m-card:hover{border-color:var(--b2);transform:translateX(2px)}
-.m-cn{font-size:10px;font-weight:600;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
-.m-cv{font-size:10.5px;font-weight:700;margin-bottom:4px}
-.m-tag{font-size:8px;padding:1.5px 6px;border-radius:100px;font-weight:600}
-.tn{background:rgba(94,106,210,.12);color:#a5b0ff;border:1px solid rgba(94,106,210,.2)}
-.tp{background:rgba(56,182,255,.1);color:#7dd3fc;border:1px solid rgba(56,182,255,.2)}
-.tg{background:rgba(245,158,11,.1);color:#fcd34d;border:1px solid rgba(245,158,11,.2)}
-.tw{background:rgba(34,197,94,.1);color:#86efac;border:1px solid rgba(34,197,94,.2)}
-.m-tabbar{display:none;overflow-x:auto;border-bottom:1px solid var(--b1);scrollbar-width:none;background:rgba(255,255,255,.007)}
-.m-tabbar::-webkit-scrollbar{display:none}
-.m-tb{flex-shrink:0;padding:7px 13px;font-size:10px;font-weight:500;color:var(--t3);background:none;border:none;cursor:pointer;font-family:var(--font);border-bottom:2px solid transparent;transition:all .16s}
-.m-tb.on{color:var(--t1);border-bottom-color:var(--sky)}
-.e-chat{display:flex;flex-direction:column;gap:7px;flex:1;overflow:hidden}
-.e-row{display:flex;align-items:flex-end;gap:7px}
-.e-row.r{flex-direction:row-reverse}
-.e-av{width:22px;height:22px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff}
-.e-av-e{background:linear-gradient(135deg,#38b6ff,#0058b8)}.e-av-c{background:rgba(255,255,255,.1);color:var(--t2)}
-.e-bub{font-size:10.5px;line-height:1.5;padding:7px 10px;border-radius:10px;max-width:78%}
-.e-in{background:var(--s1);border:1px solid var(--b1);color:var(--t2);border-bottom-left-radius:3px}
-.e-out{background:rgba(0,88,184,.28);border:1px solid rgba(56,182,255,.16);color:#c5e8ff;border-bottom-right-radius:3px}
-.e-st{font-size:8px;color:var(--t3);margin-top:2px;text-align:right}
+/* ═══ FORM ═══ */
+.form-sec { padding:88px 0; position:relative; z-index:2 }
+.form-inner { max-width:520px; margin:0 auto }
+.f-head { text-align:center; margin-bottom:36px }
+.f-h { font-size:clamp(28px,3.5vw,44px); font-weight:800; letter-spacing:-.04em; color:var(--text); line-height:1.05; margin-bottom:8px }
+.f-p { font-size:14px; color:var(--muted); line-height:1.7 }
+.fg { margin-bottom:12px }
+.fl { display:block; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:5px }
+.fi, .fs { width:100%; padding:11px 14px; background:var(--bg); border:1.5px solid var(--border); border-radius:10px; color:var(--text); font-family:var(--f); font-size:14px; font-weight:400; outline:none; transition:border-color .2s, box-shadow .2s; -webkit-appearance:none; appearance:none }
+.fi:focus, .fs:focus { border-color:rgba(232,56,58,.4); box-shadow:0 0 0 4px rgba(232,56,58,.08) }
+.fi::placeholder { color:var(--muted2) }
+.fs option { background:var(--bg); color:var(--text) }
+.sw { position:relative }
+.sa { position:absolute; right:13px; top:50%; transform:translateY(-50%); pointer-events:none; color:var(--muted); font-size:10px }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:10px }
+.f-btn { width:100%; padding:14px; border-radius:100px; background:var(--red); color:#fff; border:none; font-family:var(--f); font-size:14px; font-weight:700; cursor:pointer; letter-spacing:-.01em; transition:all .28s var(--ease); box-shadow:0 6px 24px rgba(232,56,58,.28); margin-top:4px }
+.f-btn:hover { background:var(--red2); transform:translateY(-2px); box-shadow:0 10px 36px rgba(232,56,58,.4) }
+.f-trust { display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:14px }
+.f-ti { font-size:11px; color:var(--muted); display:flex; align-items:center; gap:5px }
+.f-tic { color:var(--red); font-weight:700 }
 
-/* ════════════════════════════════════════
-   STATS — LINHA OVERSIZED
-════════════════════════════════════════ */
-.stats-sec{padding:80px 0;border-top:1px solid var(--b1);position:relative;z-index:2;overflow:hidden}
-.stats-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 100% at 50%,rgba(56,182,255,.04),transparent)}
-.stats-track{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1);border-radius:20px;overflow:hidden}
-.stat-box{background:var(--bg);padding:44px 36px;position:relative;overflow:hidden;cursor:default;transition:background .35s}
-.stat-box::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(56,182,255,.08),transparent 60%);opacity:0;transition:opacity .35s}
-.stat-box:hover{background:var(--bg2)}.stat-box:hover::after{opacity:1}
-.stat-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.5),transparent);opacity:0;transition:opacity .35s}
-.stat-box:hover::before{opacity:1}
-.s-num{font-size:clamp(42px,5vw,68px);font-weight:900;letter-spacing:-.07em;color:var(--t1);line-height:1;margin-bottom:10px}
-.s-lbl{font-size:13px;color:var(--t2);font-weight:300;line-height:1.55;max-width:160px}
-.s-acc{color:var(--sky)}
+/* FOOTER */
+footer { padding:28px 0; border-top:1px solid var(--border); position:relative; z-index:2; background:var(--bg2) }
+.f-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px }
+.f-logo img { height:20px }
+.f-links { display:flex; gap:18px }
+.f-links a { font-size:12px; color:var(--muted); text-decoration:none; transition:color .18s }
+.f-links a:hover { color:var(--text) }
+.f-copy { font-size:11px; color:var(--muted2) }
 
-/* ════════════════════════════════════════
-   NICHOS — LAYOUT ASSIMÉTRICO
-════════════════════════════════════════ */
-.nichos-sec{padding:130px 0;position:relative;z-index:2}
-
-/* SEÇÃO HEADER COM LINHA */
-.sec-head{margin-bottom:64px}
-.sec-eye{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin-bottom:14px}
-.sec-eye-line{width:28px;height:1px;background:rgba(56,182,255,.5)}
-.sec-h{font-size:clamp(32px,4.5vw,60px);font-weight:900;letter-spacing:-.06em;color:var(--t1);line-height:1.02;margin-bottom:14px}
-.sec-p{font-size:15px;color:var(--t2);font-weight:300;line-height:1.75;max-width:500px}
-
-/* TABS */
-.n-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:64px}
-.n-tab{display:flex;align-items:center;gap:9px;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:600;color:var(--t2);background:var(--s1);border:1px solid var(--b1);cursor:pointer;transition:all .32s var(--ease-expo);font-family:var(--font);position:relative;overflow:hidden;letter-spacing:.01em}
-.n-tab::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .28s}
-.n-tab:hover{color:var(--t1);border-color:var(--b2);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.3)}
-.n-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;transition:all .32s var(--ease-spring)}
-.n-tab.on .n-dot{transform:scale(1.6);box-shadow:0 0 0 3px rgba(56,182,255,.2)}
-.nt-s.on{background:rgba(0,88,184,.18);border-color:rgba(56,182,255,.35);color:#7dd3fc;box-shadow:0 0 24px rgba(56,182,255,.1)}
-.nt-f.on{background:rgba(180,83,9,.18);border-color:rgba(245,158,11,.3);color:#fcd34d;box-shadow:0 0 24px rgba(245,158,11,.08)}
-.nt-c.on{background:rgba(109,40,217,.18);border-color:rgba(139,92,246,.28);color:#c4b5fd;box-shadow:0 0 24px rgba(139,92,246,.08)}
-
-/* PANEL */
-.n-panel{display:none;opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease-expo),transform .6s var(--ease-expo)}
-.n-panel.on{display:grid;opacity:1;transform:translateY(0);grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-
-/* CONTENT */
-.n-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 13px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;border:1px solid}
-.nb-s{background:rgba(56,182,255,.07);border-color:rgba(56,182,255,.2);color:#7dd3fc}
-.nb-f{background:rgba(245,158,11,.07);border-color:rgba(245,158,11,.2);color:#fcd34d}
-.nb-c{background:rgba(139,92,246,.07);border-color:rgba(139,92,246,.2);color:#c4b5fd}
-.n-h{font-size:clamp(22px,2.8vw,34px);font-weight:800;letter-spacing:-.05em;line-height:1.1;color:var(--t1);margin-bottom:14px}
-.n-p{font-size:14.5px;color:var(--t2);font-weight:300;line-height:1.78;margin-bottom:30px}
-.n-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
-.n-feat{display:flex;align-items:flex-start;gap:13px;padding:14px 16px;background:var(--s1);border:1px solid var(--b1);border-radius:13px;transition:all .32s var(--ease-expo);cursor:default;position:relative;overflow:hidden}
-.n-feat::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;opacity:0;transition:opacity .3s}
-.n-feat:hover{border-color:var(--b2);transform:translateX(6px);background:var(--s2)}
-.n-feat:hover::before{opacity:1}
-.nfs .n-feat:nth-child(1)::before{background:var(--sky)}
-.nfs .n-feat:nth-child(2)::before{background:var(--violet)}
-.nfs .n-feat:nth-child(3)::before{background:var(--sky2)}
-.nff .n-feat::before{background:var(--amber)}
-.nfc .n-feat::before{background:var(--lilac)}
-.n-fi{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-top:1px}
-.nfi-s{background:rgba(56,182,255,.1);border:1px solid rgba(56,182,255,.2)}
-.nfi-f{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.18)}
-.nfi-c{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.18)}
-.n-ft{font-size:12.5px;font-weight:700;color:var(--t1);margin-bottom:3px;letter-spacing:-.01em}
-.n-fd{font-size:12px;color:var(--t2);font-weight:300;line-height:1.6}
-.n-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:12px;font-size:13.5px;font-weight:700;font-family:var(--font);text-decoration:none;border:none;cursor:pointer;transition:all .32s var(--ease-expo);position:relative;overflow:hidden;letter-spacing:.02em}
-.n-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14),transparent 55%)}
-.nb2-s{background:rgba(0,88,184,.88);color:#fff;box-shadow:0 0 0 1px rgba(56,182,255,.32),0 6px 28px rgba(0,88,184,.3)}
-.nb2-s:hover{background:var(--sky);transform:translateY(-4px) scale(1.03);box-shadow:0 0 0 1px rgba(56,182,255,.65),0 12px 52px rgba(56,182,255,.45)}
-.nb2-f{background:rgba(180,83,9,.85);color:#fff;box-shadow:0 0 0 1px rgba(245,158,11,.3),0 6px 28px rgba(180,83,9,.25)}
-.nb2-f:hover{background:var(--amber);transform:translateY(-4px);box-shadow:0 0 0 1px rgba(245,158,11,.65),0 12px 52px rgba(245,158,11,.35)}
-.nb2-c{background:rgba(109,40,217,.8);color:#fff;box-shadow:0 0 0 1px rgba(139,92,246,.3),0 6px 28px rgba(109,40,217,.25)}
-.nb2-c:hover{background:var(--lilac);transform:translateY(-4px);box-shadow:0 0 0 1px rgba(139,92,246,.65),0 12px 52px rgba(139,92,246,.38)}
-
-/* VIS CARDS */
-.n-vis{position:relative}
-.nvc{background:var(--bg2);border:1px solid var(--b2);border-radius:22px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.75)}
-.nvc.nvs{border-color:rgba(56,182,255,.2)}
-.nvc.nvf{border-color:rgba(245,158,11,.2)}
-.nvc.nvc2{border-color:rgba(139,92,246,.2)}
-.nv-head{padding:14px 16px;border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between}
-.nv-ht{font-size:12px;font-weight:600;color:var(--t1)}.nv-hs{font-size:10px;color:var(--t3);margin-top:1px}
-.nv-body{padding:16px}
-.sp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.sp-hd{font-size:9px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;padding-bottom:5px;border-bottom:1px solid var(--b1)}
-.sp-card{background:var(--bg3);border:1px solid var(--b1);border-radius:8px;padding:8px 10px;margin-bottom:5px;transition:all .2s}
-.sp-card:hover{border-color:var(--b2)}
-.sp-n{font-size:10px;font-weight:600;color:var(--t1);margin-bottom:3px}
-.sp-v{font-size:10.5px;font-weight:700;color:var(--sky)}
-.e-mini{display:flex;flex-direction:column;gap:6px;padding:12px 14px;background:rgba(56,182,255,.03);border-top:1px solid var(--b1)}
-.em-r{display:flex;align-items:flex-end;gap:6px}.em-r.rv{flex-direction:row-reverse}
-.em-b{font-size:10.5px;line-height:1.5;padding:6px 9px;border-radius:9px;max-width:80%}
-.em-i{background:var(--s1);border:1px solid var(--b1);color:var(--t2);border-bottom-left-radius:3px}
-.em-o{background:rgba(0,88,184,.24);border:1px solid rgba(56,182,255,.15);color:#c5e8ff;border-bottom-right-radius:3px}
-.fo-list{display:flex;flex-direction:column;gap:6px}
-.fo-row{background:var(--bg3);border:1px solid var(--b1);border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;transition:all .22s}
-.fo-row:hover{border-color:var(--b2);transform:translateX(3px)}
-.fo-d{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.fdn{background:var(--sky);animation:liveDot 1.8s ease-in-out infinite}
-.fdp{background:var(--amber)}.fdd{background:#22c55e}
-.fo-n{font-size:11px;font-weight:600;color:var(--t1);flex:1}.fo-s{font-size:9.5px;color:var(--t3)}
-.fo-v{font-size:11px;font-weight:700;color:#fcd34d}
-.fo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
-.fo-st{background:var(--bg3);border:1px solid var(--b1);border-radius:8px;padding:8px 10px;text-align:center;transition:border-color .2s}
-.fo-st:hover{border-color:rgba(245,158,11,.25)}
-.fo-sv{font-size:14px;font-weight:800;color:#fcd34d}.fo-sl{font-size:9px;color:var(--t3);margin-top:1px}
-.ca-list{display:flex;flex-direction:column;gap:6px}
-.ca-row{background:var(--bg3);border:1px solid var(--b1);border-radius:9px;padding:9px 12px;display:flex;align-items:center;gap:10px;transition:all .22s}
-.ca-row:hover{border-color:rgba(139,92,246,.25);transform:translateX(3px)}
-.ca-av{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;color:#fff}
-.ca-i{flex:1}.ca-n{font-size:11px;font-weight:600;color:var(--t1)}.ca-p{font-size:10px;color:var(--t3)}
-.ca-t{font-size:9px;padding:2px 8px;border-radius:100px;font-weight:600}
-.cta{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.2);color:#c4b5fd}
-.cto{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#86efac}
-.ctw{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.18);color:#fcd34d}
-.ca-mets{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:10px}
-.ca-m{background:var(--bg3);border:1px solid var(--b1);border-radius:8px;padding:9px 11px;transition:border-color .2s}
-.ca-m:hover{border-color:rgba(139,92,246,.25)}
-.ca-mv{font-size:15px;font-weight:800;color:#c4b5fd;letter-spacing:-.02em}
-.ca-ml{font-size:9.5px;color:var(--t3);margin-top:1px}
-
-/* ════════════════════════════════════════
-   CASE — EDITORIAL CARD
-════════════════════════════════════════ */
-.case-sec{padding:100px 0;position:relative;z-index:2;border-top:1px solid var(--b1)}
-.c-card{border:1px solid var(--b2);border-radius:28px;overflow:hidden;background:var(--bg2);position:relative}
-.c-card::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.6),transparent)}
-.c-top{padding:40px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-bottom:1px solid var(--b1)}
-.c-brand{display:flex;align-items:center;gap:14px}
-.c-ico{width:48px;height:48px;border-radius:13px;background:rgba(56,182,255,.1);border:1px solid rgba(56,182,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px}
-.c-bn{font-size:22px;font-weight:900;letter-spacing:-.045em;color:var(--t1)}
-.c-bl{font-size:12px;color:var(--t3);margin-top:2px}
-.c-verif{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;padding:6px 16px;border-radius:100px;background:rgba(56,182,255,.07);border:1px solid rgba(56,182,255,.18);color:#7dd3fc}
-.c-mets{display:grid;grid-template-columns:repeat(4,1fr)}
-.c-met{padding:36px 40px;border-right:1px solid var(--b1);position:relative;overflow:hidden;transition:background .3s}
-.c-met:last-child{border-right:none}
-.c-met:hover{background:rgba(56,182,255,.025)}
-.c-mv{font-size:44px;font-weight:900;letter-spacing:-.07em;color:var(--t1);line-height:1;margin-bottom:7px}
-.c-ml{font-size:12.5px;color:var(--t2);font-weight:300;line-height:1.55}
-.c-q{padding:32px 48px;display:flex;gap:20px;border-top:1px solid var(--b1);background:rgba(255,255,255,.01)}
-.c-qm{font-size:60px;line-height:.75;color:var(--violet);font-weight:900;flex-shrink:0;margin-top:5px}
-.c-qt{font-size:15px;color:var(--t2);font-weight:300;line-height:1.76}
-.c-qs{font-size:12px;font-weight:600;color:var(--t3);margin-top:10px}
-
-/* ════════════════════════════════════════
-   ECOSSISTEMA
-════════════════════════════════════════ */
-.eco-sec{padding:100px 0;position:relative;z-index:2;border-top:1px solid var(--b1)}
-.eco-flow{display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr;align-items:center;margin-bottom:48px}
-.eco-node{background:var(--bg2);border:1px solid var(--b1);border-radius:22px;padding:28px 24px;text-align:center;transition:all .36s var(--ease-expo);cursor:default}
-.eco-node:hover{border-color:var(--b2);transform:translateY(-7px);box-shadow:0 24px 64px rgba(0,0,0,.55)}
-.eco-ico{width:46px;height:46px;border-radius:13px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:22px;border:1px solid}
-.eco-nt{font-size:13.5px;font-weight:700;color:var(--t1);letter-spacing:-.025em;margin-bottom:6px}
-.eco-nd{font-size:12.5px;color:var(--t2);line-height:1.6;font-weight:300}
-.eco-arr{display:flex;align-items:center;justify-content:center;color:var(--t3)}
-.eco-bot{background:var(--bg2);border:1px solid var(--b1);border-radius:22px;padding:32px 40px;display:flex;align-items:center;gap:40px;flex-wrap:wrap}
-.eco-bt{flex:1;min-width:220px}
-.eco-btt{font-size:18px;font-weight:800;color:var(--t1);letter-spacing:-.04em;margin-bottom:9px}
-.eco-btd{font-size:14px;color:var(--t2);line-height:1.7;font-weight:300}
-.eco-tags{display:flex;flex-wrap:wrap;gap:8px;flex-shrink:0}
-.eco-tag{font-size:11px;padding:6px 14px;border-radius:100px;font-weight:600;background:rgba(94,106,210,.08);color:#a5b0ff;border:1px solid rgba(94,106,210,.18);transition:all .25s var(--ease-expo);cursor:default;letter-spacing:.02em}
-.eco-tag:hover{background:rgba(94,106,210,.15);transform:translateY(-3px);box-shadow:0 6px 20px rgba(94,106,210,.18)}
-
-/* ════════════════════════════════════════
-   CTA — FORM
-════════════════════════════════════════ */
-.cta-sec{padding:130px 0;position:relative;z-index:2;border-top:1px solid var(--b1)}
-.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 100%,rgba(56,182,255,.045),transparent 65%)}
-.cta-box{max-width:620px;margin:0 auto;background:var(--bg2);border:1px solid var(--b2);border-radius:32px;padding:56px 52px;position:relative;overflow:hidden}
-.cta-box::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:350px;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,255,.75),transparent)}
-.cta-box::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 85% 50% at 50% 0,rgba(94,106,210,.05),transparent 60%);pointer-events:none}
-.cta-h{font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-.06em;color:var(--t1);margin-bottom:10px;line-height:1.04;position:relative;z-index:1}
-.cta-p{font-size:14.5px;color:var(--t2);font-weight:300;margin-bottom:36px;line-height:1.72;position:relative;z-index:1}
-.fg{margin-bottom:14px;position:relative;z-index:1}
-.fl{display:block;font-size:11.5px;font-weight:600;color:var(--t2);margin-bottom:7px;letter-spacing:.02em}
-.fi,.fs{width:100%;padding:12px 15px;background:rgba(255,255,255,.03);border:1px solid var(--b1);border-radius:11px;color:var(--t1);font-family:var(--font);font-size:14px;outline:none;transition:all .24s var(--ease-expo);appearance:none}
-.fi:focus,.fs:focus{border-color:rgba(56,182,255,.45);background:rgba(56,182,255,.03);box-shadow:0 0 0 4px rgba(56,182,255,.08)}
-.fi::placeholder{color:var(--t3)}
-.fs option{background:#10101e;color:var(--t1)}
-.sw{position:relative}.sa{position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--t3);font-size:11px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.dz-chk{display:flex;align-items:flex-start;gap:12px;cursor:pointer;padding:15px 17px;border:1px solid rgba(245,158,11,.18);border-radius:13px;background:rgba(245,158,11,.025);transition:all .24s;margin-bottom:14px;position:relative;z-index:1}
-.dz-chk:hover{border-color:rgba(245,158,11,.38);background:rgba(245,158,11,.055)}
-.dz-chk input{width:16px;height:16px;margin-top:3px;accent-color:var(--amber);cursor:pointer;flex-shrink:0}
-.dz-l{font-size:13px;font-weight:700;color:#fcd34d;margin-bottom:4px}
-.dz-s{font-size:12.5px;color:var(--t2);font-weight:300;line-height:1.55}
-.f-btn{width:100%;padding:14px;border-radius:13px;background:var(--ink);color:#fff;font-size:15px;font-weight:700;font-family:var(--font);border:none;cursor:pointer;transition:all .32s var(--ease-expo);box-shadow:0 0 0 1px rgba(0,88,184,.45),0 6px 32px rgba(0,88,184,.3);position:relative;overflow:hidden;z-index:1;letter-spacing:.02em}
-.f-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14),transparent 55%)}
-.f-btn:hover{background:var(--sky);transform:translateY(-3px);box-shadow:0 0 0 1px rgba(56,182,255,.65),0 12px 52px rgba(56,182,255,.45),0 0 100px rgba(56,182,255,.12)}
-.f-trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}
-.f-ti{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t3)}
-.f-tic{color:var(--sky)}
-
-/* ════════════════════════════════════════
-   FOOTER
-════════════════════════════════════════ */
-footer{padding:48px 0;border-top:1px solid var(--b1);position:relative;z-index:2}
-.f-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px}
-.f-logo img{height:28px;mix-blend-mode:screen;opacity:.68}
-.f-links{display:flex;gap:26px;flex-wrap:wrap}
-.f-links a{font-size:12.5px;color:var(--t3);text-decoration:none;transition:color .18s;letter-spacing:.01em}
-.f-links a:hover{color:var(--t2)}
-.f-copy{font-size:12px;color:var(--t3)}
-
-/* ════════════════════════════════════════
-   RESPONSIVE
-════════════════════════════════════════ */
-@media(max-width:1000px){
-  .nav-links{display:none}
-  .h-inner{grid-template-columns:1fr;gap:56px}
-  .h-right{order:2}
-  .m-body{grid-template-columns:180px 1fr}
-  .m-pipe{grid-template-columns:1fr 1fr}
-  .stats-track{grid-template-columns:1fr 1fr}
-  .n-panel.on{grid-template-columns:1fr;gap:44px}
-  .n-vis{order:-1}
-  .eco-flow{grid-template-columns:1fr;gap:10px}
-  .eco-arr{transform:rotate(90deg)}
-  .c-mets{grid-template-columns:1fr 1fr}
-  .c-met{border-right:none;border-bottom:1px solid var(--b1)}
-  .c-met:last-child{border-bottom:none}
+/* RESPONSIVE */
+@media(max-width:960px){
+  .n-links { display:none }
+  .prod-grid,.eli-inner { grid-template-columns:1fr; gap:40px }
+  .stats-grid,.how-steps { grid-template-columns:1fr 1fr }
+  .how-step { border-right:none; border-bottom:1px solid var(--border) }
+  .how-step:last-child { border-bottom:none }
+  .wrap { padding:0 24px }
 }
 @media(max-width:640px){
-  html,body{overflow-x:hidden!important}
-  .wrap{padding:0 18px}
-  .mob-btn{display:flex}
-  nav{padding:0 16px}
-  .nav-logo img{height:72px}
-  .nav-cta{font-size:11.5px;padding:7px 13px}
-  .hero{padding:82px 0 52px;min-height:auto}
-  .h-h1,.h-h2,.h-h3{font-size:clamp(32px,8vw,48px)!important;letter-spacing:-.04em!important}
-  .h-sub{font-size:14.5px}
-  .h-btns{flex-direction:column;align-items:stretch}
-  .btn-main,.btn-ghost{justify-content:center;padding:14px 20px;font-size:15px}
-  .h-bg-num{display:none}
-  .f-tags{display:none}
-  .h-right{overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,black 72%,transparent);mask-image:linear-gradient(to bottom,black 72%,transparent)}
-  .m-tabbar{display:flex}
-  .m-side{display:none}
-  .m-body{grid-template-columns:1fr;height:300px}
-  .m-bar{height:38px}.m-dot{width:8px;height:8px}
-  .m-url{font-size:10px;padding:3px 12px}
-  .m-main{padding:10px 12px}.m-tit{font-size:12px}.m-sub{font-size:10px}
-  .m-badge{font-size:9px;padding:2px 8px}
-  .m-kpis{gap:5px}.m-kpi{padding:7px 8px}.m-kv{font-size:13px}
-  .m-ki{width:18px;height:18px;font-size:9px;margin-bottom:4px}
-  .m-pipe{grid-template-columns:1fr 1fr;gap:4px}
-  .m-card{padding:6px 7px}.m-cn{font-size:9.5px}.m-cv{font-size:10px}
-  .stats-track{grid-template-columns:1fr 1fr}
-  .stat-box{padding:24px 18px}
-  .s-num{font-size:clamp(28px,8vw,42px)}
-  .nichos-sec{padding:80px 0}
-  .n-h{font-size:clamp(20px,6vw,28px)}
-  .sp-grid{grid-template-columns:1fr 1fr}
-  .case-sec{padding:72px 0}
-  .c-top{padding:22px}
-  .c-mets{display:flex;flex-direction:column}
-  .c-met{padding:22px}
-  .c-mv{font-size:30px}
-  .c-q{padding:22px;flex-direction:column;gap:10px}
-  .eco-sec{padding:72px 0}
-  .eco-bot{padding:22px;flex-direction:column;gap:22px}
-  .cta-sec{padding:80px 0}
-  .cta-box{padding:28px 20px;border-radius:22px;margin:0}
-  .cta-h{font-size:24px}
-  .frow{grid-template-columns:1fr}
-  .fi,.fs{font-size:16px}
-  .f-inner{flex-direction:column;align-items:flex-start;gap:12px}
-  .f-links{gap:16px}
-  /* Kill float on mobile */
-  .flA,.flB,.flC,.flD,.flE,.flF{animation:none!important}
+  .mob-btn { display:block }
+  nav { padding:0 18px }
+  .fan-wrap { display:none }
+  .stats-grid { grid-template-columns:1fr 1fr }
+  .how-steps { grid-template-columns:1fr 1fr }
+  .frow { grid-template-columns:1fr }
+  .f-inner { flex-direction:column; align-items:flex-start }
+  .pc-float { display:none }
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
 <div id="CUR"></div>
 <div id="RING"></div>
+<div id="GR"></div>
 
-<!-- GRAIN -->
-<div id="GRAIN"></div>
-
-<!-- ORBS -->
-<div class="orb o1"></div>
-<div class="orb o2"></div>
-<div class="orb o3"></div>
-<div class="orb o4"></div>
-
-<!-- ══════════ NAV ══════════ -->
+<!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo"><img src="fluxalogo.png" alt="Flüxa"></a>
-  <div class="nav-links" id="navLinks">
-    <a href="#nichos">Soluções</a>
-    <a href="#case">Cases</a>
-    <a href="#ecossistema">Ecossistema</a>
-    <a href="#diagnostico">Diagnóstico</a>
+  <a href="#" class="n-logo">
+    <!--
+      LOGO — coloque o arquivo na mesma pasta e troque o src:
+        logo.png / logo.webp / logo.jpeg
+      O onerror garante fallback para a logo embutida se o arquivo não for encontrado.
+    -->
+    <img src="logo.png"
+         alt="Flüxa Cardápio"
+         onerror="this.onerror=null;this.src='data:image/png;base64,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'"
+         style="height:22px;width:auto"/>
+  </a>
+  <div class="n-links" id="navLinks">
+    <a href="#produto">Produto</a>
+    <a href="#eli">Eli Food's</a>
+    <a href="#como-funciona">Como Funciona</a>
   </div>
-  <div style="display:flex;align-items:center;gap:10px">
-    <a href="#diagnostico" class="nav-cta">
-      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-      Diagnóstico gratuito
-    </a>
+  <div style="display:flex;align-items:center;gap:8px">
+    <a href="#diagnostico" class="n-cta">Diagnóstico grátis</a>
     <button class="mob-btn" id="mobBtn">☰</button>
   </div>
 </nav>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
-  <!-- Grid SVG técnico -->
-  <div class="h-grid" aria-hidden="true">
-    <svg width="100%" height="100%" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="hg" cx="50%" cy="20%" r="60%">
-          <stop offset="0%" stop-color="white" stop-opacity=".05"/>
-          <stop offset="100%" stop-color="white" stop-opacity="0"/>
-        </radialGradient>
-        <mask id="fm"><rect width="1400" height="900" fill="url(#hg)"/></mask>
-      </defs>
-      <!-- Verticals -->
-      <g mask="url(#fm)" stroke="rgba(255,255,255,1)" stroke-width="1">
-        <line x1="120" y1="0" x2="120" y2="900"/>
-        <line x1="260" y1="0" x2="260" y2="900"/>
-        <line x1="400" y1="0" x2="400" y2="900"/>
-        <line x1="700" y1="0" x2="700" y2="900" stroke-width="1.5"/>
-        <line x1="1000" y1="0" x2="1000" y2="900"/>
-        <line x1="1140" y1="0" x2="1140" y2="900"/>
-        <line x1="1280" y1="0" x2="1280" y2="900"/>
-        <!-- Horizontals -->
-        <line x1="0" y1="200" x2="1400" y2="200"/>
-        <line x1="0" y1="400" x2="1400" y2="400"/>
-        <line x1="0" y1="600" x2="1400" y2="600"/>
-        <line x1="0" y1="800" x2="1400" y2="800"/>
-      </g>
-      <!-- Diagonal accent -->
-      <line x1="0" y1="900" x2="700" y2="0" stroke="rgba(56,182,255,.06)" stroke-width="1"/>
-      <!-- Animated paths -->
-      <path d="M0,500 Q300,200 700,380 T1400,300" stroke="rgba(56,182,255,.1)" stroke-width="1.5" fill="none" stroke-dasharray="2000" stroke-dashoffset="2000" style="animation:linedraw 4s 1s var(--ease-expo) forwards"/>
-      <path d="M1400,600 Q1100,800 700,640 T0,700" stroke="rgba(94,106,210,.07)" stroke-width="1" fill="none" stroke-dasharray="1600" stroke-dashoffset="1600" style="animation:linedraw 5s 2s var(--ease-expo) forwards"/>
-    </svg>
+
+  <!-- CASCADE — preenche todo o hero, 50% opacidade -->
+  <div id="cascade"></div>
+
+  <div class="h-pill" style="position:relative;z-index:2">
+    <span class="h-pill-dot"></span> Flüxa Food's · Para restaurantes
   </div>
 
-  <!-- NÚMERO GIGANTE bg -->
-  <div class="h-bg-num" aria-hidden="true">Flx</div>
+  <h1 class="h-title" style="position:relative;z-index:2">
+    Chega de depender<br>do <em>dia bom.</em>
+  </h1>
 
-  <!-- FLOAT TAGS -->
-  <div class="f-tags" aria-hidden="true">
-    <span class="ftag ft1 flA dl1">AI SDR · 24/7</span>
-    <span class="ftag ft2 flB dl2">Pipeline Realtime</span>
-    <span class="ftag ft3 flC dl3">Flüxa Food</span>
-    <span class="ftag ft4 flE dl4">Flüxa Care</span>
-    <span class="ftag ft5 flD dl5">94% qualificação</span>
-    <span class="ftag ft6 flF dl2">WhatsApp API</span>
+  <p class="h-sub" style="position:relative;z-index:2">
+    Fazemos seu restaurante ter fluxo constante de pedidos — com IA, tráfego e automação. Você só cozinha.
+  </p>
+
+  <div class="h-btns" style="position:relative;z-index:2">
+    <a href="#diagnostico" class="btn-main">🚀 Quero mais pedidos</a>
+    <a href="#como-funciona" class="btn-ghost">Como funciona →</a>
   </div>
 
-  <div class="wrap" style="width:100%">
-    <div class="h-inner">
-      <!-- ESQUERDA -->
-      <div class="h-left">
-        <div class="h-label">
-          <span class="h-label-dot pr"></span>
-          <span class="h-label-text">Revenue Engineering</span>
-          <span class="h-label-line"></span>
-        </div>
-        <h1 class="h-h1">Do primeiro</h1>
-        <h1 class="h-h2">contato <em>ao caixa —</em></h1>
-        <h1 class="h-h3"><span class="gt">a gente cuida do meio.</span></h1>
-        <div class="h-sep"></div>
-        <p class="h-sub">Eli atende, qualifica e converte no WhatsApp. Você só fecha. Vidraçarias, restaurantes e clínicas que param de perder lead por demora.</p>
-        <div class="h-btns">
-          <a href="#diagnostico" class="btn-main">
-            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            Diagnóstico Gratuito
-          </a>
-          <a href="#nichos" class="btn-ghost">
-            Ver soluções
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+  <!-- FAN CARDS
+       ─────────────────────────────────────────────────────────
+       COMO TROCAR AS FOTOS:
+         Cada card usa background-image com o arquivo da pasta.
+         Nomes esperados (mesma pasta que index.html):
+           card-fidelidade.jpg   → Card esquerda (Fidelidade)
+           card-kitchens.jpg     → Card (Kitchen's App)
+           card-eli.jpg          → Card CENTRAL (Eli Food's)
+           card-cardapio.jpg     → Card (Cardápio Exclusivo)
+           card-trafego.jpg      → Card direita (Tráfego Pago)
+         Formatos aceitos: .jpg .jpeg .png .webp .avif
+         Tamanho ideal: 400×600px, proporção 2:3
+       ─────────────────────────────────────────────────────────
+  -->
+  <div class="fan-wrap">
+
+    <!-- card-fidelidade.jpg -->
+    <div id="card-fidelidade" class="fan-card fc0"
+         style="background-image:url('card-fidelidade.jpg');background-color:#3a1a1a">
+      <div class="fan-card-inner">
+        <div class="fc-label"><div class="fc-tag">RETENÇÃO</div><div class="fc-name">Fidelidade<br>Automática</div></div>
       </div>
-      <!-- DIREITA — MOCKUP -->
-      <div class="h-right">
-        <div class="mock-wrap flB dl2">
-          <div class="mock-glow"></div>
-          <div class="mock scan">
-            <div class="m-bar">
-              <div class="m-dot r"></div><div class="m-dot y"></div><div class="m-dot g"></div>
-              <div class="m-url">app.fluxa.com · Pipeline</div>
-            </div>
-            <div class="m-tabbar" id="mTabbar">
-              <button class="m-tb on" data-t="dash">Dashboard</button>
-              <button class="m-tb" data-t="pipe">Pipeline</button>
-              <button class="m-tb" data-t="leads">Leads</button>
-              <button class="m-tb" data-t="eli">Eli</button>
-            </div>
-            <div class="m-body">
-              <div class="m-side">
-                <div class="m-usr"><div class="m-ava">D</div><div><div class="m-un">Dzarte</div><div class="m-uh">@dzarte</div></div></div>
-                <div class="m-ni on" data-t="dash"><span class="m-ico">⊞</span>Dashboard</div>
-                <div class="m-ni" data-t="pipe"><span class="m-ico">◫</span>Pipeline</div>
-                <div class="m-ni" data-t="leads"><span class="m-ico">👤</span>Leads</div>
-                <div class="m-div"></div>
-                <div class="m-ni" data-t="eli"><span class="m-ico">🤖</span>Eli · AI SDR</div>
-                <div class="m-ni" data-t="cfg"><span class="m-ico">⚙️</span>Config</div>
-              </div>
-              <div class="m-main">
-                <!-- DASHBOARD -->
-                <div class="m-view on" id="t-dash">
-                  <div class="m-top"><div><div class="m-tit">Dashboard</div><div class="m-sub">Dzarte · visão geral</div></div><div style="display:flex;gap:6px;align-items:center"><div class="m-badge"><div class="m-bdot"></div>Realtime</div></div></div>
-                  <div class="m-kpis">
-                    <div class="m-kpi"><div class="m-ki ki-v">👤</div><div class="m-kv">247</div><div class="m-kl">Leads</div></div>
-                    <div class="m-kpi"><div class="m-ki ki-g">🎯</div><div class="m-kv g">94%</div><div class="m-kl">Qualif.</div></div>
-                    <div class="m-kpi"><div class="m-ki ki-b">💰</div><div class="m-kv">R$3,4k</div><div class="m-kl">Ticket</div></div>
-                    <div class="m-kpi"><div class="m-ki ki-a">📈</div><div class="m-kv a">R$84k</div><div class="m-kl">Negoc.</div></div>
-                  </div>
-                  <div class="m-chart">
-                    <div class="m-ct">Evolução de Leads</div>
-                    <div class="m-cs">Últimos 6 meses · Dzarte Vidros</div>
-                    <svg viewBox="0 0 380 52" style="width:100%;height:42px;overflow:visible">
-                      <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#38b6ff" stop-opacity=".28"/><stop offset="100%" stop-color="#38b6ff" stop-opacity="0"/></linearGradient></defs>
-                      <path d="M0,50 L60,44 L120,38 L180,28 L240,18 L300,10 L380,4 L380,52 L0,52Z" fill="url(#sg)"/>
-                      <path d="M0,50 L60,44 L120,38 L180,28 L240,18 L300,10 L380,4" fill="none" stroke="#38b6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="500" stroke-dashoffset="500" style="animation:linedraw 2.5s 1s var(--ease-expo) forwards"/>
-                      <circle cx="380" cy="4" r="3.5" fill="#38b6ff" style="animation:shimmer 3s ease-in-out infinite"/>
-                    </svg>
-                    <div class="m-months"><span>Out</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Fev</span><span>Mar</span></div>
-                  </div>
-                </div>
-                <!-- PIPELINE -->
-                <div class="m-view" id="t-pipe">
-                  <div class="m-top"><div><div class="m-tit">Pipeline</div><div class="m-sub">Março 2026</div></div><div class="m-badge"><div class="m-bdot"></div>247 leads</div></div>
-                  <div class="m-pipe">
-                    <div class="m-col"><div class="m-col-h"><span class="m-col-n">Novos</span><span class="m-col-c">6</span></div><div class="m-card"><div class="m-cn">Rafael Mendes</div><div class="m-cv" style="color:var(--sky)">R$ 3.800</div><span class="m-tag tn">Novo</span></div><div class="m-card"><div class="m-cn">Camila Rocha</div><div class="m-cv" style="color:var(--sky)">R$ 7.200</div><span class="m-tag tn">Novo</span></div></div>
-                    <div class="m-col"><div class="m-col-h"><span class="m-col-n">Proposta</span><span class="m-col-c">4</span></div><div class="m-card"><div class="m-cn">Lucas Ferreira</div><div class="m-cv" style="color:var(--sky)">R$ 12.400</div><span class="m-tag tp">Proposta</span></div><div class="m-card"><div class="m-cn">Beatriz Lima</div><div class="m-cv" style="color:var(--sky)">R$ 5.900</div><span class="m-tag tp">Proposta</span></div></div>
-                    <div class="m-col"><div class="m-col-h"><span class="m-col-n">Negoc.</span><span class="m-col-c">3</span></div><div class="m-card"><div class="m-cn">Rodrigo Alves</div><div class="m-cv" style="color:var(--amber)">R$ 22.000</div><span class="m-tag tg">Negoc.</span></div></div>
-                    <div class="m-col"><div class="m-col-h"><span class="m-col-n">Ganhos</span><span class="m-col-c">8</span></div><div class="m-card"><div class="m-cn">Juliana Costa</div><div class="m-cv" style="color:#86efac">R$ 18.500</div><span class="m-tag tw">✓ Ganho</span></div></div>
-                  </div>
-                </div>
-                <!-- LEADS -->
-                <div class="m-view" id="t-leads">
-                  <div class="m-top"><div><div class="m-tit">Leads</div><div class="m-sub">247 contatos ativos</div></div><div class="m-badge"><div class="m-bdot"></div>+38% mês</div></div>
-                  <table style="width:100%;border-collapse:collapse"><thead><tr><th style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em;padding:0 8px 7px;text-align:left">Nome</th><th style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em;padding:0 8px 7px;text-align:left">Tipo</th><th style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em;padding:0 8px 7px;text-align:left">Valor</th><th style="font-size:9.5px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.04em;padding:0 8px 7px;text-align:left">Status</th></tr></thead><tbody>
-                    <tr><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">Marcos Souza</td><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">Box 8mm</td><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">R$ 3.200</td><td style="padding:6px 8px;border-top:1px solid var(--b1)"><span class="m-tag tw">Ganho</span></td></tr>
-                    <tr><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">Juliana F.</td><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">Fachada</td><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">R$ 18.000</td><td style="padding:6px 8px;border-top:1px solid var(--b1)"><span class="m-tag tg">Negoc.</span></td></tr>
-                    <tr><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">Ricardo Lima</td><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">Espelho</td><td style="font-size:11px;color:var(--t2);padding:6px 8px;border-top:1px solid var(--b1)">R$ 1.800</td><td style="padding:6px 8px;border-top:1px solid var(--b1)"><span class="m-tag tp">Proposta</span></td></tr>
-                  </tbody></table>
-                </div>
-                <!-- ELI -->
-                <div class="m-view" id="t-eli">
-                  <div class="m-top"><div><div class="m-tit">Eli · AI SDR</div><div class="m-sub">Online · &lt;2min sempre</div></div><div class="m-badge" style="background:rgba(56,182,255,.07);border-color:rgba(56,182,255,.18);color:#7dd3fc"><div class="m-bdot"></div>24/7 Ativo</div></div>
-                  <div class="e-chat">
-                    <div class="e-row"><div class="e-av e-av-c">C</div><div class="e-bub e-in">Oi, vi o anúncio. Tenho interesse em box temperado 8mm</div></div>
-                    <div class="e-row r"><div class="e-av e-av-e">E</div><div><div class="e-bub e-out">Olá! Sou a Eli 👋 Qual a metragem aproximada?</div><div class="e-st">Eli · &lt;2 min</div></div></div>
-                    <div class="e-row"><div class="e-av e-av-c">C</div><div class="e-bub e-in">Uns 2m × 2m, sem projeto</div></div>
-                    <div class="e-row r"><div class="e-av e-av-e">E</div><div><div class="e-bub e-out">Perfeito! Orçamento gerado. Posso agendar visita técnica para amanhã?</div><div class="e-st">✓ Lead qualificado · CRM ✓</div></div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
+
+    <!-- card-kitchens.jpg -->
+    <div id="card-kitchens" class="fan-card fc1"
+         style="background-image:url('card-kitchens.jpg');background-color:#2a1a08">
+      <div class="fan-card-inner">
+        <div class="fc-label"><div class="fc-tag">DASHBOARD</div><div class="fc-name">Kitchen's<br>App</div></div>
       </div>
+    </div>
+
+    <!-- card-eli.jpg (CENTRAL) -->
+    <div id="card-eli" class="fan-card fc2"
+         style="background-image:url('card-eli.jpg');background-color:#8b1a1a">
+      <div class="fan-card-inner">
+        <div class="fc-label"><div class="fc-tag">IA ATENDENTE</div><div class="fc-name">Eli Food's<br>30 segundos</div></div>
+      </div>
+    </div>
+
+    <!-- card-cardapio.jpg -->
+    <div id="card-cardapio" class="fan-card fc3"
+         style="background-image:url('card-cardapio.jpg');background-color:#1a2a0a">
+      <div class="fan-card-inner">
+        <div class="fc-label"><div class="fc-tag">DIGITAL</div><div class="fc-name">Cardápio<br>Exclusivo</div></div>
+      </div>
+    </div>
+
+    <!-- card-trafego.jpg -->
+    <div id="card-trafego" class="fan-card fc4"
+         style="background-image:url('card-trafego.jpg');background-color:#0a1a2a">
+      <div class="fan-card-inner">
+        <div class="fc-label"><div class="fc-tag">MARKETING</div><div class="fc-name">Tráfego<br>Pago</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-sec">
+  <div class="ticker-inner">
+    <div class="t-item"><span class="t-dot"></span><strong>30s</strong> — resposta do Eli</div>
+    <div class="t-item"><span class="t-dot"></span><strong>+40%</strong> — pedidos no 1º mês</div>
+    <div class="t-item"><span class="t-dot"></span><strong>94%</strong> — clientes que voltam</div>
+    <div class="t-item"><span class="t-dot"></span><strong>24/7</strong> — sem parar</div>
+    <div class="t-item"><span class="t-dot"></span><strong>R$1.500</strong> — por mês + 10% por pedido</div>
+    <div class="t-item"><span class="t-dot"></span><strong>30s</strong> — resposta do Eli</div>
+    <div class="t-item"><span class="t-dot"></span><strong>+40%</strong> — pedidos no 1º mês</div>
+    <div class="t-item"><span class="t-dot"></span><strong>94%</strong> — clientes que voltam</div>
+    <div class="t-item"><span class="t-dot"></span><strong>24/7</strong> — sem parar</div>
+    <div class="t-item"><span class="t-dot"></span><strong>R$1.500</strong> — por mês + 10% por pedido</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats-sec">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="s-box" data-r="up" data-d="1"><div class="s-num">30<span style="font-size:.5em">s</span></div><div class="s-lbl">Primeira resposta do Eli — qualquer horário</div></div>
+      <div class="s-box" data-r="up" data-d="2"><div class="s-num">+40%</div><div class="s-lbl">Mais pedidos no primeiro mês com tráfego</div></div>
+      <div class="s-box" data-r="up" data-d="3"><div class="s-num">94%</div><div class="s-lbl">Clientes que retornam com fidelidade ativa</div></div>
+      <div class="s-box" data-r="up" data-d="4"><div class="s-num">24/7</div><div class="s-lbl">Eli atendendo sem custo adicional</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ STATS ══════════ -->
-<section class="stats-sec" id="numeros">
+<!-- PRODUTO -->
+<section class="prod-sec" id="produto">
   <div class="wrap">
-    <div class="stats-track">
-      <div class="stat-box" data-r="up" data-d="1">
-        <div class="s-num s-acc glow-num">94%</div>
-        <div class="s-lbl">Taxa de qualificação de leads pelo Eli na Dzarte Vidros</div>
-      </div>
-      <div class="stat-box" data-r="up" data-d="2">
-        <div class="s-num">&lt;2<span style="font-size:.52em;letter-spacing:-.02em">min</span></div>
-        <div class="s-lbl">Resposta de primeira mensagem — qualquer horário</div>
-      </div>
-      <div class="stat-box" data-r="up" data-d="3">
-        <div class="s-num">90%</div>
-        <div class="s-lbl">Do processo comercial automatizado sem vendedor adicional</div>
-      </div>
-      <div class="stat-box" data-r="up" data-d="4">
-        <div class="s-num s-acc">24/7</div>
-        <div class="s-lbl">Operação contínua — Eli nunca para, nunca dorme</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ NICHOS ══════════ -->
-<section class="nichos-sec" id="nichos">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-eye" data-r="fade" data-d="1"><span class="sec-eye-line"></span>Soluções por Segmento</div>
-      <h2 class="sec-h" data-r="up" data-d="2">Uma infraestrutura.<br>Três segmentos.</h2>
-      <p class="sec-p" data-r="up" data-d="3">Cada nicho tem seu produto e modelo de entrega — adaptados à dor real de cada negócio.</p>
-    </div>
-    <div class="n-tabs" data-r="up" data-d="2">
-      <button class="n-tab nt-s on" data-nicho="sales"><span class="n-dot" style="background:var(--sky)"></span>Flüxa Sales · Vidraçarias</button>
-      <button class="n-tab nt-f" data-nicho="food"><span class="n-dot" style="background:var(--amber)"></span>Flüxa Food's · Restaurantes</button>
-      <button class="n-tab nt-c" data-nicho="care"><span class="n-dot" style="background:var(--lilac)"></span>Flüxa Care · Clínicas</button>
-    </div>
-
-    <!-- SALES -->
-    <div class="n-panel on" id="np-sales">
+    <div class="prod-grid">
       <div>
-        <div class="n-badge nb-s">⚡ Ativo · Em produção</div>
-        <h3 class="n-h">Para vidraçarias que cansaram de ser secretárias de si mesmas.</h3>
-        <p class="n-p">O dono é técnico, não vendedor. A Flüxa Sales automatiza o comercial do WhatsApp ao contrato — sem contratar ninguém.</p>
-        <div class="n-feats nfs">
-          <div class="n-feat"><div class="n-fi nfi-s">🤖</div><div><div class="n-ft">Eli SDR — Atendimento 24/7</div><div class="n-fd">Responde em menos de 2 minutos, qualifica o lead, coleta medidas e gera o orçamento. Sem vendedor adicional.</div></div></div>
-          <div class="n-feat"><div class="n-fi nfi-s">📄</div><div><div class="n-ft">Engine Budget — Orçamento automático</div><div class="n-fd">Motor de cálculo por m² com preços reais do fornecedor. Zero cálculo manual, zero erro humano.</div></div></div>
-          <div class="n-feat"><div class="n-fi nfi-s">📊</div><div><div class="n-ft">CRM & Pipeline Realtime</div><div class="n-fd">Kanban completo, calendário integrado e métricas em tempo real via Supabase. Sem F5.</div></div></div>
+        <span class="tag" data-r="fade" data-d="1">O Produto</span>
+        <h2 class="sec-h" data-r="up" data-d="2">Infraestrutura completa.<br>Dono só cozinha.</h2>
+        <p class="sec-p" data-r="up" data-d="3">Cardápio, pedidos, tráfego e fidelidade — tudo gerenciado pela Flüxa.</p>
+        <div class="feat-rows" data-r="up" data-d="4">
+          <div class="feat-row"><div class="fr-n">01</div><div class="fr-t">Cardápio Digital exclusivo</div><div class="fr-s">Link próprio</div></div>
+          <div class="feat-row"><div class="fr-n">02</div><div class="fr-t">Eli Pedidos 24/7</div><div class="fr-s">30 segundos</div></div>
+          <div class="feat-row"><div class="fr-n">03</div><div class="fr-t">Kitchen's App realtime</div><div class="fr-s">Pedidos ao vivo</div></div>
+          <div class="feat-row"><div class="fr-n">04</div><div class="fr-t">Tráfego Pago gerenciado</div><div class="fr-s">Meta Ads</div></div>
+          <div class="feat-row"><div class="fr-n">05</div><div class="fr-t">Fidelidade automática</div><div class="fr-s">WhatsApp</div></div>
         </div>
-        <a href="#diagnostico" class="n-btn nb2-s">Quero para minha vidraçaria <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-      <div class="n-vis flA dl1">
-        <div class="nvc nvs">
-          <div class="nv-head"><div><div class="nv-ht">Pipeline · Dzarte Vidros</div><div class="nv-hs">Mar 2026 · 247 leads ativos</div></div><div class="m-badge"><div class="m-bdot"></div>Realtime</div></div>
-          <div class="nv-body">
-            <div class="sp-grid">
-              <div><div class="sp-hd">Novos</div><div class="sp-card"><div class="sp-n">Rafael Mendes</div><div class="sp-v">R$ 3.800</div><span class="m-tag tn">Novo</span></div><div class="sp-card"><div class="sp-n">Ana Paula C.</div><div class="sp-v">R$ 5.400</div><span class="m-tag tn">Novo</span></div></div>
-              <div><div class="sp-hd">Proposta</div><div class="sp-card"><div class="sp-n">Lucas Ferreira</div><div class="sp-v">R$ 12.400</div><span class="m-tag tp">Proposta</span></div><div class="sp-card"><div class="sp-n">Beatriz Lima</div><div class="sp-v">R$ 5.900</div><span class="m-tag tp">Proposta</span></div></div>
-              <div><div class="sp-hd">Ganhos ✓</div><div class="sp-card"><div class="sp-n">Juliana Costa</div><div class="sp-v" style="color:#86efac">R$ 18.500</div><span class="m-tag tw">✓ Ganho</span></div><div class="sp-card"><div class="sp-n">Bruno Martins</div><div class="sp-v" style="color:#86efac">R$ 4.600</div><span class="m-tag tw">✓ Ganho</span></div></div>
-            </div>
+      <div data-r="up" data-d="2" style="position:relative;padding:20px 0 20px">
+        <div class="prod-card">
+          <div class="pc-head">
+            <div class="pc-ico">🔥</div>
+            <div><div class="pc-name">Flüxa Food's</div><div class="pc-sub">Infraestrutura completa</div></div>
           </div>
-          <div class="e-mini">
-            <div class="em-r"><div class="em-b em-i">Box 8mm, 2×2m</div></div>
-            <div class="em-r rv"><div class="em-b em-o">Olá! Sou a Eli 👋 Orçamento pronto. Agendar visita?</div></div>
+          <div class="pc-rows">
+            <div class="pc-row"><div class="pr-ico">📱</div><div><div class="pr-t">Cardápio Digital exclusivo</div><div class="pr-s">Identidade visual do restaurante</div></div></div>
+            <div class="pc-row"><div class="pr-ico">🤖</div><div><div class="pr-t">Eli Pedidos 24/7</div><div class="pr-s">Responde em até 30 segundos</div></div></div>
+            <div class="pc-row"><div class="pr-ico">📊</div><div><div class="pr-t">Kitchen's App realtime</div><div class="pr-s">Pedidos e métricas ao vivo</div></div></div>
+            <div class="pc-row"><div class="pr-ico">📣</div><div><div class="pr-t">Tráfego Pago gerenciado</div><div class="pr-s">Meta Ads no raio de entrega</div></div></div>
+            <div class="pc-row"><div class="pr-ico">⭐</div><div><div class="pr-t">Fidelidade automática</div><div class="pr-s">WhatsApp · custo zero</div></div></div>
           </div>
+          <div class="pc-price"><div class="pc-pv">R$1.500<span style="font-size:14px">/mês</span></div><div class="pc-ps">+ 10% por pedido gerado</div></div>
         </div>
+        <div class="pc-float pf1"><span class="pf1-dot"></span> Eli ativo agora</div>
+        <div class="pc-float pf2">Sem fidelidade · cancele quando quiser</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- FOOD -->
-    <div class="n-panel" id="np-food">
+<!-- ELI -->
+<section class="eli-sec" id="eli">
+  <div class="wrap">
+    <div class="eli-inner">
+      <div data-r="up" data-d="1">
+        <div class="eli-chat">
+          <div class="eli-hdr">
+            <div class="eli-av"><img src="data:image/png;base64,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" alt="Eli"/></div>
+            <div><div class="eli-nm">Eli Food's</div><div class="eli-st"><span class="eli-sdot"></span>Online agora</div></div>
+          </div>
+          <div class="eli-body">
+            <div class="msg in">Oi, quero fazer um pedido!</div>
+            <div class="msg-t">Cliente · 21:47</div>
+            <div class="msg out">Olá! 🍕 cardapio.fluxa.com/quiosque</div>
+            <div class="msg-t r">Eli · 28s depois</div>
+            <div class="msg in">Pizza calabresa média + catupiry</div>
+            <div class="msg-t">Cliente · 21:49</div>
+            <div class="msg out">Pizza Calabresa + Catupiry 🔥 R$61. Confirma?</div>
+            <div class="msg-t r">Eli · 18s depois</div>
+            <div class="msg in">Sim! Rua das Flores, 120</div>
+            <div class="msg-t">Cliente · 21:50</div>
+            <div class="typing"><span></span><span></span><span></span></div>
+            <div style="font-size:9px;color:var(--muted2);margin-top:4px;display:flex;align-items:center;gap:5px">
+              <span style="width:4px;height:4px;border-radius:50%;background:#22c55e;display:inline-block"></span>
+              Pedido registrado no Kitchen's
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
-        <div class="n-badge nb-f">🍔 Ativo · Em produção</div>
-        <h3 class="n-h">Para restaurantes que vivem do boca a boca mas pararam de crescer.</h3>
-        <p class="n-p">Cardápio digital, pedidos via WhatsApp, tráfego pago e fidelidade — gerenciados pela Flüxa. O dono só cozinha.</p>
-        <div class="n-feats nff">
-          <div class="n-feat"><div class="n-fi nfi-f">🛵</div><div><div class="n-ft">Eli Pedidos — Confirmação em 30s</div><div class="n-fd">Recebe, confirma e encaminha o pedido ao sistema. Cliente satisfeito, cozinha organizada.</div></div></div>
-          <div class="n-feat"><div class="n-fi nfi-f">📋</div><div><div class="n-ft">Cardápio Digital com identidade</div><div class="n-fd">Visual do restaurante, sem template genérico, sem taxa por pedido. Integrado ao Eli.</div></div></div>
-          <div class="n-feat"><div class="n-fi nfi-f">📣</div><div><div class="n-ft">Tráfego + Fidelidade automática</div><div class="n-fd">Meta Ads no raio de entrega, Reels estratégicos e fidelidade 100% automática via WhatsApp.</div></div></div>
-        </div>
-        <a href="#diagnostico" class="n-btn nb2-f">Quero para meu restaurante <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="n-vis flB dl2">
-        <div class="nvc nvf">
-          <div class="nv-head"><div><div class="nv-ht">Demandas · Quioski Lanches</div><div class="nv-hs">Hoje · 14 pedidos confirmados</div></div><div class="m-badge" style="background:rgba(245,158,11,.07);border-color:rgba(245,158,11,.2);color:#fcd34d"><div style="width:5px;height:5px;border-radius:50%;background:var(--amber);animation:liveDot 1.8s ease-in-out infinite;flex-shrink:0"></div>Eli ativo</div></div>
-          <div class="nv-body">
-            <div class="fo-list">
-              <div class="fo-row"><div class="fo-d fdn"></div><div><div class="fo-n">X-Tudo + Coca Zero</div><div class="fo-s">há 3 min · Entrega</div></div><div class="fo-v">R$ 38</div></div>
-              <div class="fo-row"><div class="fo-d fdp"></div><div><div class="fo-n">Combo Frango + Suco</div><div class="fo-s">há 12 min · Em preparo</div></div><div class="fo-v">R$ 44</div></div>
-              <div class="fo-row"><div class="fo-d fdd"></div><div><div class="fo-n">Misto + Café</div><div class="fo-s">há 28 min · Entregue</div></div><div class="fo-v">R$ 22</div></div>
-            </div>
-            <div class="fo-stats">
-              <div class="fo-st"><div class="fo-sv">14</div><div class="fo-sl">Pedidos hoje</div></div>
-              <div class="fo-st"><div class="fo-sv">R$33</div><div class="fo-sl">Ticket médio</div></div>
-              <div class="fo-st"><div class="fo-sv">30s</div><div class="fo-sl">Resp. Eli</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARE -->
-    <div class="n-panel" id="np-care">
-      <div>
-        <div class="n-badge nb-c">🏥 Em Breve!</div>
-        <h3 class="n-h">Para clínicas que perdem pacientes antes da primeira consulta.</h3>
-        <p class="n-p">O mesmo caos do WhatsApp — mas em saúde. Eli qualifica, verifica a agenda e agenda automaticamente.</p>
-        <div class="n-feats nfc">
-          <div class="n-feat"><div class="n-fi nfi-c">🤖</div><div><div class="n-ft">Eli SDR Clínica — Qualificação automática</div><div class="n-fd">Coleta procedimento, plano de saúde, urgência e disponibilidade. Encaminha só os leads prontos.</div></div></div>
-          <div class="n-feat"><div class="n-fi nfi-c">📅</div><div><div class="n-ft">Agendamento automático</div><div class="n-fd">Eli verifica a agenda e agenda consultas em tempo real. Sem a recepcionista intervir.</div></div></div>
-          <div class="n-feat"><div class="n-fi nfi-c">📋</div><div><div class="n-ft">CRM de Pacientes</div><div class="n-fd">Histórico completo, pipeline de retorno e follow-up automático pós-consulta.</div></div></div>
-        </div>
-        <a href="#diagnostico" class="n-btn nb2-c">Quero para minha clínica <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="n-vis flC dl3">
-        <div class="nvc nvc2">
-          <div class="nv-head"><div><div class="nv-ht">CRM Pacientes · Clínica</div><div class="nv-hs">Mar 2026 · 89 pacientes ativos</div></div><div class="m-badge" style="background:rgba(139,92,246,.07);border-color:rgba(139,92,246,.2);color:#c4b5fd"><div style="width:5px;height:5px;border-radius:50%;background:var(--lilac);animation:liveDot 1.8s ease-in-out infinite;flex-shrink:0"></div>Online</div></div>
-          <div class="nv-body">
-            <div class="ca-list">
-              <div class="ca-row"><div class="ca-av" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">M</div><div class="ca-i"><div class="ca-n">Marina Souza</div><div class="ca-p">Clareamento · Unimed</div></div><span class="ca-t cta">Agendada</span></div>
-              <div class="ca-row"><div class="ca-av" style="background:linear-gradient(135deg,#0ea5e9,#0058b8)">R</div><div class="ca-i"><div class="ca-n">Ricardo Lima</div><div class="ca-p">Implante · Particular</div></div><span class="ca-t ctw">Aguardando</span></div>
-              <div class="ca-row"><div class="ca-av" style="background:linear-gradient(135deg,#22c55e,#16a34a)">J</div><div class="ca-i"><div class="ca-n">Juliana Costa</div><div class="ca-p">Check-up · Bradesco</div></div><span class="ca-t cto">Confirmada</span></div>
-            </div>
-            <div class="ca-mets">
-              <div class="ca-m"><div class="ca-mv">89</div><div class="ca-ml">Pacientes ativos</div></div>
-              <div class="ca-m"><div class="ca-mv">&lt;2min</div><div class="ca-ml">Resp. Eli</div></div>
-              <div class="ca-m"><div class="ca-mv">96%</div><div class="ca-ml">Confirmação</div></div>
-              <div class="ca-m"><div class="ca-mv">24/7</div><div class="ca-ml">Disponível</div></div>
-            </div>
-          </div>
+        <span class="tag" data-r="fade" data-d="1">Eli Food's</span>
+        <h2 class="sec-h" data-r="up" data-d="2">Responde em<br>30 segundos.</h2>
+        <p class="sec-p" data-r="up" data-d="3">Treinado no seu cardápio. Recebe, confirma e manda pro Kitchen's. Sem funcionário extra.</p>
+        <div class="eli-feats" data-r="up" data-d="4">
+          <div class="ef"><div class="ef-ico">⚡</div><div><div class="ef-t">Menos de 30s sempre</div><div class="ef-d">Cliente não espera e não vai no concorrente.</div></div></div>
+          <div class="ef"><div class="ef-ico">🔄</div><div><div class="ef-t">Pedido confirmado automaticamente</div><div class="ef-d">Endereço, pagamento — tudo sem intervenção humana.</div></div></div>
+          <div class="ef"><div class="ef-ico">⭐</div><div><div class="ef-t">Avaliação 30min após entrega</div><div class="ef-d">Gera prova social antes de virar reclamação pública.</div></div></div>
+          <div class="ef"><div class="ef-ico">🎁</div><div><div class="ef-t">Fidelidade 100% automática</div><div class="ef-d">Desconto ou brinde após X pedidos. Zero trabalho.</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ CASE ══════════ -->
-<section class="case-sec" id="case">
+<!-- COMO FUNCIONA -->
+<section class="how-sec" id="como-funciona">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:52px">
-      <div class="sec-eye" style="justify-content:center" data-r="fade" data-d="1"><span class="sec-eye-line"></span>Case Real</div>
-      <h2 class="sec-h" data-r="up" data-d="2">Dzarte Vidros — 15 anos de mercado.<br>90% do comercial no automático.</h2>
-    </div>
-    <div class="c-card" data-r="scale" data-d="2">
-      <div class="c-top">
-        <div class="c-brand"><div class="c-ico">🏢</div><div><div class="c-bn">Dzarte Vidros</div><div class="c-bl">Blumenau, SC · 15 anos de mercado</div></div></div>
-        <div class="c-verif">✓ Case verificado · Em produção desde Mar/2026</div>
-      </div>
-      <div class="c-mets">
-        <div class="c-met"><div class="c-mv s-acc glow-num">94%</div><div class="c-ml">Taxa de qualificação de leads pelo Eli</div></div>
-        <div class="c-met"><div class="c-mv">&lt;2<span style="font-size:.52em">min</span></div><div class="c-ml">Tempo médio de primeira resposta</div></div>
-        <div class="c-met"><div class="c-mv">90%</div><div class="c-ml">Do processo comercial automatizado</div></div>
-        <div class="c-met"><div class="c-mv s-acc">24/7</div><div class="c-ml">Operação contínua sem vendedor adicional</div></div>
-      </div>
-      <div class="c-q">
-        <span class="c-qm">"</span>
-        <div><div class="c-qt">Antes eu era o secretário da minha própria empresa. Calculava orçamento, respondia WhatsApp e ainda tentava tocar a operação. A Flüxa me deu o que eu não tinha: uma estrutura comercial de verdade. Agora o Eli trabalha enquanto eu instalo vidro.</div><div class="c-qs">Israel · Proprietário, Dzarte Vidros · Blumenau/SC</div></div>
-      </div>
+    <span class="tag" data-r="fade" data-d="1">Fluxo do pedido</span>
+    <h2 class="sec-h" data-r="up" data-d="2">Do WhatsApp à entrega.<br>100% automático.</h2>
+    <div class="how-steps" data-r="up" data-d="3">
+      <div class="how-step"><div class="hs-ico">💬</div><div class="hs-n">01</div><div class="hs-t">Cliente manda "quero pedir"</div><div class="hs-d">No WhatsApp do restaurante. Qualquer hora.</div></div>
+      <div class="how-step"><div class="hs-ico">⚡</div><div class="hs-n">02</div><div class="hs-t">Eli responde em 30s</div><div class="hs-d">Envia o link do cardápio personalizado.</div></div>
+      <div class="how-step"><div class="hs-ico">✅</div><div class="hs-n">03</div><div class="hs-t">Pedido vai pro Kitchen's</div><div class="hs-d">Confirmação e endereço coletados pelo Eli.</div></div>
+      <div class="how-step"><div class="hs-ico">🛵</div><div class="hs-n">04</div><div class="hs-t">Entregue + avaliação</div><div class="hs-d">Fidelidade contada. Cliente volta.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ ECO ══════════ -->
-<section class="eco-sec" id="ecossistema">
+<!-- QUOTE -->
+<section class="quote-sec" data-r="fade">
+  <div class="q-bg"></div>
   <div class="wrap">
-    <div style="text-align:center;max-width:560px;margin:0 auto 60px">
-      <div class="sec-eye" style="justify-content:center" data-r="fade" data-d="1"><span class="sec-eye-line"></span>Ecossistema</div>
-      <h2 class="sec-h" data-r="up" data-d="2">Além do software.</h2>
-      <p class="sec-p" style="margin:0 auto" data-r="up" data-d="3">Três camadas que se reforçam — produto, automação e rede nacional.</p>
-    </div>
-    <div class="eco-flow" data-r="up" data-d="2">
-      <div class="eco-node flA dl1"><div class="eco-ico" style="background:rgba(56,182,255,.08);border-color:rgba(56,182,255,.2)">🏢</div><div class="eco-nt">Dzarte Vidros</div><div class="eco-nd">Laboratório vivo. 15 anos de operação. Onde tudo é validado antes de ir ao mercado.</div></div>
-      <div class="eco-arr"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="eco-node flB dl2"><div class="eco-ico" style="background:rgba(94,106,210,.08);border-color:rgba(94,106,210,.2)">⚡</div><div class="eco-nt">Flüxa</div><div class="eco-nd">Infraestrutura de vendas. SaaS + automação + assessoria. O motor que move o negócio local.</div></div>
-      <div class="eco-arr"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      <div class="eco-node flC dl3"><div class="eco-ico" style="background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2)">🌐</div><div class="eco-nt">Rede Dzarte</div><div class="eco-nd">Rede nacional de parceiros. Leads distribuídos por região para quem usa a Flüxa Sales.</div></div>
-    </div>
-    <div class="eco-bot" data-r="up" data-d="3">
-      <div class="eco-bt"><div class="eco-btt">Rede Dzarte — lista de espera aberta</div><div class="eco-btd">Ao contratar a Flüxa Sales, você entra na lista prioritária para ser parceiro oficial da Dzarte na sua cidade. Vagas por cidade são limitadas — quem entrar primeiro tem prioridade absoluta.</div></div>
-      <div class="eco-tags"><div class="eco-tag">Leads qualificados</div><div class="eco-tag">Parceiro exclusivo</div><div class="eco-tag">Marca nacional</div><div class="eco-tag">Acesso prioritário</div></div>
-    </div>
+    <span class="q-mark">"</span>
+    <p class="q-text" data-r="up" data-d="1">
+      Antes eu respondia WhatsApp às 23h sem saber se amanhã ia ser bom ou ruim. Agora sei o que esperar do mês.
+    </p>
+    <div class="q-name">Cliente Flüxa Food's</div>
+    <div class="q-role">Blumenau, SC · Em implantação</div>
   </div>
 </section>
 
-<!-- ══════════ CTA / FORM ══════════ -->
-<section class="cta-sec" id="diagnostico">
+<!-- FORM -->
+<section class="form-sec" id="diagnostico">
   <div class="wrap">
-    <div class="cta-box" data-r="scale" data-d="1">
-      <div style="text-align:center;margin-bottom:36px;position:relative;z-index:1">
-        <h2 class="cta-h">Diagnóstico Gratuito.<br><span class="gt">Sem enrolação.</span></h2>
-        <p class="cta-p">Em até 4 horas, um especialista da Flüxa entra em contato e mostra como a infraestrutura funciona para o seu negócio.</p>
+    <div class="form-inner">
+      <div class="f-head" data-r="up" data-d="1">
+        <h2 class="f-h">Diagnóstico gratuito.<br>Sem enrolação.</h2>
+        <p class="f-p">Em até 4 horas um especialista entra em contato e mostra como funciona pro seu restaurante.</p>
       </div>
-      <form id="mainForm" onsubmit="submitForm(event)">
+      <form id="mainForm" onsubmit="submitForm(event)" data-r="up" data-d="2">
         <div class="frow">
-          <div class="fg"><label class="fl" for="fn">Nome completo</label><input class="fi" id="fn" type="text" placeholder="Seu nome" required></div>
-          <div class="fg"><label class="fl" for="fe">Nome da empresa</label><input class="fi" id="fe" type="text" placeholder="Ex: Vidraçaria Central" required></div>
+          <div class="fg"><label class="fl">Seu nome</label><input class="fi" id="fn" type="text" placeholder="Nome completo" required></div>
+          <div class="fg"><label class="fl">Restaurante</label><input class="fi" id="fe" type="text" placeholder="Ex: Pizzaria Bella" required></div>
         </div>
         <div class="frow">
-          <div class="fg"><label class="fl" for="fni">Segmento</label><div class="sw"><select class="fs" id="fni" required><option value="" disabled selected>Selecione...</option><option value="vidracaria">Vidraçaria</option><option value="restaurante">Restaurante / Lanchonete</option><option value="clinica">Clínica</option><option value="outro">Outro</option></select><span class="sa">▾</span></div></div>
-          <div class="fg"><label class="fl" for="fc">Seu cargo</label><div class="sw"><select class="fs" id="fc" required><option value="" disabled selected>Selecione...</option><option>Proprietário / Sócio</option><option>Gerente</option><option>Outro</option></select><span class="sa">▾</span></div></div>
+          <div class="fg"><label class="fl">Tipo</label><div class="sw"><select class="fs" id="fni" required><option value="" disabled selected>Selecione...</option><option value="pizzaria">Pizzaria</option><option value="restaurante">Restaurante</option><option value="lanchonete">Lanchonete</option><option value="hamburgueria">Hamburgueria</option><option value="outro">Outro</option></select><span class="sa">▾</span></div></div>
+          <div class="fg"><label class="fl">Cargo</label><div class="sw"><select class="fs" id="fc" required><option value="" disabled selected>Selecione...</option><option>Proprietário / Sócio</option><option>Gerente</option></select><span class="sa">▾</span></div></div>
         </div>
-        <div class="fg"><label class="fl" for="ff">Faturamento mensal</label><div class="sw"><select class="fs" id="ff"><option value="" disabled selected>Selecione...</option><option>Até R$ 30.000</option><option>R$ 30.000 – R$ 80.000</option><option>R$ 80.000 – R$ 200.000</option><option>Acima de R$ 200.000</option></select><span class="sa">▾</span></div></div>
-        <div class="fg"><label class="fl" for="fw">WhatsApp</label><input class="fi" id="fw" type="tel" placeholder="(11) 99999-9999" required></div>
-        <div class="dz-chk"><input type="checkbox" id="fdz"><div><div class="dz-l">⭐ Quero entrar na Rede Dzarte (Lista de Espera)</div><div class="dz-s">Tenho interesse em ser parceiro oficial da marca Dzarte na minha região.</div></div></div>
-        <button type="submit" class="f-btn" id="fBtn">🚀 &nbsp;Garantir meu Diagnóstico Gratuito</button>
+        <div class="fg"><label class="fl">Faturamento mensal</label><div class="sw"><select class="fs" id="ff"><option value="" disabled selected>Selecione...</option><option>Até R$15.000</option><option>R$15k – R$40k</option><option>R$40k – R$100k</option><option>Acima de R$100k</option></select><span class="sa">▾</span></div></div>
+        <div class="fg"><label class="fl">WhatsApp</label><input class="fi" id="fw" type="tel" placeholder="(11) 99999-9999" required></div>
+        <button type="submit" class="f-btn" id="fBtn">🚀 Quero meu diagnóstico gratuito</button>
       </form>
-      <div class="f-trust"><div class="f-ti"><span class="f-tic"></span></div><div class="f-ti"><span class="f-tic"></span></div><div class="f-ti"><span class="f-tic"></span></div></div>
+      <div class="f-trust">
+        <div class="f-ti"><span class="f-tic">✓</span>&nbsp;Sem taxa de setup</div>
+        <div class="f-ti"><span class="f-tic">✓</span>&nbsp;Resposta em até 4h</div>
+        <div class="f-ti"><span class="f-tic">✓</span>&nbsp;Sem compromisso</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ FOOTER ══════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="f-inner">
-      <div class="f-logo"><img src="fluxalogo.png" alt="Flüxa"></div>
-      <div class="f-links"><a href="#nichos">Soluções</a><a href="#case">Cases</a><a href="#ecossistema">Ecossistema</a><a href="#diagnostico">Diagnóstico</a></div>
-      <div class="f-copy">© 2026 Flüxa · Revenue Engineering para Negócios Locais</div>
+      <div class="f-logo">
+        <img src="logo.png"
+             alt="Flüxa"
+             onerror="this.onerror=null;this.src='data:image/png;base64,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'"
+             style="height:20px"/>
+      </div>
+      <div class="f-links">
+        <a href="#produto">Produto</a>
+        <a href="#eli">Eli Food's</a>
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="#diagnostico">Diagnóstico</a>
+      </div>
+      <div class="f-copy">© 2026 Flüxa Food's</div>
     </div>
   </div>
 </footer>
 
 <script>
-/* ─── CURSOR MAGNÉTICO ─── */
+/* CURSOR */
 (function(){
-  if(window.matchMedia('(hover:none)').matches)return;
+  if(window.matchMedia('(hover:none)').matches) return;
   document.body.classList.add('hm');
-  const c=document.getElementById('CUR'),r=document.getElementById('RING');
-  let mx=0,my=0,rx=0,ry=0,raf;
+  const c=document.getElementById('CUR'), r=document.getElementById('RING');
+  let mx=0,my=0,rx=0,ry=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c.style.left=mx+'px';c.style.top=my+'px';});
   (function loop(){rx+=(mx-rx)*.09;ry+=(my-ry)*.09;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(loop);})();
-  const mag=document.querySelectorAll('a,button,.n-tab,.n-feat,.stat-box,.eco-node,.sp-card,.fo-row,.ca-row,.m-card');
-  mag.forEach(el=>{
-    el.addEventListener('mouseenter',()=>{c.style.width='20px';c.style.height='20px';c.style.background='rgba(56,182,255,.6)';r.style.width='64px';r.style.height='64px';r.style.borderColor='rgba(56,182,255,.5)';r.style.opacity='.35';});
-    el.addEventListener('mouseleave',()=>{c.style.width='8px';c.style.height='8px';c.style.background='var(--sky)';r.style.width='32px';r.style.height='32px';r.style.borderColor='rgba(56,182,255,.32)';r.style.opacity='.5';});
+  const hov=document.querySelectorAll('a,button,.feat-row,.how-step,.ef,.pc-row,.fan-card,.s-box');
+  hov.forEach(el=>{
+    el.addEventListener('mouseenter',()=>{c.style.width='20px';c.style.height='20px';r.style.width='56px';r.style.height='56px';});
+    el.addEventListener('mouseleave',()=>{c.style.width='8px';c.style.height='8px';r.style.width='32px';r.style.height='32px';});
   });
 })();
 
-/* ─── NAV SCROLL ─── */
+/* CASCADE — preenche todo o hero, 50% opacidade */
+const FOODS=['🍔','🍕','🍟','🌭','🍿','🍩','🍪','🌮','🍣','🍦','🥞','🥐','🧇','🧀','🥩','🍗','🥙','🍜','🧆','🥗','🍱','🥘','🫕','🌯','🥪','🫔','🍛'];
+const hero=document.querySelector('.hero');
+const cascade=document.getElementById('cascade');
+
+function spawnFood(){
+  const el=document.createElement('div'); el.className='fd';
+  el.textContent=FOODS[Math.floor(Math.random()*FOODS.length)];
+  el.style.fontSize=(14+Math.random()*20)+'px';
+  // Distribui por toda a largura (0–100%)
+  el.style.left=(Math.random()*98)+'%';
+  const dur=5+Math.random()*9; el.style.animationDuration=dur+'s';
+  // 50% opacidade máxima para não poluir
+  el.style.setProperty('--max-opacity', (.25+Math.random()*.25).toString());
+  el.style.opacity='0';
+  cascade.appendChild(el);
+  setTimeout(()=>el.remove(),(dur+.5)*1000);
+}
+
+// Lança emojis de forma contínua
+setInterval(spawnFood, 200);
+// Pré-popula a cascata
+for(let i=0;i<20;i++) setTimeout(spawnFood, i*100);
+
+/* Ajusta duração da animação para não ultrapassar o hero */
+function fixCascadeHeight(){
+  const h=hero.offsetHeight;
+  // A animação @keyframes já usa 100vh como alvo — mantém contido pelo overflow:hidden do hero
+}
+fixCascadeHeight();
+window.addEventListener('resize', fixCascadeHeight);
+
+/* NAV */
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',window.scrollY>50),{passive:true});
 
-/* ─── SCROLL REVEAL — STAGGER ─── */
-const ro=new IntersectionObserver(es=>{
-  es.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('in');
-      ro.unobserve(e.target);
-    }
-  });
-},{threshold:.05,rootMargin:'0px 0px -28px 0px'});
+/* REVEAL */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('[data-r]').forEach(el=>ro.observe(el));
-/* Reveal inicial para elementos acima do fold */
-setTimeout(()=>{
-  document.querySelectorAll('[data-r]:not(.in)').forEach(el=>{
-    if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('in');
-  });
-},80);
+setTimeout(()=>{document.querySelectorAll('[data-r]:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('in');});},80);
 
-/* ─── FLOAT TAGS DELAYED APPEAR ─── */
-setTimeout(()=>{
-  document.querySelectorAll('.ftag').forEach((el,i)=>{
-    setTimeout(()=>el.classList.add('show'),700+i*220);
-  });
-},500);
-
-/* ─── MOCKUP TABS ─── */
-function switchMockup(t){
-  document.querySelectorAll('.m-ni[data-t]').forEach(n=>n.classList.toggle('on',n.dataset.t===t));
-  document.querySelectorAll('.m-tb[data-t]').forEach(n=>n.classList.toggle('on',n.dataset.t===t));
-  document.querySelectorAll('.m-view').forEach(v=>v.classList.remove('on'));
-  const el=document.getElementById('t-'+t);if(el)el.classList.add('on');
-}
-document.querySelectorAll('.m-ni[data-t]').forEach(i=>i.addEventListener('click',()=>switchMockup(i.dataset.t)));
-document.querySelectorAll('.m-tb[data-t]').forEach(i=>i.addEventListener('click',()=>switchMockup(i.dataset.t)));
-
-/* ─── NICHO TABS ─── */
-document.querySelectorAll('.n-tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const n=btn.dataset.nicho;
-    document.querySelectorAll('.n-tab').forEach(b=>b.classList.remove('on'));
-    btn.classList.add('on');
-    document.querySelectorAll('.n-panel').forEach(p=>{p.classList.remove('on');p.style.display='none';});
-    const panel=document.getElementById('np-'+n);
-    if(panel){
-      panel.style.display='grid';
-      requestAnimationFrame(()=>requestAnimationFrame(()=>panel.classList.add('on')));
-    }
-  });
-});
-document.getElementById('np-sales').style.display='grid';
-
-/* ─── MOBILE NAV ─── */
-const mBtn=document.getElementById('mobBtn'),nLinks=document.getElementById('navLinks');
-let open=false;
-mBtn.addEventListener('click',()=>{
-  open=!open;mBtn.textContent=open?'✕':'☰';
-  nLinks.style.cssText=open?'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:rgba(3,3,8,.97);border-bottom:1px solid rgba(255,255,255,.07);padding:18px 22px;gap:4px;backdrop-filter:blur(40px);z-index:599;border-radius:0 0 20px 20px':'';
-});
+/* MOB NAV */
+const mBtn=document.getElementById('mobBtn'),nLinks=document.getElementById('navLinks'); let open=false;
+mBtn.addEventListener('click',()=>{open=!open; mBtn.textContent=open?'✕':'☰'; nLinks.style.cssText=open?'display:flex;flex-direction:column;position:absolute;top:54px;left:0;right:0;background:rgba(245,230,216,.97);border-bottom:1px solid var(--border);padding:14px 24px;gap:4px;z-index:599':'';});
 nLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{open=false;mBtn.textContent='☰';nLinks.style.cssText='';}));
 
-/* ─── SMOOTH SCROLL ─── */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const h=a.getAttribute('href');if(!h||h==='#')return;
-    const t=document.querySelector(h);if(!t)return;
-    e.preventDefault();
-    window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-64,behavior:'smooth'});
-  });
-});
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(!h||h==='#')return;const t=document.querySelector(h);if(!t)return;e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-54,behavior:'smooth'});});});
 
-/* ─── MOCKUP SCALE MOBILE ─── */
-function scaleM(){
-  const m=document.querySelector('.mock');if(!m)return;
-  const vw=window.innerWidth;
-  if(vw<=640){
-    const s=Math.max(.55,Math.min(1,(vw-240)/(640-240)));
-    m.style.transform=`scale(${s.toFixed(3)})`;
-    m.style.transformOrigin='top center';
-    m.style.marginBottom=`${Math.round(m.offsetHeight*(s-1))}px`;
-  }else{m.style.transform='';m.style.transformOrigin='';m.style.marginBottom='';}
-}
-scaleM();window.addEventListener('resize',scaleM);
-
-/* ─── FORM ─── */
+/* FORM */
 async function submitForm(e){
   e.preventDefault();
-  const btn=document.getElementById('fBtn'),form=document.getElementById('mainForm');
-  const p={
-    nome:document.getElementById('fn').value.trim(),
-    empresa:document.getElementById('fe').value.trim(),
-    nicho:document.getElementById('fni').value,
-    cargo:document.getElementById('fc').value,
-    faturamento:document.getElementById('ff').value,
-    whatsapp:document.getElementById('fw').value.trim(),
-    rede_dzarte:document.getElementById('fdz').checked,
-    origem:'landing-fluxa',
-    timestamp:new Date().toISOString()
-  };
-  btn.disabled=true;
-  btn.innerHTML='<span style="display:inline-block;animation:spin .7s linear infinite">⏳</span>&nbsp; Enviando...';
+  const btn=document.getElementById('fBtn');
+  const p={nome:document.getElementById('fn').value.trim(),empresa:document.getElementById('fe').value.trim(),tipo:document.getElementById('fni').value,cargo:document.getElementById('fc').value,faturamento:document.getElementById('ff').value,whatsapp:document.getElementById('fw').value.trim(),produto:'fluxa-foods',origem:'lp-fluxa-foods',timestamp:new Date().toISOString()};
+  btn.disabled=true; btn.textContent='Enviando...';
   try{
     const res=await fetch('https://n8n-n8n.uhcnbw.easypanel.host/webhook/fluxa-lp-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)});
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    btn.innerHTML='✅&nbsp; Diagnóstico garantido! Entraremos em contato em breve.';
-    btn.style.cssText='width:100%;padding:14px;border-radius:13px;background:#005599;color:#fff;font-size:15px;font-weight:700;font-family:var(--font);border:none;pointer-events:none;box-shadow:0 0 0 1px rgba(56,182,255,.5),0 0 52px rgba(56,182,255,.32)';
-    form.querySelectorAll('input,select').forEach(el=>el.disabled=true);
-  }catch(err){
-    btn.disabled=false;
-    btn.innerHTML='⚠️&nbsp; Erro — tente novamente.';
-    btn.style.cssText='width:100%;padding:14px;border-radius:13px;background:#b91c1c;color:#fff;font-size:15px;font-weight:700;font-family:var(--font);border:none;cursor:pointer;';
-    setTimeout(()=>{btn.innerHTML='🚀&nbsp; Garantir meu Diagnóstico Gratuito';btn.style.cssText='';},4000);
+    if(!res.ok) throw new Error();
+    btn.textContent='✓ Diagnóstico garantido! Entraremos em contato em breve.';
+    btn.style.cssText='width:100%;padding:14px;border-radius:100px;background:#22c55e;color:#fff;font-size:14px;font-weight:700;border:none;pointer-events:none;font-family:var(--f)';
+    document.querySelectorAll('#mainForm input,#mainForm select').forEach(el=>el.disabled=true);
+  }catch{
+    btn.disabled=false; btn.textContent='⚠️ Erro — tente novamente.';
+    btn.style.cssText='width:100%;padding:14px;border-radius:100px;background:#dc2626;color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:var(--f)';
+    setTimeout(()=>{btn.textContent='🚀 Quero meu diagnóstico gratuito';btn.style.cssText='';btn.disabled=false;},4000);
   }
 }
-const ss=document.createElement('style');ss.textContent='@keyframes spin{to{transform:rotate(360deg)}}';document.head.appendChild(ss);
 </script>
 </body>
 </html>
