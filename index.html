@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fluxa Food's — Chega de depender de dia bom.</title>
+<title>Fluxa Foods — Chega de depender de dia bom.</title>
 <meta name="description" content="Infraestrutura de vendas previsíveis para restaurantes. Aquisição, conversão e retenção num sistema único. 10% vs 25% do iFood.">
 <link rel="icon" type="image/png" href="favicon.fluxa.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -348,9 +348,11 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 40px; }
 
 /* RESPONSIVE 768 */
 @media (max-width: 768px) {
-  nav { padding: 0 20px; height: 60px; }
+  nav { padding: 0 16px; height: 52px; }
+  .nav-logo img { height: 28px; }
   .nav-links { display: none; }
-  .nav-cta { padding: 9px 16px; font-size: 13px; }
+  .nav-cta { padding: 7px 11px; font-size: 11px; font-weight: 700; letter-spacing: -0.2px; white-space: nowrap; border-radius: 6px; }
+  .nav-right { gap: 8px; }
   .container { padding: 0 20px; }
   .section-title { letter-spacing: -1.5px; }
   .section-sub { font-size: 15px; }
@@ -419,7 +421,9 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 40px; }
 
 /* RESPONSIVE 480 */
 @media (max-width: 480px) {
-  nav { height: 56px; }
+  nav { height: 52px; padding: 0 14px; }
+  .nav-logo img { height: 28px; }
+  .nav-cta { font-size: 11px; padding: 7px 10px; max-width: 120px; }
   .container { padding: 0 16px; }
   .hero { padding: 82px 16px 52px; }
   .hero h1 { font-size: clamp(38px, 10vw, 52px); letter-spacing: -1.5px; }
@@ -776,7 +780,7 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 40px; }
           <tr>
             <th style="text-align:left">Recurso</th>
             <th>iFood / Rappi</th>
-            <th class="th-fluxa">Fluxa Food's</th>
+            <th class="th-fluxa">Fluxa Foods</th>
           </tr>
         </thead>
         <tbody>
@@ -1016,7 +1020,7 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 40px; }
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Fluxa Food's. Todos os direitos reservados.</span>
+      <span class="footer-copy">© 2026 Fluxa Foods. Todos os direitos reservados.</span>
       <div class="footer-legal">
         <a href="#">Instagram</a>
         <a href="#">WhatsApp</a>
@@ -1084,7 +1088,7 @@ function submitForm() {
   });
   if (!valid) return;
   const msg = encodeURIComponent(
-    `*Novo lead — Fluxa Food's*\n\n` +
+    `*Novo lead — Fluxa Foods*\n\n` +
     `Nome: ${fields.nome.value}\nRestaurante: ${fields.restaurante.value}\nFaturamento: ${fields.faturamento.value}\nTipo: ${fields.tipo.value}\nCargo: ${fields.cargo.value}\nWhatsApp: ${fields.whatsapp.value}`
   );
   window.open(`https://wa.me/5547999999999?text=${msg}`, '_blank');
