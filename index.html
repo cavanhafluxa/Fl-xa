@@ -121,6 +121,8 @@ nav.scrolled { background: rgba(12, 10, 8, 0.97); }
 .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; letter-spacing: -0.2px; }
 .nav-links a:hover { color: var(--beige); }
 .nav-right { display: flex; align-items: center; gap: 16px; }
+.cta-short { display: none; }
+.cta-full  { display: inline; }
 .nav-cta { background: var(--red); color: #fff; padding: 10px 22px; border-radius: 7px; font-size: 14px; font-weight: 700; letter-spacing: -0.3px; transition: background .2s, transform .15s; }
 .nav-cta:hover { background: var(--red-light); transform: translateY(-1px); }
 
@@ -352,6 +354,8 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 40px; }
   .nav-logo img { height: 28px; }
   .nav-links { display: none; }
   .nav-cta { padding: 7px 11px; font-size: 11px; font-weight: 700; letter-spacing: -0.2px; white-space: nowrap; border-radius: 6px; }
+  .cta-full { display: none; }
+  .cta-short { display: inline; }
   .nav-right { gap: 8px; }
   .container { padding: 0 20px; }
   .section-title { letter-spacing: -1.5px; }
@@ -463,7 +467,7 @@ footer { border-top: 1px solid var(--border); padding: 56px 0 40px; }
     <a href="#resultados">Resultados</a>
   </div>
   <div class="nav-right">
-    <a href="#contato" class="nav-cta">Quero gerar pedidos todos os dias</a>
+    <a href="#contato" class="nav-cta"><span class="cta-full">Quero gerar pedidos todos os dias</span><span class="cta-short">Diagnóstico grátis</span></a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
