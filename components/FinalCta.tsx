@@ -1,33 +1,31 @@
 export default function FinalCta() {
   return (
-    <section className="final-cta">
-      <div className="cta-radial"></div>
-      <div className="cta-lines"></div>
+    <section className="section final-cta on-red">
+      <span className="bg-word" aria-hidden="true">
+        Fluxa
+      </span>
       <div className="container">
         <div className="final-cta-inner reveal">
           <h2>
-            Crescimento
-            <br />
-            <em>estruturado.</em>
+            Pare de alugar. <em>Comece a crescer.</em>
           </h2>
           <p>
-            Mais pedidos consistentes. Menos dependência de dias bons. Maior
-            controle sobre o faturamento.
+            Construa sua base própria, organize a cozinha e venda mais com a
+            tecnologia que o Lanas Burguer já escolheu.
           </p>
           <div className="cta-actions">
             <a href="#contato" className="btn-primary">
-              Quero gerar pedidos todos os dias
+              Agendar uma demonstração gratuita
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3.5 9h11M10 4.5l4.5 4.5-4.5 4.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M3.5 9h11M10 4.5l4.5 4.5-4.5 4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
-            <a href="#solucao" className="btn-outline">
+            <a href="#produto" className="btn-outline">
               Ver o sistema →
             </a>
           </div>
           <p className="cta-note">
-            Diagnóstico gratuito · Sem compromisso · Só avançamos se se fizer
-            sentido
+            Demonstração gratuita · Sem compromisso · Fluxa Kitchen + Cardápio
           </p>
         </div>
       </div>

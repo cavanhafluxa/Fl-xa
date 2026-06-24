@@ -5,7 +5,7 @@ import Problem from "@/components/Problem";
 import HowItWorks from "@/components/HowItWorks";
 import Compare from "@/components/Compare";
 import Results from "@/components/Results";
-import Origin from "@/components/Origin";
+import Case from "@/components/Case";
 import ContactForm from "@/components/ContactForm";
 import FinalCta from "@/components/FinalCta";
 import Footer from "@/components/Footer";
@@ -21,7 +21,7 @@ export default function Home() {
       <HowItWorks />
       <Compare />
       <Results />
-      <Origin />
+      <Case />
       <ContactForm />
       <FinalCta />
       <Footer />

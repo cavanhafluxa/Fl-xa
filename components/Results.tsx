@@ -1,17 +1,19 @@
 export default function Results() {
   return (
-    <section className="results" id="resultados">
+    <section className="section results on-red" id="resultados">
+      <span className="bg-word" aria-hidden="true">
+        Lucro
+      </span>
       <div className="container">
         <div className="reveal">
           <div className="tag">O resultado</div>
           <h2 className="section-title">
-            O resultado é
-            <br />
-            <em>previsibilidade.</em>
+            Mais pedidos. Mais margem. <em>Clientes seus.</em>
           </h2>
           <p className="section-sub">
-            Mais pedidos consistentes. Menos dependência de dias bons. Maior
-            controle sobre o faturamento. Crescimento estruturado.
+            Quando você para de alugar e passa a operar com a Fluxa, o jogo
+            muda: mais conversão no cardápio, menos caos na cozinha e uma base
+            que volta a comprar.
           </p>
         </div>
         <div className="results-grid">

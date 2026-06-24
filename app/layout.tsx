@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -10,10 +10,18 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Fluxa Foods",
+  title: "Fluxa Foods — Tecnologia para restaurantes pararem de alugar sistemas",
   description:
-    "Infraestrutura de vendas previsíveis para restaurantes. Aquisição, conversão e retenção num sistema único. 10% vs 25% do iFood.",
+    "Fluxa Kitchen + Fluxa Cardápio: o sistema que organiza sua cozinha, converte mais pedidos e devolve os dados dos seus clientes para você. Pare de pagar taxas abusivas.",
   icons: {
     icon: "/Favicon.fluxa.png",
   },
@@ -25,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={dmSans.variable}>
+    <html lang="pt-BR" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body>{children}</body>
     </html>
   );

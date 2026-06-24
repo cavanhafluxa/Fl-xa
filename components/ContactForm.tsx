@@ -60,7 +60,7 @@ export default function ContactForm() {
     }
 
     const msg = encodeURIComponent(
-      `*Novo lead — Fluxa Foods*\n\n` +
+      `*Nova demonstração — Fluxa Foods*\n\n` +
         (Object.keys(values) as FieldKey[])
           .map((k) => `${FIELD_LABELS[k]}: ${values[k]}`)
           .join("\n")
@@ -70,37 +70,34 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="form-section" id="contato">
-      <div className="form-radial"></div>
-      <div className="form-lines"></div>
+    <section className="section form-section on-ink" id="contato">
+      <span className="bg-word" aria-hidden="true">
+        Demo
+      </span>
       <div className="container">
         <div className="form-inner">
           <div className="form-left">
-            <div className="tag reveal">Diagnóstico gratuito</div>
+            <div className="tag reveal">Demonstração gratuita</div>
             <h2 className="section-title reveal reveal-delay-1">
-              Vamos falar
-              <br />
-              sobre o seu
-              <br />
-              <em>restaurante.</em>
+              Agende uma <em>demonstração</em> do Fluxa Foods.
             </h2>
             <p className="section-sub reveal reveal-delay-2">
               Preencha o formulário. Em até 24h a gente entra em contato para
-              agendar uma call de 45 minutos — sem compromisso, sem pitch de
-              vendas forçado.
+              mostrar, na prática, como o Fluxa Kitchen e o Fluxa Cardápio
+              funcionam no seu restaurante.
             </p>
             <div className="form-promise reveal reveal-delay-3">
               <div className="form-promise-item">
-                Diagnóstico gratuito e sem compromisso
+                Demonstração gratuita e sem compromisso
               </div>
               <div className="form-promise-item">
                 Retorno em até 24 horas úteis
               </div>
               <div className="form-promise-item">
-                Investimento discutido apenas na call
+                Você vê o sistema rodando antes de decidir
               </div>
               <div className="form-promise-item">
-                Só avançamos se fizer sentido para os dois lados
+                Seus dados não são compartilhados
               </div>
             </div>
           </div>
@@ -225,7 +222,7 @@ export default function ContactForm() {
                       className="form-submit"
                       onClick={handleSubmit}
                     >
-                      Quero previsibilidade no meu restaurante
+                      Agendar demonstração gratuita
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path d="M3.5 9h11M10 4.5l4.5 4.5-4.5 4.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -248,7 +245,7 @@ export default function ContactForm() {
                 <h3>Recebemos seu contato.</h3>
                 <p>
                   Em até 24 horas úteis a gente entra em contato pelo WhatsApp
-                  informado para agendar seu diagnóstico.
+                  informado para agendar a sua demonstração do Fluxa Foods.
                 </p>
               </div>
             </div>

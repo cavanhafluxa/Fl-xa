@@ -1,26 +1,28 @@
 const ROWS = [
-  "Atrair clientes via tráfego pago",
-  "Atendimento no WhatsApp (resposta em 30s)",
-  "Dashboard de cozinha em tempo real",
-  "Programa de fidelidade automático",
-  "Follow-up pós-pedido",
-  "Dados 100% do restaurante",
+  "Os dados do cliente são seus",
+  "Cardápio com engenharia de conversão",
+  "Gestão de cozinha em tempo real",
+  "Database marketing e ofertas personalizadas",
+  "Follow-up para o cliente voltar",
+  "Marca e base de clientes próprias",
   "Sem dependência de plataforma",
-  "Cardápio digital com identidade própria",
 ];
 
 export default function Compare() {
   return (
-    <section className="compare">
+    <section className="section compare on-cream" id="comparativo">
+      <span className="bg-word" aria-hidden="true">
+        VS
+      </span>
       <div className="container">
         <div className="reveal">
           <div className="tag">Comparativo</div>
           <h2 className="section-title">
-            Fluxa vs. <em>iFood / Rappi</em>
+            Fluxa vs. <em>o sistema que você aluga</em>
           </h2>
           <p className="section-sub">
-            Cada pedido que sai pelo iFood financia a plataforma deles, não a sua
-            operação.
+            Cada pedido que sai pelo iFood ou pelos sistemas antigos financia a
+            plataforma deles — e deixa você sem dados, sem margem e sem controle.
           </p>
         </div>
         <div className="compare-table-wrap reveal reveal-delay-1">
@@ -29,15 +31,15 @@ export default function Compare() {
             <thead>
               <tr>
                 <th style={{ textAlign: "left" }}>Recurso</th>
-                <th>iFood / Rappi</th>
+                <th>iFood / Pedidos 10</th>
                 <th className="th-fluxa">Fluxa Foods</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Comissão por pedido</td>
+                <td>Comissão / taxa por pedido</td>
                 <td>
-                  <span className="commission-comp">25 – 30%</span>
+                  <span className="commission-comp">até 30%</span>
                 </td>
                 <td className="td-fluxa">
                   <span className="commission-fluxa">10%</span>

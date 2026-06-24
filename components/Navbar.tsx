@@ -20,18 +20,18 @@ export default function Navbar() {
       <nav id="navbar" className={scrolled ? "scrolled" : ""}>
         <div className="nav-logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.fluxa.png" alt="Fluxa" />
+          <img src="/logo.fluxa.png" alt="Fluxa Foods" />
         </div>
         <div className="nav-links">
-          <a href="#problema">Problema</a>
-          <a href="#solucao">O sistema</a>
-          <a href="#origem">Nossa história</a>
-          <a href="#resultados">Resultados</a>
+          <a href="#dor">O problema</a>
+          <a href="#produto">O sistema</a>
+          <a href="#comparativo">Comparativo</a>
+          <a href="#case">Case Lanas</a>
         </div>
         <div className="nav-right">
           <a href="#contato" className="nav-cta">
-            <span className="cta-full">Quero gerar pedidos todos os dias</span>
-            <span className="cta-short">Diagnóstico grátis</span>
+            <span className="cta-full">Quero a tecnologia da Fluxa</span>
+            <span className="cta-short">Agendar demo</span>
           </a>
           <button
             className={`nav-hamburger${drawerOpen ? " open" : ""}`}
@@ -47,20 +47,20 @@ export default function Navbar() {
       </nav>
 
       <div className={`nav-drawer${drawerOpen ? " open" : ""}`} id="navDrawer">
-        <a href="#problema" onClick={closeDrawer}>
-          Problema
+        <a href="#dor" onClick={closeDrawer}>
+          O problema
         </a>
-        <a href="#solucao" onClick={closeDrawer}>
+        <a href="#produto" onClick={closeDrawer}>
           O sistema
         </a>
-        <a href="#origem" onClick={closeDrawer}>
-          Nossa história
+        <a href="#comparativo" onClick={closeDrawer}>
+          Comparativo
         </a>
-        <a href="#resultados" onClick={closeDrawer}>
-          Resultados
+        <a href="#case" onClick={closeDrawer}>
+          Case Lanas
         </a>
         <a href="#contato" onClick={closeDrawer} className="nav-drawer-cta">
-          Quero gerar pedidos todos os dias
+          Quero a tecnologia da Fluxa
         </a>
       </div>
     </>
