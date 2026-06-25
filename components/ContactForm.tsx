@@ -70,14 +70,11 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="section form-section on-ink" id="contato">
-      <span className="bg-word" aria-hidden="true">
-        Demo
-      </span>
+    <section className="section form-section on-cream" id="contato">
       <div className="container">
         <div className="form-inner">
           <div className="form-left">
-            <div className="tag reveal">Demonstração gratuita</div>
+            <div className="eyebrow reveal">Demonstração gratuita</div>
             <h2 className="section-title reveal reveal-delay-1">
               Agende uma <em>demonstração</em> do Fluxa Foods.
             </h2>
@@ -87,18 +84,19 @@ export default function ContactForm() {
               funcionam no seu restaurante.
             </p>
             <div className="form-promise reveal reveal-delay-3">
-              <div className="form-promise-item">
-                Demonstração gratuita e sem compromisso
-              </div>
-              <div className="form-promise-item">
-                Retorno em até 24 horas úteis
-              </div>
-              <div className="form-promise-item">
-                Você vê o sistema rodando antes de decidir
-              </div>
-              <div className="form-promise-item">
-                Seus dados não são compartilhados
-              </div>
+              {[
+                "Demonstração gratuita e sem compromisso",
+                "Retorno em até 24 horas úteis",
+                "Você vê o sistema rodando antes de decidir",
+                "Seus dados não são compartilhados",
+              ].map((item) => (
+                <div className="form-promise-item" key={item}>
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M3.5 9.5l3.5 3.5L14.5 5" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
           <div className="form-right reveal reveal-delay-2">

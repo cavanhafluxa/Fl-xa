@@ -11,20 +11,18 @@ const ROWS = [
 export default function Compare() {
   return (
     <section className="section compare on-cream" id="comparativo">
-      <span className="bg-word" aria-hidden="true">
-        VS
-      </span>
       <div className="container">
-        <div className="reveal">
-          <div className="tag">Comparativo</div>
+        <div className="compare-head reveal">
+          <div className="eyebrow center">Comparativo</div>
           <h2 className="section-title">
             Fluxa vs. <em>o sistema que você aluga</em>
           </h2>
-          <p className="section-sub">
+          <p className="section-sub" style={{ margin: "0 auto" }}>
             Cada pedido que sai pelo iFood ou pelos sistemas antigos financia a
             plataforma deles — e deixa você sem dados, sem margem e sem controle.
           </p>
         </div>
+
         <div className="compare-table-wrap reveal reveal-delay-1">
           <div className="table-scroll-hint">← deslize para ver tudo →</div>
           <table className="compare-table">

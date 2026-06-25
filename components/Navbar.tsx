@@ -7,7 +7,7 @@ export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
@@ -37,11 +37,12 @@ export default function Navbar() {
             className={`nav-hamburger${drawerOpen ? " open" : ""}`}
             id="hamburger"
             aria-label="Menu"
+            aria-expanded={drawerOpen}
             onClick={() => setDrawerOpen((v) => !v)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            <span />
+            <span />
+            <span />
           </button>
         </div>
       </nav>

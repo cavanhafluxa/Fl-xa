@@ -1,13 +1,18 @@
+import KitchenMock from "./KitchenMock";
+
+const LANAS_ORDERS = [
+  { name: "Balcão — Pedido #218", badge: "new" as const, badgeLabel: "Novo", items: "2× Lanas Duplo · 1× Onion Rings", time: "agora mesmo", price: "R$ 74,00" },
+  { name: "Delivery — Pedido #217", badge: "prep" as const, badgeLabel: "Em preparo", items: "1× Lanas Salada · 1× Milk Shake", time: "há 5 min", price: "R$ 49,90" },
+  { name: "Mesa 6 — Pedido #215", badge: "done" as const, badgeLabel: "Pronto", items: "3× Smash Bacon · 3× Batata", time: "há 18 min", price: "R$ 132,00" },
+];
+
 export default function Case() {
   return (
-    <section className="section case on-cream" id="case">
-      <span className="bg-word" aria-hidden="true">
-        Lanas
-      </span>
+    <section className="section case on-paper" id="case">
       <div className="container">
         <div className="case-inner">
           <div className="case-left">
-            <div className="tag reveal">Prova social</div>
+            <div className="eyebrow reveal">Prova social</div>
             <h2 className="section-title reveal reveal-delay-1">
               Por que o Lanas Burguer <em>mudou para a Fluxa?</em>
             </h2>
@@ -15,7 +20,8 @@ export default function Case() {
               <span className="q-mark">“</span>Saímos dos sistemas antigos e
               paramos de depender só do iFood. A cozinha parou de travar nos
               picos, o cardápio novo subiu nosso ticket médio e — pela primeira
-              vez — os dados dos nossos clientes são nossos.<span className="q-mark">”</span>
+              vez — os dados dos nossos clientes são nossos.
+              <span className="q-mark">”</span>
             </blockquote>
             <div className="case-meta reveal reveal-delay-3">
               <div className="case-avatar">L</div>
@@ -27,13 +33,11 @@ export default function Case() {
           </div>
 
           <div className="case-media reveal reveal-delay-2">
-            <div className="case-media-placeholder">
-              <span className="cm-big">Print da transição do Lanas</span>
-              <span className="cm-small">
-                adicione a imagem em public/case-lanas.jpg
-              </span>
-            </div>
-            <span className="case-badge">Migração real · operação ao vivo</span>
+            <span className="case-badge">
+              <span className="dot" />
+              Migração real · operação ao vivo
+            </span>
+            <KitchenMock title="Lanas Burguer · Fluxa Kitchen" orders={LANAS_ORDERS} />
           </div>
         </div>
       </div>

@@ -1,27 +1,19 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-dm-sans",
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Fluxa Foods — Tecnologia para restaurantes pararem de alugar sistemas",
+  title:
+    "Fluxa Foods — Pare de alugar sistemas que travam sua cozinha e sequestram seus clientes",
   description:
-    "Fluxa Kitchen + Fluxa Cardápio: o sistema que organiza sua cozinha, converte mais pedidos e devolve os dados dos seus clientes para você. Pare de pagar taxas abusivas.",
+    "O sistema que o Lanas Burguer escolheu: Fluxa Kitchen + Fluxa Cardápio. Organize a cozinha, converta mais pedidos, construa sua base própria e pare de pagar taxas abusivas.",
   icons: {
     icon: "/Favicon.fluxa.png",
   },
@@ -33,7 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${dmSans.variable} ${fraunces.variable}`}>
+    <html lang="pt-BR" className={dmSans.variable}>
+      <head>
+        {/* Mark JS as available so .reveal can hide pre-animation; without JS,
+            content stays visible (fail-open) and is never hidden. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js');",
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
