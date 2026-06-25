@@ -832,10 +832,15 @@ nav.scrolled { height: 54px; }
    compact comparison, pricing switcher, bigger scroll-reveal.
    ============================================================ */
 
-/* immersive: page fills under the iOS status bar and bottom bar.
-   Light base (not solid black) + overflow clip so sticky still works. */
-html, body { background: var(--cream); }
+/* immersive: page fills under the iOS status bar.
+   Dark base so the hero's status-bar area stays dark (no white band); the
+   cream nav covers the safe area once you scroll into the light sections. */
+html, body { background: var(--ink); }
 html, body { overflow-x: clip; max-width: 100%; }
+/* nav (transparent, over hero) keeps the dark status area; scrolled nav fills
+   the notch with cream so light sections connect seamlessly */
+nav { background: transparent; }
+nav.scrolled { background: var(--cream); }
 nav {
   padding-top: env(safe-area-inset-top);
   box-sizing: border-box;
@@ -952,4 +957,50 @@ footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
 
 @media (prefers-reduced-motion: reduce) {
   .kds-live-dot, .kds-progress span { animation: none; }
+}
+
+/* ============================================================
+   RESULTS — scroll-pinned "messages from Fluxa" (animated list)
+   ============================================================ */
+.results-pin { position: relative; height: 250vh; }
+.results-sticky {
+  position: sticky; top: 0; min-height: 100dvh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(96px, 16vh, 130px) 0;
+}
+.results-sticky .section-head { margin-bottom: 26px; }
+.chat { display: flex; flex-direction: column; gap: 14px; max-width: 460px; width: 100%; margin: 0 auto; }
+.chat-msg {
+  display: flex; align-items: flex-end; gap: 10px;
+  opacity: 0; transform: translateY(18px) scale(0.96);
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
+}
+.chat-msg.in { opacity: 1; transform: none; }
+.chat-avatar {
+  position: relative; width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%;
+  background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.28), 0 8px 18px rgba(0,0,0,0.28);
+}
+/* the "eclipse" — soft crescent glow ring around the avatar */
+.chat-avatar::after {
+  content: ""; position: absolute; inset: -6px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), transparent 55%);
+  pointer-events: none;
+}
+.chat-avatar img { width: 72%; height: 72%; object-fit: contain; position: relative; z-index: 1; }
+.chat-avatar-f { font-weight: 800; color: var(--red); font-size: 21px; position: relative; z-index: 1; }
+.chat-bubble {
+  background: #fff; color: var(--ink); border-radius: 18px; border-top-left-radius: 6px;
+  padding: 13px 16px; box-shadow: 0 12px 30px rgba(0,0,0,0.20); flex: 1;
+}
+.chat-name { font-size: 11px; font-weight: 800; color: var(--red); margin-bottom: 4px; letter-spacing: 0.2px; }
+.chat-stat { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.chat-stat b { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; color: var(--red); }
+.chat-stat .u { font-size: 20px; font-weight: 800; color: #c47611; }
+.chat-sub { font-size: 12px; color: var(--ink-3); margin-top: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .results-pin { height: auto; }
+  .results-sticky { position: static; min-height: 0; padding: clamp(48px,12vw,76px) 0; }
+  .chat-msg { opacity: 1 !important; transform: none !important; }
 }
