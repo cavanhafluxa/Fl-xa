@@ -8,7 +8,7 @@ const LANAS_ORDERS = [
 
 export default function Case() {
   return (
-    <section className="section case on-ink" id="case">
+    <section className="section case on-cream" id="case">
       <div className="container">
         <div className="case-inner">
           <div className="case-left">

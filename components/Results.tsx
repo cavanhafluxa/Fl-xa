@@ -1,6 +1,6 @@
 export default function Results() {
   return (
-    <section className="section results on-red" id="resultados">
+    <section className="section results on-ink" id="resultados">
       <div className="container">
         <div className="section-head center reveal">
           <div className="eyebrow center">As metas que perseguimos</div>

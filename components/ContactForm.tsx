@@ -70,7 +70,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="section form-section on-cream" id="contato">
+    <section className="section form-section on-paper" id="contato">
       <div className="container">
         <div className="form-inner">
           <div className="form-left">
