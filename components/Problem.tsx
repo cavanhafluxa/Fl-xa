@@ -2,8 +2,8 @@ export default function Problem() {
   return (
     <section className="section problem on-cream" id="dor">
       <div className="container">
-        <div className="section-head reveal">
-          <div className="eyebrow">O inimigo</div>
+        <div className="section-head center reveal">
+          <div className="eyebrow center">O inimigo</div>
           <h2 className="section-title">
             Sistemas ultrapassados estão <em>te travando.</em>
           </h2>
