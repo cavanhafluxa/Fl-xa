@@ -75,31 +75,13 @@ export default function ContactForm() {
       <div className="container">
         <div className="form-inner">
           <div className="form-left">
-            <div className="eyebrow reveal">Demonstração gratuita</div>
+            <div className="eyebrow center reveal">Demonstração gratuita</div>
             <TextAnimate
               as="h2"
               className="section-title"
-              text="Agende uma demonstração do Fluxa Foods."
-              highlight={["demonstração"]}
+              text="Agende uma demonstração."
+              highlight={["demonstração."]}
             />
-            <p className="section-sub reveal reveal-delay-2">
-              Preencha o formulário. Em até 24h a gente te mostra rodando.
-            </p>
-            <div className="form-promise reveal reveal-delay-3">
-              {[
-                "Demonstração gratuita e sem compromisso",
-                "Retorno em até 24 horas úteis",
-                "Você vê o sistema rodando antes de decidir",
-                "Seus dados não são compartilhados",
-              ].map((item) => (
-                <div className="form-promise-item" key={item}>
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M3.5 9.5l3.5 3.5L14.5 5" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  {item}
-                </div>
-              ))}
-            </div>
           </div>
           <div className="form-right reveal reveal-delay-2">
             <div className="form-box">

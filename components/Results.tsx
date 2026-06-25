@@ -50,10 +50,10 @@ export default function Results() {
             </h2>
           </div>
 
-          <div className="chat">
+          <div className="noti-list">
             {METAS.map((m, i) => (
-              <div className={`chat-msg${i < revealed ? " in" : ""}`} key={m.label}>
-                <span className="chat-avatar" aria-hidden="true">
+              <div className={`noti${i < revealed ? " in" : ""}`} key={m.label}>
+                <span className="noti-icon" aria-hidden="true">
                   {logoOk ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -62,16 +62,21 @@ export default function Results() {
                       onError={() => setLogoOk(false)}
                     />
                   ) : (
-                    <span className="chat-avatar-f">F</span>
+                    <span className="noti-icon-f">F</span>
                   )}
                 </span>
-                <div className="chat-bubble">
-                  <div className="chat-name">Fluxa Foods</div>
-                  <div className="chat-stat">
-                    <b>{m.val}</b>
-                    <span className="u">{m.unit}</span> {m.label}
+                <div className="noti-body">
+                  <div className="noti-top">
+                    <span className="noti-title">
+                      <b className="noti-val">
+                        {m.val}
+                        <span className="u">{m.unit}</span>
+                      </b>{" "}
+                      {m.label}
+                    </span>
+                    <span className="noti-time">{m.sub}</span>
                   </div>
-                  <div className="chat-sub">{m.sub}</div>
+                  <div className="noti-desc">Fluxa Foods</div>
                 </div>
               </div>
             ))}

@@ -1,6 +1,67 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import TextAnimate from "./magic/TextAnimate";
 
+const NODES = [
+  {
+    title: "Até 30% de taxa por pedido",
+    text: "A cada R$ 100 vendidos, R$ 30 vão pra plataforma.",
+  },
+  {
+    title: "Eles ficam com seus clientes",
+    text: "Você nunca sabe quem comprou — nem traz de volta.",
+  },
+  {
+    title: "Caos na cozinha nos picos",
+    text: "Pedido atrasado, erro de comanda, cliente insatisfeito.",
+  },
+];
+
 export default function Problem() {
+  const routeRef = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState<boolean[]>(
+    // fail-open: visible without JS
+    () => new Array(NODES.length + 1).fill(true)
+  );
+  const [logoOk, setLogoOk] = useState(true);
+
+  useEffect(() => {
+    const root = routeRef.current;
+    if (!root) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const nodes = Array.from(root.querySelectorAll<HTMLElement>(".route-node"));
+    setShown(new Array(nodes.length).fill(false));
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const idx = Number((e.target as HTMLElement).dataset.idx);
+            setShown((prev) => {
+              if (prev[idx]) return prev;
+              const next = [...prev];
+              next[idx] = true;
+              return next;
+            });
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.55, rootMargin: "0px 0px -10% 0px" }
+    );
+    nodes.forEach((n) => io.observe(n));
+    const fb = window.setTimeout(
+      () => setShown(new Array(nodes.length).fill(true)),
+      2200
+    );
+    return () => {
+      io.disconnect();
+      window.clearTimeout(fb);
+    };
+  }, []);
+
   return (
     <section className="section problem on-cream" id="dor">
       <div className="container">
@@ -9,70 +70,47 @@ export default function Problem() {
           <TextAnimate
             as="h2"
             className="section-title"
-            text="Sistemas ultrapassados estão te travando."
-            highlight={["te", "travando."]}
+            text="O caminho do dinheiro que escapa."
+            highlight={["escapa."]}
           />
-          <p className="section-sub">
-            Pedidos 10, MultiPedidos ou 100% iFood — o preço vem todo mês.
-          </p>
         </div>
 
-        <div className="problem-grid">
-          <div className="problem-card reveal reveal-delay-1">
-            <div className="p-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
-                <path d="M8 16 16 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                <circle cx="9.2" cy="9.2" r="1.4" stroke="currentColor" strokeWidth="1.5" />
-                <circle cx="14.8" cy="14.8" r="1.4" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
+        <div className="route" ref={routeRef}>
+          {NODES.map((n, i) => (
+            <div
+              className={`route-node${shown[i] ? " in" : ""}`}
+              data-idx={i}
+              key={n.title}
+            >
+              <div className="route-icon">
+                <span className="route-pulse" aria-hidden="true" />
+                <span className="route-bang">!</span>
+              </div>
+              <div className="route-card">
+                <h3>{n.title}</h3>
+                <p>{n.text}</p>
+              </div>
             </div>
-            <h3>Até 30% de taxa por pedido</h3>
-            <p>
-              A cada R$ 100 vendidos, até R$ 30 vão pra plataforma. Sua margem
-              financiando o crescimento deles.
-            </p>
-          </div>
+          ))}
 
-          <div className="problem-card reveal reveal-delay-2">
-            <div className="p-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect x="4.5" y="10.5" width="15" height="9.5" rx="2.2" stroke="currentColor" strokeWidth="1.8" />
-                <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" stroke="currentColor" strokeWidth="1.8" />
-                <circle cx="12" cy="15" r="1.5" fill="currentColor" />
-              </svg>
+          {/* destination: Fluxa */}
+          <div
+            className={`route-node route-end${shown[NODES.length] ? " in" : ""}`}
+            data-idx={NODES.length}
+          >
+            <div className="route-icon route-icon-fluxa">
+              {logoOk ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src="/fluxa-f.png" alt="Fluxa" onError={() => setLogoOk(false)} />
+              ) : (
+                <span className="route-f">F</span>
+              )}
             </div>
-            <h3>Eles ficam com os seus clientes</h3>
-            <p>
-              A plataforma guarda os dados de quem comprou. Você nunca sabe quem
-              é o seu cliente nem consegue trazê-lo de volta.
-            </p>
-          </div>
-
-          <div className="problem-card reveal reveal-delay-3">
-            <div className="p-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12 3 22 20H2L12 3Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-                <path d="M12 10v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                <circle cx="12" cy="16.8" r="1.1" fill="currentColor" />
-              </svg>
+            <div className="route-card route-card-fluxa">
+              <h3>A Fluxa devolve o controle</h3>
+              <p>Sua base, sua margem e sua operação — de volta pra você.</p>
             </div>
-            <h3>Caos na cozinha nos picos</h3>
-            <p>
-              Sistemas que não integram viram pesadelo no pico: pedido atrasado,
-              erro de comanda, cliente insatisfeito.
-            </p>
           </div>
-        </div>
-
-        <div className="reframe reveal">
-          <span className="eyebrow">A virada</span>
-          <h3>
-            O problema não é o seu restaurante. É o <em>canal</em> que você usa.
-          </h3>
-          <p>
-            O futuro é de quem é dono da própria base, da margem e da operação.
-          </p>
         </div>
       </div>
     </section>

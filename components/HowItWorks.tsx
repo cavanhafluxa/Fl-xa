@@ -1,4 +1,5 @@
-import KitchenMock from "./KitchenMock";
+import KitchenApp from "./KitchenApp";
+import Iphone from "./magic/Iphone";
 import TextAnimate from "./magic/TextAnimate";
 
 export default function HowItWorks() {
@@ -55,8 +56,10 @@ export default function HowItWorks() {
             </div>
           </div>
 
-          <div className="reveal reveal-delay-2">
-            <KitchenMock />
+          <div className="how-phone reveal reveal-delay-2">
+            <Iphone>
+              <KitchenApp />
+            </Iphone>
           </div>
         </div>
       </div>

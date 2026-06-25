@@ -3,11 +3,8 @@ import TextAnimate from "./magic/TextAnimate";
 const ROWS = [
   "Dados do cliente são seus",
   "Cardápio que converte",
-  "Cozinha em tempo real",
   "Database marketing",
-  "Follow-up pra cliente voltar",
   "Marca e base próprias",
-  "Sem dependência de plataforma",
 ];
 
 export default function Compare() {

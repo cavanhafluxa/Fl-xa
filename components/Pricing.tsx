@@ -81,6 +81,11 @@ export default function Pricing() {
         </div>
 
         <div className="plan-switch" role="tablist">
+          <span
+            className="plan-thumb"
+            aria-hidden="true"
+            style={{ transform: `translateX(${sel * 100}%)` }}
+          />
           {PLANS.map((plan, i) => (
             <button
               key={plan.name}
