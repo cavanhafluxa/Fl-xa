@@ -13,7 +13,6 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import ScrollVelocity from "@/components/magic/ScrollVelocity";
 import TextReveal from "@/components/magic/TextReveal";
-import ProgressiveBlur from "@/components/magic/ProgressiveBlur";
 
 const VELOCITY_WORDS = [
   "Sem taxas abusivas",
@@ -47,7 +46,6 @@ export default function Home() {
       <FinalCta />
       <Footer />
       <ScrollReveal />
-      <ProgressiveBlur />
     </>
   );
 }
