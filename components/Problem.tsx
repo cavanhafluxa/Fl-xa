@@ -13,8 +13,7 @@ export default function Problem() {
             highlight={["te", "travando."]}
           />
           <p className="section-sub">
-            Pedidos 10, MultiPedidos ou 100% iFood. O resultado vem todo mês —
-            na fatura e no caixa.
+            Pedidos 10, MultiPedidos ou 100% iFood — o preço vem todo mês.
           </p>
         </div>
 
@@ -72,8 +71,7 @@ export default function Problem() {
             O problema não é o seu restaurante. É o <em>canal</em> que você usa.
           </h3>
           <p>
-            O futuro é de quem constrói relação direta com o cliente — dono da
-            própria base, margem e operação.
+            O futuro é de quem é dono da própria base, da margem e da operação.
           </p>
         </div>
       </div>

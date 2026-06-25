@@ -12,8 +12,7 @@ export default function Results() {
             text="Mais pedidos. Mais margem. Clientes seus."
           />
           <p className="section-sub" style={{ margin: "0 auto" }}>
-            Mais conversão no cardápio, menos caos na cozinha e uma base que
-            volta a comprar. As metas que perseguimos com cada restaurante.
+            As metas que perseguimos com cada restaurante.
           </p>
         </div>
 

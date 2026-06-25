@@ -755,3 +755,74 @@ nav.scrolled .nav-logo img { filter: brightness(0); }
   .velocity-row { transform: none !important; }
   .progressive-blur { display: none; }
 }
+
+/* ============================================================
+   MOBILE-FIRST PASS — narrow centered app-like column, ~10%
+   smaller scale, softer progressive blur, single-column layout.
+   Animations are kept; only layout/scale/copy density change.
+   ============================================================ */
+:root { --maxw: 600px; --maxw-wide: 640px; }
+.container, .container.wide { max-width: var(--maxw); padding-left: 22px; padding-right: 22px; }
+
+/* tighter vertical rhythm + ~10% smaller display type */
+.section { padding: clamp(48px, 12vw, 76px) 0; }
+.section-title { font-size: clamp(26px, 7vw, 34px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; }
+.section-sub { font-size: clamp(15px, 4vw, 17px); line-height: 1.55; }
+.eyebrow { font-size: 12px; letter-spacing: 1.4px; margin-bottom: 14px; }
+
+/* single column everywhere (mobile layout on every device) */
+.problem-grid, .results-grid, .pricing-grid,
+.how-inner, .case-inner, .form-inner,
+.cardapio-showcase .cardapio-inner { grid-template-columns: 1fr !important; gap: 20px; align-items: start; }
+.pricing-grid { max-width: 380px; margin-left: auto; margin-right: auto; }
+.price-card.featured { transform: none; }
+.problem-card, .step, .price-card, .form-box { padding: 24px 22px; }
+
+/* HERO — compact, thumb-friendly stacked CTAs */
+.hero.hero-photo { min-height: 92svh; padding: clamp(104px,16vh,128px) 20px clamp(56px,11vw,84px); }
+.kinetic { font-size: clamp(46px, 15vw, 66px); }
+.hero-headline { font-size: clamp(19px, 5.4vw, 24px); max-width: 20ch; }
+.hero.hero-photo .hero-sub { font-size: clamp(15px, 4vw, 17px); }
+.hero-rotate { font-size: clamp(14px, 4vw, 16px); margin-bottom: 26px; }
+.hero-actions { flex-direction: column; align-items: stretch; gap: 10px; width: 100%; max-width: 340px; margin: 0 auto; }
+.hero-actions .ihb, .hero-actions .btn-ghost-light { width: 100%; }
+
+/* mobile nav on every device: hide inline links, keep CTA + hamburger */
+.nav-links { display: none; }
+.nav-hamburger { display: flex; }
+nav { padding: 0 18px; height: 56px; }
+nav.scrolled { height: 54px; }
+.cta-full { display: none; }
+.cta-short { display: inline; }
+
+/* softer progressive blur */
+.progressive-blur { height: 46px; }
+.progressive-blur-top {
+  backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(2.5px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
+}
+.progressive-blur-bottom {
+  backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(2.5px);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+}
+
+/* text-reveal: shorter pin + smaller type for the narrow column */
+.text-reveal-wrap { height: 165vh; }
+.text-reveal-text { font-size: clamp(24px, 7vw, 36px); max-width: 15ch; }
+
+/* velocity strip smaller */
+.velocity-section { padding: 15px 0; }
+.velocity-item { font-size: clamp(17px, 5vw, 24px); gap: 16px; padding: 0 16px; }
+
+/* compare fits the column (horizontal scroll) */
+.compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.compare-table { min-width: 480px; }
+.table-scroll-hint { display: block; }
+
+/* iphone centered + sized for the column */
+.iphone { width: clamp(232px, 66vw, 280px); }
+
+/* footer stacks */
+.footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }

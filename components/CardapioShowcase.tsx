@@ -108,9 +108,8 @@ export default function CardapioShowcase() {
               highlight={["vende", "sozinho."]}
             />
             <p className="section-sub reveal reveal-delay-2">
-              Engenharia de conversão de verdade: fotos que dão fome, combos no
-              lugar certo e checkout sem fricção. O mesmo cardápio que o Lanas
-              Burguer usa para subir o ticket médio.
+              Fotos que dão fome, combos no lugar certo e checkout sem fricção.
+              O mesmo cardápio que sobe o ticket do Lanas.
             </p>
             <ul className="cardapio-bullets reveal reveal-delay-3">
               <li>Combos e adicionais que aumentam o ticket</li>

@@ -21,9 +21,8 @@ export default function Case() {
               highlight={["mudou", "para", "a", "Fluxa?"]}
             />
             <blockquote className="case-quote reveal reveal-delay-2">
-              <span className="q-mark">“</span>Saímos dos sistemas antigos e da
-              dependência do iFood. A cozinha parou de travar, o ticket médio
-              subiu e, pela primeira vez, os dados dos clientes são nossos.
+              <span className="q-mark">“</span>A cozinha parou de travar, o
+              ticket médio subiu e os dados dos clientes agora são nossos.
               <span className="q-mark">”</span>
             </blockquote>
             <div className="case-meta reveal reveal-delay-3">

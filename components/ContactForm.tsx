@@ -83,8 +83,7 @@ export default function ContactForm() {
               highlight={["demonstração"]}
             />
             <p className="section-sub reveal reveal-delay-2">
-              Preencha o formulário. Em até 24h mostramos, na prática, como a
-              Fluxa funciona no seu restaurante.
+              Preencha o formulário. Em até 24h a gente te mostra rodando.
             </p>
             <div className="form-promise reveal reveal-delay-3">
               {[

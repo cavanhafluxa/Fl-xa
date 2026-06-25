@@ -23,8 +23,7 @@ export default function Compare() {
             highlight={["Fluxa"]}
           />
           <p className="section-sub" style={{ margin: "0 auto" }}>
-            Cada pedido pelo iFood ou pelos sistemas antigos financia a
-            plataforma deles — e deixa você sem dados, margem ou controle.
+            Cada pedido pelo iFood financia a plataforma deles — não você.
           </p>
         </div>
 

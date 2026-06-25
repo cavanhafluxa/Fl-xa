@@ -25,8 +25,8 @@ export default function Hero() {
         </p>
 
         <p className="hero-sub reveal reveal-delay-2">
-          O sistema exato que o Lanas Burguer escolheu para organizar a casa,
-          construir base própria e parar de pagar taxas abusivas.
+          O sistema que o Lanas Burguer usa para vender mais e parar de pagar
+          taxas abusivas.
         </p>
 
         <div className="hero-rotate reveal reveal-delay-2">
