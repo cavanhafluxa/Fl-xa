@@ -37,7 +37,7 @@ export default function Home() {
       <Compare />
       <TextReveal
         eyebrow="A virada"
-        text="O problema nunca foi o seu restaurante. Foi o canal que você alugava."
+        text="O problema não é o seu restaurante. É o canal que você usa."
       />
       <Results />
       <Pricing />

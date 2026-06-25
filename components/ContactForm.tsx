@@ -43,6 +43,7 @@ export default function ContactForm() {
   const [values, setValues] = useState<Record<FieldKey, string>>({ ...EMPTY });
   const [invalid, setInvalid] = useState<Set<FieldKey>>(new Set());
   const [submitted, setSubmitted] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const setField = (key: FieldKey, value: string) =>
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -51,6 +52,10 @@ export default function ContactForm() {
     invalid.has(key) ? { borderColor: "rgba(196,28,59,0.7)" } : undefined;
 
   const handleSubmit = () => {
+    if (!expanded) {
+      setExpanded(true);
+      return;
+    }
     const missing = (Object.keys(values) as FieldKey[]).filter(
       (k) => !values[k].trim()
     );
@@ -85,8 +90,8 @@ export default function ContactForm() {
           </div>
           <div className="form-right reveal reveal-delay-2">
             <div className="form-box">
-              <div className="form-box-title">Conta um pouco sobre você</div>
-              <div className="form-box-sub">Leva menos de 2 minutos.</div>
+              <div className="form-box-title">Comece em 10 segundos</div>
+              <div className="form-box-sub">Só o nome e o restaurante pra começar.</div>
               {!submitted && (
                 <div id="formWrap">
                   <div className="form-grid">
@@ -102,6 +107,7 @@ export default function ContactForm() {
                         autoComplete="given-name"
                         value={values.nome}
                         style={invalidStyle("nome")}
+                        onFocus={() => setExpanded(true)}
                         onChange={(e) => setField("nome", e.target.value)}
                       />
                     </div>
@@ -116,9 +122,11 @@ export default function ContactForm() {
                         placeholder="Ex: Pizzaria do João"
                         value={values.restaurante}
                         style={invalidStyle("restaurante")}
+                        onFocus={() => setExpanded(true)}
                         onChange={(e) => setField("restaurante", e.target.value)}
                       />
                     </div>
+                    <div className={`form-extra${expanded ? " open" : ""}`}>
                     <div className="form-group">
                       <label className="form-label" htmlFor="f-faturamento">
                         Faturamento mensal estimado
@@ -198,6 +206,7 @@ export default function ContactForm() {
                           setField("whatsapp", maskPhone(e.target.value))
                         }
                       />
+                    </div>
                     </div>
                     <button
                       type="button"

@@ -31,10 +31,6 @@ export default function Case() {
             <div className="case-photo">
               <span className="case-photo-hint">Foto do restaurante</span>
             </div>
-            <span className="case-badge">
-              <span className="dot" />
-              Migração real
-            </span>
           </div>
         </div>
       </div>
