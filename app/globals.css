@@ -458,17 +458,19 @@ footer { padding: 72px 0 44px; }
 /* ============================================================ REVEAL (fail-open) */
 @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.78); } }
 
-/* hidden state only applies when JS is active; otherwise content is visible */
-html.js .reveal { opacity: 0; transform: translateY(22px); }
+/* Progressive enhancement: content is VISIBLE by default. The script arms the
+   entrance animation only on below-the-fold blocks (.pre), then reveals them on
+   scroll. If JS never runs / is slow, nothing is ever hidden. */
 .reveal { transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.pre { opacity: 0; transform: translateY(22px); }
+.reveal.visible { opacity: 1; transform: none; }
 .reveal-delay-1 { transition-delay: .07s; }
 .reveal-delay-2 { transition-delay: .14s; }
 .reveal-delay-3 { transition-delay: .21s; }
 .reveal-delay-4 { transition-delay: .28s; }
 
 @media (prefers-reduced-motion: reduce) {
-  html.js .reveal, .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .reveal, .reveal.pre, .reveal.visible { opacity: 1 !important; transform: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
   .mock-live-dot, .case-badge .dot { animation: none; }
 }

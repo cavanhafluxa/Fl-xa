@@ -26,15 +26,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={dmSans.variable}>
-      <head>
-        {/* Mark JS as available so .reveal can hide pre-animation; without JS,
-            content stays visible (fail-open) and is never hidden. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js');",
-          }}
-        />
-      </head>
       <body>{children}</body>
     </html>
   );

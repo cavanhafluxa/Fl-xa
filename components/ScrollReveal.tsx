@@ -6,7 +6,7 @@ export default function ScrollReveal() {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
 
-    // Respect reduced-motion / no IntersectionObserver: show everything.
+    // Respect reduced-motion / no IntersectionObserver: leave everything visible.
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -19,6 +19,7 @@ export default function ScrollReveal() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            entry.target.classList.remove("pre");
             entry.target.classList.add("visible");
             observer.unobserve(entry.target);
           }
@@ -27,14 +28,25 @@ export default function ScrollReveal() {
       { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
 
-    els.forEach((el) => observer.observe(el));
+    const vh = window.innerHeight;
+    els.forEach((el) => {
+      // Only arm the animation for blocks below the fold; visible ones stay shown
+      // (no flash, and no dependency on JS to display above-the-fold content).
+      if (el.getBoundingClientRect().top > vh * 0.85) {
+        el.classList.add("pre");
+        observer.observe(el);
+      } else {
+        el.classList.add("visible");
+      }
+    });
 
-    // Fail-open: if anything is still hidden after 1.8s (observer hiccup,
-    // element above the fold but never intersecting, etc.), reveal it so
-    // content — including the form — can never stay invisible.
+    // Safety net: nothing should ever stay hidden, even on a JS/observer hiccup.
     const fallback = window.setTimeout(() => {
-      els.forEach((el) => el.classList.add("visible"));
-    }, 1800);
+      els.forEach((el) => {
+        el.classList.remove("pre");
+        el.classList.add("visible");
+      });
+    }, 2500);
 
     return () => {
       observer.disconnect();
