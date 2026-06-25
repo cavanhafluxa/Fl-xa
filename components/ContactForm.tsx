@@ -79,9 +79,8 @@ export default function ContactForm() {
               Agende uma <em>demonstração</em> do Fluxa Foods.
             </h2>
             <p className="section-sub reveal reveal-delay-2">
-              Preencha o formulário. Em até 24h a gente entra em contato para
-              mostrar, na prática, como o Fluxa Kitchen e o Fluxa Cardápio
-              funcionam no seu restaurante.
+              Preencha o formulário. Em até 24h mostramos, na prática, como a
+              Fluxa funciona no seu restaurante.
             </p>
             <div className="form-promise reveal reveal-delay-3">
               {[

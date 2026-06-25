@@ -7,12 +7,12 @@ export default function FinalCta() {
             Pare de alugar. <em>Comece a crescer.</em>
           </h2>
           <p>
-            Construa sua base própria, organize a cozinha e venda mais com a
-            tecnologia que o Lanas Burguer já escolheu.
+            Organize a cozinha, venda mais e construa sua base própria — com a
+            tecnologia que o Lanas já usa.
           </p>
           <div className="cta-actions">
             <a href="#contato" className="btn-primary">
-              Agendar uma demonstração gratuita do Fluxa Foods
+              Agendar demonstração gratuita
             </a>
             <a href="#produto" className="btn-text">
               Ver o sistema

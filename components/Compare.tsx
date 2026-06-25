@@ -18,8 +18,8 @@ export default function Compare() {
             Fluxa vs. <em>o sistema que você aluga</em>
           </h2>
           <p className="section-sub" style={{ margin: "0 auto" }}>
-            Cada pedido que sai pelo iFood ou pelos sistemas antigos financia a
-            plataforma deles — e deixa você sem dados, sem margem e sem controle.
+            Cada pedido pelo iFood ou pelos sistemas antigos financia a
+            plataforma deles — e deixa você sem dados, margem ou controle.
           </p>
         </div>
 

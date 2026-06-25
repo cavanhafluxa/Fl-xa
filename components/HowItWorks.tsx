@@ -12,7 +12,7 @@ export default function HowItWorks() {
             </h2>
             <p className="section-sub reveal reveal-delay-2">
               Não é mais um sistema que você aluga. É a tecnologia que organiza a
-              casa, vende mais e devolve o controle do seu negócio para você.
+              casa, vende mais e te devolve o controle.
             </p>
             <div className="steps">
               <div className="step reveal reveal-delay-1">
@@ -21,9 +21,8 @@ export default function HowItWorks() {
                   <span className="step-eyebrow">App de cozinha</span>
                   <h4>Fluxa Kitchen</h4>
                   <p>
-                    O seu app de gestão operacional. Acompanhe os pedidos em
-                    tempo real — sem atrasos e sem pesadelo na cozinha nos dias
-                    de pico.
+                    Gestão operacional em tempo real. Sem atrasos e sem caos na
+                    cozinha nos dias de pico.
                   </p>
                 </div>
               </div>
@@ -33,9 +32,8 @@ export default function HowItWorks() {
                   <span className="step-eyebrow">Cardápio digital</span>
                   <h4>Fluxa Cardápio</h4>
                   <p>
-                    Um cardápio inteligente, desenhado com engenharia de
-                    conversão — não só para mostrar fotos, mas para transformar
-                    visitantes em compradores e aumentar o seu ticket médio.
+                    Cardápio com engenharia de conversão: transforma visitantes
+                    em compradores e aumenta o seu ticket médio.
                   </p>
                 </div>
               </div>
@@ -45,9 +43,8 @@ export default function HowItWorks() {
                   <span className="step-eyebrow">O grande diferencial</span>
                   <h4>Database Marketing</h4>
                   <p>
-                    Ao usar a Fluxa, os dados dos clientes ficam com VOCÊ. Você
-                    constrói o seu próprio banco de dados para criar ofertas
-                    personalizadas e fazer o cliente voltar sempre.
+                    Os dados dos clientes ficam com VOCÊ. Crie ofertas
+                    personalizadas e faça o cliente voltar sempre.
                   </p>
                 </div>
               </div>

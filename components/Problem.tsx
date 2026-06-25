@@ -8,9 +8,8 @@ export default function Problem() {
             Sistemas ultrapassados estão <em>te travando.</em>
           </h2>
           <p className="section-sub">
-            A maioria dos restaurantes usa sistemas ultrapassados como Pedidos
-            10 ou MultiPedidos — ou pior, dependem 100% do iFood. O resultado vem
-            todo mês, na fatura e no caixa.
+            Pedidos 10, MultiPedidos ou 100% iFood. O resultado vem todo mês —
+            na fatura e no caixa.
           </p>
         </div>
 
@@ -26,8 +25,8 @@ export default function Problem() {
             </div>
             <h3>Até 30% de taxa por pedido</h3>
             <p>
-              A cada R$ 100 que você vende, a plataforma fica com até R$ 30. É a
-              sua margem financiando o crescimento deles — não o seu.
+              A cada R$ 100 vendidos, até R$ 30 vão pra plataforma. Sua margem
+              financiando o crescimento deles.
             </p>
           </div>
 
@@ -42,7 +41,7 @@ export default function Problem() {
             <h3>Eles ficam com os seus clientes</h3>
             <p>
               A plataforma guarda os dados de quem comprou. Você nunca sabe quem
-              é o seu cliente — e não consegue trazê-lo de volta.
+              é o seu cliente nem consegue trazê-lo de volta.
             </p>
           </div>
 
@@ -56,8 +55,8 @@ export default function Problem() {
             </div>
             <h3>Caos na cozinha nos picos</h3>
             <p>
-              Sistemas que não integram direito viram pesadelo em dias de
-              movimento: pedido atrasado, erro de comanda, cliente insatisfeito.
+              Sistemas que não integram viram pesadelo no pico: pedido atrasado,
+              erro de comanda, cliente insatisfeito.
             </p>
           </div>
         </div>
@@ -68,9 +67,8 @@ export default function Problem() {
             O problema não é o seu restaurante. É o <em>canal</em> que você usa.
           </h3>
           <p>
-            O futuro pertence aos restaurantes que constroem relacionamento
-            direto com seus clientes — donos da própria base, da própria margem
-            e da própria operação.
+            O futuro é de quem constrói relação direta com o cliente — dono da
+            própria base, margem e operação.
           </p>
         </div>
       </div>

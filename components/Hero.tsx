@@ -6,24 +6,21 @@ export default function Hero() {
       <div className="hero-inner">
         <span className="hero-promise reveal">
           <span className="dot" />
-          Pare de alugar sistemas que travam sua cozinha
+          Fluxa Foods · Kitchen + Cardápio
         </span>
 
         <h1 className="hero-title reveal reveal-delay-1">
-          O sistema exato que o <em>Lanas Burguer</em> escolheu para organizar a
-          casa, construir <em>base própria</em> e parar de pagar{" "}
-          <em>taxas abusivas.</em>
+          Pare de alugar sistemas que <em>travam sua cozinha.</em>
         </h1>
 
         <p className="hero-sub reveal reveal-delay-2">
-          Conheça o Fluxa Foods. A união perfeita entre um Cardápio Digital que
-          converte visitantes em compradores e um App de Cozinha que acaba com o
-          caos no delivery.
+          O sistema exato que o Lanas Burguer escolheu para organizar a casa,
+          construir base própria e parar de pagar taxas abusivas.
         </p>
 
         <div className="hero-actions reveal reveal-delay-3">
           <a href="#contato" className="btn-primary">
-            Quero a tecnologia da Fluxa no meu restaurante
+            Quero a tecnologia da Fluxa
           </a>
           <a href="#produto" className="btn-text">
             Ver o sistema
@@ -34,8 +31,7 @@ export default function Hero() {
         </div>
 
         <p className="hero-note reveal reveal-delay-3">
-          Fluxa Kitchen + Fluxa Cardápio · Os dados dos seus clientes ficam com
-          você.
+          Seus clientes e seus dados ficam com você.
         </p>
       </div>
 

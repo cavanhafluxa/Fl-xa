@@ -8,10 +8,8 @@ export default function Results() {
             Mais pedidos. Mais margem. Clientes seus.
           </h2>
           <p className="section-sub" style={{ margin: "0 auto" }}>
-            Quando você para de alugar e passa a operar com a Fluxa, o jogo
-            muda: mais conversão no cardápio, menos caos na cozinha e uma base
-            que volta a comprar. Estas são as metas que perseguimos com cada
-            restaurante.
+            Mais conversão no cardápio, menos caos na cozinha e uma base que
+            volta a comprar. As metas que perseguimos com cada restaurante.
           </p>
         </div>
 
