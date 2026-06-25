@@ -1,5 +1,5 @@
-import KitchenApp from "./KitchenApp";
 import Iphone from "./magic/Iphone";
+import ScreenShot from "./magic/ScreenShot";
 import TextAnimate from "./magic/TextAnimate";
 
 export default function HowItWorks() {
@@ -57,8 +57,8 @@ export default function HowItWorks() {
           </div>
 
           <div className="how-phone reveal reveal-delay-2">
-            <Iphone>
-              <KitchenApp />
+            <Iphone bare>
+              <ScreenShot src="/kitchen.png" label="Print do Fluxa Kitchen" />
             </Iphone>
           </div>
         </div>

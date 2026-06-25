@@ -9,7 +9,8 @@ export default function Footer() {
               <img src="/logo.fluxa.png" alt="Fluxa Foods" />
             </div>
             <p className="footer-tagline">
-              A tecnologia que devolve o controle do seu restaurante para você.
+              A tecnologia que devolve <span className="accent">o controle</span>{" "}
+              do seu restaurante para você.
             </p>
           </div>
           <div className="footer-col">

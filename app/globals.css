@@ -1150,3 +1150,22 @@ footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
   .route-node, .noti { opacity: 1 !important; transform: none !important; }
   .plan-thumb { transition: none; }
 }
+
+/* ---- SCREENSHOTS inside the iPhone (real prints) ---- */
+.shot { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shot-fallback { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: var(--cream-2); color: var(--ink-3); text-align: center; padding: 24px; }
+.shot-fallback-t { font-weight: 700; font-size: 14px; color: var(--ink); }
+.shot-fallback-s { font-size: 12px; }
+
+/* ---- LANAS logo avatar + restaurant photo ---- */
+.case-avatar { overflow: hidden; }
+.case-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.case-photo { overflow: hidden; }
+.case-photo img { width: 100%; height: 100%; object-fit: cover; }
+.case-photo-hint { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.case-photo-hint small { font-size: 11px; opacity: 0.7; font-weight: 500; }
+
+/* ---- FOOTER phrase polish ---- */
+.footer-tagline { font-size: 18px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; line-height: 1.4; max-width: 300px; }
+.footer-tagline .accent { color: var(--red); }
+.footer-logo img { height: 38px; }
