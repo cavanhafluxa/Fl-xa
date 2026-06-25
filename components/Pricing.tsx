@@ -8,6 +8,7 @@ const PLANS = [
     name: "Basic",
     price: "200",
     cents: "",
+    perDay: "≈ R$ 6,67 por dia",
     desc: "Para sair das taxas e profissionalizar o delivery.",
     features: [
       "Fluxa Cardápio digital",
@@ -22,6 +23,7 @@ const PLANS = [
     name: "Pro",
     price: "259",
     cents: ",90",
+    perDay: "≈ R$ 8,66 por dia",
     desc: "Para escalar as vendas e fidelizar a base.",
     features: [
       "Tudo do Basic",
@@ -36,6 +38,7 @@ const PLANS = [
     name: "Cook",
     price: "335",
     cents: ",90",
+    perDay: "≈ R$ 11,20 por dia",
     desc: "Operação completa para o alto volume.",
     features: [
       "Tudo do Pro",
@@ -72,6 +75,9 @@ export default function Pricing() {
             text="Simples, como deve ser."
             highlight={["como", "deve", "ser."]}
           />
+          <p className="section-sub reveal reveal-delay-2" style={{ margin: "0 auto" }}>
+            Sem comissão por pedido. Você fica com 100% da venda.
+          </p>
         </div>
 
         <div className="plan-switch" role="tablist">
@@ -97,6 +103,7 @@ export default function Pricing() {
             <span className="price-cents">{p.cents}</span>
             <span className="price-period">/mês</span>
           </div>
+          <div className="price-perday">{p.perDay}</div>
           <p className="price-desc">{p.desc}</p>
           <ul className="price-features">
             {p.features.map((f) => (

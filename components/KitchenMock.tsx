@@ -8,8 +8,8 @@ type Order = {
 };
 
 const DEFAULT_ORDERS: Order[] = [
-  { name: "Mesa 4 — João M.", badge: "new", badgeLabel: "Novo", items: "2× X-Bacon · 1× Batata G · 2× Refri", time: "agora mesmo", price: "R$ 68,00" },
-  { name: "Delivery — Ana P.", badge: "prep", badgeLabel: "Em preparo", items: "1× Frango Grelhado · 1× Suco Natural", time: "há 7 min", price: "R$ 42,50" },
+  { name: "Mesa 4 — João M.", badge: "new", badgeLabel: "Novo", items: "2× X-Bacon · 1× Batata G · 2× Refri", time: "agora", price: "R$ 68,00" },
+  { name: "Delivery — Ana P.", badge: "prep", badgeLabel: "Preparo", items: "1× Frango Grelhado · 1× Suco", time: "há 7 min", price: "R$ 42,50" },
   { name: "Mesa 1 — Carlos R.", badge: "done", badgeLabel: "Pronto", items: "1× Pizza Média · 2× Long Neck", time: "há 21 min", price: "R$ 87,00" },
 ];
 
@@ -21,48 +21,53 @@ export default function KitchenMock({
   orders?: Order[];
 }) {
   return (
-    <div className="kitchen-mock">
-      <div className="mock-titlebar">
-        <div className="mock-dots">
-          <div className="mock-dot mock-dot-r" />
-          <div className="mock-dot mock-dot-y" />
-          <div className="mock-dot mock-dot-g" />
+    <div className="kds">
+      <div className="kds-head">
+        <div className="kds-brand">
+          <span className="kds-logo">F</span>
+          <span className="kds-title">{title}</span>
         </div>
-        <div className="mock-title-text">{title}</div>
-        <div className="mock-live">
-          <span className="mock-live-dot" /> Ao vivo
+        <span className="kds-live">
+          <span className="kds-live-dot" /> Ao vivo
+        </span>
+      </div>
+
+      <div className="kds-stats">
+        <div className="kds-stat">
+          <b>42</b>
+          <span>pedidos hoje</span>
+        </div>
+        <div className="kds-stat">
+          <b>R$53</b>
+          <span>ticket médio</span>
+        </div>
+        <div className="kds-stat">
+          <b className="g">9min</b>
+          <span>preparo</span>
         </div>
       </div>
-      <div className="mock-body">
-        <div className="mock-metrics-row">
-          <div className="m-metric">
-            <div className="m-val red">42</div>
-            <div className="m-label">pedidos hoje</div>
-          </div>
-          <div className="m-metric">
-            <div className="m-val">R$53</div>
-            <div className="m-label">ticket médio</div>
-          </div>
-          <div className="m-metric">
-            <div className="m-val ember">9min</div>
-            <div className="m-label">tempo preparo</div>
-          </div>
-        </div>
-        <div className="order-list">
-          {orders.map((o) => (
-            <div className="o-card" key={o.name}>
-              <div className="o-top">
-                <span className="o-name">{o.name}</span>
-                <span className={`o-badge b-${o.badge}`}>{o.badgeLabel}</span>
+
+      <div className="kds-orders">
+        {orders.map((o) => (
+          <div className={`kds-ticket s-${o.badge}`} key={o.name}>
+            <div className="kds-ticket-main">
+              <div className="kds-ticket-top">
+                <span className="kds-ticket-name">{o.name}</span>
+                <span className={`kds-pill b-${o.badge}`}>{o.badgeLabel}</span>
               </div>
-              <div className="o-items">{o.items}</div>
-              <div className="o-footer">
-                <span className="o-time">{o.time}</span>
-                <span className="o-price">{o.price}</span>
+              <div className="kds-ticket-items">{o.items}</div>
+              {o.badge === "prep" && (
+                <div className="kds-progress" aria-hidden="true">
+                  <span />
+                </div>
+              )}
+              <div className="kds-ticket-foot">
+                <span>{o.time}</span>
+                <b>{o.price}</b>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

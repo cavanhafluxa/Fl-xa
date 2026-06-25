@@ -895,3 +895,54 @@ footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
 @media (prefers-reduced-motion: reduce) {
   .price-single.price-card { animation: none; }
 }
+
+/* ============================================================
+   NEW MOCKUPS + value framing
+   ============================================================ */
+
+/* ---- FLUXA KITCHEN — sleek live KDS card ---- */
+.kds { background: var(--paper); border: 1px solid var(--hair); border-radius: 24px; overflow: hidden; box-shadow: var(--e-2); }
+.kds-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-bottom: 1px solid var(--hair); }
+.kds-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 15px; color: var(--ink); letter-spacing: -0.01em; }
+.kds-logo { width: 28px; height: 28px; border-radius: 9px; background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; }
+.kds-live { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #1f9e34; background: rgba(40,200,64,0.12); padding: 5px 10px; border-radius: 100px; }
+.kds-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #28c840; animation: pulse-dot 1.6s infinite; }
+.kds-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 16px 18px; }
+.kds-stat { background: var(--cream-2); border: 1px solid var(--hair); border-radius: 14px; padding: 12px 8px; text-align: center; }
+.kds-stat b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
+.kds-stat b.g { color: #1f9e34; }
+.kds-stat span { display: block; font-size: 10.5px; color: var(--ink-3); margin-top: 5px; }
+.kds-orders { display: flex; flex-direction: column; gap: 10px; padding: 0 18px 18px; }
+.kds-ticket { display: flex; border: 1px solid var(--hair); border-radius: 14px; overflow: hidden; background: var(--cream-2); }
+.kds-ticket::before { content: ""; width: 4px; flex-shrink: 0; background: var(--ink-3); }
+.kds-ticket.s-new::before { background: var(--red); }
+.kds-ticket.s-prep::before { background: var(--ember); }
+.kds-ticket.s-done::before { background: #28c840; }
+.kds-ticket-main { flex: 1; padding: 12px 14px; min-width: 0; }
+.kds-ticket-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
+.kds-ticket-name { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+.kds-pill { font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 100px; white-space: nowrap; }
+.kds-pill.b-new { background: rgba(214,32,31,0.12); color: var(--red); }
+.kds-pill.b-prep { background: rgba(242,160,61,0.20); color: #9c6210; }
+.kds-pill.b-done { background: rgba(40,200,64,0.16); color: #1f9e34; }
+.kds-ticket-items { font-size: 12px; color: var(--ink-2); line-height: 1.4; }
+.kds-progress { height: 4px; border-radius: 4px; background: rgba(242,160,61,0.22); margin: 8px 0 2px; overflow: hidden; }
+.kds-progress span { display: block; height: 100%; width: 62%; background: var(--ember); border-radius: 4px; animation: kds-fill 2.4s ease-in-out infinite alternate; }
+@keyframes kds-fill { from { width: 46%; } to { width: 76%; } }
+.kds-ticket-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 7px; }
+.kds-ticket-foot span { font-size: 10.5px; color: var(--ink-3); }
+.kds-ticket-foot b { font-size: 13.5px; font-weight: 800; color: var(--ink); }
+
+/* ---- price per-day (Hormozi value framing) ---- */
+.price-perday { font-size: 13px; font-weight: 700; color: var(--red); margin-top: 8px; }
+.price-card.featured .price-perday { color: var(--ember); }
+
+/* ---- CARDÁPIO polish ---- */
+.cardapio-banner { height: 104px; background: linear-gradient(135deg, #2a0f0a, #7a0f0f 60%, #D6201F 140%); }
+.cardapio-banner::after { font-size: 52px; filter: drop-shadow(0 8px 12px rgba(0,0,0,0.45)); }
+.cardapio-product-img { box-shadow: inset 0 -28px 28px rgba(0,0,0,0.20); }
+.cardapio-tab.on .cardapio-tab-ico { transform: scale(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .kds-live-dot, .kds-progress span { animation: none; }
+}
