@@ -1,130 +1,65 @@
+import KitchenApp from "./KitchenApp";
+import Iphone from "./magic/Iphone";
+import TextAnimate from "./magic/TextAnimate";
+
 export default function HowItWorks() {
   return (
-    <section className="how" id="solucao">
+    <section className="section how on-paper" id="produto">
       <div className="container">
         <div className="how-inner">
           <div className="how-left">
-            <div className="tag reveal">O sistema</div>
-            <h2 className="section-title reveal reveal-delay-1">
-              Aquisição.
-              <br />
-              Conversão.
-              <br />
-              <em>Retenção.</em>
-            </h2>
+            <div className="eyebrow reveal">O sistema</div>
+            <TextAnimate
+              as="h2"
+              className="section-title"
+              text="Conheça o Fluxa Foods."
+              highlight={["Fluxa", "Foods."]}
+            />
             <p className="section-sub reveal reveal-delay-2">
-              Não é um software que você aprende. É uma infraestrutura completa
-              que a Fluxa opera — você recebe resultado.
+              Não é mais um sistema que você aluga. É a tecnologia que organiza a
+              casa, vende mais e te devolve o controle.
             </p>
             <div className="steps">
               <div className="step reveal reveal-delay-1">
-                <div className="step-num">A</div>
+                <div className="step-num">K</div>
                 <div className="step-content">
-                  <h4>Aquisição — Meta + Google</h4>
+                  <span className="step-eyebrow">App de cozinha</span>
+                  <h4>Fluxa Kitchen</h4>
                   <p>
-                    Atraímos novos clientes todos os dias com campanhas e
-                    criativos estratégicos no raio certo, no horário de pico.
+                    Gestão operacional em tempo real. Sem atrasos e sem caos na
+                    cozinha nos dias de pico.
                   </p>
                 </div>
               </div>
               <div className="step reveal reveal-delay-2">
                 <div className="step-num">C</div>
                 <div className="step-content">
-                  <h4>Conversão — Eli + Cardápio</h4>
+                  <span className="step-eyebrow">Cardápio digital</span>
+                  <h4>Fluxa Cardápio</h4>
                   <p>
-                    Transformamos atenção em pedidos: cardápio otimizado para
-                    aumentar ticket e Eli respondendo em 30 segundos no
-                    WhatsApp.
+                    Cardápio com engenharia de conversão: transforma visitantes
+                    em compradores e aumenta o seu ticket médio.
                   </p>
                 </div>
               </div>
-              <div className="step reveal reveal-delay-3">
-                <div className="step-num">K</div>
+              <div className="step highlight reveal reveal-delay-3">
+                <div className="step-num">DB</div>
                 <div className="step-content">
-                  <h4>Operação — Fluxa Kitchen</h4>
+                  <span className="step-eyebrow">O grande diferencial</span>
+                  <h4>Database Marketing</h4>
                   <p>
-                    Organiza os pedidos e a cozinha para suportar o crescimento.
-                    Status em tempo real, dados de desempenho, zero caos.
-                  </p>
-                </div>
-              </div>
-              <div className="step reveal reveal-delay-4">
-                <div className="step-num">R</div>
-                <div className="step-content">
-                  <h4>Retenção — Fidelidade automática</h4>
-                  <p>
-                    Criamos recorrência sem esforço do dono. Eli lembra o
-                    cliente, entrega desconto, traz de volta. Sozinho.
+                    Os dados dos clientes ficam com VOCÊ. Crie ofertas
+                    personalizadas e faça o cliente voltar sempre.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Kitchen mock */}
-          <div className="kitchen-mock reveal reveal-delay-2">
-            <div className="mock-titlebar">
-              <div className="mock-dots">
-                <div className="mock-dot mock-dot-r"></div>
-                <div className="mock-dot mock-dot-y"></div>
-                <div className="mock-dot mock-dot-g"></div>
-              </div>
-              <div className="mock-title-text">Fluxa Kitchen</div>
-              <div className="mock-live">
-                <span className="mock-live-dot"></span> Ao vivo
-              </div>
-            </div>
-            <div className="mock-body">
-              <div className="mock-metrics-row">
-                <div className="m-metric">
-                  <div className="m-val red">42</div>
-                  <div className="m-label">pedidos hoje</div>
-                </div>
-                <div className="m-metric">
-                  <div className="m-val">R$53</div>
-                  <div className="m-label">ticket médio</div>
-                </div>
-                <div className="m-metric">
-                  <div className="m-val green">9min</div>
-                  <div className="m-label">tempo preparo</div>
-                </div>
-              </div>
-              <div className="order-list">
-                <div className="o-card">
-                  <div className="o-top">
-                    <span className="o-name">Mesa 4 — João M.</span>
-                    <span className="o-badge b-new">Novo</span>
-                  </div>
-                  <div className="o-items">2× X-Bacon · 1× Batata G · 2× Refri</div>
-                  <div className="o-footer">
-                    <span className="o-time">agora mesmo</span>
-                    <span className="o-price">R$ 68,00</span>
-                  </div>
-                </div>
-                <div className="o-card">
-                  <div className="o-top">
-                    <span className="o-name">Delivery — Ana P.</span>
-                    <span className="o-badge b-prep">Em preparo</span>
-                  </div>
-                  <div className="o-items">1× Frango Grelhado · 1× Suco Natural</div>
-                  <div className="o-footer">
-                    <span className="o-time">há 7 min</span>
-                    <span className="o-price">R$ 42,50</span>
-                  </div>
-                </div>
-                <div className="o-card">
-                  <div className="o-top">
-                    <span className="o-name">Mesa 1 — Carlos R.</span>
-                    <span className="o-badge b-done">Pronto</span>
-                  </div>
-                  <div className="o-items">1× Pizza Média · 2× Cerveja Long Neck</div>
-                  <div className="o-footer">
-                    <span className="o-time">há 21 min</span>
-                    <span className="o-price">R$ 87,00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="how-phone reveal reveal-delay-2">
+            <Iphone>
+              <KitchenApp />
+            </Iphone>
           </div>
         </div>
       </div>

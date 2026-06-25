@@ -1,31 +1,31 @@
 export default function Footer() {
   return (
-    <footer>
+    <footer className="on-ink">
       <div className="container">
         <div className="footer-inner">
           <div className="footer-brand">
             <div className="footer-logo">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.fluxa.png" alt="Fluxa" />
+              <img src="/logo.fluxa.png" alt="Fluxa Foods" />
             </div>
             <p className="footer-tagline">
-              Do primeiro contato ao caixa — a gente cuida do meio.
+              A tecnologia que devolve o controle do seu restaurante para você.
             </p>
           </div>
           <div className="footer-col">
             <div className="footer-col-title">Sistema</div>
             <ul>
               <li>
-                <a href="#solucao">Aquisição</a>
+                <a href="#produto">Fluxa Kitchen</a>
               </li>
               <li>
-                <a href="#solucao">Conversão</a>
+                <a href="#produto">Fluxa Cardápio</a>
               </li>
               <li>
-                <a href="#solucao">Retenção</a>
+                <a href="#produto">Database Marketing</a>
               </li>
               <li>
-                <a href="#solucao">Fluxa Kitchen</a>
+                <a href="#comparativo">Comparativo</a>
               </li>
             </ul>
           </div>
@@ -33,16 +33,13 @@ export default function Footer() {
             <div className="footer-col-title">Empresa</div>
             <ul>
               <li>
-                <a href="#">Sobre a Fluxa</a>
+                <a href="#dor">O problema</a>
               </li>
               <li>
-                <a href="#">Blog</a>
+                <a href="#case">Case Lanas Burguer</a>
               </li>
               <li>
-                <a href="#">Cases</a>
-              </li>
-              <li>
-                <a href="#contato">Contato</a>
+                <a href="#contato">Agendar demo</a>
               </li>
             </ul>
           </div>
@@ -54,9 +51,6 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#">Privacidade</a>
-              </li>
-              <li>
-                <a href="#">Contratos</a>
               </li>
             </ul>
           </div>

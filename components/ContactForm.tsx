@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import TextAnimate from "./magic/TextAnimate";
 
 const WHATSAPP_NUMBER = "5547992793347";
 
@@ -42,6 +43,7 @@ export default function ContactForm() {
   const [values, setValues] = useState<Record<FieldKey, string>>({ ...EMPTY });
   const [invalid, setInvalid] = useState<Set<FieldKey>>(new Set());
   const [submitted, setSubmitted] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const setField = (key: FieldKey, value: string) =>
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -50,6 +52,10 @@ export default function ContactForm() {
     invalid.has(key) ? { borderColor: "rgba(196,28,59,0.7)" } : undefined;
 
   const handleSubmit = () => {
+    if (!expanded) {
+      setExpanded(true);
+      return;
+    }
     const missing = (Object.keys(values) as FieldKey[]).filter(
       (k) => !values[k].trim()
     );
@@ -60,7 +66,7 @@ export default function ContactForm() {
     }
 
     const msg = encodeURIComponent(
-      `*Novo lead — Fluxa Foods*\n\n` +
+      `*Nova demonstração — Fluxa Foods*\n\n` +
         (Object.keys(values) as FieldKey[])
           .map((k) => `${FIELD_LABELS[k]}: ${values[k]}`)
           .join("\n")
@@ -70,44 +76,22 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="form-section" id="contato">
-      <div className="form-radial"></div>
-      <div className="form-lines"></div>
+    <section className="section form-section on-cream" id="contato">
       <div className="container">
         <div className="form-inner">
           <div className="form-left">
-            <div className="tag reveal">Diagnóstico gratuito</div>
-            <h2 className="section-title reveal reveal-delay-1">
-              Vamos falar
-              <br />
-              sobre o seu
-              <br />
-              <em>restaurante.</em>
-            </h2>
-            <p className="section-sub reveal reveal-delay-2">
-              Preencha o formulário. Em até 24h a gente entra em contato para
-              agendar uma call de 45 minutos — sem compromisso, sem pitch de
-              vendas forçado.
-            </p>
-            <div className="form-promise reveal reveal-delay-3">
-              <div className="form-promise-item">
-                Diagnóstico gratuito e sem compromisso
-              </div>
-              <div className="form-promise-item">
-                Retorno em até 24 horas úteis
-              </div>
-              <div className="form-promise-item">
-                Investimento discutido apenas na call
-              </div>
-              <div className="form-promise-item">
-                Só avançamos se fizer sentido para os dois lados
-              </div>
-            </div>
+            <div className="eyebrow center reveal">Demonstração gratuita</div>
+            <TextAnimate
+              as="h2"
+              className="section-title"
+              text="Agende uma demonstração."
+              highlight={["demonstração."]}
+            />
           </div>
           <div className="form-right reveal reveal-delay-2">
             <div className="form-box">
-              <div className="form-box-title">Conta um pouco sobre você</div>
-              <div className="form-box-sub">Leva menos de 2 minutos.</div>
+              <div className="form-box-title">Comece em 10 segundos</div>
+              <div className="form-box-sub">Só o nome e o restaurante pra começar.</div>
               {!submitted && (
                 <div id="formWrap">
                   <div className="form-grid">
@@ -123,6 +107,7 @@ export default function ContactForm() {
                         autoComplete="given-name"
                         value={values.nome}
                         style={invalidStyle("nome")}
+                        onFocus={() => setExpanded(true)}
                         onChange={(e) => setField("nome", e.target.value)}
                       />
                     </div>
@@ -137,9 +122,11 @@ export default function ContactForm() {
                         placeholder="Ex: Pizzaria do João"
                         value={values.restaurante}
                         style={invalidStyle("restaurante")}
+                        onFocus={() => setExpanded(true)}
                         onChange={(e) => setField("restaurante", e.target.value)}
                       />
                     </div>
+                    <div className={`form-extra${expanded ? " open" : ""}`}>
                     <div className="form-group">
                       <label className="form-label" htmlFor="f-faturamento">
                         Faturamento mensal estimado
@@ -220,12 +207,13 @@ export default function ContactForm() {
                         }
                       />
                     </div>
+                    </div>
                     <button
                       type="button"
                       className="form-submit"
                       onClick={handleSubmit}
                     >
-                      Quero previsibilidade no meu restaurante
+                      Agendar demonstração gratuita
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path d="M3.5 9h11M10 4.5l4.5 4.5-4.5 4.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -248,7 +236,7 @@ export default function ContactForm() {
                 <h3>Recebemos seu contato.</h3>
                 <p>
                   Em até 24 horas úteis a gente entra em contato pelo WhatsApp
-                  informado para agendar seu diagnóstico.
+                  informado para agendar a sua demonstração do Fluxa Foods.
                 </p>
               </div>
             </div>
