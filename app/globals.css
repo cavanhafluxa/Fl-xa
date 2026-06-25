@@ -185,7 +185,7 @@ nav {
 }
 nav.scrolled {
   height: 56px;
-  background: rgba(245, 239, 230, 0.72);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--hair);
@@ -950,7 +950,7 @@ footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
 .cardapio-copy { text-align: center; }
 .cardapio-copy .eyebrow { justify-content: center; }
 .cardapio-bullets { display: inline-flex; flex-direction: column; text-align: left; margin: 0 auto 24px; }
-.cardapio-copy .btn-primary { margin: 0 auto; }
+.cardapio-cta-wrap { text-align: center; margin-top: 26px; }
 
 @media (prefers-reduced-motion: reduce) {
   .kds-live-dot, .kds-progress span { animation: none; }

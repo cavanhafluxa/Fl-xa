@@ -116,14 +116,16 @@ export default function CardapioShowcase() {
               <li>Busca, categorias e itens “Em alta”</li>
               <li>Pedido direto — sem taxa de marketplace</li>
             </ul>
-            <a href="#contato" className="btn-primary reveal reveal-delay-3">
-              Quero meu cardápio Fluxa
-            </a>
           </div>
           <div className="cardapio-phone reveal reveal-delay-2">
             <Iphone>
               <CardapioMock />
             </Iphone>
+          </div>
+          <div className="cardapio-cta-wrap">
+            <a href="#contato" className="btn-primary">
+              Quero meu cardápio Fluxa
+            </a>
           </div>
         </div>
       </div>
