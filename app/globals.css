@@ -826,3 +826,72 @@ nav.scrolled { height: 54px; }
 
 /* footer stacks */
 .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+
+/* ============================================================
+   REFINEMENTS — full-screen safe areas, no horizontal scroll,
+   compact comparison, pricing switcher, bigger scroll-reveal.
+   ============================================================ */
+
+/* immersive: page fills under the iOS status bar and bottom bar */
+html, body { background: var(--ink); }
+html, body { overflow-x: hidden; max-width: 100%; }
+nav {
+  padding-top: env(safe-area-inset-top);
+  box-sizing: border-box;
+  height: calc(56px + env(safe-area-inset-top));
+}
+nav.scrolled { height: calc(54px + env(safe-area-inset-top)); }
+.nav-drawer { top: calc(54px + env(safe-area-inset-top)); }
+footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
+.hero.hero-photo { min-height: 100dvh; }
+
+/* kill any horizontal scroll source */
+.compare-table-wrap, .table-scroll-hint { display: none !important; }
+* { min-width: 0; }
+
+/* ---- COMPACT COMPARISON (fits the column, no scroll) ---- */
+.vs {
+  margin-top: 26px; border: 1px solid var(--hair); border-radius: var(--r-lg);
+  overflow: hidden; background: var(--paper); box-shadow: var(--e-1);
+}
+.vs-head, .vs-row { display: grid; grid-template-columns: 1fr 58px 58px; align-items: center; }
+.vs-head { background: var(--cream-2); }
+.vs-head span { padding: 12px 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--ink-3); text-align: center; }
+.vs-head span:first-child { text-align: left; padding-left: 16px; }
+.vs-h-fluxa { color: var(--red) !important; }
+.vs-row { border-top: 1px solid var(--hair); }
+.vs-row > * { padding: 13px 8px; }
+.vs-feat { font-size: 13.5px; font-weight: 600; color: var(--ink); padding-left: 16px; line-height: 1.25; }
+.vs-cell { text-align: center; }
+.vs-x { color: var(--ink-3); text-align: center; }
+.vs-ck { color: var(--red); font-weight: 800; font-size: 16px; }
+.vs-old { color: var(--ink-3); font-size: 12px; text-decoration: line-through; text-align: center; }
+.vs-new { color: var(--red); font-weight: 800; font-size: 15px; text-align: center; }
+.vs-fluxa-col { background: rgba(214,32,31,0.05); }
+
+/* ---- PRICING SWITCHER (one plan at a time, no long scroll) ---- */
+.plan-switch {
+  display: flex; gap: 6px; background: var(--cream-2); border: 1px solid var(--hair);
+  border-radius: var(--r-pill); padding: 5px; max-width: 360px; margin: 26px auto 22px;
+}
+.plan-switch button {
+  flex: 1; padding: 11px 6px; border: none; background: transparent; border-radius: var(--r-pill);
+  font-family: inherit; font-weight: 700; font-size: 14px; color: var(--ink-2); cursor: pointer;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+.plan-switch button.on { background: var(--red); color: #fff; }
+.price-single { max-width: 380px; margin: 0 auto; }
+.price-single.price-card { animation: price-in .35s var(--ease); }
+@keyframes price-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ---- BIGGER SCROLL-REVEAL PHRASE ---- */
+.text-reveal-text { font-size: clamp(32px, 9.5vw, 52px) !important; max-width: 13ch !important; line-height: 1.12; font-weight: 800; }
+
+/* ---- APP-STYLE MOCK (drop the desktop window chrome) ---- */
+.mock-dots { display: none; }
+.mock-titlebar { justify-content: space-between; padding: 14px 18px; }
+.mock-title-text { font-weight: 700; color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .price-single.price-card { animation: none; }
+}

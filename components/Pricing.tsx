@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import TextAnimate from "./magic/TextAnimate";
 
 const PLANS = [
@@ -33,7 +36,7 @@ const PLANS = [
     name: "Cook",
     price: "335",
     cents: ",90",
-    desc: "Operação completa para quem já roda no alto volume.",
+    desc: "Operação completa para o alto volume.",
     features: [
       "Tudo do Pro",
       "Multi-lojas / franquias",
@@ -55,6 +58,9 @@ function Check() {
 }
 
 export default function Pricing() {
+  const [sel, setSel] = useState(1);
+  const p = PLANS[sel];
+
   return (
     <section className="section pricing on-cream" id="precos">
       <div className="container">
@@ -66,39 +72,43 @@ export default function Pricing() {
             text="Simples, como deve ser."
             highlight={["como", "deve", "ser."]}
           />
-          <p className="section-sub reveal reveal-delay-2" style={{ margin: "0 auto" }}>
-            Escolha o plano que melhor se encaixa no momento do seu restaurante.
-          </p>
         </div>
 
-        <div className="pricing-grid">
-          {PLANS.map((p, i) => (
-            <div
-              className={`price-card reveal reveal-delay-${i + 1}${p.featured ? " featured" : ""}`}
-              key={p.name}
+        <div className="plan-switch" role="tablist">
+          {PLANS.map((plan, i) => (
+            <button
+              key={plan.name}
+              role="tab"
+              aria-selected={i === sel}
+              className={i === sel ? "on" : ""}
+              onClick={() => setSel(i)}
             >
-              {p.featured && <div className="price-badge">Recomendado</div>}
-              <div className="price-name">Fluxa Foods — {p.name}</div>
-              <div className="price-amount">
-                <span className="price-currency">R$</span>
-                {p.price}
-                <span className="price-cents">{p.cents}</span>
-                <span className="price-period">/mês</span>
-              </div>
-              <p className="price-desc">{p.desc}</p>
-              <ul className="price-features">
-                {p.features.map((f) => (
-                  <li className="price-feature" key={f}>
-                    <Check />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contato" className="price-cta">
-                Quero o {p.name}
-              </a>
-            </div>
+              {plan.name}
+            </button>
           ))}
+        </div>
+
+        <div className={`price-single price-card${p.featured ? " featured" : ""}`}>
+          {p.featured && <div className="price-badge">Recomendado</div>}
+          <div className="price-name">Fluxa Foods — {p.name}</div>
+          <div className="price-amount">
+            <span className="price-currency">R$</span>
+            {p.price}
+            <span className="price-cents">{p.cents}</span>
+            <span className="price-period">/mês</span>
+          </div>
+          <p className="price-desc">{p.desc}</p>
+          <ul className="price-features">
+            {p.features.map((f) => (
+              <li className="price-feature" key={f}>
+                <Check />
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="#contato" className="price-cta">
+            Quero o {p.name}
+          </a>
         </div>
       </div>
     </section>

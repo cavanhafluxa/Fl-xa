@@ -1,14 +1,14 @@
+import TextAnimate from "./magic/TextAnimate";
+
 const ROWS = [
-  "Os dados do cliente são seus",
-  "Cardápio com engenharia de conversão",
-  "Gestão de cozinha em tempo real",
-  "Database marketing e ofertas personalizadas",
-  "Follow-up para o cliente voltar",
-  "Marca e base de clientes próprias",
+  "Dados do cliente são seus",
+  "Cardápio que converte",
+  "Cozinha em tempo real",
+  "Database marketing",
+  "Follow-up pra cliente voltar",
+  "Marca e base próprias",
   "Sem dependência de plataforma",
 ];
-
-import TextAnimate from "./magic/TextAnimate";
 
 export default function Compare() {
   return (
@@ -19,47 +19,31 @@ export default function Compare() {
           <TextAnimate
             as="h2"
             className="section-title"
-            text="Fluxa vs. o sistema que você aluga"
+            text="Fluxa vs. o sistema alugado"
             highlight={["Fluxa"]}
           />
-          <p className="section-sub" style={{ margin: "0 auto" }}>
-            Cada pedido pelo iFood financia a plataforma deles — não você.
-          </p>
         </div>
 
-        <div className="compare-table-wrap reveal reveal-delay-1">
-          <div className="table-scroll-hint">← deslize para ver tudo →</div>
-          <table className="compare-table">
-            <thead>
-              <tr>
-                <th style={{ textAlign: "left" }}>Recurso</th>
-                <th>iFood / Pedidos 10</th>
-                <th className="th-fluxa">Fluxa Foods</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Comissão / taxa por pedido</td>
-                <td>
-                  <span className="commission-comp">até 30%</span>
-                </td>
-                <td className="td-fluxa">
-                  <span className="commission-fluxa">10%</span>
-                </td>
-              </tr>
-              {ROWS.map((label) => (
-                <tr key={label}>
-                  <td>{label}</td>
-                  <td>
-                    <span className="cx">—</span>
-                  </td>
-                  <td className="td-fluxa">
-                    <span className="ck">✓</span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="vs reveal reveal-delay-1">
+          <div className="vs-head">
+            <span>Recurso</span>
+            <span>Alugado</span>
+            <span className="vs-h-fluxa">Fluxa</span>
+          </div>
+
+          <div className="vs-row">
+            <span className="vs-feat">Comissão por pedido</span>
+            <span className="vs-old">até 30%</span>
+            <span className="vs-new vs-fluxa-col">10%</span>
+          </div>
+
+          {ROWS.map((label) => (
+            <div className="vs-row" key={label}>
+              <span className="vs-feat">{label}</span>
+              <span className="vs-cell vs-x">—</span>
+              <span className="vs-cell vs-ck vs-fluxa-col">✓</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
