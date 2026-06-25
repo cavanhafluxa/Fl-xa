@@ -1,6 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import TextAnimate from "./magic/TextAnimate";
 
 export default function Case() {
+  const [logoOk, setLogoOk] = useState(true);
+  const [photoOk, setPhotoOk] = useState(true);
+
   return (
     <section className="section case on-cream" id="case">
       <div className="container">
@@ -19,7 +25,18 @@ export default function Case() {
               <span className="q-mark">”</span>
             </blockquote>
             <div className="case-meta reveal reveal-delay-3">
-              <div className="case-avatar">L</div>
+              <div className="case-avatar">
+                {logoOk ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src="/lanas-logo.png"
+                    alt="Lanas Burguer"
+                    onError={() => setLogoOk(false)}
+                  />
+                ) : (
+                  "L"
+                )}
+              </div>
               <div>
                 <div className="case-meta-name">Lanas Burguer</div>
                 <div className="case-meta-role">Cliente Fluxa Foods</div>
@@ -29,7 +46,19 @@ export default function Case() {
 
           <div className="case-media reveal reveal-delay-2">
             <div className="case-photo">
-              <span className="case-photo-hint">Foto do restaurante</span>
+              {photoOk ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src="/lanas-foto.jpg"
+                  alt="Lanas Burguer"
+                  onError={() => setPhotoOk(false)}
+                />
+              ) : (
+                <span className="case-photo-hint">
+                  Foto do restaurante
+                  <small>adicione /lanas-foto.jpg em /public</small>
+                </span>
+              )}
             </div>
           </div>
         </div>

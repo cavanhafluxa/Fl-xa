@@ -25,10 +25,13 @@ export default function Navbar() {
 
   return (
     <nav id="navbar" className={scrolled ? "scrolled" : ""}>
-      <div className="nav-logo">
+      <a href="#" className="nav-logo" aria-label="Fluxa Foods">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.fluxa.png" alt="Fluxa Foods" />
-      </div>
+        <img className="nav-logo-icon" src="/fluxa-f.png" alt="" />
+        <span className="nav-logo-text">
+          Fluxa<span className="nlt-sub">Foods</span>
+        </span>
+      </a>
       <div className="nav-right">
         <a href="#contato" className="nav-cta">
           Agendar demo

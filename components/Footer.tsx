@@ -6,10 +6,14 @@ export default function Footer() {
           <div className="footer-brand">
             <div className="footer-logo">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.fluxa.png" alt="Fluxa Foods" />
+              <img className="footer-logo-icon" src="/fluxa-f.png" alt="" />
+              <span className="footer-logo-text">
+                Fluxa<span className="nlt-sub">Foods</span>
+              </span>
             </div>
             <p className="footer-tagline">
-              A tecnologia que devolve o controle do seu restaurante para você.
+              A tecnologia que devolve <span className="accent">o controle</span>{" "}
+              do seu restaurante para você.
             </p>
           </div>
           <div className="footer-col">

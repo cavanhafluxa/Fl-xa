@@ -107,8 +107,11 @@ export default function Problem() {
               )}
             </div>
             <div className="route-card route-card-fluxa">
-              <h3>A Fluxa devolve o controle</h3>
-              <p>Sua base, sua margem e sua operação — de volta pra você.</p>
+              <h3>O problema não é o seu restaurante. É o canal que você usa.</h3>
+              <p>
+                O futuro é de quem é dono da própria base, da margem e da
+                operação.
+              </p>
             </div>
           </div>
         </div>
