@@ -1,12 +1,16 @@
+import TextAnimate from "./magic/TextAnimate";
+
 export default function Results() {
   return (
-    <section className="section results on-ink" id="resultados">
+    <section className="section results on-red" id="resultados">
       <div className="container">
-        <div className="section-head center reveal">
-          <div className="eyebrow center">As metas que perseguimos</div>
-          <h2 className="section-title">
-            Mais pedidos. Mais margem. Clientes seus.
-          </h2>
+        <div className="section-head center">
+          <div className="eyebrow center reveal">As metas que perseguimos</div>
+          <TextAnimate
+            as="h2"
+            className="section-title"
+            text="Mais pedidos. Mais margem. Clientes seus."
+          />
           <p className="section-sub" style={{ margin: "0 auto" }}>
             Mais conversão no cardápio, menos caos na cozinha e uma base que
             volta a comprar. As metas que perseguimos com cada restaurante.

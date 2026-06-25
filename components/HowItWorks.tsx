@@ -1,4 +1,5 @@
 import KitchenMock from "./KitchenMock";
+import TextAnimate from "./magic/TextAnimate";
 
 export default function HowItWorks() {
   return (
@@ -7,9 +8,12 @@ export default function HowItWorks() {
         <div className="how-inner">
           <div className="how-left">
             <div className="eyebrow reveal">O sistema</div>
-            <h2 className="section-title reveal reveal-delay-1">
-              Conheça o <em>Fluxa Foods.</em>
-            </h2>
+            <TextAnimate
+              as="h2"
+              className="section-title"
+              text="Conheça o Fluxa Foods."
+              highlight={["Fluxa", "Foods."]}
+            />
             <p className="section-sub reveal reveal-delay-2">
               Não é mais um sistema que você aluga. É a tecnologia que organiza a
               casa, vende mais e te devolve o controle.

@@ -1,6 +1,6 @@
 export default function FinalCta() {
   return (
-    <section className="section final-cta on-ink">
+    <section className="section final-cta on-red">
       <div className="container">
         <div className="final-cta-inner reveal">
           <h2>

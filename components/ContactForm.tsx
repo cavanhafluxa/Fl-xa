@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import TextAnimate from "./magic/TextAnimate";
 
 const WHATSAPP_NUMBER = "5547992793347";
 
@@ -70,14 +71,17 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="section form-section on-paper" id="contato">
+    <section className="section form-section on-cream" id="contato">
       <div className="container">
         <div className="form-inner">
           <div className="form-left">
             <div className="eyebrow reveal">Demonstração gratuita</div>
-            <h2 className="section-title reveal reveal-delay-1">
-              Agende uma <em>demonstração</em> do Fluxa Foods.
-            </h2>
+            <TextAnimate
+              as="h2"
+              className="section-title"
+              text="Agende uma demonstração do Fluxa Foods."
+              highlight={["demonstração"]}
+            />
             <p className="section-sub reveal reveal-delay-2">
               Preencha o formulário. Em até 24h mostramos, na prática, como a
               Fluxa funciona no seu restaurante.

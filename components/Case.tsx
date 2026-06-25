@@ -1,4 +1,5 @@
 import KitchenMock from "./KitchenMock";
+import TextAnimate from "./magic/TextAnimate";
 
 const LANAS_ORDERS = [
   { name: "Balcão — Pedido #218", badge: "new" as const, badgeLabel: "Novo", items: "2× Lanas Duplo · 1× Onion Rings", time: "agora mesmo", price: "R$ 74,00" },
@@ -8,14 +9,17 @@ const LANAS_ORDERS = [
 
 export default function Case() {
   return (
-    <section className="section case on-cream" id="case">
+    <section className="section case on-ink" id="case">
       <div className="container">
         <div className="case-inner">
           <div className="case-left">
             <div className="eyebrow reveal">Prova social</div>
-            <h2 className="section-title reveal reveal-delay-1">
-              Por que o Lanas Burguer <em>mudou para a Fluxa?</em>
-            </h2>
+            <TextAnimate
+              as="h2"
+              className="section-title"
+              text="Por que o Lanas Burguer mudou para a Fluxa?"
+              highlight={["mudou", "para", "a", "Fluxa?"]}
+            />
             <blockquote className="case-quote reveal reveal-delay-2">
               <span className="q-mark">“</span>Saímos dos sistemas antigos e da
               dependência do iFood. A cozinha parou de travar, o ticket médio

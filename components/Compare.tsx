@@ -8,15 +8,20 @@ const ROWS = [
   "Sem dependência de plataforma",
 ];
 
+import TextAnimate from "./magic/TextAnimate";
+
 export default function Compare() {
   return (
     <section className="section compare on-cream" id="comparativo">
       <div className="container">
-        <div className="compare-head reveal">
-          <div className="eyebrow center">Comparativo</div>
-          <h2 className="section-title">
-            Fluxa vs. <em>o sistema que você aluga</em>
-          </h2>
+        <div className="compare-head">
+          <div className="eyebrow center reveal">Comparativo</div>
+          <TextAnimate
+            as="h2"
+            className="section-title"
+            text="Fluxa vs. o sistema que você aluga"
+            highlight={["Fluxa"]}
+          />
           <p className="section-sub" style={{ margin: "0 auto" }}>
             Cada pedido pelo iFood ou pelos sistemas antigos financia a
             plataforma deles — e deixa você sem dados, margem ou controle.

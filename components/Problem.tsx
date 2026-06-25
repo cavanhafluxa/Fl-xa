@@ -1,12 +1,17 @@
+import TextAnimate from "./magic/TextAnimate";
+
 export default function Problem() {
   return (
     <section className="section problem on-cream" id="dor">
       <div className="container">
-        <div className="section-head center reveal">
-          <div className="eyebrow center">O inimigo</div>
-          <h2 className="section-title">
-            Sistemas ultrapassados estão <em>te travando.</em>
-          </h2>
+        <div className="section-head center">
+          <div className="eyebrow center reveal">O inimigo</div>
+          <TextAnimate
+            as="h2"
+            className="section-title"
+            text="Sistemas ultrapassados estão te travando."
+            highlight={["te", "travando."]}
+          />
           <p className="section-sub">
             Pedidos 10, MultiPedidos ou 100% iFood. O resultado vem todo mês —
             na fatura e no caixa.

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="on-paper">
+    <footer className="on-ink">
       <div className="container">
         <div className="footer-inner">
           <div className="footer-brand">
