@@ -33,6 +33,13 @@ export default function Navbar() {
           <span className="nlt-sub">Foods</span>
         </span>
       </a>
+      <div className="nav-links">
+        <a href="#dor">O problema</a>
+        <a href="#produto">O sistema</a>
+        <a href="#comparativo">Comparativo</a>
+        <a href="#precos">Preços</a>
+        <a href="#case">Case</a>
+      </div>
       <div className="nav-right">
         <a href="#contato" className="nav-cta">
           Agendar demo

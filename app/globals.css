@@ -450,7 +450,7 @@ footer { padding: 72px 0 44px; }
 .footer-inner { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 44px; margin-bottom: 44px; }
 .footer-logo { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
 .footer-logo img { height: 34px; width: 34px; border-radius: 9px; object-fit: contain; }
-.footer-logo-text { color: var(--ink); }
+.footer-logo-text { color: var(--cream); }
 .footer-logo-text .nlt-main { font-weight: 800; font-style: italic; font-size: 20px; letter-spacing: -0.03em; }
 .footer-tagline { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 260px; }
 .footer-col-title { font-size: 13px; font-weight: 600; margin-bottom: 16px; color: var(--cream); }
@@ -773,10 +773,12 @@ nav.scrolled .nav-logo img { filter: brightness(0); }
 .section-sub { font-size: clamp(15px, 4vw, 17px); line-height: 1.55; }
 .eyebrow { font-size: 12px; letter-spacing: 1.4px; margin-bottom: 14px; }
 
-/* single column everywhere (mobile layout on every device) */
-.problem-grid, .results-grid, .pricing-grid,
-.how-inner, .case-inner, .form-inner,
-.cardapio-showcase .cardapio-inner { grid-template-columns: 1fr !important; gap: 20px; align-items: start; }
+/* single column on mobile/tablet (desktop layer below re-enables 2-col) */
+@media (max-width: 899px) {
+  .problem-grid, .results-grid, .pricing-grid,
+  .how-inner, .case-inner, .form-inner,
+  .cardapio-showcase .cardapio-inner { grid-template-columns: 1fr !important; gap: 20px; align-items: start; }
+}
 .pricing-grid { max-width: 380px; margin-left: auto; margin-right: auto; }
 .price-card.featured { transform: none; }
 .problem-card, .step, .price-card, .form-box { padding: 24px 22px; }
@@ -1172,7 +1174,63 @@ footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
 .case-photo-hint { display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .case-photo-hint small { font-size: 11px; opacity: 0.7; font-weight: 500; }
 
-/* ---- FOOTER phrase polish ---- */
-.footer-tagline { font-size: 18px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; line-height: 1.4; max-width: 300px; }
-.footer-tagline .accent { color: var(--red); }
+/* ---- FOOTER phrase polish (dark footer → light text) ---- */
+.footer-tagline { font-size: 17px; font-weight: 500; color: rgba(245,239,230,0.82); letter-spacing: -0.01em; line-height: 1.45; max-width: 300px; }
+.footer-tagline .accent { color: #f2403e; font-weight: 700; }
 .footer-logo img { height: 34px; width: 34px; }
+
+/* ============================================================
+   DESKTOP LAYER (≥900px) — mobile stays exactly as is; this only
+   adds the wider, two-column desktop experience on top.
+   ============================================================ */
+@media (min-width: 900px) {
+  .container, .container.wide { max-width: 1120px; padding-left: 32px; padding-right: 32px; }
+
+  /* nav with links */
+  nav { padding: 0 36px; }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a { font-size: 14.5px; }
+
+  /* larger display type */
+  .section { padding: clamp(84px, 8vw, 124px) 0; }
+  .section-title { font-size: clamp(34px, 3.3vw, 50px); }
+  .section-sub { font-size: clamp(17px, 1.3vw, 20px); }
+  .kinetic { font-size: clamp(66px, 8vw, 112px); }
+  .hero-headline { font-size: clamp(26px, 2.6vw, 40px); max-width: 22ch; }
+  .hero.hero-photo .hero-sub { font-size: clamp(18px, 1.4vw, 21px); max-width: 640px; }
+  .hero-rotate { font-size: clamp(16px, 1.3vw, 19px); }
+  .hero-actions { flex-direction: row; max-width: none; }
+  .hero-actions .ihb, .hero-actions .btn-ghost-light { width: auto; }
+
+  /* O sistema: texto à esquerda, mockup à direita */
+  .how-inner { grid-template-columns: 1.05fr 0.95fr; gap: clamp(48px, 5vw, 84px); align-items: center; }
+  .how-left .section-title, .how-left .section-sub { text-align: left; }
+
+  /* Prova social: texto à esquerda, foto à direita */
+  .case-inner { grid-template-columns: 1fr 1fr; gap: clamp(48px, 5vw, 76px); align-items: center; }
+  .case-left { text-align: left; }
+  .case-left .eyebrow { justify-content: flex-start; }
+
+  /* Formulário: copy à esquerda, form à direita */
+  .form-inner { grid-template-columns: 0.9fr 1.1fr; gap: clamp(48px, 5vw, 76px); align-items: start; }
+  .form-section .form-left { text-align: left; }
+  .form-section .form-left .eyebrow { justify-content: flex-start; }
+
+  /* Cardápio: copy + CTA à esquerda, iPhone à direita (span 2 linhas) */
+  .cardapio-showcase .cardapio-inner {
+    grid-template-columns: 1.05fr 0.95fr; gap: clamp(48px, 5vw, 84px); align-items: center;
+    grid-template-areas: "copy phone" "cta phone";
+  }
+  .cardapio-copy { grid-area: copy; text-align: left; }
+  .cardapio-copy .eyebrow { justify-content: flex-start; }
+  .cardapio-bullets { align-self: flex-start; }
+  .cardapio-cta-wrap { grid-area: cta; text-align: left; margin-top: 4px; align-self: start; }
+  .cardapio-phone { grid-area: phone; }
+
+  /* a foto da prova social fica mais alta no desktop */
+  .case-photo { aspect-ratio: 3 / 4; }
+
+  /* manter blocos centrais com largura confortável no desktop */
+  .vs { max-width: 660px; margin-left: auto; margin-right: auto; }
+  .vs-head, .vs-row { grid-template-columns: 1fr 110px 110px; }
+}
