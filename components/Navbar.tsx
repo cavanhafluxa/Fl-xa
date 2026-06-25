@@ -29,7 +29,8 @@ export default function Navbar() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="nav-logo-icon" src="/fluxa-f.png" alt="" />
         <span className="nav-logo-text">
-          Fluxa<span className="nlt-sub">Foods</span>
+          <span className="nlt-main">Fluxa</span>
+          <span className="nlt-sub">Foods</span>
         </span>
       </a>
       <div className="nav-right">
