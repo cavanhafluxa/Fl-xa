@@ -8,7 +8,8 @@ export default function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img className="footer-logo-icon" src="/fluxa-f.png" alt="" />
               <span className="footer-logo-text">
-                Fluxa<span className="nlt-sub">Foods</span>
+                <span className="nlt-main">Fluxa</span>
+                <span className="nlt-sub">Foods</span>
               </span>
             </div>
             <p className="footer-tagline">
