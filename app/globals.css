@@ -69,7 +69,7 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip; /* clip (not hidden) so position:sticky keeps working */
 }
 
 img { display: block; max-width: 100%; }
@@ -795,21 +795,23 @@ nav.scrolled { height: 54px; }
 .cta-full { display: none; }
 .cta-short { display: inline; }
 
-/* softer progressive blur */
-.progressive-blur { height: 46px; }
+/* progressive blur: subtle frosted fade at the top, stronger frosted +
+   transparent fade at the bottom (over the iOS address bar). */
 .progressive-blur-top {
+  height: 44px;
   backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(2.5px);
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
 }
 .progressive-blur-bottom {
-  backdrop-filter: blur(2.5px); -webkit-backdrop-filter: blur(2.5px);
-  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 100%);
-  mask-image: linear-gradient(to top, #000 0%, transparent 100%);
+  height: 96px;
+  backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px);
+  -webkit-mask-image: linear-gradient(to top, #000 0%, #000 28%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 0%, #000 28%, transparent 100%);
 }
 
-/* text-reveal: shorter pin + smaller type for the narrow column */
-.text-reveal-wrap { height: 165vh; }
+/* text-reveal: longer pin so the scroll clearly "locks" while it reveals */
+.text-reveal-wrap { height: 220vh; }
 .text-reveal-text { font-size: clamp(24px, 7vw, 36px); max-width: 15ch; }
 
 /* velocity strip smaller */
@@ -832,9 +834,10 @@ nav.scrolled { height: 54px; }
    compact comparison, pricing switcher, bigger scroll-reveal.
    ============================================================ */
 
-/* immersive: page fills under the iOS status bar and bottom bar */
-html, body { background: var(--ink); }
-html, body { overflow-x: hidden; max-width: 100%; }
+/* immersive: page fills under the iOS status bar and bottom bar.
+   Light base (not solid black) + overflow clip so sticky still works. */
+html, body { background: var(--cream); }
+html, body { overflow-x: clip; max-width: 100%; }
 nav {
   padding-top: env(safe-area-inset-top);
   box-sizing: border-box;
@@ -942,6 +945,12 @@ footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
 .cardapio-banner::after { font-size: 52px; filter: drop-shadow(0 8px 12px rgba(0,0,0,0.45)); }
 .cardapio-product-img { box-shadow: inset 0 -28px 28px rgba(0,0,0,0.20); }
 .cardapio-tab.on .cardapio-tab-ico { transform: scale(1.06); }
+
+/* center the whole cardápio block so copy + phone read as one unit */
+.cardapio-copy { text-align: center; }
+.cardapio-copy .eyebrow { justify-content: center; }
+.cardapio-bullets { display: inline-flex; flex-direction: column; text-align: left; margin: 0 auto 24px; }
+.cardapio-copy .btn-primary { margin: 0 auto; }
 
 @media (prefers-reduced-motion: reduce) {
   .kds-live-dot, .kds-progress span { animation: none; }

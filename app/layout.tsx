@@ -23,7 +23,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#1A0E0E",
+  // No fixed theme-color: lets iOS use its translucent, content-blurring
+  // status/address bars (frosted) instead of a solid black band.
 };
 
 export default function RootLayout({
